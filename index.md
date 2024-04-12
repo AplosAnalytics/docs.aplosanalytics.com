@@ -5,14 +5,15 @@ layout: home
 hero:
   name: "Aplos Analytics Documentation"
   text: "API Docs for Aplos SaaS"
-  tagline: My great project tagline
+  tagline: "NCA in 3 easy steps"
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: API Documentation
+      link: /docs/api/
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: NCA Methods
+      link: /docs/methods/
+    - theme: NCA
 
 features:
   - title: Feature A

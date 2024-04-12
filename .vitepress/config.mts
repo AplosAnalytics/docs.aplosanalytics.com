@@ -12,7 +12,6 @@ export default defineConfig({
       { text: 'Aplos Methods', link: '/docs/methods/index' }
 
     ],
-
     
     sidebar: {
       '/docs/api/': [
@@ -46,41 +45,44 @@ export default defineConfig({
           ]
         }
       ],
-        '/docs/methods/': [ {
-          text: 'Methods',
-          items: [
-            { text: 'AUC Methods', link: '/docs/methods/aucmethods' },
-            { text: 'AUMC Methods', link: '/docs/methods/aumcmethods' },
-            { text: 'Extrapolation Methods', link: '/docs/methods/extrapolationmethods' },
-            { text: 'Terminal Slope', link: '/docs/methods/terminalslope' }
-          ]
+      '/docs/methods/': [ {
+        text: 'Methods',
+        items: [
+          { text: 'AUC Methods', link: '/docs/methods/aucmethods' },
+          { text: 'AUMC Methods', link: '/docs/methods/aumcmethods' },
+          { text: 'Extrapolation Methods', link: '/docs/methods/extrapolationmethods' },
+          { text: 'Terminal Slope', link: '/docs/methods/terminalslope' }
+        ]
 
-        },
-        {
-          text: 'IV',
-          items: [
-            { text: 'Markdown Examples', link: '/markdown-examples' },
-            { text: 'Runtime API Examples', link: '/api-examples' }
-          ]
+      },
+      {
+        text: 'IV',
+        items: [
+          { text: 'Markdown Examples', link: '/markdown-examples' },
+          { text: 'Runtime API Examples', link: '/api-examples' }
+        ]
 
-        },
-        {
-          text: 'EV',
-          items: [
-            { text: 'Extravascular Single Dose', link: '/docs/methods/ExtravascularSingleDose' },
-            { text: 'Extravascular Steady State', link: '/docs/methods/ExtravascularSteadyState' }
-          ]
+      },
+      {
+        text: 'EV',
+        items: [
+          { text: 'Extravascular Single Dose', link: '/docs/methods/ExtravascularSingleDose' },
+          { text: 'Extravascular Steady State', link: '/docs/methods/ExtravascularSteadyState' }
+        ]
 
-        }
-        
+      }
       ]
     },
     search: {
       provider: 'local'
     },
-    
     socialLinks: [
       { icon: 'linkedin', link: 'https://www.linkedin.com/company/aplos-analytics/' }
     ]
-  }
+  },
+  markdown: {
+    math: true,  // Enable built-in math support,
+    
+  },
+  
 })

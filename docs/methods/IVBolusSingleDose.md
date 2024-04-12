@@ -45,8 +45,8 @@ For IV Bolus administration of a single dose, the following parameter are calcul
 | Terminal slope span | SPAN | ${TSLOPEUPP - TSLOPELOW} \over {THALF}$ | 
 | Terminal slope r-squared | TR2 | r<sup>2</sup> value from terminal slope linear regression. | 
 | Terminal slope adjusted r-squared | TAR2 | $1 - (1 - TR2)*[{{KELN - 1} \over {KELN - 2}}]$ | 
-| Percent AUC extrapolated to C0 linear | AUCEXTCOLIN | $100 * [{{pAUCC0LIN} \over {AUCINFLINC0}}]
-| Percent AUC extrapolated to C0 linlog | AUCEXTCOLOG | $100 * [{{pAUCC0LOG} \over {AUCINFLOGC0}}]
+| Percent AUC extrapolated to C0 linear | AUCEXTCOLIN | $100 * [{{pAUCC0LIN} \over {AUCINFLINC0}}]$ |
+| Percent AUC extrapolated to C0 linlog | AUCEXTCOLOG | $100 * [{{pAUCC0LOG} \over {AUCINFLOGC0}}]$ |
 | AUC infinity linear C0 | AUCINFLINC0 | $AUCLASTLINC0 + {{CLAST} \over {KEL}}$ | 
 | Percent extrapolated AUC infinity linear C0 | AUCLINEXTC0 | $100 * [{{AUCINFLINC0 - AUCLASTLINC0} \over {AUCINFLINC0}}]$ | 
 | AUC infinity linlog C0 | AUCINFLOGC0 | $AUCLASTLOGC0 + {{CLAST} \over {KEL}}$ | 

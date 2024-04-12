@@ -1,4 +1,3 @@
-
 # Extravascular Steady State
 
 For extravascular administration at steady state, the following parameter are calculated as described. The extravascular route includes oral, topical, sublingual, subcutaneous, intramuscular, rectal, and any other route that is not intravenous. The term steady state means that the rate of input and rate of elimination of the drug are equivalent; however, there is nothing in the data of a single dosing interval that can independently determine if steady state has been achieved. A user must confirm that steady state has been achieved by other methods (e.g. monitoring trough values over several dosing intervals).
@@ -39,16 +38,16 @@ If the analysis dataset does not include a concentration value at the time of do
 | AUMC last linlog | AUMCLASTLOG | Sum of partial AUMC values from time of dose administration through TLAST using the [linear up log down methd](aumcmethods.md) |
 | AUC Tau linear | AUCTAULIN | Sum of partial AUC values from time of dose administration through END_INTERVAL using the [linear method](aucmethods.md) |
 | AUC Tau linlog | AUCTAULOG | Sum of partial AUC values from time of dose administration through END_INTERVAL using the [linear up log down method](aucmethods.md) |
-| AUC Tau linear/Dose | AUCTAULIN_D |  <span v-pre>`${AUCTAULIN} \over {DOSE}$`</span> |
-| AUC Tau linlog/Dose | AUCTAULog_D |  <span v-pre>`${AUCTAULOG} \over {DOSE}$`</span> |
-| Percent extrapolated AUC Tau linear | AUCTAULINEX | <span v-pre>`If DOSE_TIME + TAU > TLAST then $100 * [{{AUCTAULIN - AUCLASTLIN} \over {AUCTAULIN}}]$; otherwise 0.`</span> |
-| Percent extrapolated AUC Tau linlog | AUCTAULOGEX | <span v-pre>`If DOSE_TIME + TAU > TLAST then $100 * [{{AUCTAULOG - AUCLASTLOG} \over {AUCTAULOG}}]$; otherwise 0.`</span> |
-| Average concentration linear | CAVGLIN | <span v-pre>`${AUCTAULIN} \over {TAU}$`</span> |
-| Average concentration linlog | CAVGLOG | <span v-pre>`${AUCTAULOG} \over {TAU}$`</span> |
-| Fluctuation linear | FLUCTLIN | <span v-pre>`$100 * {{(CMAX - CMIN)} \over {CAVGLIN}}$`</span> |
-| Fluctuation linlog | FLUCTLOG | <span v-pre>`$100 * {{(CMAX - CMIN)} \over {CAVGLOG}}$`</span`</span>> |
-| Fluctuation Tau linear | FLUCTTAULIN | <span v-pre>`$100 * {{(CMAX - CTAU)} \over {CAVGLIN}}$`</spa`</span>n> |
-| Fluctuation Tau linlog | FLUCTTAULOG | <span v-pre>`$100 * {{(CMAX - CTAU)} \over {CAVGLOG}}$`</span> |
+| AUC Tau linear/Dose | AUCTAULIN_D | ${AUCTAULIN} \over {DOSE}$ |
+| AUC Tau linlog/Dose | AUCTAULog_D | ${AUCTAULOG} \over {DOSE}$ |
+| Percent extrapolated AUC Tau linear | AUCTAULINEX | If DOSE_TIME + TAU > TLAST then $100 * [{{AUCTAULIN - AUCLASTLIN} \over {AUCTAULIN}}]$; otherwise 0. |
+| Percent extrapolated AUC Tau linlog | AUCTAULOGEX | If DOSE_TIME + TAU > TLAST then $100 * [{{AUCTAULOG - AUCLASTLOG} \over {AUCTAULOG}}]$; otherwise 0. |
+| Average concentration linear | CAVGLIN | ${AUCTAULIN} \over {TAU}$ |
+| Average concentration linlog | CAVGLOG | ${AUCTAULOG} \over {TAU}$ |
+| Fluctuation linear | FLUCTLIN | $100 * {{(CMAX - CMIN)} \over {CAVGLIN}}$ |
+| Fluctuation linlog | FLUCTLOG | $100 * {{(CMAX - CMIN)} \over {CAVGLOG}}$ |
+| Fluctuation Tau linear | FLUCTTAULIN | $100 * {{(CMAX - CTAU)} \over {CAVGLIN}}$ |
+| Fluctuation Tau linlog | FLUCTTAULOG | $100 * {{(CMAX - CTAU)} \over {CAVGLOG}}$ |
 | AUMC Tau linear | AUMCLASTLIN | Sum of partial AUMC values from time of dose administration through END_INTERVAL using the [linear methd](aumcmethods.md) |
 | AUMC Tau linlog | AUMCLASTLOG | Sum of partial AUMC values from time of dose administration through END_INTERVAL using the [linear up log down methd](aumcmethods.md) |
 | MRT last linear | MRTLASTLIN | ${AUMCTAULIN} \over {AUCTAUTLIN}$ |
@@ -63,12 +62,12 @@ If the analysis dataset does not include a concentration value at the time of do
 | Terminal slope lower time point | TSLOPELOW | Smallest time value used to calculate the terminal slope. | 
 | Terminal slope upper time point | TSLOPEUPP | Largest time value used to calculate the terminal slope. |
 | Number of data points in terminal slope calculation | KELN | Number of samples included in teh terminal slope calculation. | 
-| Terminal half life | THALF | <span v-pre>`${ln(2)} \over {KEL}$`</span> | 
-| Terminal slope span | SPAN | <span v-pre>`${TSLOPEUPP - TSLOPELOW} \over {THALF}$`</span> | 
+| Terminal half life | THALF | ${ln(2)} \over {KEL}$ | 
+| Terminal slope span | SPAN | ${TSLOPEUPP - TSLOPELOW} \over {THALF}$ | 
 | Terminal slope r-squared | TR2 | r<sup>2</sup> value from terminal slope linear regression. | 
-| Terminal slope adjusted r-squared | TAR2 |<span v-pre>`$1 - (1 - TR2)*[{{KELN - 1} \over {KELN - 2}}]$`</span> | 
-| Vz/F linear | VZ_FLIN | <span v-pre>`${{DOSE} \over {KEL*AUCTAULIN}}$`</span> | 
-| Vz/F linlog | VZ_FLOG |  <span v-pre>`${{DOSE} \over {KEL*AUCTAULOG}}$`</span> | 
-| CLss/F linear | CL_FLIN |  <span v-pre>`${{DOSE} \over {AUCTAULIN}}$`</span> | 
-| CLss/F linlog | CL_FLIN |  <span v-pre>`${{DOSE} \over {AUCTAULOG}}$`</span> | 
-| Accumulation index | ACCINDEX |  <span v-pre>`${1} \over {(1 - e^{-KEL * TAU})}$`</span> |
+| Terminal slope adjusted r-squared | TAR2 | $1 - (1 - TR2)*[{{KELN - 1} \over {KELN - 2}}]$ | 
+| Vz/F linear | VZ_FLIN | ${{DOSE} \over {KEL*AUCTAULIN}}$ | 
+| Vz/F linlog | VZ_FLOG | ${{DOSE} \over {KEL*AUCTAULOG}}$ | 
+| CLss/F linear | CL_FLIN | ${{DOSE} \over {AUCTAULIN}}$ | 
+| CLss/F linlog | CL_FLIN | ${{DOSE} \over {AUCTAULOG}}$ | 
+| Accumulation index | ACCINDEX | ${1} \over {(1 - e^{-KEL * TAU})}$ |

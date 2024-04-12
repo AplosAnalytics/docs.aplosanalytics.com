@@ -14,11 +14,11 @@ The number of terminal slope values is determined using the concentration values
 
 The value $(n-2)$ represents the number of terminal slope calculations that can be done starting with the last 3 data points, the last 4 data points, the last 5 data poitns, and so on until you reach the last $n$ data points. The following figure illustrates the data points included in each of the 6 groups for this profile.
 
-![Terminal slope groups 1](terminal-slope1.png)
+![Terminal slope groups 1](./images/terminal-slope1.png)
 
 The value $(n-3)$ represents the number of terminal slope values that can be calculated if you exclude Clast and take the remaining 3 data points, the remaining 4 data points, the remaining 5 data points, and so on until you reach the remaining $n-1$ data points. The following figure illustrates the data points included in each of the 5 groups for the same profile as shown above.
 
-![Terminal slope groups 2](terminal-slope2.png)
+![Terminal slope groups 2](./images/terminal-slope2.png)
 
 In the example plots above, there are 8 data points from Cmax to Clast. There will be 11 terminal slope calculations performed for this one profile. For each of those 11 terminal slope calculations, all associated pharmacokinetic parameters (e.g. AUC infinity) will be calculated. 
 

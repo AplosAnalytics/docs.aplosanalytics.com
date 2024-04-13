@@ -8,8 +8,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Aplos API', link: '/docs/api/index' },
-      { text: 'Aplos Methods', link: '/docs/methods/index' }
+      { text: 'Aplos NCA API', link: '/docs/api/index' },
+      { text: 'NCA Methods', link: '/docs/methods/index' }
 
     ],
     

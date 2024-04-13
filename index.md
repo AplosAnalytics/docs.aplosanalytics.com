@@ -6,6 +6,9 @@ hero:
   name: "Aplos Analytics Documentation"
   text: "API Docs for Aplos SaaS"
   tagline: "NCA in 3 easy steps"
+  image:
+    src: /logo.png
+    alt: VitePress
   actions:
     - theme: brand
       text: API Documentation

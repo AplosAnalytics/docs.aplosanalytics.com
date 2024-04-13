@@ -7,6 +7,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   ],
+  srcExclude: ['**/README.md', '**/readme.md', '**/TODO.md', '**/todo.md'],
   themeConfig: {
     
     // https://vitepress.dev/reference/default-theme-config

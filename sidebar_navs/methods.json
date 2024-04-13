@@ -25,12 +25,22 @@
             "text": "IV",
             "items": [
                 {
-                    "text": "Markdown Examples",
-                    "link": "/markdown-examples"
+                    "text": "IV Bolus Single Dose",
+                    "link": "/docs/methods/IVBolusSingleDose"
                 },
                 {
-                    "text": "Runtime API Examples",
-                    "link": "/api-examples"
+                    "text": "IV Bolus Steady State",
+                    "link": "/docs/methods/IVBolusSteadyState"
+                }
+                ,
+                {
+                    "text": "IV Infusion Single Dose",
+                    "link": "/docs/methods/IVInfusionSingleDose"
+                }
+                ,
+                {
+                    "text": "IV Infusion Steady State",
+                    "link": "/docs/methods/IVInfusionSteadyState"
                 }
             ]
         },

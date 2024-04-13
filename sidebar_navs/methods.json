@@ -1,0 +1,61 @@
+{
+    "/docs/methods/": [
+        {
+            "text": "Methods",
+            "items": [
+                {
+                    "text": "AUC Methods",
+                    "link": "/docs/methods/aucmethods"
+                },
+                {
+                    "text": "AUMC Methods",
+                    "link": "/docs/methods/aumcmethods"
+                },
+                {
+                    "text": "Extrapolation Methods",
+                    "link": "/docs/methods/extrapolationmethods"
+                },
+                {
+                    "text": "Terminal Slope",
+                    "link": "/docs/methods/terminalslope"
+                }
+            ]
+        },
+        {
+            "text": "IV",
+            "items": [
+                {
+                    "text": "IV Bolus Single Dose",
+                    "link": "/docs/methods/IVBolusSingleDose"
+                },
+                {
+                    "text": "IV Bolus Steady State",
+                    "link": "/docs/methods/IVBolusSteadyState"
+                }
+                ,
+                {
+                    "text": "IV Infusion Single Dose",
+                    "link": "/docs/methods/IVInfusionSingleDose"
+                }
+                ,
+                {
+                    "text": "IV Infusion Steady State",
+                    "link": "/docs/methods/IVInfusionSteadyState"
+                }
+            ]
+        },
+        {
+            "text": "EV",
+            "items": [
+                {
+                    "text": "Extravascular Single Dose",
+                    "link": "/docs/methods/ExtravascularSingleDose"
+                },
+                {
+                    "text": "Extravascular Steady State",
+                    "link": "/docs/methods/ExtravascularSteadyState"
+                }
+            ]
+        }
+    ]
+}

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import apiSidebar from '../sidebar_navs/api.json'
 import methodsSidebar from '../sidebar_navs/methods.json'
+import quickstartSidebar from '../sidebar_navs/quickstart.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -15,12 +16,14 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Aplos API', link: '/docs/api/index' },
-      { text: 'Aplos Methods', link: '/docs/methods/index' }
+      { text: 'Quick Start', link: '/docs/quickstart/aplosnca'},
+      { text: 'API Reference', link: '/docs/api/index' },
+      { text: 'Documentation', link: '/docs/methods/index' }
 
     ],
     
     sidebar: {
+      ...quickstartSidebar,
       ...apiSidebar,
       ...methodsSidebar
     },

@@ -1,0 +1,15 @@
+{
+    "/docs/quickstart/": [
+      {
+        "text": "Quick Start",
+        "items": [
+          { "text": "Aplos NCA", "link": "/docs/quickstart/aplosnca" },
+          { "text": "Begin here", "link": "/docs/quickstart/beforebegin" },
+          { "text": "Upload dataset", "link": "/docs/quickstart/upload" },
+          { "text": "Configuration", "link": "/docs/quickstart/configuration" },
+          { "text": "Results", "link": "/docs/quickstart/results" }
+        ]
+      }
+    ]
+  }
+  

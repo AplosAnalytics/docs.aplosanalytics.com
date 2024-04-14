@@ -91,14 +91,14 @@
             "text": "Using SAS",
             "collapsed": true,
             "items": [
-                {"text": "AplosNCA SAS programs","link": "/docs/methods/SAS-programs"}
+                {"text": "AplosNCA SAS programs","link": "/docs/methods/SAS-program"}
             ]
         },
         {
             "text": "Using Python",
             "collapsed": true,
             "items": [
-                {"text": "AplosNCA Python scripts","link": "/docs/methods/python-scripts"}
+                {"text": "AplosNCA Python scripts","link": "/docs/methods/python-script"}
             ]
         }
     ]

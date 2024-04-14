@@ -4,19 +4,21 @@ layout: home
 
 hero:
   name: "Aplos Analytics Documentation"
-  text: "API Docs for Aplos SaaS"
-  tagline: "NCA in 3 easy steps"
+  text: ""
+  tagline: ""
   image:
     src: /logo.png
     alt: VitePress
   actions:
     - theme: brand
-      text: API Documentation
-      link: /docs/api/
+      text: Quick Start
+      link: /docs/quickstart/aplosnca
     - theme: alt
-      text: NCA Methods
+      text: Documentation
       link: /docs/methods/
-    - theme: NCA
+    - theme: alt
+      text: API Reference
+      link: /docs/api/
 
 features:
   - title: Feature A

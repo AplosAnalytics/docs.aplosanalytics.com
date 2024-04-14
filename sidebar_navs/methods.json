@@ -1,60 +1,104 @@
 {
     "/docs/methods/": [
         {
-            "text": "Methods",
+            "text": "Overview",
+            "collapsed": false,
             "items": [
-                {
-                    "text": "AUC Methods",
-                    "link": "/docs/methods/aucmethods"
-                },
-                {
-                    "text": "AUMC Methods",
-                    "link": "/docs/methods/aumcmethods"
-                },
-                {
-                    "text": "Extrapolation Methods",
-                    "link": "/docs/methods/extrapolationmethods"
-                },
-                {
-                    "text": "Terminal Slope",
-                    "link": "/docs/methods/terminalslope"
-                }
+                {"text": "Overview","link": "/docs/methods/overview"},
+                {"text": "How it works","link": "/docs/methods/howitworks"},
+                {"text": "Security","link": "/docs/methods/security"},
+                {"text": "Audit Trail","link": "/docs/methods/audittrail"},
+                {"text": "Professional Accounts","link": "/docs/methods/professional"},
+                {"text": "Team Accounts","link": "/docs/methods/team"},
+                {"text": "Enterprise Accounts","link": "/docs/methods/enterprise"},
+                {"text": "Academic Accounts","link": "/docs/methods/academic"},
+                {"text": "License","link": "/docs/methods/overview-license"}
             ]
         },
         {
-            "text": "IV",
+            "text": "Analysis Dataset",
+            "collapsed": true,
             "items": [
-                {
-                    "text": "IV Bolus Single Dose",
-                    "link": "/docs/methods/IVBolusSingleDose"
-                },
-                {
-                    "text": "IV Bolus Steady State",
-                    "link": "/docs/methods/IVBolusSteadyState"
-                }
-                ,
-                {
-                    "text": "IV Infusion Single Dose",
-                    "link": "/docs/methods/IVInfusionSingleDose"
-                }
-                ,
-                {
-                    "text": "IV Infusion Steady State",
-                    "link": "/docs/methods/IVInfusionSteadyState"
-                }
+                {"text": "Formats","link": "/docs/methods/data-format"},
+                {"text": "Required columns","link": "/docs/methods/data-column-req"},
+                {"text": "Optional columns","link": "/docs/methods/data-column-opt"}
             ]
         },
         {
-            "text": "EV",
+            "text": "Analysis Configuration",
+            "collapsed": true,
             "items": [
-                {
-                    "text": "Extravascular Single Dose",
-                    "link": "/docs/methods/ExtravascularSingleDose"
-                },
-                {
-                    "text": "Extravascular Steady State",
-                    "link": "/docs/methods/ExtravascularSteadyState"
-                }
+                {"text": "Dosing","link": "/docs/methods/config-dosing"},
+                {"text": "Data columns","link": "/docs/methods/config-columns"},
+                {"text": "Designations","link": "/docs/methods/config-desig"},
+                {"text": "Kel rules","link": "/docs/methods/config-kel"},
+                {"text": "Meta data","link": "/docs/methods/config-meta"}
+            ]
+        },
+        {
+            "text": "Results",
+            "collapsed": true,
+            "items": [
+                {"text": "Download","link": "/docs/methods/results-download"},
+                {"text": "What you get","link": "/docs/methods/results-get"},
+                {"text": "Individual parameters","link": "/docs/methods/results-ind"},
+                {"text": "Summary parameters","link": "/docs/methods/results-summary"},
+                {"text": "Individual plots","link": "/docs/methods/results-ind-plot"},
+                {"text": "Summary plots","link": "/docs/methods/results-summary-plot"},
+                {"text": "Technical report","link": "/docs/methods/results-report"}
+            ]
+        },
+        {
+            "text": "Parameters Calculated",
+            "collapsed": true,
+            "items": [
+                {"text": "Extravascular - Single Dose","link": "/docs/methods/ev-single"},
+                {"text": "Extravascular - Steady State","link": "/docs/methods/ev-steady"},
+                {"text": "IV Bolus - Single Dose","link": "/docs/methods/iv-bolus-single"},
+                {"text": "IV Bolus - Steady State","link": "/docs/methods/iv-bolus-steady"},
+                {"text": "IV Infusion - Single Dose","link": "/docs/methods/iv-inf-single"},
+                {"text": "IV Infusion - Steady State","link": "/docs/methods/iv-inf-steady"}
+            ]
+        },
+        {
+            "text": "Calculation Methods",
+            "collapsed": true,
+            "items": [
+                {"text": "AUC methods","link": "/docs/methods/aucmethods"},
+                {"text": "AUMC methods","link": "/docs/methods/aumcmethods"},
+                {"text": "Extrapolation methods","link": "/docs/methods/extrapolationmethods"},
+                {"text": "Terminal Slope methods","link": "/docs/methods/terminalslope"}
+            ]
+        },
+        {
+            "text": "Using Aplos Web Interface",
+            "collapsed": true,
+            "items": [
+                {"text": "Dashboard","link": "/docs/methods/web-dashboard"},
+                {"text": "Analysis Wizard","link": "/docs/methods/web-wizard"},
+                {"text": "Input Data","link": "/docs/methods/web-data"},
+                {"text": "Analysis History","link": "/docs/methods/web-history"}
+            ]
+        },
+        {
+            "text": "Using R",
+            "collapsed": true,
+            "items": [
+                {"text": "AplosNCA R package","link": "/docs/methods/r-package"}
+            ]
+        },
+        {
+            "text": "Using SAS",
+            "collapsed": true,
+            "items": [
+                {"text": "AplosNCA SAS programs","link": "/docs/methods/SAS-programs"}
+            ]
+        },
+        {
+            "text": "Using Python",
+            "collapsed": true,
+            "items": [
+                {"text": "AplosNCA Python scripts","link": "/docs/methods/python-scripts"}
             ]
         }
     ]

@@ -4,10 +4,10 @@
         "text": "Quick Start",
         "items": [
           { "text": "Aplos NCA", "link": "/docs/quickstart/aplosnca" },
-          { "text": "Begin here", "link": "/docs/quickstart/beforebegin" },
-          { "text": "Upload dataset", "link": "/docs/quickstart/upload" },
-          { "text": "Configuration", "link": "/docs/quickstart/configuration" },
-          { "text": "Results", "link": "/docs/quickstart/results" }
+          { "text": "Before you begin", "link": "/docs/quickstart/beforebegin" },
+          { "text": "1. Upload dataset", "link": "/docs/quickstart/upload" },
+          { "text": "2. Configuration", "link": "/docs/quickstart/configuration" },
+          { "text": "3. Results", "link": "/docs/quickstart/results" }
         ]
       }
     ]

@@ -5,5 +5,5 @@ Aplos NCA is a cloud-based application programming interface (API) that calculat
 To perform NCA with Aplos NCA, you will need to complete the following 3 steps:
 
 1. Upload analysis dataset
-2. Prepare configuration for analysis
-3. Initiate analysis
+2. Prepare configuration for analysis and initiate analysis
+3. Download results

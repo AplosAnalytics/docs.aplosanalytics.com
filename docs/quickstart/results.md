@@ -25,4 +25,5 @@ The outputs folder will contain:
 -   Folder with plots
     *   Individual plots in linear, semi-log, and semi-log with best-fit kel
     *   Summary plots in linear and semi-log
-
+-   Individuals folder
+    *   Separate files for each individual profile. This file includes all PK parameters for the subject for all estimated kel values

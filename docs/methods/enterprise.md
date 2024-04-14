@@ -4,7 +4,7 @@ Enterprise accounts are designed for companies that have multiple users who need
 ## Number of analyses
 Each Enterprise account is allocated a specific number of analyses during the 12-month subscription period. Only completed analyses are counted against the allocation. Analyses with a status of Failed are not counted against the allocation. To determine the number of analyses remaining, the number of completed analyses along with the number of analyses currently ongoing are subtracted from the allocation. The number of completed analyses are collected across all users in the Enterprise account. An example is below:
 
-:::info
+:::info Calculation of Analyses Remaining
 Allocation: 1500 analyses\
 All Users Completed: 925 analyses\
 Ongoing (all users): 55 analysis\
@@ -20,7 +20,7 @@ All Enterprise accounts are automatically renewed for an additional 12-month per
 ## Upgrading Account
 A Enterprise account can be upgraded to a larger analysis allocation at any time. The Enterprise will be credited for the proportion of analyses not used toward the new account cost. The new account will begin a new 12-month subscription period with the new analysis allocation. An example is below
 
-:::info
+:::info Example
 Current subscription: Enterprise - 1500 analyses per year\
 Current remaining analyses: 100 analyses\
 New subscription: Enterprise - 3000 analyses per year\

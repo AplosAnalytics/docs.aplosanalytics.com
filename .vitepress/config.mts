@@ -5,7 +5,7 @@ import quickstartSidebar from '../sidebar_navs/quickstart.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Aplos NCA Documentation",
+  title: "Aplos NCA Docs",
   description: "Aploc NCA Documentation for the NCA Engine",
   head: [
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]

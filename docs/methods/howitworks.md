@@ -1,6 +1,6 @@
 # How it works
-(image from how it works pdf)\
-The Aplos NCA API works using a series of requests and responses. Each request requires specific information and then the responses from the API can be used by the user. Full documentation of all API technical details is [here](~/docs/api). Here we will outline 4 specific requests and the responses from the Aplos NCA API.
+(image from how it works pdf)
+The Aplos NCA API works using a series of requests and responses. Each request requires specific information and then the responses from the API can be used by the user. Full documentation of all API technical details is [here](/docs/api/index). Here we will outline 4 specific requests and the responses from the Aplos NCA API.
 
 ## Authentication
 All Aplos NCA API calls are gated, meaning that they require authentication before any action is taken. Authentication is discussed in detail [here](./security). Briefly, users must authenticate using Amazon Cognito after which they will receive a JSON web token or JWT. This is a authentication token that can be used for a short period of time and must accompany all Aplos NCA API calls. Once the JWT expires, a new JWT can be acquired by authenticating with Amazon Cognito again.
@@ -28,4 +28,4 @@ A user can check on the status of an analysis by providing the secure JWT and th
 If the response is "Complete", a temporary URL to download the results will be provided. This URL can be used to download the results in a single ZIP archive file that is encrypted during transit.
 
 ## Other command
-The full list of API commands can be found in the [API Technical documentation](~/docs/api/). 
+The full list of API commands can be found in the [API Technical documentation](/docs/api/). 

@@ -1,9 +1,7 @@
 # Extravascular Single Dose
-
 For extravascular administration of a single dose, the following parameter are calculated as described. The extravascular route includes oral, topical, sublingual, subcutaneous, intramuscular, rectal, and any other route that is not intravenous.
 
-## List of Parameters
-### Parameters that do not depend on a terminal slope
+## Parameters that do not depend on a terminal slope
 | Parameter name | Parameter code in output | Description of calculation |
 | :--- | :---: | :--- |
 | Number of samples | NSAMP | Total number of records in the observed concentration column. Observations that are below the limit of quantitation (BLQ) are counted, but missing observations are not counted. |
@@ -29,7 +27,7 @@ For extravascular administration of a single dose, the following parameter are c
 | MRT last linear | MRTLASTLIN | ${AUMCLASTLIN} \over {AUCLASTLIN}$ |
 | MRT last linear | MRTLASTLIN | ${AUMCLASTLIN} \over {AUCLASTLIN}$ |
 
-### Parameters that depend on a terminal slope
+## Parameters that depend on a terminal slope
 | Parameter name | Parameter code in output | Description of calculation | 
 | :--- | :---: | :--- |
 | Terminal slope group | KEL_GROUP | Group number for each estimated terminal slope. For each profile at least one [terminal slope](terminalslope.md) is calculated. All parameters that are dependent on estimation of the terminal slope are also calcualted and given the same group number. |

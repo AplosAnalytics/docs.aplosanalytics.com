@@ -8,10 +8,10 @@ The first section of the technical report includes detailed information about th
 The second section includes the configuration information used for the analysis. This converts the settings from the configuration json structure to a table that is easily interpreted. This can be used to confirm that the analysis was conducted as planned.
 
 ## Summary Plots and Tables
-The [summary plots](./results-summary-plot.md) and [summary tables](./results-summary.md) generated during the analysis are included in the document.
+The [summary plots](./results-summary-plot) and [summary tables](./results-summary) generated during the analysis are included in the document.
 
 ## Individual Plots and Tables
-The [individual plots](./results-ind-plot.md) and [individual pk parameters](./results-ind.md) generated during the analysis are included in the document.
+The [individual plots](./results-ind-plot) and [individual pk parameters](./results-ind) generated during the analysis are included in the document.
 
 ## Additional thoughts
 In many cases, additional post-hoc analyses may be required to calculate things such as relative bioavailability, dose proportionality, or other key aspects of the pharmacokinetics of the drug. These analyses are based on the calculated PK parameters from the NCA methods. Thus, the technical report is designed to only represent the calculation of the PK parameters. As such, this report should be considered a component of the full report for the study. In some cases, (e.g. toxicokinetic reports), this may serve as all or nearly all of the information needed in the final report. 

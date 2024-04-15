@@ -3,4 +3,4 @@ A summary plot is produced with a linear y-axis and a logarithmic y-axis. The su
 
 (Example plots)
 
-As with the [Summary PK Parameters](./results-summary.md), if grouping variable(s) are included in the analysis, multiple summary plots are produced. Please see the [Summary PK Parameters](./results-summary.md) page for a description of the summaries that are produced. For each summary group, there will be 2 summary plots: one with a linear y-axis and one with a logarithmic y-axis.
+As with the [Summary PK Parameters](./results-summary), if grouping variable(s) are included in the analysis, multiple summary plots are produced. Please see the [Summary PK Parameters](./results-summary) page for a description of the summaries that are produced. For each summary group, there will be 2 summary plots: one with a linear y-axis and one with a logarithmic y-axis.

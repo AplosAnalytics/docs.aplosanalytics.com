@@ -1,7 +1,7 @@
 # Area Under the Curve
-
 The area under the curve (AUC) is a measure of the total drug exposure over a specific period of time. It is calculated by determining the area under the concentration-time curve. The total area is calculated by first determining the area under the curve for two consecutive time points with concentration values. These are called partial areas under the curve ($pAUC$). The sum of all of the individual $pAUCs$ values gives the total AUC. 
 
+## Aplos NCA Approach
 Aplos NCA employs two separate methods for calculating the $pAUC$ values. The first is the [linear trapezoidal method](#linear-method). In this method the line between the two concentration values follows a linear path. The second method is called the [linear up logarithmic down method](#linear-up-logarithmic-down-method). In this method, the linear method is used whenever concentrations are increasing, and a logarithmic calculation is used when concentrations are decreasing. For the logarithmic calculation, the line between the two concentrations follows a logarithmic decline. In the figure below, the linear method is depicted with the black line and the linear up logarithmic down method is shown with the red line. 
 
 ![AUC method comparison](./images/AUC-methods.png)

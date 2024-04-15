@@ -54,7 +54,7 @@ For extravascular administration of a single dose, the following parameters are 
 | Terminal slope group | group | Group number for each estimated terminal slope. For each profile at least one [terminal slope](terminalslope.md) is calculated. All parameters that are dependent on estimation of the terminal slope are also calcualted and given the same group number. |
 | Terminal slope intercept | intercept | Intercept of linear regression. | 
 | Terminal slope | kel | Negative of estimated slope by linear regression of the natural log-transformed analyzed concentrations and the time of each observation. |
-| Terminal slope adjusted r-squared | kel_adjr2 | $1 - (1 - kel\_r2)*[{{kel\_n - 1} \over {kel\_n - 2}}]$ | 
+| Terminal slope adjusted r-squared | kel_adjr2 | $1 - (1 - {kel\_r2})*[{{kel\_n - 1} \over {kel\_n - 2}}]$ | 
 | Terminal slope lower time point | kel_low | Smallest time value used to calculate the terminal slope. | 
 | Number of data points in terminal slope calculation | kel_n | Number of samples included in teh terminal slope calculation. | 
 | Terminal slope r-squared | kel_r2 | r<sup>2</sup> value from terminal slope linear regression. | 

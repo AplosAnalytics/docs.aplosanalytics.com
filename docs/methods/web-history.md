@@ -7,7 +7,7 @@ explanation
 ## Finding analyses
 explanation
 
-## Copying Unique Analysid Identifier
+## Copying Unique Analysis Identifier
 explanation
 
 ## Copying Audit Trail

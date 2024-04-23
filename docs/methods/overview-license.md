@@ -1,2 +1,2 @@
 # License
-The Aplos User License Agreement is posted on the company website <https://aplosanalytics.com/user-agreement>. All updates to the User License Agreement will be posted there with notifications sent to all users via email. 
+The Aplos User License Agreement is posted on the company website <https://aplosanalytics.com/user-agreement>. All updates to the User License Agreement will be posted on the website with notifications sent to all users via their registered email address. 

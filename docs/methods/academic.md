@@ -2,7 +2,7 @@
 Academic accounts are designed for students, instructors, and professors at academic institutions to learn how to perform PK analysis with NCA methods. Each account is limited to a single user.
 
 ## Number of analyses
-Academic accounts do not have a limit on the number of analyses per year. However, all analyses are limited to 10 unique profiles. If input data are submitted and have more than 10 unique profiles, only data for 10 profiles will be included in the results. Aplos Analytics reserves the right to revoke any Academic accounts that appear to be used for commercial purposes.
+Academic accounts are limited to 75 analyses per year, and all analyses are limited to 10 unique profiles. If input data are submitted and have more than 10 unique profiles, only data for 10 profiles will be included in the results. Aplos Analytics reserves the right to revoke any Academic accounts that appear to be used for commercial purposes. If additional analyses are needed, please contact the Aplos Analytics support team.
 
 ## Approval
 Academic accounts require an email address from an academic institution. Aplos Analytics may contact the user to request additional information to confirm that the user is a student, instructor, or professor at a qualified academic institution. Non-profit and government organizations do not qualify for Academic accounts. 

@@ -1,9 +1,10 @@
 # Required columns
 The following columns are required for analysis with Aplos NCA:
-    -   Unique subject identifier
-    -   Time
-    -   Observed concentration
-    -   Analyzed concentration
+
+ -   [Unique subject identifier](#unique-subject-identifier)
+ -   [Time](#time)
+ -   [Observed concentration](#observed-concentration)
+ -   [Analyzed concentration](#analyzed-concentration)
 
 ## Unique subject identifier
 The unique subject identifier column can contain alphanumeric information. Each unique value will be considered a unique subject in the analysis. In cases where there are multiple unique profiles for the same subject, sorting variables will be used to group data for those unique profiles. See [Optional Columns](./data-column-opt.md) for more information.

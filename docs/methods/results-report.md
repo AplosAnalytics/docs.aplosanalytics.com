@@ -7,6 +7,9 @@ The first section of the technical report includes detailed information about th
 ## Analysis Configuration
 The second section includes the configuration information used for the analysis. This converts the settings from the configuration json structure to a table that is easily interpreted. This can be used to confirm that the analysis was conducted as planned.
 
+## Meta data
+The third section includes the meta data submitted with the analysis. This converts all of the user-provided meta information into a table.
+
 ## Summary Plots and Tables
 The [summary plots](./results-summary-plot) and [summary tables](./results-summary) generated during the analysis are included in the document.
 

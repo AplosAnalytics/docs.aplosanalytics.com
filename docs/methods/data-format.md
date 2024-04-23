@@ -1,7 +1,8 @@
 # Analysis Dataset Format
 Analysis datasets are accepted in the following formats:
-    -   comma separated variables (.csv)
-    -   SAS Transport version 5 (.xpt)
+
+-   [comma separated variables (.csv)](#csv)
+-   [SAS Transport version 5 (.xpt)](#sas-xpt)
 
 ## CSV
 Comma separated variable format is the preferred format for files. These files are used in their native format without any conversion. 

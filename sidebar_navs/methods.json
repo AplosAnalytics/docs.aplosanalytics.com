@@ -29,8 +29,9 @@
             "collapsed": true,
             "items": [
                 {"text": "Dosing","link": "/docs/methods/config-dosing"},
-                {"text": "Data columns","link": "/docs/methods/config-columns"},
+                {"text": "Time","link": "/docs/methods/config-time"},
                 {"text": "Designations","link": "/docs/methods/config-desig"},
+                {"text": "Columns","link": "/docs/methods/config-columns"},
                 {"text": "Kel rules","link": "/docs/methods/config-kel"},
                 {"text": "Meta data","link": "/docs/methods/config-meta"}
             ]

@@ -2,13 +2,13 @@
 Professional accounts are designed for individual users who do not need to collaborate with other analysts for PK analysis with NCA methods. Each account is limited to a single user. 
 
 ## Number of analyses
-Each Professional account is allocated a specific number of analyses during the 12-month subscription period. Only completed analyses are counted against the allocation. Analyses with a status of Failed are not counted against the allocation. To determine the number of analyses remaining, the number of completed analyses along with the number of analyses currently ongoing are subtracted from the allocation. An example is below:
+Each Professional account is allocated a specific number of analyses during the 12-month subscription period. Only <span style="background-color:green;color:white">Completed</span> analyses are counted against the allocation. Analyses with a status of <span style="background-color:red;color:white">Failed</span> are not counted against the allocation. To determine the number of analyses remaining, the number of <span style="background-color:green;color:white">Completed</span> analyses along with the number of analyses currently ongoing are subtracted from the allocation. An example is below:
 
 :::info Calculation of Analyses Remaining
-Allocation: 50 analyses\
-Completed: 22 analyses\
-Ongoing: 1 analysis\
-Remaining: 27 analyses (50 - 22 - 1 = 27)
+**Annual Allocation:** 50 analyses\
+**Completed:** 22 analyses\
+**Ongoing:** 1 analysis\
+**Remaining:** 27 analyses (50 - 22 - 1 = 27)
 :::
 
 ## Additional analyses
@@ -21,10 +21,10 @@ All Professional accounts are automatically renewed for an additional 12-month p
 A Professional account can be upgraded to a larger analysis allocation at any time. The user will be credited for the proportion of analyses not used toward the new account cost. The new account will begin a new 12-month subscription period with the new analysis allocation. An example is below
 
 :::info Example
-Current subscription: Professional - 25 analyses per year\
-Current remaining analyses: 10 analyses\
-New subscription: Professional - 100 analyses per year\
-Credit toward new subscription: 10/25 = 40%\
+**Current subscription:** Professional - 25 analyses per year\
+**Current remaining analyses:** 10 analyses\
+**New subscription:** Professional - 100 analyses per year\
+**Credit toward new subscription:** 10/25 = 40%\
 40% of current subscription fees can be applied toward the new subscription cost
 :::
 

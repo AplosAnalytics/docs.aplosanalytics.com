@@ -1,8 +1,13 @@
 # Meta Data
 Meta data can be attached to any analysis by the user and is searchable to permit quick identification of analyses of interest. All meta data is user-defined and there is no limit to the number or complexity of meta data descriptions. Meta data must be added at the time of analysis and cannot be updated later.
 
+## Input for web configuration
+![Meta data configuration input](./images/Meta_input.png)
+
+Enter a value for the key and value and click the Add button. You can click the Remove button to remove a key:value pair you entered.
+
 ## Structure
-Meta data is added using JSON formatted text with key:value pairs. An example is below:
+Meta data is added using key:value pairs. If you are using the web-based configuration tool, you can enter the key and value and click the Add button. If you are using a formatted JSON file, you can follow the example below:
 
 ```js
 {

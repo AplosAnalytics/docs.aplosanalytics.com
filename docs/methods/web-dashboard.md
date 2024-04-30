@@ -1,7 +1,18 @@
 # Dashboard
-The dashboard page appears after login to the Aplos web interface. This page includes details about the number of successful analyses and the number of analyses remaining in the license period. It also includes quick links to the most recent analyses completed.
+The dashboard page appears after login to the Aplos web interface. This page includes details about the number of successful analyses, failed analyses, and the progress toward the analysis limit in your subscription. It also includes quick links to the most recent analyses completed.
 
-(image of dashboard page)\
+![Dashboard](./images/Dashboard.png)
 
-(Detailed explanation of each section)
+## Allocated Amount Used
+The top left of the Dashboard shows the number of completed executions relative to the total number of executions available as part of your subscription. Only <span style="background-color:green;color:white">Completed</span> analyses are counted against the allocation. Analyses with a status of <span style="background-color:red;color:white">Failed</span> are not counted against the allocation. Any analyses that are currently in process are against the allocated amount used, and removed from that calculation if a failure occurs.
+
+## Completed Executions
+This is the number of <span style="background-color:green;color:white">Completed</span> executions for this user.
+
+## Failed Executions
+This is the number of <span style="background-color:red;color:white">Failed</span> executions for this user.
+
+## Recent Analysis
+Below the presentation of <span style="background-color:green;color:white">Completed</span> and <span style="background-color:red;color:white">Failed</span> executions is a list of the five most recent executions where you can directly download the results by clicking the download button.
+
 

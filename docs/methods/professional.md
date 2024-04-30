@@ -5,7 +5,7 @@ Professional accounts are designed for individual users who do not need to colla
 Each Professional account is allocated a specific number of analyses during the 12-month subscription period. Only <span style="background-color:green;color:white">Completed</span> analyses are counted against the allocation. Analyses with a status of <span style="background-color:red;color:white">Failed</span> are not counted against the allocation. To determine the number of analyses remaining, the number of <span style="background-color:green;color:white">Completed</span> analyses along with the number of analyses currently ongoing are subtracted from the allocation. An example is below:
 
 :::info Calculation of Analyses Remaining
-**Allocation:** 50 analyses\
+**Annual Allocation:** 50 analyses\
 **Completed:** 22 analyses\
 **Ongoing:** 1 analysis\
 **Remaining:** 27 analyses (50 - 22 - 1 = 27)

@@ -5,7 +5,7 @@ Team accounts are designed for companies that have multiple users who need to pe
 Each Team account is allocated a specific number of analyses during the 12-month subscription period. Only <span style="background-color:green;color:white">Completed</span> analyses are counted against the allocation. Analyses with a status of <span style="background-color:red;color:white">Failed</span> are not counted against the allocation. To determine the number of analyses remaining, the number of <span style="background-color:green;color:white">Completed</span> analyses along with the number of analyses currently ongoing are subtracted from the allocation. The number of <span style="background-color:green;color:white">Completed</span> analyses are collected across all users in the Team account. An example is below:
 
 :::info Calculation of Analyses Remaining
-**Allocation:** 200 analyses\
+**Annual Allocation:** 200 analyses\
 **User 1 Completed:** 22 analyses\
 **User 2 Completed:** 10 analyses\
 **User 3 Completed:** 56 analyses\

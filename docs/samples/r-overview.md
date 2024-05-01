@@ -1,9 +1,9 @@
 # Analysis with R
 
-You can use R to perform analysis with Aplos NCA using API calls via secure http requests. Aplos has prepared sample scripts to illustrate how this analysis can be performed using R. One script includes functions for specific API requests and the second script includes code to execute a sample analysis and download the results. You can [download the files](/Public/r-files.zip) listed below to use as templates for executing an analysis with Aplos NCA using R.
+You can use R to perform analysis with Aplos NCA using API calls via secure http requests. Aplos has prepared sample scripts to illustrate how this analysis can be performed using R. One script includes functions for specific API requests and the second script includes code to execute a sample analysis and download the results. You can [download the files](/docs/downloads/r-files.zip) listed below to use as templates for executing an analysis with Aplos NCA using R.
 
 | Description | File |
-| :--- | :---: |
+| :--- | :--- |
 | API Functions | functions-api.R |
 | Sample analysis | sample-analysis.R |
 | Security file | security.txt |

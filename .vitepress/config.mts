@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 import apiSidebar from '../sidebar_navs/api.json'
 import methodsSidebar from '../sidebar_navs/methods.json'
 import quickstartSidebar from '../sidebar_navs/quickstart.json'
+import samplesSidebar from '../sidebar_navs/samples.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -25,7 +26,8 @@ export default defineConfig({
     sidebar: {
       ...quickstartSidebar,
       ...apiSidebar,
-      ...methodsSidebar
+      ...methodsSidebar,
+      ...samplesSidebar
     },
     search: {
       provider: 'local'

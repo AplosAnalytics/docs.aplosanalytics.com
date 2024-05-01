@@ -2,7 +2,7 @@
     "/docs/methods/": [
         {
             "text": "Overview",
-            "collapsed": false,
+            "collapsed": true,
             "items": [
                 {"text": "Overview","link": "/docs/methods/overview"},
                 {"text": "How it works","link": "/docs/methods/howitworks"},
@@ -82,25 +82,13 @@
             ]
         },
         {
-            "text": "Using R",
+            "text": "Examples",
             "collapsed": true,
             "items": [
-                {"text": "AplosNCA R package","link": "/docs/methods/r-package"}
+              { "text": "Using Python", "link": "/docs/samples/python-overview"},
+              { "text": "Using R", "link": "/docs/samples/r-overview"},
+              { "text": "Using SAS", "link": "/docs/samples/sas-overview"}
             ]
-        },
-        {
-            "text": "Using SAS",
-            "collapsed": true,
-            "items": [
-                {"text": "AplosNCA SAS programs","link": "/docs/methods/sas-program"}
-            ]
-        },
-        {
-            "text": "Using Python",
-            "collapsed": true,
-            "items": [
-                {"text": "AplosNCA Python scripts","link": "/docs/methods/python-script"}
-            ]
-        }
+          }
     ]
 }

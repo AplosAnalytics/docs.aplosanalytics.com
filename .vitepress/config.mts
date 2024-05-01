@@ -13,13 +13,14 @@ export default defineConfig({
   ],
   srcExclude: ['**/README.md', '**/readme.md', '**/TODO.md', '**/todo.md'],
   themeConfig: {
-    
+    logo: '/logomark_fullcolor.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Quick Start', link: '/docs/quickstart/aplosnca'},
       { text: 'API Reference', link: '/docs/api/index' },
-      { text: 'Documentation', link: '/docs/methods/index' }
+      { text: 'Documentation', link: '/docs/methods/index' },
+      { text: 'Examples', link: '/docs/samples/index' }
 
     ],
     

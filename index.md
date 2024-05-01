@@ -3,22 +3,25 @@
 layout: home
 
 hero:
-  name: "Aplos Analytics Documentation"
+  name: "Aplos NCA Documentation"
   text: ""
   tagline: ""
   image:
-    src: /logo.png
-    alt: VitePress
+    src: /logo_fullcolor.svg
+    alt: Aplos Analytics
   actions:
     - theme: brand
       text: Quick Start
       link: /docs/quickstart/aplosnca
-    - theme: alt
+    - theme: brand
       text: Documentation
       link: /docs/methods/
-    - theme: alt
+    - theme: brand
       text: API Reference
       link: /docs/api/
+    - theme: brand
+      text: Examples
+      link: /docs/samples/
 
 ---
 

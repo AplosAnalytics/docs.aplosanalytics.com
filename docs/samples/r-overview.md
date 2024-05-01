@@ -1,6 +1,6 @@
 # Analysis with R
 
-You can use R to perform analysis with Aplos NCA using API calls via secure http requests. Aplos has prepared sample scripts to illustrate how this analysis can be performed using R. One script includes functions for specific API requests and the second script includes code to execute a sample analysis and download the results. You can [download the files](/docs/downloads/r-files.zip) listed below to use as templates for executing an analysis with Aplos NCA using R.
+You can use R to perform analysis with Aplos NCA using API calls via secure http requests. Aplos has prepared sample scripts to illustrate how this analysis can be performed using R. One script includes functions for specific API requests and the second script includes code to execute a sample analysis and download the results. The files included in the download package include:
 
 | Description | File |
 | :--- | :--- |
@@ -10,13 +10,14 @@ You can use R to perform analysis with Aplos NCA using API calls via secure http
 | Sample data file | single_ev_10.csv |
 | Configuration file | configuration_single_ev.json |
 | Meta data file | meta_data.json |
+| Zip package | [r-files.zip](https://44996058.fs1.hubspotusercontent-na1.net/hubfs/44996058/public/r-files.zip) |
 
 ## Functions
 
 There are 5 functions provided to perform analysis with Aplos NCA. Detailed descriptions of the functions and the code are available on a separate [page](./r-functions.md). A short description can be found below:
 
 | Function | Description |
-| :--- | :---: |
+| :--- | :--- |
 | get_jwt | Request authentication JSON Web Token (jwt) from Amazon Cognito. This token is required for all API calls. |
 | get_upload_url | Request Aplos NCA for secure URL to upload input data file. |
 | upload_file_api | Securely upload input data file to user account. |

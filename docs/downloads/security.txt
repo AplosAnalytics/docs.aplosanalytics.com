@@ -1,5 +1,0 @@
-APLOS_API_URL="<value here>"
-COGNITO_CLIENT_ID="<value here>"
-COGNITO_USER_NAME="<value here>"
-COGNITO_PASSWORD="<value here>"
-COGNITO_REGION="<value here>"

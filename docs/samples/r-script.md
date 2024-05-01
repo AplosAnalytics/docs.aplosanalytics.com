@@ -1,6 +1,6 @@
 # R Example Script
 
-The example R script performs a complete analysis with Aplos NCA from R. The full [sample-analysis.R](/Public/sample-analysis.R "download") script can be downloaded. 
+The example R script performs a complete analysis with Aplos NCA from R. 
 
 ## Example Script
 
@@ -92,7 +92,7 @@ cat(paste0("Total runtime was ",total_time," (Hours:Minutes:Seconds) \n"))
 
 ## Security Information
 
-Security information should never be stored within a script that is shared with other users. One method to simplify use of security information within R is to create a text file with the security information that is then imported into the script and used. Let others know that they will need to use their own security information file when using the code. An [:memo: example text file](./files/security.txt) with security information is included that shows the format, but no information.
+Security information should never be stored within a script that is shared with other users. One method to simplify use of security information within R is to create a text file with the security information that is then imported into the script and used. Let others know that they will need to use their own security information file when using the code. An example text file with security information is included in the [download](/Public/r-files.zip) that shows the format, but no information.
 
 The information for everything except the username and password can be obtained from the Aplos NCA Web Interface under the Profile | API Configuration. 
 ![API Configuration](./images/API%20Configuration%20blur.png)

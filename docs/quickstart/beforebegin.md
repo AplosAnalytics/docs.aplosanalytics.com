@@ -1,7 +1,7 @@
 # Before you begin
 
 ## Sample dataset
-Prior to beginning this Quick Step guide, please download the [:chart_with_downwards_trend: sample dataset](/Public/sample-data.csv "download") for analysis. This csv file contains concentration-time data with the following characteristics:
+Prior to beginning this Quick Step guide, please download the [:chart_with_downwards_trend: sample dataset](/Public/sample-data.csv.zip) for analysis. This csv file contains concentration-time data with the following characteristics:
 -   10 subjects
 -   Single extravascular dose
 -   Dose at time 0

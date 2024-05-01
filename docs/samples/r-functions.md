@@ -1,5 +1,5 @@
 # R Functions
-The R functions used for interacting with Aplos NCA to analyze data provided in [functions-api.R](/Public/functions-api.R "download") are shown and described below.
+The R functions used for interacting with Aplos NCA to analyze data are shown and described below.
 
 ## Get JSON Web Token 
 This function uses 4 pieces of information to acquire a jwt from Amazon Cognito. These are the client identifier (client_id), username, password, and region. The client identifier and region are available from the web interface under [Profile | API Configuration](./r-script.md#security-information).

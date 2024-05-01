@@ -92,7 +92,7 @@
             "text": "Using SAS",
             "collapsed": true,
             "items": [
-                {"text": "AplosNCA SAS programs","link": "/docs/methods/SAS-program"}
+                {"text": "AplosNCA SAS programs","link": "/docs/methods/sas-program"}
             ]
         },
         {

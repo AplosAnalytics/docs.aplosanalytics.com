@@ -24,6 +24,14 @@
           { "text": "Update User Status", "link": "/docs/api/users/UpdateUserStatus" },
           { "text": "Update Password", "link": "/docs/api/users/UpdatePassword" }
         ]
+      },
+      {
+        "text": "Examples",
+        "items": [
+          { "text": "Using Python", "link": "/docs/samples/python-overview"},
+          { "text": "Using R", "link": "/docs/samples/r-overview"},
+          { "text": "Using SAS", "link": "/docs/samples/sas-overview"}
+        ]
       }
     ]
   }

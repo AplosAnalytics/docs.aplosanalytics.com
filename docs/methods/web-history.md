@@ -14,7 +14,7 @@ The File column includes an icon with the Unique File Identifier. Clicking on th
 ## Copying Audit Trail
 While the key details of the analysis for audit purposes are included in the technical report, a user can copy those details to the clipboard by clicking teh Audit button at the far right side of the row for each analysis. This audit information includes the following: 
 -   Unique analysis identifier
--   User email addres
+-   User email address
 -   User name
 -   User company name
 -   Date of analysis initiation (using UTC)

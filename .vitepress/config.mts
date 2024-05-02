@@ -23,12 +23,14 @@ export default defineConfig({
       { text: 'Examples', link: '/docs/samples/index' }
 
     ],
-    
     sidebar: {
       ...quickstartSidebar,
       ...apiSidebar,
       ...methodsSidebar,
       ...samplesSidebar
+    },
+    footer: {
+      copyright: 'Copyright &copy; 2023-Present Aplos Analytics, Inc.'
     },
     search: {
       provider: 'local'

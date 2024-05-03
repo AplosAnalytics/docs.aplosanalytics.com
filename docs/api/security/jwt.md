@@ -22,7 +22,7 @@ No matter what tool you use (Java, Python, c#, R, Ruby, php, curl, etc), connect
 To keep it simple here is an example usign curl in shell command.
 
 
-<CodeBlock src="/docs/samples/shell/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/aplos-nca-sample-code/main/cognito-logins/curl/password_auth.sh" lang="shell"></CodeBlock>
 
 
 

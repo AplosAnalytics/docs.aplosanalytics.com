@@ -59,3 +59,18 @@ sidebar: {
 
 ```
 
+
+## Code smipits
+
+Add the following to the top of your `.md` file
+```html
+<script setup>
+import CodeBlock from '/docs/components/CodeBlock.vue'
+</script>
+```
+
+Then include the block like the following
+
+```html
+<CodeBlock src="/docs/samples/shell/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
+```

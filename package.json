@@ -1,6 +1,7 @@
 {
   "name": "docs",
   "devDependencies": {
+    "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
     "vitepress": "^1.1.0"
   },
   "scripts": {
@@ -13,6 +14,7 @@
   },
   "dependencies": {
     "markdown-it-mathjax3": "^4.3.2",
+    "shiki": "^1.4.0",
     "vitepress-theme-api": "^0.1.7"
   }
 }

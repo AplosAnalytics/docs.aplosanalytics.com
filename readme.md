@@ -62,15 +62,22 @@ sidebar: {
 
 ## Code smipits
 
-Add the following to the top of your `.md` file
+Add the following to the top of your `.md` file to embed a code snipet that exists elsewhere.
 ```html
 <script setup>
 import CodeBlock from '/docs/components/CodeBlock.vue'
 </script>
 ```
 
-Then include the block like the following
+Then include the block like the following.
+
+- `src`: The full url to the code you want to include. Use the `raw` version
+- `lang`: the langauge you want formatted
 
 ```html
-<CodeBlock src="/docs/samples/shell/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/shell/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
 ```
+
+## ToDo's
+- Line Numbering
+- Specficic Line numbers: only output specific line numbers based on a range.

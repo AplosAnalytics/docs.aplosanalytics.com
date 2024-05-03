@@ -1,0 +1,17 @@
+{
+    "sub": "543adc6d-77cf-428b-b619-97ab7879f94b",
+    "email_verified": true,
+    "iss": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_Wsd0PquDS",
+    "cognito:username": "543adc6d-77cf-428b-b619-97ab7879f94b",
+    "given_name": "Fake",
+    "origin_jti": "3b03ab67-3744-45fd-bad8-50f4831ba9e2",
+    "aud": "5teuaumeup1242cob78nc2t7hr",
+    "event_id": "4f372416-e8fb-4cb7-ace5-e7a40db14b22",
+    "token_use": "id",
+    "auth_time": 1714774166,
+    "exp": 1714777766,
+    "iat": 1714774166,
+    "family_name": "User",
+    "jti": "8518ca17-fccd-4576-a611-f9b193124847",
+    "email": "fake-user@aplosanalytics.com"
+}

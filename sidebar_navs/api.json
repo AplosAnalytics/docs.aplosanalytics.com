@@ -1,6 +1,14 @@
 {
     "/docs/api/": [
       {
+        "text": "Security",
+        "items": [
+          { "text": "Overview", "link": "/docs/api/security/overview" },
+          { "text": "JWT", "link": "/docs/api/security/jwt" }
+          
+        ]
+      },
+      {
         "text": "Executions",
         "items": [
           { "text": "▶️ Run/Execute", "link": "/docs/api/executions/Run" },

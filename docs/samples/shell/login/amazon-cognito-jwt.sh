@@ -1,8 +1,17 @@
 #!/bin/bash
 
+# file name: amazon-cognito-jwt.sh
+
+# AWS DOCS for using Cognito JWT
+# https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html
+
 ## 🚨 IMPORTANT USE THIS DOMAIN 🚨
+## "cognito-idp.<aws-region>.amazonaws.com/"
 ## you may need to change the region but that's it 
 ## don't use the custom domain or the script will fail with 302 error
+## for example, some documentation says to use
+## https://<your-id-or-domain>.auth.<your-region>.amazoncognito.com/oauth2/token
+## but don't, it will lead you down a rabbit hole of 302 errors
 ## 👇👇👇👇👇👇👇
 domain="cognito-idp.us-east-1.amazonaws.com/"
 congito_url="https://${domain}"
@@ -26,16 +35,20 @@ payload="
  }
 "
 
+echo "\n"
+echo "\n"
+
 echo "payload below - usefull for troubleshooting"
 echo $payload
 
-echo ""
-echo "response:"
-echo ""
+echo "\n"
+echo "\n"
 
-curl --request POST \
+output=$(curl --request POST \
     --url ${congito_url} \
     --header 'X-Amz-Target: AWSCognitoIdentityProviderService.InitiateAuth' \
     --header 'Content-Type: application/x-amz-json-1.1' \
-    --data "${payload}"
+    --data "${payload}")
 
+
+echo $output

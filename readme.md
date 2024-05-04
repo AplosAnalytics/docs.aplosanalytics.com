@@ -15,7 +15,7 @@ npm run build
 1. Creates a `.vitepress\dist` directory
 
 ### Deployment
-When deploying the site, you can copy the output to the s3 bucket (or whereever it's hosted)
+When deploying the site, you can copy the output to the s3 bucket (or wherever it's hosted)
 1. Copy the `dist` directory to the cdn
 
 
@@ -27,15 +27,13 @@ You can run the code locally by running the following command.
 npm run dev
 ```
 
-This should do hot loading, meaning that any changes you make to the code, should be automatically updated an rendered.
+This should do hot loading, meaning that any changes you make to the code, should be automatically updated and rendered.
 
 
 
 ### Side Bar Naviation
-
-The side bar navigation is controlled in the `.vitepress/config.mts` file
-
-Currently we have two array elements which control the sidebar navigation based on the path of the docs:
+The sidebar navigation is controlled in the `.vitepress/config.mts` file
+Currently, we have two array elements that control the sidebar navigation based on the path of the docs:
 
 ```javascript
 
@@ -60,9 +58,9 @@ sidebar: {
 ```
 
 
-## Code smipits
+## Code snippets
 
-Add the following to the top of your `.md` file to embed a code snipet that exists elsewhere.
+Add the following to the top of your `.md` file to embed a code snippet that exists elsewhere.
 ```html
 <script setup>
 import CodeBlock from '/docs/components/CodeBlock.vue'
@@ -71,8 +69,8 @@ import CodeBlock from '/docs/components/CodeBlock.vue'
 
 Then include the block like the following.
 
-- `src`: The full url to the code you want to include. Use the `raw` version
-- `lang`: the langauge you want formatted
+- `src`: The full URL to the code you want to include. Use the `raw` version
+- `lang`: the language you want to be formatted
 
 ```html
 <CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/shell/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
@@ -80,4 +78,4 @@ Then include the block like the following.
 
 ## ToDo's
 - Line Numbering
-- Specficic Line numbers: only output specific line numbers based on a range.
+- Specific Line Numbers: only output specific line numbers based on a range.

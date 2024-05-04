@@ -1,4 +1,10 @@
-# Analysis Exections Overview
+# Analysis Executions Overview
+
+Analysis Executions refers to the process of:
+- Running NCA Calculations
+- Combining Results across `profiles` (subjects and groups)
+- Create Plots
+- Generating Reports
 
 The UI allows you to do the execution in 3 easy steps.
 1. Upload your analysis file

@@ -4,7 +4,8 @@ import CodeBlock from '/docs/components/CodeBlock.vue'
 
 # JWT with Amazon Cognito
 
-We use Amazon Cognito as our Identity Provider `IdP`.  An IdP is a service that holds and authenticates you via your username and password. Or in the case of a Single-Sign-On `SSO`, your information (`ID`) 🪪 is simply `federated` from your corporate system to Cognito to our System, without us ever accessing sensitive data.  
+We utilize Amazon Cognito as our Identity Provider (`IdP`). An `IdP` is a service responsible for authenticating users through their usernames and passwords. In the context of Single-Sign-On (SSO), user identification (ID) information 🪪 is securely transferred—or federated—from your corporate system to Cognito and then to our system. This federation process ensures that we do not directly access any sensitive data.
+
 
 We use Cognito to keep your credentials as secure 🔐 as possible.  Our system never "touches" 👈 or "sees" 👀 your password.  We do know your username (email address) and a cognito-generated `ID`, which is how we link your account to analysis executions, files, etc.  
 

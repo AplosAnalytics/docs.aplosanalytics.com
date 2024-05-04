@@ -1,4 +1,4 @@
-# Analysis History
+# 🏁 Analysis History
 The analysis history page gives a chronological listing of all analyses for the user. This includes completed analyses, failed analyses, and ongoing analyses. Users can download results of any completed analysis from this screen.
 ![Analysis history](./images/Analysis_history.png)
 

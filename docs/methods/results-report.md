@@ -1,5 +1,5 @@
-# Technical Report
-The technical report is a compilation of all of the results and is intended to serve as an appendix to a written report by the analyst. The report is generated based on the results of the analysis performed and does not include any post-processing activities. It only describes the estimation of the PK parameters using NCA methods. The sections and content of the technical report are described below.
+# 📓 Technical Report
+The technical report is a compilation of all of the results and is intended to serve as an appendix to a written report by the analyst. The report is generated based on the results of the calculation of PK parameters performed by Aplos NCA. It only describes the estimation of the PK parameters using NCA methods. The sections and content of the technical report are described below.
 
 ## Analysis Details
 The first section of the technical report includes detailed information about the analysis performed including: name of analyst, unique analysis identifier, time and date of analysis, version of the API and calculation engine, and name of input dataset. All of this information uniquely identifies the analysis results.

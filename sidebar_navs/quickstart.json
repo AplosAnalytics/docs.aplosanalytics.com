@@ -1,13 +1,13 @@
 {
     "/docs/quickstart/": [
       {
-        "text": "Quick Start",
+        "text": "⏱️ Quick Start",
         "items": [
-          { "text": "Aplos NCA", "link": "/docs/quickstart/aplosnca" },
-          { "text": "Before you begin", "link": "/docs/quickstart/beforebegin" },
-          { "text": "1. Upload dataset", "link": "/docs/quickstart/upload" },
-          { "text": "2. Configuration", "link": "/docs/quickstart/configuration" },
-          { "text": "3. Results", "link": "/docs/quickstart/results" }
+          { "text": "⚡️ Aplos NCA", "link": "/docs/quickstart/aplosnca" },
+          { "text": "🎬 Before you begin", "link": "/docs/quickstart/beforebegin" },
+          { "text": "1️⃣ Upload dataset", "link": "/docs/quickstart/upload" },
+          { "text": "2️⃣ Configuration", "link": "/docs/quickstart/configuration" },
+          { "text": "3️⃣ Results", "link": "/docs/quickstart/results" }
         ]
       }
     ]

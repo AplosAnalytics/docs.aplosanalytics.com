@@ -1,4 +1,4 @@
-# Area Under the Moment Curve
+# 🟨 Area Under the Moment Curve
 
 The area under the moment curve (AUMC) is a measure of the total area under the first moment curve. The Moment Curve is a paired set of values (x,y) where x is the time and y is the time multiplied by the concentration from the concentration-time curve. Just as [AUC](aucmethods.md) is calculated using partial areas, the AUMC is calculated using partial areas for the moment curve ($pAUMC$). The $pAUMCs$ can be calculated using the [linear method](#linear-method) or [linear up logarithmic down method](#linear-up-logarithmic-down-method). 
 

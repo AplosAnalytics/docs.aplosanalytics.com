@@ -1,5 +1,5 @@
-# Professional Accounts
-Professional accounts are designed for individual users who do not need to collaborate with other analysts for PK analysis with NCA methods. Each account is limited to a single user. 
+# 🎩 Professional Accounts
+Professional accounts are designed for individual users who do not need to collaborate with other analysts for PK analysis with NCA methods. Each account is limited to a single user and up to 100 analyses per year. 
 
 ## Number of analyses
 Each Professional account is allocated a specific number of analyses during the 12-month subscription period. Only <span style="background-color:green;color:white">Completed</span> analyses are counted against the allocation. Analyses with a status of <span style="background-color:red;color:white">Failed</span> are not counted against the allocation. To determine the number of analyses remaining, the number of <span style="background-color:green;color:white">Completed</span> analyses along with the number of analyses currently ongoing are subtracted from the allocation. An example is below:
@@ -28,7 +28,7 @@ A Professional account can be upgraded to a larger analysis allocation at any ti
 40% of current subscription fees can be applied toward the new subscription cost
 :::
 
-Professional accounts cannot be upgraded to Team or Enterprise accounts. Aplos Analytics will facilitate the download of all files from the Professional account and upload to the new Team/Enterprise account. Charges for that service will be provided to the user before transfers begin.
+If a user upgrades from a Professional account to a Team or Enterprise account, credit toward the new subscription will be provided; however, input data, analysis results, and audit trails cannot be tranferred from Professional accounts to Team or Enterpreise accounts. Aplos Analytics will facilitate the download of all files from the Professional account and upload to the new Team/Enterprise account. Charges for that service will be provided to the user before transfers begin.
 
-## Downgrading Account
-Downgrading the number of analyses per year can be done during the renewal period. 
+## Downgrading Account and Account Cancellation
+Downgrading the number of analyses per year can be done during the renewal period. If an account is cancelled, you will retain access to the tool through the end of the subscription period. At the end of the subscription period, your access will be terminated and the data in the account will be scheduled for destruction. There are no refunds for cancellations prior to the end of the subscription period.

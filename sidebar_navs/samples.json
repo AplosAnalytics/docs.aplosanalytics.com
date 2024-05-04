@@ -1,27 +1,27 @@
 {
     "/docs/samples/": [
         {
-            "text": "Using Python",
+            "text": "🐍 Using Python",
             "collapsed": false,
             "items": [
-                {"text": "Overview","link": "/docs/samples/python-overview"}
+                {"text": "1️⃣ Analysis with Python","link": "/docs/samples/python-overview"}
             ]
         },
         {
-            "text": "Using R",
+            "text": "💿 Using R",
             "collapsed": false,
             "items": [
-                {"text": "Overview","link": "/docs/samples/r-overview"},
-                {"text": "R Functions","link": "/docs/samples/r-functions"},
-                {"text": "R Script","link": "/docs/samples/r-script"}
+                {"text": "1️⃣ Analysis with R","link": "/docs/samples/r-overview"},
+                {"text": "2️⃣ R Functions","link": "/docs/samples/r-functions"},
+                {"text": "3️⃣ R Script","link": "/docs/samples/r-script"}
             ]
         },
         {
-            "text": "Using SAS",
+            "text": "💾 Using SAS",
             "collapsed": false,
             "items": [
-                {"text": "Overview","link": "/docs/samples/sas-overview"},
-                {"text": "SAS Program","link":"/docs/samples/sas-program"}
+                {"text": "1️⃣ Analysis with SAS","link": "/docs/samples/sas-overview"},
+                {"text": "2️⃣ SAS Program","link":"/docs/samples/sas-program"}
             ]
         }
     ]

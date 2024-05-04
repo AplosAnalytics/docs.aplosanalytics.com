@@ -1,4 +1,4 @@
-# Area Under the Curve
+# 🟦 Area Under the Curve
 The area under the curve (AUC) is a measure of the total drug exposure over a specific period of time. It is calculated by determining the area under the concentration-time curve. The total area is calculated by first determining the area under the curve for two consecutive time points with concentration values. These are called partial areas under the curve ($pAUC$). The sum of all of the individual $pAUCs$ values gives the total AUC. 
 
 ## Aplos NCA Approach

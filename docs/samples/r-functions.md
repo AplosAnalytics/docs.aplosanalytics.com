@@ -1,4 +1,4 @@
-# R Functions
+# 2️⃣ R Functions
 The R functions used for interacting with Aplos NCA to analyze data are shown and described below. Code chunks look best in Dark mode. You can make the change at the top right of your browser.
 
 ## Get JSON Web Token 

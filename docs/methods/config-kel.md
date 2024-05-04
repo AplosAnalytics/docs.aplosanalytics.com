@@ -1,8 +1,13 @@
-# Kel Configuration
+# 🟢 Kel Configuration
+
+On this screen (Figure 1) the user sets the rules by which the best-fit terminal elimination rate constant is selected by Aplos NCA. 
+
+**Figure 1: Kel rules configuration screen**
 ![Kel configuration input](./images/kel_input.png)
 
-On this screen the user sets the rules by which the best-fit terminal elimination rate constant is selected by Aplos NCA. The best-fit rate constant must meet all of the criteria specified. If multiple rate constants fit the criteria, the one with the largest statistic value (either r<sup>2</sup> or adjusted r<sup>2</sup>) will be selected. If two or more rate constants have the same statistic value, then the tie-breaker rules are used. A description of each setting on the Kel configuration screen is below:
+The best-fit rate constant must meet all of the criteria specified. If multiple rate constants fit the criteria, the one with the largest statistic value (either r<sup>2</sup> or adjusted r<sup>2</sup>) will be selected. If two or more rate constants have the same statistic value, then the tie-breaker rules are used. A description of each setting on the Kel configuration screen is below:
 
+## Description of input fields
 |Field name|Description|
 |:---|:---|
 |Regression statistic|Choose either r<sup>2</sup> or adjusted r<sup>2</sup>. The default is [adjusted r<sup>2</sup>](#adjusted-r2-calculation) as it gives a small penalty for each additional time point included in the regression.|
@@ -14,8 +19,7 @@ On this screen the user sets the rules by which the best-fit terminal eliminatio
 |Earliest time point|Earliest time point included in the regression. Default is 0, meaning it is not used.|
 |Tie|Used if 2 regressions have identical values for the statistic. Default first tie-breaker is fewest number of data points. Default second tie-breaker is the latest time for the starting time point in the regression. User can switch the order of these tie-breakers.|
 
-
-# Adjusted r<sup>2</sup> Calculation
+## Adjusted r<sup>2</sup> Calculation
 The adjusted r<sup>2</sup> is calculated using the r<sup>2</sup> from the regression and the number of data points included in the regresssion (n):
 ::: info Equation
 $\text{Adjusted }r^2 = 1 - (1 - r^2)*\frac{n-1}{n-2}$

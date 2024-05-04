@@ -1,4 +1,4 @@
-# Extravascular Single Dose
+# 💊 Extravascular Single Dose
 For extravascular administration of a single dose, the following parameters are calculated as described. The extravascular route includes oral, topical, sublingual, subcutaneous, intramuscular, rectal, and any other route that is not intravenous.
 
 ## Parameters that do not depend on a terminal slope

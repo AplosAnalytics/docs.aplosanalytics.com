@@ -13,6 +13,7 @@
     "preview": "vitepress preview ."
   },
   "dependencies": {
+    "markdown-it-github-alerts": "^0.3.0",
     "markdown-it-mathjax3": "^4.3.2",
     "shiki": "^1.4.0",
     "vitepress-theme-api": "^0.1.7"

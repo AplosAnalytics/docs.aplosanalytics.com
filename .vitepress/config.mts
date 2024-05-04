@@ -3,6 +3,9 @@ import apiSidebar from '../sidebar_navs/api.json'
 import methodsSidebar from '../sidebar_navs/methods.json'
 import quickstartSidebar from '../sidebar_navs/quickstart.json'
 import samplesSidebar from '../sidebar_navs/samples.json'
+import MarkdownIt from 'markdown-it'
+import markdownItGithubAlerts from 'markdown-it-github-alerts'
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -41,7 +44,9 @@ export default defineConfig({
   },
   markdown: {
     math: true,  // Enable built-in math support,
-    
+    config: (md) => {
+      md.use(markdownItGithubAlerts)
+    }
   },
   
 })

@@ -19,9 +19,9 @@ Meta data is added using key:value pairs. If you are using the web-based configu
 ```
 In the example, there are 4 keys: "compound", "study", "project", and "type-of-analysis". The values after the colon : are the values assigned to those keys. 
 
-::: danger
-Do not use spaces in either the keys or the values. Spaces create challenges when searching for information from the database in the future. We recommend using a dash (-) instead of a space.
-:::
+> [!WARNING]
+> Do not use spaces in either the keys or the values. Spaces create challenges when searching for information from the database in the future. We recommend using a dash (-) instead of a space.
+
 
 ## Recommendations
 It is recommended that you attept to standardize on both the keys and values across your organization for the greatest benefit. However, it is impossible to predict every bit of information that might be needed in the future. We recommend development of a key:value guide for users and the preparation of a standard meta data json file that is readily available for all users. Since these values are stored as text, you may need to employ creative searching algorithms to capture inconsistent formatting across multiple users (e.g. IX-123 and IX123 may be used by different individuals)

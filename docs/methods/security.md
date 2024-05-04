@@ -2,8 +2,7 @@
 Security is an essential part of Aplos NCA, and there are multiple layers to ensure the security of all data and information in the user account. 
 
 ## User Accounts
-Each authorized user account will have a username (email address) and password. Those are held by Amazon Cognito. Aplos Analytics does not access to any passwords for users of Aplos NCA. Users can reset their passwords directly with Amazon Cognito. \
-(need link and instructions on how to do that)
+Each authorized user account will have a username (email address) and password. Those are held by Amazon Cognito. Aplos Analytics does not access to any passwords for users of Aplos NCA. Users can reset their passwords directly with Amazon Cognito using the password reset from the main page or within their user profile page.
 
 ## Professional vs Team/Enterprise Accounts
 Professional accounts are created in a multi-tenant environment, while Team and Enterprise accounts are single tenant environments. An analogy is that Professional accounts are like apartment units in a large apartment building. There is a single roof, but each apartment unit has it's own security lock. Aplos Analytics restricts Professional accounts to a single user. So only 1 person per apartment.

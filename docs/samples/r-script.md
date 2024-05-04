@@ -92,7 +92,7 @@ cat(paste0("Total runtime was ",total_time," (Hours:Minutes:Seconds) \n"))
 
 ## Security Information
 
-Security information should never be stored within a script that is shared with other users. One method to simplify use of security information within R is to create a text file with the security information that is then imported into the script and used. Let others know that they will need to use their own security information file when using the code. The security.txt file in the [r-files.zip](https://44996058.fs1.hubspotusercontent-na1.net/hubfs/44996058/public/r-files.zip) package shows the format, but contains no information.
+Security information should never be stored within a script that is shared with other users. One method to simplify use of security information within R is to create a text file with the security information that is then imported into the script and used. Let others know that they will need to use their own security information file when using the code. The security.txt file [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/r-files/security.txt) shows the format, but contains no information.
 
 The information for everything except the username and password can be obtained from the Aplos NCA Web Interface under the [Profile | API Configuration](./r-script.md#security-information). 
 ![API Configuration](./images/API_Configuration_blur.png)

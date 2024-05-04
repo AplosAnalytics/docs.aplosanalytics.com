@@ -20,7 +20,8 @@
             "text": "Using SAS",
             "collapsed": false,
             "items": [
-                {"text": "Overview","link": "/docs/samples/sas-overview"}
+                {"text": "Overview","link": "/docs/samples/sas-overview"},
+                {"text": "SAS Program","link":"/docs/samples/sas-program"}
             ]
         }
     ]

@@ -1,6 +1,8 @@
 # Overview
 
-JSON Web Tokens (JWT) are a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
+We use Amazon Cognito as our Identity Provider (`IdP`).  To secure our APIs, we use JSON Web Tokens (`JWTs`)
+
+JWTs are a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
 
 ### Structure of a JWT
 
@@ -39,3 +41,6 @@ A JWT is composed of three parts:
 
 JWTs offer a robust way to handle authorization and information exchange on the web and even some IoT applications, making them a valuable tool in modern API authentication landscapes.
 
+
+## Next Steps
+Now that you have a general idea of "what" a JWT is, you'll gain a better understanding by seeing it in action.  Let's move on working with JWTs in our system by diving deeper into JWTs with Amazon Cognito.

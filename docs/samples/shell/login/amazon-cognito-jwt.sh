@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# file name: amazon-cognito-jwt.sh
+
+# AWS DOCS for using Cognito JWT
 # https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html
 
 ## 🚨 IMPORTANT USE THIS DOMAIN 🚨

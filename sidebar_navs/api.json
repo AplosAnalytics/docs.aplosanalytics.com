@@ -11,11 +11,11 @@
       {
         "text": "Executions",
         "items": [
-          { "text": "🙋‍♂️ Overview", "link": "/docs/api/executions/overview" },
+          { "text": "🤔 Overview", "link": "/docs/api/executions/overview" },
           { "text": "🔐 Get a JWT", "link": "/docs/api/executions/jwt" },
           { "text": "☁️ Upload Analysis File", "link": "/docs/api/executions/upload" },
           { "text": "▶️ Run/Execute", "link": "/docs/api/executions/run" },
-          { "text": "🤔 Status", "link": "/docs/api/executions/status" },
+          { "text": "🙋‍♂️ Status", "link": "/docs/api/executions/status" },
           { "text": "🧾 List", "link": "/docs/api/executions/list" }
         ]
       },

@@ -4,7 +4,7 @@ We use Amazon Cognito as our Identity Provider (`IdP`).  To secure our APIs, we 
 
 JWTs are a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
 
-### Structure of a JWT
+## Structure of a JWT
 
 
 A JWT is composed of three parts:
@@ -15,7 +15,7 @@ A JWT is composed of three parts:
 
 3. **Signature**: To create the signature part, you must take the encoded header, the encoded payload, a secret, and the algorithm specified in the header and sign it.
 
-### How JWTs Work
+## How JWTs Work
 
 - **Encoding**: When a JWT is created, the header, payload, and signature are encoded separately using Base64URL and concatenated with periods as separators.
 
@@ -24,13 +24,15 @@ A JWT is composed of three parts:
 - **Security**: While the information in the JWT can be decoded and read, the signature verifies the token's integrity. If the token is modified, the signature validation will fail.
 
 
-### Usage Scenarios
+## Usage Scenarios
 
 - **Authentication**: After the user logs in using their credentials, a JWT can be issued so the user can use this token for future requests. This allows the user to avoid logging in again until the token expires.
 
 - **Information Exchange**: JWTs can securely transfer information between parties. Since they can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are and the contents haven't been tampered with.
 
-### Advantages and Considerations
+## Advantages and Considerations
+
+- **Industry Standard**: JWTs have become the industry standard for securing APIs.
 
 - **Compact**: Because of their smaller size, JWTs can be sent through URLs, POST parameters, or inside HTTP headers.
 

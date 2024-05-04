@@ -53,6 +53,7 @@ When you look at the following script, notice there are only three values that y
 >
 > The `flow` of this process extracts environment variables into local variables called: `username`, `password` and `client_id` and then adds them to the payload and makes a `curl` https request to get retrieve your token.  The outputs it into your shell.
 
+## Shell Script Example
 <CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/shell/login/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
 
 
@@ -62,7 +63,7 @@ Given the code above you and if you saved it in a file named `amazon-cognito-jwt
 
 <CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/shell/login/login_example.sh" lang="shell"></CodeBlock>
 
-
+## The Response
 The output won't be as clean as the output below, but you'll get back something like the following:
 
 > [!NOTE]

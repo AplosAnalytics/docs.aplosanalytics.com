@@ -12,35 +12,18 @@ You'll use information from the pre-signed generation to do the upload.
 ## Route
 <DisplayRoutes :route-id="['file_upload']" :columns-to-show="['path', 'method_type']" />
 
-## Upload Request Response
+## The Response from the Upload Request
 
-In the previous step, you initiated a pre-signed url request, in the response you will need to get the "presigned":"url", which will become the url for the POST upload action to upload a file.
+In the previous step, you initiated a pre-signed url request.   The response from that will request will contain the `"presigned":"url"`, which will become the url enpoint for the POST upload action to upload a file.
 
-```json:line-numbers {7,9}
-{
-    "message": "File upload request created",
-    "s3": {
-        "bucket_name": "<s3-bucket-name>",
-        "object_key": "<s3-object-key>"
-    },
-    "presigned": {
-        "method_type": "post",
-        "url": "<s3-bucket-url>",
-        "fields": {
-            "key": "<s3-object-key>",
-            "x-amz-algorithm": "<x-amz-algorithm>",
-            "x-amz-credential": "<x-amz-credential>",
-            "x-amz-date": "<x-amz-date>",
-            "x-amz-security-token": "<x-amz-security-token>",
-            "policy": "<policy>",
-            "x-amz-signature": "<x-amz-signature>"
-        },
-        "expires_in": 3600,
-        "expires_at_utc": "<date-time-the-upload-url-will-expire>"
-    },
-    "file_name": "<file-name>"    
-}
-```
+Below is the basic structure of the response created from the pre-signed url request.
+<CodeBlock 
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/upload-request-response.json" 
+    lang="json"
+    :highlightLines=[9]        
+    >
+</CodeBlock>
 
 ## Example with 🐍 Python
 
@@ -48,8 +31,7 @@ This code block contains the full source, which also includes the initial reques
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py" 
     lang="python"
-    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py"
-    :highlightLines=[1,2,5]
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py"    
     >
 </CodeBlock>
 
@@ -64,4 +46,8 @@ The Code Block above calls this class to create the Payload for the upload.
 </CodeBlock>
 
 
+## The Response of an Upload -> 204 Ok ~ No Content
 
+The response from uploading a file with a pre-signed URL is simply `204` with no body or other information.  It's essentially a response that the information was received and it will be available shortly. S3 works on an eventual consistency model as it replicates this across several availability zones.
+
+Typically your file is ready almost immediately.  And, since our executions are queued, you can request the start an execution right away.

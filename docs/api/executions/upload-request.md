@@ -12,7 +12,7 @@ To upload a file into the Aplos NCA SaaS system, you will need to create a reque
 
 ## Payload
 
-In the payload you will need to specify two fields.
+In the `payload` you will need to specify two fields.
 
 |Name|Description|
 |--|--|
@@ -32,61 +32,45 @@ In the payload you will need to specify two fields.
 
 The response will contain a decent amount of information that you will need to carry along for the next steps.
 
-```json
-{
-    "message": "File upload request created",
-    "s3": {
-        "bucket_name": "<s3-bucket-name>",
-        "object_key": "<s3-object-key>"
-    },
-    "presigned": {
-        "method_type": "post",
-        "url": "<s3-bucket-url>",
-        "fields": {
-            "key": "<s3-object-key>",
-            "x-amz-algorithm": "<x-amz-algorithm>",
-            "x-amz-credential": "<x-amz-credential>",
-            "x-amz-date": "<x-amz-date>",
-            "x-amz-security-token": "<x-amz-security-token>",
-            "policy": "<policy>",
-            "x-amz-signature": "<x-amz-signature>"
-        },
-        "expires_in": 3600,
-        "expires_at_utc": "<date-time-the-upload-url-will-expire>"
-    },
-    "file_name": "<file-name>"    
-}
-```
+<CodeBlock 
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/upload-request-response.json" 
+    lang="json"         
+    >
+</CodeBlock>
+
+
 
 ## Fields needed for the File Upload Process
 In the next section, we'll cover the process of uploading a file.  You will need the following fields during that process.
 
-```json
-"url": "<s3-bucket-url>",
-"fields": {
-    "key": "<s3-object-key>",
-    "x-amz-algorithm": "<x-amz-algorithm>",
-    "x-amz-credential": "<x-amz-credential>",
-    "x-amz-date": "<x-amz-date>",
-    "x-amz-security-token": "<x-amz-security-token>",
-    "policy": "<policy>",
-    "x-amz-signature": "<x-amz-signature>"
-},
+|Name|Description|
+|--|--|
+|url|The endpoint for the file upload|
+|fields|All the necessary fields you'll need to submit in the body of the payload (along with the file)|
 
-```
 
+<CodeBlock 
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/upload-request-response.json" 
+    lang="json"
+    :displayLines="[1, {start:9, end: 18}, 23]"        
+    >
+</CodeBlock>
 
 
 ## Fields needed when submitting an Analysis for an Execution
-After you upload the file, and you submit an analysis for an execution you will need the following fields from the response.
+Later after the file is uploaded, you will want to run an execution. Part of the payload to start an execution is the file location in S3.  You will need the `bucket name` and `object key` which can be found in this payload.
 
-```json
-"s3": {
-    "bucket_name": "<s3-bucket-name>",
-    "object_key": "<s3-object-key>"
-},
 
-```
+<CodeBlock 
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/upload-request-response.json" 
+    lang="json"
+    :displayLines="[{start:1, end: 6}, 23]"        
+    >
+</CodeBlock>
+
 
 ## Example with 🐍 Python
 

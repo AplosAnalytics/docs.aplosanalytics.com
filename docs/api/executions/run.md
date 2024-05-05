@@ -5,7 +5,8 @@ import CodeBlock from '/docs/components/CodeBlock.vue'
 
 # 🚀 Run an Analysis on the NCA Engine
 
-
+Once a file is uploaded into our system you can run an execution against it.  This means you can follow the flow of uploading a file and then executing right away, or simply upload one or more files and run executions at a later date and time.
+In this section, we'll focus on running an execution.
 
 ## Route
 <DisplayRoutes :route-id="['run_execution']" :columns-to-show="['path', 'method_type']" />
@@ -45,11 +46,13 @@ Below is a full sample of the payload.  The `meta_data` is just an example and c
 
 ## Example with 🐍 Python
 
+Example of how an execution is launched.
+
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/python/aplos_nca/main.py"    
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/python/aplos_nca/main.py"
     lang="python"    
-    :displayLines="[{start:1, end: 21}, {start: 92, end: 143}]"    
+    :displayLines="[{start: 92, end: 143}]"    
     >
 </CodeBlock>
 

@@ -52,6 +52,8 @@ async function highlightCode() {
       "color:#e1e4e8",
       "background-color:#222222",
       "color:#E6E6E6",
+      "background-color:#fff;--shiki-dark-bg:#24292e;", 
+      "color:#24292e;--shiki-dark:#e1e4e8"
     ];
     htmlFormattedCode.value = findAndReplace(htmlFormattedCode.value, find, "", false);
   } catch (e) {

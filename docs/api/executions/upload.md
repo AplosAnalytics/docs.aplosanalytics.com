@@ -49,6 +49,7 @@ This code block contains the full source, which also includes the initial reques
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py" 
     lang="python"
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py"
+    :highlightLines=[1,2,5]
     >
 </CodeBlock>
 

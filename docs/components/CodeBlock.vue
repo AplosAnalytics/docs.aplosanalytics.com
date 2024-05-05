@@ -7,6 +7,7 @@
     <span class="lang">{{ lang.toLowerCase() }}</span>
 
     <div v-html="htmlFormattedCode"></div>
+    <!-- <div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div> -->
   </div>
 </template>
 
@@ -88,7 +89,7 @@ const language_comment_blocks = [
 // Fetch and highlight code
 async function highlightCode() {
   const highlighter = await getHighlighter({
-    themes: ["github-dark", "github-light"],
+    themes: ["github-dark", "github-light", "slack-dark", "slack-ochin"],
     langs: [props.lang],
     showLineNumbers: props.showLineNumbers,
   });
@@ -101,13 +102,18 @@ async function highlightCode() {
     const validLines = props.highlightLines.filter(
       (line) => line != null && Number.isInteger(line)
     );
-
+    // console.log("validLines")
+    // console.log(validLines)
+    const lineOptions =validLines.map((line) => ({ line, classes: ["highlighted"] }))
+    // console.log(lineOptions)
     const highlightedCode = highlighter.codeToHtml(code.value, {
       lang: props.lang,
-      lineOptions: validLines.map((line) => ({ line, classes: ["highlighted"] })),
+      lineOptions: lineOptions,
       themes: {
-        dark: "github-dark", // 'slack-dark',
-        light: "github-light", //'slack-ochin',
+        dark: "slack-dark", // 'slack-dark',
+        light: "slack-ochin", //'slack-ochin',
+        //dark: "github-dark", 
+        //light: "github-light",
       },
     });
     htmlFormattedCode.value = removeUnwantedStyles(highlightedCode);
@@ -137,6 +143,8 @@ function skiped_lines_text(start, end) {
 }
 
 function removeUnwantedStyles(formattedCode) {
+
+  
   const unwantedStyles = [
     "background-color:#24292e",
     "color:#e1e4e8",
@@ -144,6 +152,10 @@ function removeUnwantedStyles(formattedCode) {
     "color:#E6E6E6",
     "background-color:#fff;--shiki-dark-bg:#24292e;",
     "color:#24292e;--shiki-dark:#e1e4e8",
+    // "background-color:#FFF;", 
+    "--shiki-dark-bg:#222222;", 
+    "color:#002339;",
+    "--shiki-dark:#E6E6E6"
   ];
   unwantedStyles.forEach((style) => {
     formattedCode = formattedCode.replace(new RegExp(escapeRegExp(style), "g"), "");

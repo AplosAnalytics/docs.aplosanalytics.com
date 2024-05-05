@@ -1,6 +1,7 @@
 
 <script setup>
 import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
+import CodeBlock from '/docs/components/CodeBlock.vue'
 </script>
 
 # Presigned Upload Request
@@ -86,3 +87,21 @@ After you upload the file, and you submit an analysis for an execution you will 
 },
 
 ```
+
+## Example with 🐍 Python
+
+This code sample wraps up the process of requesting the pre-signed URL and doing the upload.  
+
+For this section, we'll focus on `def __get_presigned_upload_info(self, input_file: str) -> S3PresignedPayload:`, which generates the request.  
+
+The result of the request is then handed off to another `python `module` which processes the resulting payload and creates a `form` upload object for uploading
+
+
+
+<CodeBlock 
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py" 
+    lang="python" 
+    :displayLines="[{start:1, end: 20}, {start: 41, end: 78}]"
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py"
+    >
+</CodeBlock>

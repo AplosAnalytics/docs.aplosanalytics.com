@@ -1,4 +1,4 @@
-# Extrapolation and Interpolation Methods
+# 🟪 Extrapolation and Interpolation Methods
 Various extrapolation and interpolation methods are used during the calculation of some PK parameters. The mathematical expressions for these methods are shown below.
 
 ## Linear interpolation

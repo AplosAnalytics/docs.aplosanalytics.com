@@ -1,4 +1,4 @@
-# IV Bolus Single Dose
+# 💉 IV Bolus Single Dose
 For IV Bolus administration of a single dose, the following parameters are calculated as described. 
 
 ## Parameters that do not depend on a terminal slope

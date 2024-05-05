@@ -1,93 +1,93 @@
 {
     "/docs/methods/": [
         {
-            "text": "Overview",
+            "text": "🖇️ Overview",
             "collapsed": true,
             "items": [
-                {"text": "Overview","link": "/docs/methods/overview"},
-                {"text": "How it works","link": "/docs/methods/howitworks"},
-                {"text": "Security","link": "/docs/methods/security"},
-                {"text": "Audit Trail","link": "/docs/methods/audittrail"},
-                {"text": "Professional Accounts","link": "/docs/methods/professional"},
-                {"text": "Team Accounts","link": "/docs/methods/team"},
-                {"text": "Enterprise Accounts","link": "/docs/methods/enterprise"},
-                {"text": "Academic Accounts","link": "/docs/methods/academic"},
-                {"text": "License","link": "/docs/methods/overview-license"}
+                {"text": "📎 Overview","link": "/docs/methods/overview"},
+                {"text": "🛠️ How it works","link": "/docs/methods/howitworks"},
+                {"text": "🔑 Security","link": "/docs/methods/security"},
+                {"text": "🔏 Audit Trail","link": "/docs/methods/audittrail"},
+                {"text": "🎩 Professional Accounts","link": "/docs/methods/professional"},
+                {"text": "🧢 Team Accounts","link": "/docs/methods/team"},
+                {"text": "👑 Enterprise Accounts","link": "/docs/methods/enterprise"},
+                {"text": "🎓 Academic Accounts","link": "/docs/methods/academic"},
+                {"text": "⚖️ License","link": "/docs/methods/overview-license"}
             ]
         },
         {
-            "text": "Analysis Dataset",
+            "text": "📋 Analysis Dataset",
             "collapsed": true,
             "items": [
-                {"text": "Formats","link": "/docs/methods/data-format"},
-                {"text": "Required columns","link": "/docs/methods/data-column-req"},
-                {"text": "Optional columns","link": "/docs/methods/data-column-opt"}
+                {"text": "📚 Formats","link": "/docs/methods/data-format"},
+                {"text": "❗️Required columns","link": "/docs/methods/data-column-req"},
+                {"text": "❓Optional columns","link": "/docs/methods/data-column-opt"}
             ]
         },
         {
-            "text": "Analysis Configuration",
+            "text": "🛠️ Analysis Configuration",
             "collapsed": true,
             "items": [
-                {"text": "Dosing","link": "/docs/methods/config-dosing"},
-                {"text": "Time","link": "/docs/methods/config-time"},
-                {"text": "Designations","link": "/docs/methods/config-desig"},
-                {"text": "Columns","link": "/docs/methods/config-columns"},
-                {"text": "Kel rules","link": "/docs/methods/config-kel"},
-                {"text": "Meta data","link": "/docs/methods/config-meta"}
+                {"text": "💊 Dosing","link": "/docs/methods/config-dosing"},
+                {"text": "🕑 Time","link": "/docs/methods/config-time"},
+                {"text": "🟠 Designations","link": "/docs/methods/config-desig"},
+                {"text": "🔵 Columns","link": "/docs/methods/config-columns"},
+                {"text": "🟢 Kel rules","link": "/docs/methods/config-kel"},
+                {"text": "🟣 Meta data","link": "/docs/methods/config-meta"}
             ]
         },
         {
-            "text": "Results",
+            "text": "🏁 Results",
             "collapsed": true,
             "items": [
-                {"text": "Download","link": "/docs/methods/results-download"},
-                {"text": "What you get","link": "/docs/methods/results-get"},
-                {"text": "Individual parameters","link": "/docs/methods/results-ind"},
-                {"text": "Summary parameters","link": "/docs/methods/results-summary"},
-                {"text": "Individual plots","link": "/docs/methods/results-ind-plot"},
-                {"text": "Summary plots","link": "/docs/methods/results-summary-plot"},
-                {"text": "Technical report","link": "/docs/methods/results-report"}
+                {"text": "↓ Download","link": "/docs/methods/results-download"},
+                {"text": "📂 What you get","link": "/docs/methods/results-get"},
+                {"text": "📄 Individual parameters","link": "/docs/methods/results-ind"},
+                {"text": "📑 Summary parameters","link": "/docs/methods/results-summary"},
+                {"text": "📈 Individual plots","link": "/docs/methods/results-ind-plot"},
+                {"text": "📉 Summary plots","link": "/docs/methods/results-summary-plot"},
+                {"text": "📓 Technical report","link": "/docs/methods/results-report"}
             ]
         },
         {
-            "text": "Parameters Calculated",
+            "text": "📜 Parameters Calculated",
             "collapsed": true,
             "items": [
-                {"text": "Extravascular - Single Dose","link": "/docs/methods/ev-single"},
-                {"text": "Extravascular - Steady State","link": "/docs/methods/ev-steady"},
-                {"text": "IV Bolus - Single Dose","link": "/docs/methods/iv-bolus-single"},
-                {"text": "IV Bolus - Steady State","link": "/docs/methods/iv-bolus-steady"},
-                {"text": "IV Infusion - Single Dose","link": "/docs/methods/iv-inf-single"},
-                {"text": "IV Infusion - Steady State","link": "/docs/methods/iv-inf-steady"}
+                {"text": "💊 Extravascular - Single Dose","link": "/docs/methods/ev-single"},
+                {"text": "💊💊 Extravascular - Steady State","link": "/docs/methods/ev-steady"},
+                {"text": "💉 IV Bolus - Single Dose","link": "/docs/methods/iv-bolus-single"},
+                {"text": "💉💉 IV Bolus - Steady State","link": "/docs/methods/iv-bolus-steady"},
+                {"text": "🩺 IV Infusion - Single Dose","link": "/docs/methods/iv-inf-single"},
+                {"text": "🩺🩺 IV Infusion - Steady State","link": "/docs/methods/iv-inf-steady"}
             ]
         },
         {
-            "text": "Calculation Methods",
+            "text": "🔢 Calculation Methods",
             "collapsed": true,
             "items": [
-                {"text": "AUC methods","link": "/docs/methods/aucmethods"},
-                {"text": "AUMC methods","link": "/docs/methods/aumcmethods"},
-                {"text": "Extrapolation methods","link": "/docs/methods/extrapolationmethods"},
-                {"text": "Terminal Slope methods","link": "/docs/methods/terminalslope"}
+                {"text": "🟦 AUC methods","link": "/docs/methods/aucmethods"},
+                {"text": "🟨 AUMC methods","link": "/docs/methods/aumcmethods"},
+                {"text": "🟪 Extrapolation methods","link": "/docs/methods/extrapolationmethods"},
+                {"text": "🟧 Terminal Slope methods","link": "/docs/methods/terminalslope"}
             ]
         },
         {
-            "text": "Using Aplos Web Interface",
+            "text": "🖥️ Using Aplos Web Interface",
             "collapsed": true,
             "items": [
-                {"text": "Dashboard","link": "/docs/methods/web-dashboard"},
-                {"text": "Analysis Wizard","link": "/docs/methods/web-wizard"},
-                {"text": "Input Data","link": "/docs/methods/web-data"},
-                {"text": "Analysis History","link": "/docs/methods/web-history"}
+                {"text": "📊 Dashboard","link": "/docs/methods/web-dashboard"},
+                {"text": "🧙‍♂️ Analysis Wizard","link": "/docs/methods/web-wizard"},
+                {"text": "📝 Input Data","link": "/docs/methods/web-data"},
+                {"text": "🏁 Analysis History","link": "/docs/methods/web-history"}
             ]
         },
         {
-            "text": "Examples",
+            "text": "😁 Examples",
             "collapsed": true,
             "items": [
-              { "text": "Using Python", "link": "/docs/samples/python-overview"},
-              { "text": "Using R", "link": "/docs/samples/r-overview"},
-              { "text": "Using SAS", "link": "/docs/samples/sas-overview"}
+              { "text": "🐍 Using Python", "link": "/docs/samples/python-overview"},
+              { "text": "💿 Using R", "link": "/docs/samples/r-overview"},
+              { "text": "💾 Using SAS", "link": "/docs/samples/sas-overview"}
             ]
           }
     ]

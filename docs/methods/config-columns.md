@@ -1,5 +1,4 @@
-# Data Columns Configuration
-![Column configuration input](./images/Columns_input.png)
+# 🔵 Data Columns Configuration
 
 A description of each setting on the Data Columns configuration screen is below:
 
@@ -12,3 +11,6 @@ A description of each setting on the Data Columns configuration screen is below:
 |Grouping variables|Any grouping variables needed to define unique PK profiles for analysis|
 |Sorting|This is how the data is sorted prior to analysis for each unique profile. Generally include the time column variable|
 |Custom/Carry Along Values|These are columns with information that will be added to the output files, but is not used group grouping.|
+
+**Figure 1: Columns configuration input screen**
+![Column configuration input](./images/Columns_input.png)

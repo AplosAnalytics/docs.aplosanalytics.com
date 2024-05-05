@@ -1,4 +1,4 @@
-# Terminal Slope
+# 🟧 Terminal Slope
 
 Terminal slope values are calculated using simple linear regression with the x-values being the time variable and y-values being the natural log of the analyzed concentration variable. The estimated terminal slope value is used in the calculation of many pharmacokinetic parameters; however, there is no standard for the choice of which data points should be included in the calculation of the terminal slope value. 
 
@@ -22,7 +22,7 @@ The value $(n-3)$ represents the number of terminal slope values that can be cal
 
 In the example plots above, there are 8 data points from Cmax to Clast. There will be 11 terminal slope calculations performed for this one profile. For each of those 11 terminal slope calculations, all associated pharmacokinetic parameters (e.g. AUC infinity) will be calculated. 
 
-# Selection of Best Terminal Slope
+## Selection of Best Terminal Slope
 
 Although multiple terminal slope values are calculated for each unique profile, a single terminal slope value is considered the best option based on criteria supplied by the user. The criteria are followed in sequential order until there is either a single terminal slope value reported for each unique profile. It is possible that none of the terminal slopes will meet all of the required criteria and thus no terminal slope will be reported for that unique profile. If a terminal slope value is not reported for a profile, none of the parameters that depends on the terminal slope will be reported for that unique profile. 
 

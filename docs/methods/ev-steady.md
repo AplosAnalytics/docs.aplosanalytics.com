@@ -1,4 +1,4 @@
-# Extravascular Steady State
+# 💊💊 Extravascular Steady State
 For extravascular administration at steady state, the following parameters are calculated as described. The extravascular route includes oral, topical, sublingual, subcutaneous, intramuscular, rectal, and any other route that is not intravenous. The term steady state means that the rate of input and rate of elimination of the drug are equivalent; however, there is nothing in the data of a single dosing interval that can independently determine if steady state has been achieved. A user must confirm that steady state has been achieved by other methods (e.g. monitoring trough values over several dosing intervals).
 
 ## Imputations

@@ -1,7 +1,6 @@
-# Time Configuration
-![Time configuration input](./images/Time_input.png)
+# 🕑 Time Configuration
 
-A description of each setting on the Time configuration screen is below:
+A description of each setting on the Time configuration screen (Figure 1) is below:
 
 |Field name|Options or Input|Description|
 |:---|:---|:---|
@@ -10,3 +9,6 @@ A description of each setting on the Time configuration screen is below:
 |Tau|Dosing interval in decimal format|This only appears if the Frequency is Steady state|
 |Rate or Duration|Rate, Duration|This appears only if the Route is IV Infusion|
 |Amount|Rate or Duration of Infusion in decimal format| This only appears if the Route is IV Infusion|
+
+**Figure 1: Time configuration input screen**
+![Time configuration input](./images/Time_input.png)

@@ -1,4 +1,4 @@
-# Analysis Dataset Format
+# 📚 Analysis Dataset Format
 Analysis datasets are accepted in the following formats:
 
 -   [comma separated variables (.csv)](#csv)
@@ -8,10 +8,9 @@ Analysis datasets are accepted in the following formats:
 Comma separated variable format is the preferred format for files. These files are used in their native format without any conversion. 
 
 ## SAS XPT
-SAS Transport files version 5 are accepted. These files are converted to CSV files prior to analysis. 
-::: info Note
-Not available in Early Access version of Aplos NCA.
-:::
+SAS&copy; Transport files (version 5) are accepted. These files are converted to CSV files prior to analysis. 
+> [!NOTE] 
+> Not available in Early Access version of Aplos NCA.
 
 ## Headers
-The first row of the analysis dataset is assumed to contain column headers. Headers are imported "as-is" with no modifications. If two or more columns contain the same header (e.g. 2 columns named "subject"), then the left-most column will be used in the analysis.
+The first row of the analysis dataset is assumed to contain column headers. Headers are imported "as-is" with no modifications. Include unique column headers to avoid issues. If two or more columns contain the same header (e.g. 2 columns named "subject"), then the left-most column will be used in the analysis and the second column will be ignored.

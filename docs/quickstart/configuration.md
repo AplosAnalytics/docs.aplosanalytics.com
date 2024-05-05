@@ -1,7 +1,7 @@
-# Configure Analysis Settings
+# 2️⃣ Configure Analysis Settings
 The configuration screen includes 6 separate sections. The first 4 sections require information about the analysis dataset. The last 2 sections are optional.
 
-## Dosing
+## 1. Dosing
 Enter information about the dose administration in this section. 
 ![Dosing input](./images/Dosing_input.png)
 The following table includes an explanation of each entry item and the value required for the sample dataset. 
@@ -13,23 +13,23 @@ The following table includes an explanation of each entry item and the value req
 |Amount|10000|
 |Unit|mg|
 
-## Time
+## 2. Time
 Enter the time unit (hr) and the time of dose administration (0 hr) as shown below. 
 ![Time input](./images/Time_input2.png)
 
-## Designations
+## 3. Designations
 Enter the information about the units, and text designations for BLQ and missing samples as shown in the image below.
 ![Designations input](./images/Designations_input.png)
 
-## Data Columns
+## 4. Data Columns
 Enter the column names from the sample dataset associated with each of the fields shown in the image below. 
 ![Column input](./images/Columns_input.png)
 
-## Kel Rules
+## 5. Kel Rules
 The Kel rules are the criteria used to select the "best-fit" terminal elimination rate constant. In this example, we will use the maximum adjusted r<sup>2</sup> as the only criterion. Enter the information as shown in the image below.
 ![Kel rules](./images/kel_input.png)
 
-## Meta Data
+## 6. Meta Data
 Meta data is information that will be associated with the analysis within the Aplos NCA system. Enter the following key:value pairs as shown below.
 ```json
 "project":"Quick start",
@@ -38,5 +38,5 @@ Meta data is information that will be associated with the analysis within the Ap
 ```
 ![Meta data](./images/Meta_input.png)
 
-## Execute the analysis
+## 7. Execute the analysis
 Now click the Execute button to initate the analysis.

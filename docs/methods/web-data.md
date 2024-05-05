@@ -1,4 +1,4 @@
-# Input Data 
+# 📝 Input Data 
 The input (or analysis) data screen is where users can upload a new dataset or prepare a configuration and execute an analysis.
 
 ![Input data files](./images/Input_data_files.png)

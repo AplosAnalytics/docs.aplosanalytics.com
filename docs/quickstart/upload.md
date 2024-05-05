@@ -1,9 +1,9 @@
-# Upload analysis dataset
+# 1️⃣ Upload analysis dataset
 
-## Analysis Wizard
+## 1. Analysis Wizard
 After you login to the Aplos NCA web interface, click on the Run Analysis link on the left side of the screen to start the Analysis Wizard.
 
-## Upload sample dataset
+## 2. Upload sample dataset
 ![Upload](./images/Wizard_upload.png)
 
 You can upload the sample dataset by doing one of the following:

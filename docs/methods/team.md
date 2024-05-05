@@ -1,5 +1,5 @@
-# Team Accounts
-Team accounts are designed for companies that have multiple users who need to perform PK analysis with NCA methods. Team accounts have a limit of 50 unique users. 
+# 🧢 Team Accounts
+Team accounts are designed for companies that have multiple users who need to perform PK analysis with NCA methods. Team accounts have a limit of 50 unique users and up to 800 analyses per year. 
 
 ## Number of analyses
 Each Team account is allocated a specific number of analyses during the 12-month subscription period. Only <span style="background-color:green;color:white">Completed</span> analyses are counted against the allocation. Analyses with a status of <span style="background-color:red;color:white">Failed</span> are not counted against the allocation. To determine the number of analyses remaining, the number of <span style="background-color:green;color:white">Completed</span> analyses along with the number of analyses currently ongoing are subtracted from the allocation. The number of <span style="background-color:green;color:white">Completed</span> analyses are collected across all users in the Team account. An example is below:
@@ -32,5 +32,5 @@ A Team account can be upgraded to a larger analysis allocation at any time. The 
 
 Team accounts can be upgraded to Enterprise accounts. 
 
-## Downgrading Account
-Team accounts cannot be downgraded to Professional accounts. Downgrading the number of analyses per year can be done during the renewal period. 
+## Downgrading Account and Account Cancellation
+Team accounts cannot be downgraded to Professional accounts. Downgrading the number of analyses per year can be done during the renewal period. If an account is cancelled, you will retain access to the tool through the end of the subscription period. At the end of the subscription period, your access will be terminated and the data in the account will be scheduled for destruction. There are no refunds for cancellations prior to the end of the subscription period.

@@ -7,6 +7,6 @@
  -  List of [parameters calculated](./ev-single) by Aplos NCA
  -  Details about [calculation methods](./aucmethods) used by Aplos NCA
  -  [Using Aplos web interface](./web-dashboard)
- -  [Example R scripts](/docs/samples/r-overview.md) for calling Aplos NCA API
  -  [Example Python scripts](/docs/samples/python-overview.md) for calling Aplos NCA API
+ -  [Example R scripts](/docs/samples/r-overview.md) for calling Aplos NCA API
  -  [Example SAS programs](/docs/samples/sas-overview.md) for calling Aplos NCA API

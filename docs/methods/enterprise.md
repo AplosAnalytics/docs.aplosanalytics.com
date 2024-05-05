@@ -1,4 +1,4 @@
-# Enterprise Accounts
+# 👑 Enterprise Accounts
 Enterprise accounts are designed for companies that have multiple users who need to perform PK analysis with NCA methods, and would like additional features to simplify integration with their IT systems. Enterprise accounts have no limit on the number of unique users. 
 
 ## Number of analyses
@@ -28,5 +28,5 @@ A Enterprise account can be upgraded to a larger analysis allocation at any time
 6.7% of current subscription fees can be applied toward the new subscription cost
 :::
 
-## Downgrading Account
-Enterprise accounts cannot be downgraded to Team or Professional accounts. Downgrading the number of analyses per year can be done during the renewal period. 
+## Downgrading Account and Account Cancellation
+Enterprise accounts cannot be downgraded to Team or Professional accounts. Downgrading the number of analyses per year can be done during the renewal period.   If an account is cancelled, you will retain access to the tool through the end of the subscription period. At the end of the subscription period, your access will be terminated and the data in the account will be scheduled for destruction. There are no refunds for cancellations prior to the end of the subscription period.

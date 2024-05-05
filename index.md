@@ -7,7 +7,7 @@ hero:
   text: ""
   tagline: ""
   image:
-    src: /logo_fullcolor.svg
+    src: /Graphic_for_aplos_documentation.svg
     alt: Aplos Analytics
   actions:
     - theme: brand

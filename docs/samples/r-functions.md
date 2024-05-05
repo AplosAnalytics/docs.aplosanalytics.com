@@ -1,8 +1,8 @@
-# R Functions
-The R functions used for interacting with Aplos NCA to analyze data are shown and described below.
+# 2️⃣ R Functions
+The R functions used for interacting with Aplos NCA to analyze data are shown and described below. Code chunks look best in Dark mode. You can make the change at the top right of your browser.
 
 ## Get JSON Web Token 
-This function uses 4 pieces of information to acquire a jwt from Amazon Cognito. These are the client identifier (client_id), username, password, and region. The client identifier and region are available from the web interface under [Profile | API Configuration](./r-script.md#security-information).
+This function uses 4 pieces of information to acquire a jwt from Amazon Cognito. These are the client identifier (`client_id`), username, password, and region. The client identifier and region are available from the web interface under [Profile | API Configuration](./r-script.md#security-information).
 
 ```r:line-numbers
 get_jwt <- function(client_id, username, password, region){
@@ -26,7 +26,7 @@ get_jwt <- function(client_id, username, password, region){
 ```
 
 ## Acquire URL for file upload 
-This function requests the secure URL to which you will upload the input data file. This function uses 3 pieces of information to acquire the upload URL. These are the input file name (input_file), URL for the API (url), and jwt (token). The URL for the API is available from the web interface under [Profile | API Configuration](./r-script.md#security-information).
+This function requests the secure URL to which you will upload the input data file. This function uses 3 pieces of information to acquire the upload URL. These are the input file name (`input_file`), URL for the API (`url`), and jwt (`token`). The URL for the API is available from the web interface under [Profile | API Configuration](./r-script.md#security-information).
 
 ```r:line-numbers
 get_upload_url <- function(input_file,url,token){
@@ -51,7 +51,7 @@ get_upload_url <- function(input_file,url,token){
 ```
 
 ## Upload input data file 
-This function uploads the data file for analysis using the secure URL. This function uses 2 pieces of information. These are the input file (input_file) and the response from the secure URL request (result). The response includes a security token that authenticates the user.
+This function uploads the data file for analysis using the secure URL. This function uses 2 pieces of information. These are the input file (`input_file`) and the response from the secure URL request (`result`). The response includes a security token that authenticates the user.
 
 ```r:line-numbers
 upload_file_api <- function(input_file,result){
@@ -110,7 +110,7 @@ execute_analysis <- function(result,config.list,meta.list,token,url){
 ```
 
 ## Request Execution Status 
-This function checks the status of the analysis, prints that status, and then returns the download URL when the analysis is complete. This function uses e pieces of information. These are the URL for the API (url), jwt (token) and the unique analysis identifier (execution_id). The URL for the API is available from the web interface under [Profile | API Configuration](./r-script.md#security-information), and the unique analysis identifier is available from the response from the API when you initiate an analysis. 
+This function checks the status of the analysis, prints that status, and then returns the download URL when the analysis is complete. This function uses 3 pieces of information. These are the URL for the API (`url`), jwt (`token`) and the unique analysis identifier (`execution_id`). The URL for the API is available from the web interface under [Profile | API Configuration](./r-script.md#security-information), and the unique analysis identifier is available from the response from the API when you initiate an analysis. 
 
 ```r:line-numbers
 execution_status <- function(url,token,execution_id){

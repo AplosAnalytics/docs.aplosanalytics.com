@@ -1,2 +1,2 @@
-# License
-The [Aplos User License Agreement :link:](https://aplosanalytics.com/user-agreement) is posted on the company website. All updates to the User License Agreement will be posted on the website with notifications sent to all users via their registered email address. 
+# ⚖️ License
+The [Aplos User License Agreement :link:](https://aplosanalytics.com/user-agreement) is posted on the company website. All updates to the User License Agreement will be posted on the Aplos Analytics website with notifications sent to all users via their registered email address. 

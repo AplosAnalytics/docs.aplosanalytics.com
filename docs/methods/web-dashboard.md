@@ -1,4 +1,4 @@
-# Dashboard
+# 📊 Dashboard
 The dashboard page appears after login to the Aplos web interface. This page includes details about the number of successful analyses, failed analyses, and the progress toward the analysis limit in your subscription. It also includes quick links to the most recent analyses completed.
 
 ![Dashboard](./images/Dashboard.png)

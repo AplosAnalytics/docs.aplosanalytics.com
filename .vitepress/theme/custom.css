@@ -11,6 +11,10 @@
 
 
 @media (prefers-color-scheme: dark) {
+    :root {
+      --vp-c-brand-2: #4a90e2;
+      --vp-c-brand-3: #4a90e2; /* Example: a lighter blue for better visibility in dark mode */
+    }
     .shiki,
     .shiki span {
       color: var(--shiki-dark) !important;

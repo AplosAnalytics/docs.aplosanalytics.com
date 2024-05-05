@@ -9,6 +9,12 @@
         ]
       },
       {
+        "text": "Endpoints",
+        "items": [
+          { "text": "Routes", "link": "/docs/api/endpoints/routes" }          
+        ]
+      },
+      {
         "text": "Executions",
         "items": [
           { "text": "📎 Overview", "link": "/docs/api/executions/overview" },

@@ -1,0 +1,26 @@
+{
+    "routes" : [
+        {
+            "name": "presigned_url",
+            "path": "/nca-engine/generate-upload-url",
+            "description": "Generates a S3 Presigned Url for uploading an analysis file."
+        },
+        {
+            "name": "file_upload",
+            "path": "{{auto-generated}}",
+            "description": "A specific file upload is generated for you."
+        },
+        {
+            "name": "get_status",
+            "path": "/nca-engine/executions/{{exec-id}}",
+            "description": "Retuns information about a specific execution including the status."
+        },
+        {
+            "name": "executions",
+            "path": "/nca-engine/users/{{user-id}}/executions",
+            "description": "Retuns all executions for a specific user"
+        }
+        
+    ]
+    
+}

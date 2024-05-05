@@ -55,21 +55,21 @@ When you look at the following script, notice there are only three values that y
 > The `flow` of this process extracts environment variables into local variables called: `username`, `password` and `client_id` and then adds them to the payload and makes a `curl` https request to get retrieve your token.  The outputs it into your shell.
 
 ## Shell Script Example
-<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/shell/login/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/shell/login/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
 
 
 Given the code above you and if you saved it in a file named `amazon-cognito-jwt.sh`, you can execute the following:
 
 
 
-<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/shell/login/login_example.sh" lang="shell"></CodeBlock>
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/shell/login/login_example.sh" lang="shell"></CodeBlock>
 
 ## The Response
 The output won't be as clean as the output below, but you'll get back something like the following:
 
 > [!NOTE]
 > **This was a real response from a temp account I created.  I removed the RefreshToken for safety as it's a long-lived token.  We're serious about security so that account has also been disabled and is scheduled for destruction.**
-<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/jwt/cognito-response-payload.json" lang="json"></CodeBlock>
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/jwt/cognito-response-payload.json" lang="json"></CodeBlock>
 
 
 Here's a brief description of each field typically returned in a response from Amazon Cognito when dealing with tokens:
@@ -93,7 +93,7 @@ Here's a brief description of each field typically returned in a response from A
 ## Viewing the Contents of the IdToken
 When the IdToken is decoded it looks like the following.
 
-<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/jwt/jwt-payload.json" lang="json"></CodeBlock>
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/jwt/jwt-payload.json" lang="json"></CodeBlock>
 
 
 ## If I can view the token, how is it secure?

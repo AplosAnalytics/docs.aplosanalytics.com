@@ -73,7 +73,7 @@ Then include the block like the following.
 - `lang`: the language you want to be formatted
 
 ```html
-<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/shell/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/shell/amazon-cognito-jwt.sh" lang="shell"></CodeBlock>
 ```
 
 ## ToDo's

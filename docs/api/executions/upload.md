@@ -1,5 +1,6 @@
 <script setup>
 import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
+import CodeBlock from '/docs/components/CodeBlock.vue'
 </script>
 
 # Upload your analysis file
@@ -40,4 +41,26 @@ In the previous step, you initiated a pre-signed url request, in the response yo
     "file_name": "<file-name>"    
 }
 ```
+
+## Example with 🐍 Python
+
+This code block contains the full source, which also includes the initial request to get the pre-signed url (from the previous section).
+<CodeBlock 
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py" 
+    lang="python"
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/python/aplos_nca/aws_s3_presigned_upload.py"
+    >
+</CodeBlock>
+
+## Generating the Payload
+
+The Code Block above calls this class to create the Payload for the upload.
+<CodeBlock 
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/python/aplos_nca/aws_s3_presigned_payload.py" 
+    lang="python"
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/python/aplos_nca/aws_s3_presigned_payload.py"
+    >
+</CodeBlock>
+
+
 

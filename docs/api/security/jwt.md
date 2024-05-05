@@ -69,8 +69,46 @@ The output won't be as clean as the output below, but you'll get back something 
 
 > [!NOTE]
 > **This was a real response from a temp account I created.  I removed the RefreshToken for safety as it's a long-lived token.  We're serious about security so that account has also been disabled and is scheduled for destruction.**
-<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/jwt/cognito-response-payload.json" lang="shell"></CodeBlock>
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/jwt/cognito-response-payload.json" lang="json"></CodeBlock>
 
+
+Here's a brief description of each field typically returned in a response from Amazon Cognito when dealing with tokens:
+
+1. **AccessToken**:
+   - The access token is part of the credentials used to access authorized resources. It is issued by the authorization server and allows the API to make requests on behalf of the user who authorized the app. This token typically has a limited lifespan and scope.
+
+2. **ExpiresIn**:
+   - This field indicates the number of seconds remaining until the token expires. Once expired, the token is no longer valid, and a new one must be obtained, typically using the refresh token.
+
+3. **IdToken**: 👈 This is JWT you will pass in all of your API requests.
+   - The ID token is a JSON Web Token (JWT) that contains claims about the authentication of the user. It often includes user profile information (like the user's ID, username, email, and so forth) which the client can use to identify the user.
+
+4. **RefreshToken**:
+   - The refresh token is used to obtain a new access or ID token after the current one expires. This token has a longer lifespan than the access token and is meant to be stored securely by the client.
+
+5. **TokenType**:
+   - This field specifies the type of token that is issued. Typically, this field will have the value "Bearer", which indicates that the token is a bearer token, meaning that any party in possession of this token can use it to access the resources it grants access to, without further identification.
+
+
+## Viewing the Contents of the IdToken
+When the IdToken is decoded it looks like the following.
+
+<CodeBlock src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/develop/docs/samples/jwt/jwt-payload.json" lang="json"></CodeBlock>
+
+
+## If I can view the token, how is it secure?
+JSON Web Tokes (JWTs), which are just base64-encoded are easily read. However, altering the contents of the token is not effective due to the security measures in place:
+
+1. **Digital Signature**:
+   - Each ID token is digitally signed by the issuer (in this case, Amazon Cognito) using a cryptographic algorithm. When the token is issued, it includes a signature that is generated from the token content and a secret key that only the issuer possesses.
+
+2. **Verification of Integrity**:
+   - When a service or server receives an ID token, it does not just decode it; it also verifies the token’s signature. This is done by using the issuer's public key to ensure that the signature is valid. If someone were to alter the contents of the ID token (like changing user permissions or identity), this would invalidate the signature.
+
+3. **Security Protocols**:
+   - Altering the signature itself requires access to the private key used by the authenticating server, which is securely held by the issuer (Amazon Cognito) and not accessible to users or any third parties. Without this key, a valid signature cannot be recreated after altering the token.
+
+While the contents of an ID token can be viewed by anyone, any modifications to the token would prevent it from being verified properly by services expecting a valid token. This verification failure would lead to the token being rejected, thereby safeguarding the system from unauthorized access or alterations.
 
 ## Next Steps
 Now that you have a token, you can make calls to the Aplos NCA SaaS system.  This is of course assuming your account is valid ✅, your subscription is active 🎉 and finally, you have the correct permissions 🔓 (whew) 🥵 : you can make calls against our APIs 🚀.

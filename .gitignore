@@ -14,3 +14,5 @@ cache
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 .DS_Store
+.env
+.venv

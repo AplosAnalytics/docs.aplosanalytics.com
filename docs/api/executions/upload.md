@@ -1,14 +1,21 @@
+<script setup>
+import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
+</script>
+
 # Upload your analysis file
 
-Now that you have a presigned url to upload your file, it's time to do the actual upload.
+Now that you have a pre-signed URL to upload your file, it's time to do the actual upload.
 
-You'll use information from the presigned generation to do the upload.
+You'll use information from the pre-signed generation to do the upload.
 
+## Route
+<DisplayRoutes :route-id="['file_upload']" :columns-to-show="['path', 'method_type']" />
 
+## Upload Request Response
 
-## Response
+In the previous step, you initiated a pre-signed url request, in the response you will need to get the "presigned":"url", which will become the url for the POST upload action to upload a file.
 
-```json:line-numbers {8,9}
+```json:line-numbers {7,9}
 {
     "message": "File upload request created",
     "s3": {

@@ -1,22 +1,30 @@
 {
     "routes" : [
         {
-            "name": "presigned_url",
+            "id": "presigned_url",
+            "name": "Get a Presigned Url",
             "path": "/nca-engine/generate-upload-url",
+            "method_type": "POST",
             "description": "Generates a S3 Presigned Url for uploading an analysis file."
         },
         {
-            "name": "file_upload",
-            "path": "{{auto-generated}}",
+            "id": "file_upload",
+            "name": "Upload a file",
+            "method_type": "POST",
+            "path": "{{auto-generated}} found in \"presigned\" : \"url\" ",
             "description": "A specific file upload is generated for you."
         },
         {
-            "name": "get_status",
+            "id": "get_status",
+            "name": "Get Status",
+            "method_type": "GET",
             "path": "/nca-engine/executions/{{exec-id}}",
             "description": "Retuns information about a specific execution including the status."
         },
         {
-            "name": "executions",
+            "id": "executions",
+            "name": "Run/Execute an analysis",
+            "method_type": "POST",
             "path": "/nca-engine/users/{{user-id}}/executions",
             "description": "Retuns all executions for a specific user"
         }

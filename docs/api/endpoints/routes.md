@@ -7,4 +7,4 @@ import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
 
 
 
-<DisplayRoutes :columns-to-show="['path', 'description']" />
+<DisplayRoutes :columns-to-show="['name', 'path']" />

@@ -5,7 +5,7 @@ import { defineProps } from 'vue';
 
 
 const props = defineProps({
-  routeNames: {
+  routeId: {
     type: Array,
     default: () => []
   },
@@ -18,12 +18,13 @@ const props = defineProps({
 const columnLabels = {
   name: 'Route Name',
   path: 'Endpoint URL',
-  description: 'Description'
+  description: 'Description',
+  method_type: "Method Type"
 };
 
 const endpoints = computed(() => {
-  if (props.routeNames.length > 0) {
-    return data.routes.filter(route => props.routeNames.includes(route.name));
+  if (props.routeId.length > 0) {
+    return data.routes.filter(route => props.routeId.includes(route.id));
   }
   return data.routes; // Return all routes if no specific names are provided
 });

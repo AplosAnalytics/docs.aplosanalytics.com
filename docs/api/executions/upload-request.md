@@ -7,9 +7,17 @@ import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
 To upload a file into the Aplos NCA SaaS system, you will need to create a request for an AWS Presigned URL, which will allow you to upload the file.  You will use the response information to upload your file.
 
 ## Route
-<DisplayRoutes :route-names="['presigned_url']" :columns-to-show="['path']" />
+<DisplayRoutes :route-id="['presigned_url']" :columns-to-show="['path', 'method_type']" />
 
 ## Payload
+
+In the payload you will need to specify two fields.
+
+|Name|Description|
+|--|--|
+|file_name|The name of the file.  Whatever you enter here will be name of the file stored in our system.  Typically you will name this the same as the actual file name, but you have an opportunity to override it here.|
+|method_type|post|
+
 ```json
 {
     
@@ -20,6 +28,8 @@ To upload a file into the Aplos NCA SaaS system, you will need to create a reque
 ```
 
 ## Response
+
+The response will contain a decent amount of information that you will need to carry along for the next steps.
 
 ```json
 {

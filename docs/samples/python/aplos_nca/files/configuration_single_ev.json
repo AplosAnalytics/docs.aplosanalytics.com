@@ -1,0 +1,51 @@
+{
+   "version": "2024-02-22",
+   "designations": {
+     "blq": "BLQ",
+     "missing": "NS",
+     "concentration_unit": "ng/mL"
+   },
+   "columns": {
+     "time": "time",
+     "unique_id": "subject",
+     "concentration": {
+       "observed": "conc.obs",
+       "analyzed": "conc"
+     },
+     "sorting": [
+       "subject",
+       "time"
+     ],
+     "grouping": [
+       "subject"
+     ]
+   },
+   "dosing": {
+     "amount": 10000,
+     "unit": "mg",
+     "frequency": "single",
+     "type": "ev"
+   },
+   "time": {
+     "unit": "hr",
+     "time_of_administration": 0,
+     "tau": 24,
+     "infusion": {
+       "protocol": "rate",
+       "amount": "1"
+     }
+   },
+   "kel_rules": {
+     "regression_statistic": "adj_r2",
+     "minimum_statistic": 0,
+     "maximum_extrapolation_linear": 0,
+     "maximum_extrapolation_logarithmic": 0,
+     "maximum_time_points": 0,
+     "minimum_span": 0,
+     "earliest_time_point": 0,
+     "tie": [
+       "kel_n",
+       "kel_lower"
+     ]
+   }
+ }

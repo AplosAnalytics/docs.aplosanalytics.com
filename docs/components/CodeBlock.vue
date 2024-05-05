@@ -1,7 +1,7 @@
 <template>
   <div class="`language-${langClass} vp-adaptive-theme line-numbers-mode`">
     <span v-if="link">
-      <a v-bind:href="link" target="_blank">Full Source</a>
+      <a v-bind:href="link" target="_blank" style="font-size: 12px;padding:10px;text-decoration:none;" >Full Source </a>
     </span>
     <button title="Copy Code" class="copy"></button>
     <span class="lang">{{ lang.toLowerCase() }}</span>
@@ -136,7 +136,7 @@ function wrap_comment_for_lang_text(text) {
   return text;
 }
 
-function skiped_lines_text(start, end) {
+function skipped_lines_text(start, end) {
   const text = `... skipped lines [${start}-${end}] for brevity...`;
 
   return wrap_comment_for_lang_text(text);
@@ -185,50 +185,64 @@ watchEffect(() => {
   highlightCode(); // Re-highlight the code
 });
 
-function filterLines(lines, displayLines) {
-  let result = [];
-  let lastLineIndex = -2; // Adjusted to -2 to handle edge case for the first element appropriately
 
-  displayLines.forEach((item) => {
-    let currentStart = -1;
-    let currentEnd = -1;
-
+function expandDisplayLines(inputLines) {
+  const result = [];
+  inputLines.forEach(item => {
     if (typeof item === "number") {
-      currentStart = currentEnd = item - 1; // Convert 1-based to 0-based index
+      result.push(item);
     } else if (item.start && item.end) {
-      currentStart = item.start - 1;
-      currentEnd = item.end - 1;
-    }
-
-    // Check if there is a gap and insert a placeholder with skipped lines range
-    if (lastLineIndex >= 0 && currentStart > lastLineIndex + 1) {
-      const skippedStart = lastLineIndex + 2; // Convert back to 1-based and adjust to next line after last
-      const skippedEnd = currentStart; // Already 0-based, adjust to 1-based by not adding 1
-      const text = skiped_lines_text(skippedStart, skippedEnd);
-      result.push(text);
-    }
-
-    // Add lines for current start to end if they exist
-    for (let i = currentStart; i <= currentEnd && i < lines.length; i++) {
-      if (lines[i]) {
-        result.push(lines[i]);
+      for (let i = item.start; i <= item.end; i++) {
+        result.push(i);
       }
     }
-
-    // Update lastLineIndex to the end of the current range
-    lastLineIndex = currentEnd;
   });
+  return result.sort((a, b) => a - b); // Ensure the array is sorted
+}
 
-  // After processing all items, check if there are any lines left to display
-  if (lastLineIndex < lines.length - 1) {
-    const skippedStart = lastLineIndex + 2; // The next line after the last included line
-    const skippedEnd = lines.length; // The last line of the document
-    const text = skiped_lines_text(skippedStart, skippedEnd);
+function filterLines(lines, displayLines) {
+  let result = [];
+  let lastDisplayedIndex = -1; // Initialize to -1 to handle the first line's check correctly
+  const linesToDisplay = expandDisplayLines(displayLines);
+
+  // Check for initially skipped lines (before the first displayed line)
+  if (linesToDisplay[0] > 1) {
+    const text = skipped_lines_text(1, linesToDisplay[0] - 1);
     result.push(text);
   }
 
-  return result.join("\n");
+  linesToDisplay.forEach((lineNumber) => {
+    const currentIndex = lineNumber - 1; // Convert to 0-based index
+
+    // Check for skipped lines before this one
+    if (lastDisplayedIndex !== -1 && currentIndex > lastDisplayedIndex + 1) {
+      const skippedStart = lastDisplayedIndex + 2; // The next line after the last included line
+      const skippedEnd = currentIndex; // One line before the current line
+      const text = skipped_lines_text(skippedStart, skippedEnd);
+      result.push(text);
+    }
+
+    // Add the current line if it exists
+    if (lines[currentIndex]) {
+      result.push(lines[currentIndex]);
+    }
+
+    // Update the last displayed index
+    lastDisplayedIndex = currentIndex;
+  });
+
+  // Check for any remaining lines after the last displayed line
+  if (lastDisplayedIndex < lines.length - 1) {
+    const skippedStart = lastDisplayedIndex + 2;
+    const skippedEnd = lines.length;
+    const text = skipped_lines_text(skippedStart, skippedEnd);
+    result.push(text);
+  }
+
+  return result.join('\n');
 }
+
+
 
 async function fetchCode(src) {
   const response = await fetch(src);

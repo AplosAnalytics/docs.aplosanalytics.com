@@ -12,18 +12,31 @@ You'll use information from the pre-signed generation to do the upload.
 ## Route
 <DisplayRoutes :route-id="['file_upload']" :columns-to-show="['path', 'method_type']" />
 
-## The Response from the Upload Request
+## Payload
 
-In the previous step, you initiated a pre-signed url request.   The response from that will request will contain the `"presigned":"url"`, which will become the url enpoint for the POST upload action to upload a file.
+
+## Response
+
+In the previous step, you initiated a pre-signed url request.   The response from that will request will contain the `"presigned":"url"`, which will become the url-endpoint for the POST upload action to upload a file.
 
 Below is the basic structure of the response created from the pre-signed url request.
 <CodeBlock 
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/upload-request-response.json" 
     lang="json"
-    :highlightLines=[9]        
+    :highlightLines=[7,9]           
     >
 </CodeBlock>
+
+
+
+> [!NOTE] The Response of an Upload -> 204 ~ No Content (not 200)
+>
+>The response from uploading a file with a pre-signed URL is simply `204` with no body or other information.  It's essentially a response that the information was received and it will be available shortly. S3 works on an eventual consistency model as it replicates this across several availability zones.
+>
+>**Keep that in mind if you are only used to checking for 200 responses.**
+>
+>Typically your file is ready almost immediately.  And, since our executions are queued, you can request the start an execution right away.
 
 ## Example with 🐍 Python
 
@@ -46,8 +59,4 @@ The Code Block above calls this class to create the Payload for the upload.
 </CodeBlock>
 
 
-## The Response of an Upload -> 204 Ok ~ No Content
 
-The response from uploading a file with a pre-signed URL is simply `204` with no body or other information.  It's essentially a response that the information was received and it will be available shortly. S3 works on an eventual consistency model as it replicates this across several availability zones.
-
-Typically your file is ready almost immediately.  And, since our executions are queued, you can request the start an execution right away.

@@ -5,8 +5,18 @@ import CodeBlock from '/docs/components/CodeBlock.vue'
 
 # 🚀 Run an Analysis on the NCA Engine
 
-Once a file is uploaded into our system you can run an execution against it.  This means you can follow the flow of uploading a file and then executing right away, or simply upload one or more files and run executions at a later date and time.
-In this section, we'll focus on running an execution.
+Once a file is uploaded you can run an NCA Engine Execution against it.  
+
+In general, you can follow the flow of:
+1. Uploading a file 
+2. Then run an execute action right away
+
+Or 
+1. Upload one or more files
+2. Run executions at a later date and time. see [Listing Files](../users/list-files.md)
+
+> [!TIP]
+> No matter which flow you take,  the execution portion is the same and in this section, we'll take a deeper dive into how to run an execution.
 
 ## Route
 <DisplayRoutes :route-id="['run_execution']" :columns-to-show="['path', 'method_type']" />
@@ -23,12 +33,12 @@ To run an analysis, you need to provide two required sections of the payload and
 
 ### Payload Example
 
-Below is a sample of the payload required for submission.  For this sample, we excluded the meta-data.
+Below is a sample of the payload required for submission.  For this quick introduction to the `payload` we'll skip all the details and only show the 3 parts, including the optional `"meta_data"`.
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/payloads/payload_sample.json"    
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/payloads/payload_sample.json"
     lang="json"    
-    :displayLines="[{start:1, end: 5}, {start: 22, end: 100}]"    
+    :displayLines="[{start:1, end: 5}, 6, 21, 22, 71, 72, 73 ]"    
     >
 </CodeBlock>
 
@@ -36,13 +46,26 @@ Below is a sample of the payload required for submission.  For this sample, we e
 ### Full Payload Example
 
 Below is a full sample of the payload.  The `meta_data` is just an example and can be formatted with any valid JSON or a simple value for a text block. 
+
+As you can see the `meta_data` can be useful for storing additional data along with your analysis.
+
+The `configuration` includes the necessary parameters that are required to run your analysis.
+
+> [!TIP]
+> For now you don't need to know the details of the configuration file.  We have fully functioning samples to help you get started.
+
+
+
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/payloads/payload_sample.json"    
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/payloads/payload_sample.json"
     lang="json"
+    :highlightLines=[2,6,22]
     >
 </CodeBlock>
 
+
+## Response
 
 ## Example with 🐍 Python
 
@@ -52,7 +75,7 @@ Example of how an execution is launched.
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/samples/python/aplos_nca/main.py"    
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/samples/python/aplos_nca/main.py"
     lang="python"    
-    :displayLines="[{start: 92, end: 143}]"    
+    :displayLines="[{start: 92, end: 143}]"
     >
 </CodeBlock>
 

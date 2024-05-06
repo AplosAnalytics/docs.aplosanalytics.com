@@ -1,6 +1,14 @@
 {
     "routes" : [
         {
+            "id": "get_jwt",
+            "name": "Login -> Get JWT",
+            "path": "https://cognito-idp.{region}.amazonaws.com",
+            "method_type": "POST",
+            "description": "Attempts to login and get a JWT."
+        },
+        
+        {
             "id": "presigned_url",
             "name": "Get a Presigned Url",
             "path": "https://api.<tenant>.aplos-nca.com/nca-engine/generate-upload-url",

@@ -132,4 +132,4 @@ COGNITO_REGION="<region>"
 
 ## The Command Line in Action
 
-![Commandline App](./images/aplos-nca-commandline.png)
+![Commandline App](/docs/samples/python/aplos_nca/images/aplos-nca-commandline-cropped.png)

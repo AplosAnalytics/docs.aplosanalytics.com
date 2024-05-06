@@ -49,7 +49,8 @@ const endpoints = computed(() => {
         ></path></svg
       >Route Warning: Subject to change before Go-Live Summer 2024
     </p>
-    <p>
+    <p>The following applies to EARLY ACCESS prior to Go Live.</p>
+    <p>      
       Some of our routes will be changing prior to our final go-live date this summer
       (2024). They won't change during Early Access, but be sure to check the
       documentation.

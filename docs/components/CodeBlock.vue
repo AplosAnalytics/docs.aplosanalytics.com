@@ -169,7 +169,7 @@ function addHighlightedClassToLines(htmlCode, lines) {
       lineElements[line - 1].classList.add('highlighted');
       lineElements[line - 1].style.setProperty('background-color', `${color_code}`, 'important'); // 50% transparent yellow
       lineElements[line - 1].style.setProperty('color', 'black', 'important');
-      lineElements[line - 1].style.setProperty('padding', '0 2px', 'important');
+      // lineElements[line - 1].style.setProperty('padding', '0 2px', 'important');
     }
   });
 

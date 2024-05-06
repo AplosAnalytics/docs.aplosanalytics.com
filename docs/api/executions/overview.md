@@ -18,14 +18,14 @@ For those 3 easy steps to occur there are additional things that the UI does for
 
 1. When you log in, your [JWT is returned from Cognito](./jwt) and "carried" around with you like a security pass.
 1. File uploads
-    - Presigned S3 File Upload [requests are created](./upload-request.md)
-    - Files are [securely uploaded](./upload.md) with AWS S3 Presigned URLS
+    - Presigned S3 File Upload [requests are created](./upload-request)
+    - Files are [securely uploaded](./upload) with AWS S3 Presigned URLS
 1. Configurations are preloaded with a wizard / guided input.
-1. Executions are [requested](./run.md) with:
+1. Executions are [requested](./run_execution) with:
     - The analysis file information
     - The configuration
     - Optional Meta Data
-1. After the execution submission, [status checks](./status.md) are automatically polled and displayed in the UI.
+1. After the execution submission, [status checks](./status) are automatically polled and displayed in the UI.
 
 > [!TIP]
 > In this section we outline the process of uploading a file and then doing the execution.  Just keep in mind that once a file is uploaded, you run multiple executions with different configurations against it.  

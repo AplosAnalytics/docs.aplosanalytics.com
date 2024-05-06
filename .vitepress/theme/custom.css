@@ -1,17 +1,25 @@
 
 
 :root {
-    --vp-c-brand-1: #59a545;
-    --vp-c-brand-2: #59a545;
+    --vp-c-brand-1: #5aa745;
+    --vp-c-brand-2: #15223d;
+    --vp-c-brand-3: #01508d;
+    --vp-home-hero-name-color: #01508d;
   }
 
 
+
+
 @media (prefers-color-scheme: dark) {
+    :root {
+      --vp-c-brand-2: #4a90e2;
+      --vp-c-brand-3: #4a90e2; /* Example: a lighter blue for better visibility in dark mode */
+    }
     .shiki,
     .shiki span {
       color: var(--shiki-dark) !important;
       background-color: var(--shiki-dark-bg) !important;
-      /* Optional, if you also want font styles */
+      
       font-style: var(--shiki-dark-font-style) !important;
       font-weight: var(--shiki-dark-font-weight) !important;
       text-decoration: var(--shiki-dark-text-decoration) !important;
@@ -24,9 +32,19 @@
     .shiki span {
       color: var(--shiki-light) !important;
       background-color: var(--shiki-light-bg) !important;
-      /* Optional, if you also want font styles */
+      
       font-style: var(--shiki-light-font-style) !important;
       font-weight: var(--shiki-light-font-weight) !important;
       text-decoration: var(--shiki-light-text-decoration) !important;
     }
-  }
+}
+
+/* shiki line highlighter */
+.vp-doc [class*='language-'] code .highlighted {
+  background-color: var(--vp-code-line-highlight-color) !important;
+  transition: background-color 0.5s;
+  margin: 0 -24px;
+  padding: 0 24px;
+  width: calc(100% + 2* 24px);
+  display: inline-block;
+}

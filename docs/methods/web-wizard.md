@@ -1,4 +1,4 @@
-# Run Analysis Wizard
+# 🧙‍♂️ Run Analysis Wizard
 The run analysis wizard assists the user to perform an analysis using guided instructions.
 
 ## Step 1: Upload a file

@@ -4,6 +4,7 @@ cache
 .nuxt
 .output
 
+__pycache__
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
@@ -14,3 +15,5 @@ cache
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 .DS_Store
+.env
+.venv

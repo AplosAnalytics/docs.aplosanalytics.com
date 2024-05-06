@@ -10,7 +10,7 @@ import markdownItGithubAlerts from 'markdown-it-github-alerts'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Aplos NCA Docs",
-  description: "Aploc NCA Documentation for the NCA Engine",
+  description: "Documentation for the Aplos NCA Engine",
   head: [
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   ],

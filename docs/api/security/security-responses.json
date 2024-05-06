@@ -1,0 +1,35 @@
+{
+    "action": "<the-action>",
+    "errors": [
+        {
+            "status_code": 403,
+            "message": "User <authenticated-user-id>/<email-address> does not have the appropriate permissions on requested resource <resource-id>."
+        }
+    ],
+    "user_id": "<authenticated-user-id>",
+    "requested_user_id": "<target-user-id>",
+    "start_date": "<datetime-utc>",
+    "end_date": "<datetime-utc>",
+    "log_id": "<unique-log-id>",
+    "diagnostics": {
+        "context": {
+            "memory_limit_in_mb": "1024",
+            "get_remaining_time_in_millis": 29977
+        },
+        "event": {
+            "authenticated_user": {
+                "description": "The user logged in making the request",
+                "id": "<authenticated-user-id>",
+                "email": "<email-address>"
+            },
+            "runtime": "NA",
+            "tracking": "<tracking-id>"
+        },
+        "app_info": {
+            "version": {
+                "number": "<api-version-number>",
+                "build_date": "<build-date>"
+            }
+        }
+    }
+}

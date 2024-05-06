@@ -13,7 +13,7 @@ All the source code can be downloaded from our [docs repo](https://github.com/Ap
 ## API Settings
 
 > [!WARNING] A valid Aplos NCA Account is required.
-> In order to run the executions and connect to our system you will need a valid account.
+> In order to run the executions and connect to our system, you will need a valid account with an active subscription.
 >
 > You'll need your username (email address and a password) a Cognito Client Id
 > which allows the USER_PASSWORD_AUTH flow, and your API URL.  

@@ -4,7 +4,8 @@
         "text": "Security",
         "items": [
           { "text": "Overview", "link": "/docs/api/security/overview" },
-          { "text": "JWT with Cognito", "link": "/docs/api/security/jwt" }
+          { "text": "JWT with Cognito", "link": "/docs/api/security/jwt" },
+          { "text": "Security Responses", "link": "/docs/api/security/security-responses" }
           
         ]
       },

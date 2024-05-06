@@ -11,6 +11,8 @@
   </div>
 </template>
 
+
+
 <script setup>
 import { ref, onMounted, watchEffect, computed } from "vue";
 import { getHighlighter, codeToHtml } from "shiki";
@@ -40,6 +42,14 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  highlighColor: {
+    type: String,
+    default: "green"
+  },
+  showSkippedLinesHelp: {
+    type: Boolean,
+    default: true
+  }
 });
 
 const code = ref("");
@@ -48,6 +58,29 @@ const htmlFormattedCode = ref("");
 
 const langClass = computed(() => props.lang.toLowerCase());
 const highlighter = ref(null);
+const color_maps = [
+  {
+    "name": "yellow",
+    "code":  "rgba(255, 255, 0, 0.3)"
+  },
+  {
+    "name": "blue",
+    "code":  "rgba(0, 0, 255, 0.3)"
+  },
+  {
+    "name": "green",
+    "code":  "rgba(0, 255, 0, 0.3)"
+  },
+  {
+    "name": "red",
+    "code":  "rgba(255, 0, 0, 0.3)"
+  },
+  {
+    "name": "pink",
+    "code":  "rgba(255, 192, 203, 0.3)"
+  },
+
+]
 const language_comment_blocks = [
   {
     lang: "python",
@@ -116,14 +149,35 @@ async function highlightCode() {
         //light: "github-light",
       },
     });
-    htmlFormattedCode.value = removeUnwantedStyles(highlightedCode);
+    htmlFormattedCode.value = addHighlightedClassToLines(removeUnwantedStyles(highlightedCode), validLines);
   } catch (e) {
     console.error("Error highlighting code:", e);
   }
 }
 
+// hack to add the highlighted class
+function addHighlightedClassToLines(htmlCode, lines) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlCode, 'text/html');
+  const lineElements = doc.querySelectorAll('code > span');
+  const color_code_block = color_maps.find(color => color.name.toLowerCase() === props.highlighColor.toLowerCase()) 
+    || { name: "Default", code: "rgba(128, 128, 128, 0.5)" };  // Default to gray if no match
+  ;
+  const color_code = color_code_block["code"]
+  lines.forEach(line => {
+    if (lineElements[line - 1]) { // line numbers are 1-based, array is 0-based
+      lineElements[line - 1].classList.add('highlighted');
+      lineElements[line - 1].style.setProperty('background-color', `${color_code}`, 'important'); // 50% transparent yellow
+      lineElements[line - 1].style.setProperty('color', 'black', 'important');
+      lineElements[line - 1].style.setProperty('padding', '0 2px', 'important');
+    }
+  });
+
+  return doc.body.innerHTML;
+}
+
 function wrap_comment_for_lang_text(text) {
-  console.log(props.lang);
+  // console.log(props.lang);
   const block = language_comment_blocks.find(comment => comment.lang.toLowerCase() === props.lang.toLowerCase());
   
   if (block) {
@@ -137,9 +191,14 @@ function wrap_comment_for_lang_text(text) {
 }
 
 function skipped_lines_text(start, end) {
-  const text = `... skipped lines [${start}-${end}] for brevity...`;
+  //console.log(`props.showSkippedLinesHelp: ${props.showSkippedLinesHelp}`)
+  if (props.showSkippedLinesHelp) {
+    const text = `... skipped lines [${start}-${end}] for brevity...`;
 
-  return wrap_comment_for_lang_text(text);
+    return wrap_comment_for_lang_text(text);
+  }
+  return ""
+  
 }
 
 function removeUnwantedStyles(formattedCode) {
@@ -258,19 +317,4 @@ async function fetchCode(src) {
 }
 </script>
 
-<style scoped>
-code {
-  counter-reset: step;
-  counter-increment: step 0;
-}
 
-code .line::before {
-  content: counter(step);
-  counter-increment: step;
-  width: 1rem;
-  margin-right: 1.5rem;
-  display: inline-block;
-  text-align: right;
-  color: rgba(115, 138, 148, 0.4);
-}
-</style>

@@ -12,6 +12,10 @@ const props = defineProps({
     type: Array,
     default: () => ["name", "path", "description"], // Default columns
   },
+  displayWarnings: {
+    type: Boolean,
+    default: true
+  }
 });
 
 const columnLabels = {
@@ -30,7 +34,7 @@ const endpoints = computed(() => {
 </script>
 
 <template>
-  <div class="markdown-alert markdown-alert-warning">
+  <div class="markdown-alert markdown-alert-warning" v-if="displayWarnings">
     <p class="markdown-alert-title">
       <svg
         class="octicon octicon-alert mr-2"

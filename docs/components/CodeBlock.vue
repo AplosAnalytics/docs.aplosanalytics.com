@@ -157,23 +157,28 @@ async function highlightCode() {
 
 // hack to add the highlighted class
 function addHighlightedClassToLines(htmlCode, lines) {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(htmlCode, 'text/html');
-  const lineElements = doc.querySelectorAll('code > span');
-  const color_code_block = color_maps.find(color => color.name.toLowerCase() === props.highlighColor.toLowerCase()) 
-    || { name: "Default", code: "rgba(128, 128, 128, 0.5)" };  // Default to gray if no match
-  ;
-  const color_code = color_code_block["code"]
-  lines.forEach(line => {
-    if (lineElements[line - 1]) { // line numbers are 1-based, array is 0-based
-      lineElements[line - 1].classList.add('highlighted');
-      lineElements[line - 1].style.setProperty('background-color', `${color_code}`, 'important'); // 50% transparent yellow
-      lineElements[line - 1].style.setProperty('color', 'black', 'important');
-      // lineElements[line - 1].style.setProperty('padding', '0 2px', 'important');
-    }
-  });
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlCode, 'text/html');
+    const lineElements = doc.querySelectorAll('code > span');
+    const color_code_block = color_maps.find(color => color.name.toLowerCase() === props.highlighColor.toLowerCase()) 
+      || { name: "Default", code: "rgba(128, 128, 128, 0.5)" };  // Default to gray if no match
+    ;
+    const color_code = color_code_block["code"]
+    lines.forEach(line => {
+      if (lineElements[line - 1]) { // line numbers are 1-based, array is 0-based
+        lineElements[line - 1].classList.add('highlighted');
+        lineElements[line - 1].style.setProperty('background-color', `${color_code}`, 'important'); // 50% transparent yellow
+        lineElements[line - 1].style.setProperty('color', 'black', 'important');
+        // lineElements[line - 1].style.setProperty('padding', '0 2px', 'important');
+      }
+    });
 
-  return doc.body.innerHTML;
+    return doc.body.innerHTML;
+  } catch (e){
+    console.error(`error in adding highlight to class: ${e}`)
+    return htmlCode
+  }
 }
 
 function wrap_comment_for_lang_text(text) {

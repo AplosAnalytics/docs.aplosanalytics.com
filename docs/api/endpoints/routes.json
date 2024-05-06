@@ -35,6 +35,13 @@
             "method_type": "POST",
             "path": "https://api.<tenant>.aplos-nca.com/nca-engine/executions",
             "description": "Queues an execution to run"
+        },
+        {
+            "id": "get_executions",
+            "name": "List Executions",
+            "method_type": "GET",
+            "path": "https://api.<tenant>.aplos-nca.com/nca-engine/users/{{user-id}}/executions",
+            "description": "Lists a users executions"
         }
         
     ]

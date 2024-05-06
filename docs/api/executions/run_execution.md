@@ -67,6 +67,15 @@ The `configuration` includes the necessary parameters that are required to run y
 
 ## Response
 
+The response will come back with an `execution_id` and a `status`.  Use execution_id to get status updates.
+<CodeBlock 
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/run_execution_response.json"    
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/run_execution_response.json"
+    lang="json"    
+    >
+</CodeBlock>
+
+
 ## Example with 🐍 Python
 
 Example of how an execution is launched.

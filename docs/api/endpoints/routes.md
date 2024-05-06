@@ -7,7 +7,7 @@ import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
 
 Here's a list of our publically available routes that you can use to interact with the Aplos NCA SaaS solution.
 
-If you are on `professional`, `educational` or `developer` plans you will access the API(s) from :
+If you are on `professional`, `academic` or `developer` plans you will access the API(s) from :
 
 - `https://api.aplos-nca.com`
 

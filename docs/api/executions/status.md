@@ -40,4 +40,4 @@ Once the status is complete, a `presigned` url section will be available contain
 > [!NOTE] 
 > The `presigned` section is only available once the status is `complete`
 >
-> This may be a separate call in the fill version of the api.
+> This may be a separate call in the full version of the api.

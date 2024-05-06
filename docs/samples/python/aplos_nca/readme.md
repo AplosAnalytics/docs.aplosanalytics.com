@@ -1,4 +1,11 @@
-# Executing the NCA Execution process
+# Analysis with Python
+
+You can use 🐍 python to perform analysis with Aplos NCA using API calls via secure https requests. We have prepared sample scripts to illustrate how this analysis can be performed using python. 
+
+This was created as a reusable library which was wrapped with commandline parsing.  All the source code can be downloaded from our [docs repo](https://github.com/AplosAnalytics/docs.aplosanalytics.com/tree/main/docs/samples/python/aplos_nca).
+
+>[!TIP] We use this for our demos
+> We'll keep this maintained as we use it for our customer demos.  So keep coming back for new features.
 
 ## Python Environment
 While it's not required, we suggest setting up a virtual environment with your favorite tool.
@@ -19,40 +26,6 @@ pip install -r ./requirements.txt
 ```
 
 
-## Required Environment Vars
-
-The following environment variables are required for execution.  We're using environment vars so that nothing gets accidentally saved into git.
-
-If executing the functions via the command line, you need to create the environment variables so that they are available at runtime, like the following.
-
-Mac & Linux
-```shell
-export APLOS_API_URL="<api-gateway-url>"
-export COGNITO_CLIENT_ID="<client-id>"
-export COGNITO_USER_NAME="<email-address>"
-export COGNITO_PASSWORD="<password>"
-export COGNITO_REGION="<region>"
-```
-Windows
-```shell
-SET APLOS_API_URL="<api-gateway-url>"
-SET COGNITO_CLIENT_ID="<client-id>"
-SET COGNITO_USER_NAME="<email-address>"
-SET COGNITO_PASSWORD="<password>"
-SET COGNITO_REGION="<region>"
-```
-If you are using the debugger, you can create a `.env` file locally and enter the environment vars there.
-
-```shell
-APLOS_API_URL="<api-gateway-url>"
-COGNITO_CLIENT_ID="<client-id>"
-COGNITO_USER_NAME="<email-address>"
-COGNITO_PASSWORD="<password>"
-COGNITO_REGION="<region>"
-```
-
-
-
 ## Required Files for execution (analysis submission)
 To submit something for an analysis, you will need 2 required files and one optional file.  
 - Input File (analysis file)
@@ -63,7 +36,7 @@ Technically only the analysis file is submitted as a file.
 
 The other two (configuration and metadata) are submitted as JSON/dictionary objects.  However to make things easier for this demo they are stored as files, then read in at runtime and submitted in their normal dictionary form.
 
-The files are located `./files` directory of this project.
+The files are located `./files` directory of this demo project (`./samples/python/aplos_nca`).
 
 
 ## Outputs
@@ -122,3 +95,41 @@ python ./main.py \
     -m ./files/meta_data.json
 
 ```
+
+## Environment Vars
+
+To save time and typing you can use environment variables to "pre-load" your execution and then any "unknown" value will be asked by the commandline utility.
+
+The following environment variables are required for execution.  We're using environment vars so that nothing gets accidentally saved into git.
+
+If executing the functions via the command line, you need to create the environment variables so that they are available at runtime, like the following.
+
+Mac & Linux
+```shell
+export APLOS_API_URL="<api-gateway-url>"
+export COGNITO_CLIENT_ID="<client-id>"
+export COGNITO_USER_NAME="<email-address>"
+export COGNITO_PASSWORD="<password>"
+export COGNITO_REGION="<region>"
+```
+Windows
+```shell
+SET APLOS_API_URL="<api-gateway-url>"
+SET COGNITO_CLIENT_ID="<client-id>"
+SET COGNITO_USER_NAME="<email-address>"
+SET COGNITO_PASSWORD="<password>"
+SET COGNITO_REGION="<region>"
+```
+If you are using the debugger, you can create a `.env` file locally and enter the environment vars there.
+
+```shell
+APLOS_API_URL="<api-gateway-url>"
+COGNITO_CLIENT_ID="<client-id>"
+COGNITO_USER_NAME="<email-address>"
+COGNITO_PASSWORD="<password>"
+COGNITO_REGION="<region>"
+```
+
+## The Command Line in Action
+
+![Commandline App](./images/aplos-nca-commandline.png)

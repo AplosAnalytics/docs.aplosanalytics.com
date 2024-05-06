@@ -1,3 +1,4 @@
-# Analysis with Python
 
-Coming soon!
+
+<!--@include: ./python/aplos_nca/readme.md-->
+

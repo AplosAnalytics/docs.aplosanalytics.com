@@ -20,6 +20,6 @@ The response contains a list of Executions JSON objects.  Presigned URLs for dow
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/list-response.json"    
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/list-response.json"
     lang="json"    
-    :highlightLines="[17]"
+    :highlightLines="[19,34,67,82]"
     >
 </CodeBlock>

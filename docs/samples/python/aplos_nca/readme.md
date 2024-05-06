@@ -2,10 +2,29 @@
 
 You can use 🐍 python to perform analysis with Aplos NCA using API calls via secure https requests. We have prepared sample scripts to illustrate how this analysis can be performed using python. 
 
-This was created as a reusable library which was wrapped with commandline parsing.  All the source code can be downloaded from our [docs repo](https://github.com/AplosAnalytics/docs.aplosanalytics.com/tree/main/docs/samples/python/aplos_nca).
+This was created as a reusable library which was wrapped with commandline parsing.  You can use command line switches or simply run it and get prompted for the required input.
+
+All the source code can be downloaded from our [docs repo](https://github.com/AplosAnalytics/docs.aplosanalytics.com/tree/main/docs/samples/python/aplos_nca).
 
 >[!TIP] We use this for our demos
 > We'll keep this maintained as we use it for our customer demos.  So keep coming back for new features.
+
+
+## API Settings
+
+> [!WARNING] A valid Aplos NCA Account is required.
+> In order to run the executions and connect to our system you will need a valid account.
+>
+> You'll need your username (email address and a password) a Cognito Client Id
+> which allows the USER_PASSWORD_AUTH flow, and your API URL.  
+> 
+> The Client Id (aka Cognito Client Key) and API URL can be found in your user account.
+> Your username is your email address and your password would have been provided to you during your
+> onboarding or with a "forgot password" request and reset.
+
+### Access your settings from the UI
+![API Configuration](/docs/samples/images/API_Configuration_blur.png)
+
 
 ## Python Environment
 While it's not required, we suggest setting up a virtual environment with your favorite tool.
@@ -45,8 +64,15 @@ Currently, we are outputting the files in a hidden directory (`.output`) which i
 Located in `./.output`
 
 
-## Run and Execution
-Assuming you've set the correct environment variables, you can run the main.py file as w/o any parameters and it will run the default execution.
+## Run the Execution
+
+In order to run the execution you need to either:
+- Add environment variables for the required parameter see [Environment Vars](/docs/samples/python-overview.html#environment-vars) later in this document
+- Use the command switch arguments
+- Or simply input the values as you are prompted.
+
+> [!TIP] Tip! Use environment vars and override when needed.
+> You can set the environment variables, but still override them during the prompts
 
 From the project you you can 
 `python .<project-path>/main.py`
@@ -79,14 +105,27 @@ For automation, it's best to store them as a secret and retrieve the secret at r
 ## Examples:
 Let's assume you have your username, password, and API settings in environment vars.  You can use the `-s` to skip those prompts and supply the config, meta, and analysis for different runs.
 
+> [!TIP]
+> If you have certain values present the command line tool will prompt to see if you want to use the defaults or override them.
+> If you want to skip the prompt, use `-s` as an argument.  This will skip the prompt for any value already set.
+
+### Sample execution
+
+If your username, password, client key and API URL are already set, then the only thing you need to do on each run is supply the configuration and the analysis file.  The meta-data file is optional.  Issuing the `-s` will skip all the extra prompts.
+
 ```shell
-# execution
+# single line execution example
 
 python main.py -s -c <config-file> -f <analysis-file> -m <meta-file>
 
 ```
 
+### Same example, on multiple lines and with example files
+
 ```shell
+
+# break into multiple lines for easier readability
+# NOTE: a copy paste of this from code samples doesn't always work right
 
 python ./main.py \
     -s \
@@ -98,7 +137,7 @@ python ./main.py \
 
 ## Environment Vars
 
-To save time and typing you can use environment variables to "pre-load" your execution and then any "unknown" value will be asked by the commandline utility.
+To save time and typing you can use environment variables to "pre-load" your execution and then any "unknown" value will be asked by the command line utility.
 
 The following environment variables are required for execution.  We're using environment vars so that nothing gets accidentally saved into git.
 
@@ -120,7 +159,9 @@ SET COGNITO_USER_NAME="<email-address>"
 SET COGNITO_PASSWORD="<password>"
 SET COGNITO_REGION="<region>"
 ```
-If you are using the debugger, you can create a `.env` file locally and enter the environment vars there.
+
+> [!TIP]
+> You can also create a `.env` file locally and enter the environment vars there.
 
 ```shell
 APLOS_API_URL="<api-gateway-url>"
@@ -131,5 +172,6 @@ COGNITO_REGION="<region>"
 ```
 
 ## The Command Line in Action
+In this example, I have all my settings preloaded in environment vars and I just hit enter several times to accept the defaults.
 
 ![Commandline App](/docs/samples/python/aplos_nca/images/aplos-nca-commandline-cropped.png)

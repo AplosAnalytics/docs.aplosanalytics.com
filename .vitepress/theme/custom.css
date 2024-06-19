@@ -10,10 +10,10 @@
 
 
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     :root {
       --vp-c-brand-2: #4a90e2;
-      --vp-c-brand-3: #4a90e2; /* Example: a lighter blue for better visibility in dark mode */
+      --vp-c-brand-3: #4a90e2; 
     }
     .shiki,
     .shiki span {
@@ -37,7 +37,7 @@
       font-weight: var(--shiki-light-font-weight) !important;
       text-decoration: var(--shiki-light-text-decoration) !important;
     }
-}
+} */
 
 /* shiki line highlighter */
 .vp-doc [class*='language-'] code .highlighted {

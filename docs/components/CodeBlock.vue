@@ -216,7 +216,7 @@ function removeUnwantedStyles(formattedCode) {
     "color:#E6E6E6",
     "background-color:#fff;--shiki-dark-bg:#24292e;",
     "color:#24292e;--shiki-dark:#e1e4e8",
-    // "background-color:#FFF;", 
+    "background-color:#FFF;", 
     "--shiki-dark-bg:#222222;", 
     "color:#002339;",
     "--shiki-dark:#E6E6E6"

@@ -42,6 +42,13 @@
             "method_type": "GET",
             "path": "https://api.<tenant>.aplos-nca.com/nca-engine/users/{{user-id}}/executions",
             "description": "Lists a users executions"
+        },
+        {
+            "id": "get_user_metrics",
+            "name": "List Metrics",
+            "method_type": "GET",
+            "path": "https://api.<tenant>.aplos-nca.com/nca-engine/users/{{user-id}}/metrics",
+            "description": "Lists a users execution metrics"
         }
         
     ]

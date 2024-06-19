@@ -1,0 +1,24 @@
+{
+    "tenant": {
+        "id": "XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "completed": "128",
+        "failed": "24",
+        "in_flight": "0",
+        "allocated": "1000",
+        "remaining": "872"
+    },
+    "user": {
+        "id": "XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "completed": "128",
+        "failed": "24",
+        "in_flight": "0",
+        "allocated": "1000",
+        "remaining": "872"
+    },
+    "subscription": {
+        "status": "active",
+        "start_date_time_utc": "2024-02-23 21:21:03.052351",
+        "end_date_time_utc": "2024-08-23 21:21:03.052351",
+        "type": "development"
+    }
+}

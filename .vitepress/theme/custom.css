@@ -5,15 +5,92 @@
     --vp-c-brand-2: #15223d;
     --vp-c-brand-3: #01508d;
     --vp-home-hero-name-color: #01508d;
+    --vp-home-hero-image-background-image: linear-gradient(-90deg, #97d4dd -20%, #bde9c1 80%);
   }
 
+.dark {
+  --vp-c-brand-2: #4a90e2;
+  --vp-c-brand-3: #4a90e2;
+  --vp-home-hero-name-color: #ffffff; /* change home page hero title color on dark mode */
+  --vp-home-hero-image-background-image: linear-gradient(-90deg, #fff -85%, #000 100%);
+}
+
+.dark .shiki, .dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* Home page Features Section */
+.VPHomeFeatures .items {
+  width: 50%;
+}
+
+.VPHomeFeatures .items .item.grid-4 {
+  width: calc(100% / 2);
+  padding: 20px;
+}
+
+.VPHomeFeatures .items .item .VPFeature {
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 2px 4px 10px #cdcdcd;
+}
+.VPHomeFeatures .items .item .VPFeature .box .VPImage {
+  margin-bottom: 5px;
+}
+.VPHomeFeatures .items .item .VPFeature .box .title {
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.VPHomeFeatures .items .item .VPFeature .box .details {
+  padding-top: 0px;
+    line-height: 16px;
+    font-size: 11px;
+}
+
+.dark .VPHomeFeatures .items .item .VPFeature {
+  background: #171719;
+  border-radius: 30px;
+  box-shadow: unset !important;
+}
 
 
+/* Home page Image Section */
+.VPHomeHero.has-image .image-container {
+  position: absolute;
+  width: 47%;
+  height: 550px;
+  top: 150px;
+  right: 0;
+  transform: unset !important;
+}
+
+.VPHomeHero.has-image .image-container .VPImage.image-src {
+  max-width: unset !important;
+  max-height: unset !important;
+  width: 400px;
+  height: 400px;
+  margin-left: 50px;
+}
+
+.VPHomeHero.has-image .image-bg {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
 /* @media (prefers-color-scheme: dark) {
     :root {
       --vp-c-brand-2: #4a90e2;
-      --vp-c-brand-3: #4a90e2; 
+      --vp-c-brand-3: #4a90e2;
     }
     .shiki,
     .shiki span {

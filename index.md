@@ -15,25 +15,25 @@ features:
       light: /quick-start-light.svg
       dark: /quick-start-dark.svg
     title: Quick Start
-    details: A quick overview on what is Aplos NCA and what we do
+    details: A quick overview of Aplos NCA and how to use it
     link: /docs/quickstart/aplosnca
   - icon: 
       light: /document-light.svg
       dark: /document-dark.svg
     title: Documentation
-    details: A quick overview on what is Aplos NCA and what we do
+    details: Detailed explanation of Aplos NCA functionality and configurations
     link: /docs/methods/
   - icon: 
       light: /api-light.svg
       dark: /api-dark.svg
     title: API Reference
-    details: A quick overview on what is Aplos NCA and what we do
+    details: Details of the Aplos NCA API
     link: /docs/api/
   - icon: 
       light: /example-light.svg
       dark: /example-dark.svg
     title: Examples
-    details: A quick overview on what is Aplos NCA and what we do
+    details: Aplos NCA examples using Python, R, and SAS.
     link: /docs/samples/
 
 ---

@@ -22,13 +22,18 @@ A user can initiate an analysis by providing the secure JWT, a unique file ident
 ![Check Status of Analysis](./images/analysis-status3.png "Check Status of Analysis")
 A user can check on the status of an analysis by providing the secure JWT and the unique analysis identifier. If the JWT is accepted, the API will respond with one of the following:
 
- -   `Queueing`: Analysis is being prepared to start
- -   `Processing`: Analysis is ongoing
- -   `Generating Report`: PK parameter calculations are complete and Techincal Report is being generated
- -   `Complete`: Analysis is complete
- -   `Failed`: Analysis failed
+| **Status Badge** | **Description** |
+| :-----------: | :--------- |
+| <button style="background-color: #E2A50C; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Queueing</button> | Analysis is being prepared to start |
+| <button style="background-color: #F55D14; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Processing</button> | Analysis is ongoing |
+| <button style="background-color: #2F69F3; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Generating Individual Plots</button> | Individual plots are being generated |
+| <button style="background-color: #2F69F3; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Generating Summaries</button> | Parameter summaries are being generated |
+| <button style="background-color: #1B963A; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Generating Technical Report</button> | Technical Report is being generated |
+| <button style="background-color: #5AA745; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Complete</button> | Analysis is complete |
+| <button style="background-color: #ff5757; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Failed</button> | Analysis failed |
 
-If the response is "Complete", a temporary URL to download the results will be provided. This URL can be used to download the results in a single ZIP archive file that is encrypted during transit.
+
+If the response is <button style="background-color: #5AA745; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Complete</button>, a temporary URL to download the results will be provided. This URL can be used to download the results in a single ZIP archive file that is encrypted during transit.
 
 ## Other commands
 The full list of API commands can be found in the [API Technical documentation](/docs/api/). 

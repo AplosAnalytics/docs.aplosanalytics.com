@@ -2,7 +2,7 @@
 Professional accounts are designed for individual users who do not need to collaborate with other analysts for PK analysis with NCA methods. Each account is limited to a single user and up to 100 analyses per year. 
 
 ## Number of analyses
-Each Professional account is allocated a specific number of analyses during the 12-month subscription period. Only <span style="background-color:green;color:white">Completed</span> analyses are counted against the allocation. Analyses with a status of <span style="background-color:red;color:white">Failed</span> are not counted against the allocation. To determine the number of analyses remaining, the number of <span style="background-color:green;color:white">Completed</span> analyses along with the number of analyses currently ongoing are subtracted from the allocation. An example is below:
+Each Professional account is allocated a specific number of analyses during the 12-month subscription period. Only <button style="background-color: #5AA745; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Complete</button> analyses are counted against the allocation. Analyses with a status of <button style="background-color: #ff5757; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Failed</button> are not counted against the allocation. To determine the number of analyses remaining, the number of <button style="background-color: #5AA745; color: #fff1f2; border-radius: 12px; padding: 2.5px 10px;" name="button">Complete</button> analyses along with the number of analyses currently ongoing are subtracted from the allocation. An example is below:
 
 :::info Calculation of Analyses Remaining
 **Annual Allocation:** 50 analyses\

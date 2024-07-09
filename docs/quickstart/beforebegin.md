@@ -13,5 +13,16 @@ Prior to beginning this Quick Step guide, please download the [:chart_with_downw
     -   conc - concentration for analysis (BLQ values replaced with 0 or missing)
     -   conc.obs - observed concentration (includes BLQ and missing sample designations)
 
-## API Details
-You will need to be able to login to your Aplos NCA web interface. For the early access program, you can login at [https://early-access.aplos-nca.com :link:](https://early-access.aplos-nca.com). You can login with your email address and password. If you have lost your password, click the lost password link to reset your password. 
+## How to access your account
+You will need to a subscription to Aplos NCA to use this quick start guide. If you don't yet have a subscription, please visit our [website :link:](https://aplosanalytics.com/plans) to subscribe. If you are already a subscriber, use one of the links below to login to your account:
+
+| **Subscription** | **Login URL** |
+| :----------- | :--------- |
+| Professional | [https://app.aplos-nca.com :link:](https://app.aplos-nca.com) |
+| Team         | https://*customdomain*.aplos-nca.com <br /> Check with your company administrator for your custom domain |
+| Enterprise   | https://*customdomain*.aplos-nca.com <br /> Check with your company administrator for your custom domain |
+| Academic     | [https://academic.aplos-nca.com :link:](https://academic.aplos-nca.com) |
+
+Use your email address and password to login. If you have lost your password, click the Forgot password link to reset your password. 
+
+<div style="position: relative; padding-bottom: calc(57.25% + 42px); height: 0;"><iframe src="https://guides.aplosanalytics.com/embed/clydh1ln70pzdthf71k4zdjqi" title="Password reset" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>

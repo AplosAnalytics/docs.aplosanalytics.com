@@ -1,28 +1,16 @@
 # 2️⃣ Configure Analysis Settings
-The configuration screen includes 6 separate sections. The first 4 sections require information about the analysis dataset. The last 2 sections are optional.
+The configuration screen includes 5 separate sections. The first 3 sections require information about the analysis dataset. The last 2 sections are optional.
 
 ## 1. Dosing
-Enter information about the dose administration in this section. 
+Enter information about the dose administration in this section as shown in the image below. 
 ![Dosing input](./images/Dosing_input.png)
-The following table includes an explanation of each entry item and the value required for the sample dataset. 
-
-|Field name|Input|
-|:---|:---|
-|Frequency|Single Dose|
-|Type|Extravascular|
-|Amount|10000|
-|Unit|mg|
-
-## 2. Time
-Enter the time unit (hr) and the time of dose administration (0 hr) as shown below. 
-![Time input](./images/Time_input2.png)
 
 ## 3. Designations
-Enter the information about the units, and text designations for BLQ and missing samples as shown in the image below.
+Enter the information about the text designations for BLQ and missing samples and the units for concentration, dose, and time as shown in the image below.
 ![Designations input](./images/Designations_input.png)
 
 ## 4. Data Columns
-Enter the column names from the sample dataset associated with each of the fields shown in the image below. 
+Select the column names from the sample dataset associated with each of the fields shown in the image below. 
 ![Column input](./images/Columns_input.png)
 
 ## 5. Kel Rules
@@ -36,7 +24,7 @@ Meta data is information that will be associated with the analysis within the Ap
 "compound":"AZ-123",
 "study":"CL-123-001"
 ```
-![Meta data](./images/Meta_input.png)
+![Meta data](./images/Metadata_input.png)
 
 ## 7. Execute the analysis
-Now click the Execute button to initate the analysis.
+Now click the Execute button in the lower right corner to initate the analysis.

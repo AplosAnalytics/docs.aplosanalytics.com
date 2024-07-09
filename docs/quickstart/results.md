@@ -10,15 +10,15 @@ The results will include two folders:
 ![Results file](./images/results_file.png)
 
 The inputs folder will include:
--   analysis dataset
 -   configuration json file (`config.json`)
 -   meta data json file (`meta.json`)
+-   analysis dataset (`sample-data.csv`)
 
 The outputs folder will contain:
 -   audit of analysis (`audit.json`) (This file can be sent to support when you encounter an issue)
--   text file (`execution-id.txt`) with unique analysis identifier
+-   Unique analysis identifier in a text file (`execution-id.txt`)
 -   `individuals` 📁 folder
-    *   Separate files for each individual profile. This file includes all PK parameters for the subject for all estimated kel values
+    *   Separate files for each individual profile. This file includes all PK parameters for each subject with all estimated kel values
 -   Individual PK parameters: csv (`pk-listing.csv`) and html (`pk-listing.html`)
     *   This file includes the PK parameters for all subjects using the kel rules to determine the best-fit kel value for each subject
 -   Complete PK parameter results in csv (`pk-results.csv`)

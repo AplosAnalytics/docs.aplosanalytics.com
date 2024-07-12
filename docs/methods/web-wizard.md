@@ -11,5 +11,5 @@ After the upload completes, you will be moved to the Configuration screen. Enter
 
 ## Step 3: Download results when analysis is completed
 ![Results](./images/Wizard_complete.png)
-After you initate the execution, you will be moved to the analysis progress screen that will update every 5 seconds with the progress. When the analysis is complete, you will be able to download the results with the link on the screen. You can also start another analysis by clicking the Run Another Analysis in the lower right corner.
+After you initate the execution, you will be moved to the analysis progress screen that will update until the analysis completes. When the analysis is complete, if successful, you will be able to download the results with the link on the screen. You can also start another analysis by clicking the Run Another Analysis in the lower right corner. Note that the run time will be updated upon completion for actual run time.
 

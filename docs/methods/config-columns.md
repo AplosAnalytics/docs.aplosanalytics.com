@@ -14,3 +14,9 @@ A description of each setting on the Data Columns configuration screen is below:
 
 **Figure 1: Columns configuration input screen**
 ![Column configuration input](./images/Columns_input.png)
+
+## 
+> [!TIP]
+> The column headers are imported from the analysis dataset and available from the dropdown lists. You can select multiple values for Grouping, Sorting, and Custom/Carry Along Values. You can de-select those using the dropdown list also. 
+>
+> The column selected for Time will automatically be populated in the Sorting dropdown. The column selected for Unique ID will automatically be populated in the Grouping dropdown.

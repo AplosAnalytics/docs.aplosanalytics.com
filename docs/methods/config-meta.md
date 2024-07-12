@@ -8,7 +8,12 @@ Meta data can be attached to any analysis by the user and is searchable to permi
 ## Input for web configuration
 ![Meta data configuration input](./images/Meta_input.png)
 
-Enter a value for the key and value and click the Add button. You can click the Remove button to remove a key:value pair you entered.
+Enter a value for the key and value and click the :heavy_plus_sign: button. You can click the trash can button to remove a key:value pair you entered.
+
+## 
+> [!TIP]
+> Make sure you click the :heavy_plus_sign: button after entering your key:value pair. If a trash can does not appear next to your key:value pair, it will not be included in the analysis.
+
 
 ## Manual JSON structure
 If you are performing analysis using a formatted JSON file, you must structure the meta data using standard JSON structures. You can create arrays (and nested arrays) for the meta data if desired. One example is shown below:

@@ -29,7 +29,6 @@
             "collapsed": true,
             "items": [
                 {"text": "💊 Dosing","link": "/docs/methods/config-dosing"},
-                {"text": "🕑 Time","link": "/docs/methods/config-time"},
                 {"text": "🟠 Designations","link": "/docs/methods/config-desig"},
                 {"text": "🔵 Columns","link": "/docs/methods/config-columns"},
                 {"text": "🟢 Kel rules","link": "/docs/methods/config-kel"},
@@ -78,6 +77,7 @@
                 {"text": "📊 Dashboard","link": "/docs/methods/web-dashboard"},
                 {"text": "🧙‍♂️ Analysis Wizard","link": "/docs/methods/web-wizard"},
                 {"text": "📝 Input Data","link": "/docs/methods/web-data"},
+                {"text": "📉 Data Explorer","link": "/docs/methods/web-dataexplorer"},
                 {"text": "🏁 Analysis History","link": "/docs/methods/web-history"}
             ]
         },

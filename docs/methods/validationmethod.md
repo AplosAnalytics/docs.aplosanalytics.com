@@ -1,5 +1,7 @@
 # 🟩 Validation
 
+<span style="color:red;display:block;text-align:left;font-size: 40px;"> **COMING SOON**</span>
+
 Validation is the process through which you can demonstrate that the PK parameters calculated using Aplos NCA are accurate. Aplos NCA includes a simple validation module to assist you in developing the evidence required to confirm that the PK parameters are accurate when you submit data for analysis. This module can become part of your overall system validation effort that aligns with your company-specific procedures.
 
 Validation runs do not count against your annual subscription allocation. You can run the validation test at any time. Each validation result is stored and can be downloaded at a later date if needed. 

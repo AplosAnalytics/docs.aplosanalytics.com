@@ -1,41 +1,64 @@
 {
   "version": "2024-02-22",
   "designations": {
-    "blq": "BLQ",
-    "missing": "NS",
-    "concentration_unit": "ng/mL"
+      "blq": {
+          "value": "BLQ"
+      },
+      "missing": {
+          "value": "NS"
+      },
+      "concentration_unit": {
+          "column": "conc.unit"
+      }
   },
   "columns": {
-    "time": "time",
-    "unique_id": "subject",
-    "concentration": {
-      "observed": "conc.obs",
-      "analyzed": "conc"
-    },
-    "grouping": "subject",
-    "sorting": "time"
+      "time": "time",
+      "unique_id": "subject",
+      "concentration": {
+          "observed": "conc.obs",
+          "analyzed": "conc"
+      },
+      "sorting": [
+          "time"
+      ],
+      "grouping": [
+          "subject"
+      ],
+      "custom_columns": []
   },
   "dosing": {
-    "amount": 10000,
-    "unit": "mg",
-    "frequency": "single",
-    "type": "ev"
+      "amount": {
+          "column": "Dose.amt"
+      },
+      "unit": {
+          "column": "Dose.unit"
+      },
+      "frequency": {
+          "value": "single"
+      },
+      "type": {
+          "value": "ev"
+      }
   },
   "time": {
-    "unit": "hr",
-    "time_of_administration": 0
+      "unit": {
+          "value": "hr"
+      },
+      "time_of_administration": {
+          "value": 0
+      }
   },
   "kel_rules": {
-    "regression_statistic": "adj_r2",
-    "minimum_statistic": 0,
-    "maximum_extrapolation_linear": 0,
-    "maximum_extrapolation_logarithmic": 0,
-    "maximum_time_points": 0,
-    "minimum_span": 0,
-    "earliest_time_point": 0,
-    "tie": [
-      "kel_n",
-      "kel_lower"
-    ]
+      "regression_statistic": "adj_r2",
+      "minimum_statistic": 0,
+      "maximum_extrapolation_linear": 0,
+      "maximum_extrapolation_logarithmic": 0,
+      "maximum_time_points": 0,
+      "minimum_span": 0,
+      "earliest_time_point": 0,
+      "tie": [
+          "kel_n",
+          "kel_lower"
+      ]
   }
 }

@@ -197,6 +197,7 @@ class NCAEngine:
         self,
         presigned_download_url: str,
         output_directory: str | None = None,
+        folder: str | None = None,
         do_unzip: bool = False,
     ) -> str | None:
         """
@@ -213,6 +214,10 @@ class NCAEngine:
         if output_directory is None:
             output_directory = str(Path(__file__).parent)
             output_directory = os.path.join(output_directory, ".output")
+        else:
+            folder = output_directory
+            output_directory = str(Path(__file__).parent)
+            output_directory = os.path.join(output_directory, folder)
 
         if presigned_download_url:
             output_file = f"results-{time.strftime('%Y-%m-%d-%Hh%Mm%Ss')}.zip"
@@ -277,10 +282,11 @@ def main():
             input_file_path=str(args.analysis_file),
             config_data=config_data,
             meta_data=meta_data,
+            output_directory=str(args.output_directory),
         )
         print("Thank you for using the NCA Engine Upload and Execution Demo")
     except Exception as e:  # pylint: disable=w0718
-        print("An error occured... exiting with an error")
+        print("An error occured ... exiting with an error")
         print(str(e))
 
 

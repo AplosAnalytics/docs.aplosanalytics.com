@@ -43,6 +43,9 @@ class CommandlineArgs:
         self.parser.add_argument(
             "-s", "--skip", required=False, action='store_true', help="Skip prompts if required values have defaults"
         )
+        self.parser.add_argument(
+            "-o", "--output-directory", required=False, help="Output directory"
+        )
 
         self.username: str | None = None
         self.password: str | None = None
@@ -57,6 +60,8 @@ class CommandlineArgs:
         self.metadata_file: str | None = None
         self.metadata_file_default: str | None = None
         self.skip: bool = False
+        self.output_directory: str | None = None
+        self.output_directory_default: str = ".output"
         
 
         self.display_directions: bool = True
@@ -80,6 +85,7 @@ class CommandlineArgs:
         self.aws_region = args.region
         self.metadata_file = args.metadata_file
         self.skip = args.skip
+        self.output_directory = args.output_directory
         # no args check to see if they have them in the environmet
 
         if not self.username:
@@ -135,6 +141,13 @@ class CommandlineArgs:
             else:
                 self.metadata_file = self.prompt_for_input(
                     "MetaData File", self.metadata_file_default or env.metadata_file, required=False
+                )
+        if not self.output_directory:
+            if self.skip:
+                self.output_directory = self.output_directory_default
+            else:
+                self.output_directory = self.prompt_for_input(
+                    "Output directory", self.output_directory_default, required=False
                 )
 
         # do we have everything we need?
@@ -232,6 +245,7 @@ def main():
         print(f"config_file = {args.config_file}")
         print(f"metadata_file = {args.metadata_file}")
         print(f"analysis_file = {args.analysis_file}")
+        print(f"output = {args.output}")
 
         print("were good to go")
 

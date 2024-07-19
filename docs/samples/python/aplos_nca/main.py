@@ -11,10 +11,8 @@ from aws_s3_presigned_payload import S3PresignedPayload
 from aws_s3_presigned_upload import S3PresignedUpload
 from commandline_args import CommandlineArgs
 from http_utility import HttpUtilities, Urls
-from dotenv import load_dotenv
 
-# load the environment (.env) file if any
-load_dotenv()
+
 
 class NCAEngine:
     """NCA Engine Access"""
@@ -196,8 +194,7 @@ class NCAEngine:
     def download_file(
         self,
         presigned_download_url: str,
-        output_directory: str | None = None,
-        folder: str | None = None,
+        output_directory: str | None = None,        
         do_unzip: bool = False,
     ) -> str | None:
         """
@@ -212,12 +209,9 @@ class NCAEngine:
             str: file path to results or None
         """
         if output_directory is None:
-            output_directory = str(Path(__file__).parent)
-            output_directory = os.path.join(output_directory, ".output")
-        else:
-            folder = output_directory
-            output_directory = str(Path(__file__).parent)
-            output_directory = os.path.join(output_directory, folder)
+            output_directory = str(Path(__file__).parent.parent)
+            output_directory = os.path.join(output_directory, ".aplos-nca-output")
+        
 
         if presigned_download_url:
             output_file = f"results-{time.strftime('%Y-%m-%d-%Hh%Mm%Ss')}.zip"
@@ -261,6 +255,7 @@ def main():
             print("Missing some arguments.")
             exit()
 
+        
         
         engine = NCAEngine(
             api_url=args.api_url,

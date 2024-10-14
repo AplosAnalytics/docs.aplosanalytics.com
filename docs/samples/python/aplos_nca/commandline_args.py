@@ -1,7 +1,12 @@
+import os
 import argparse
 import getpass
 from environment_vars import EnvironmentVars
+from dotenv import load_dotenv
 
+# load the environment (.env) file if any
+# this may or may not be the desired results
+load_dotenv(override=True)
 
 class CommandlineArgs:
     def __init__(self) -> None:
@@ -43,6 +48,13 @@ class CommandlineArgs:
         self.parser.add_argument(
             "-s", "--skip", required=False, action='store_true', help="Skip prompts if required values have defaults"
         )
+        self.parser.add_argument(
+            "-o", "--output-directory", required=False, help="The full path to an output directory"
+        )
+
+        self.parser.add_argument(
+            "-e", "--environment-file", required=False, help="The full path to an environment file (.env file)."
+        )
 
         self.username: str | None = None
         self.password: str | None = None
@@ -57,7 +69,9 @@ class CommandlineArgs:
         self.metadata_file: str | None = None
         self.metadata_file_default: str | None = None
         self.skip: bool = False
-        
+        self.output_directory: str | None = None
+        self.output_directory_default: str = ".output"
+        self.environment_file: str | None = None
 
         self.display_directions: bool = True
 
@@ -69,7 +83,7 @@ class CommandlineArgs:
         """
         # see if we have any aruments
         args = self.parser.parse_args()
-        env = EnvironmentVars()
+        
         self.username = args.username
         self.password = args.password
         self.config_file = args.config_file
@@ -80,7 +94,21 @@ class CommandlineArgs:
         self.aws_region = args.region
         self.metadata_file = args.metadata_file
         self.skip = args.skip
+        self.output_directory = args.output_directory
+        self.environment_file = args.environment_file
         # no args check to see if they have them in the environmet
+
+        # if we have an environment file we'll want to load it before checking any defaults
+        if args.environment_file:
+            if not os.path.exists(args.environment_file):
+                print("\n\n")
+                print("An environment file was provided but it doesn't exist.")
+                print(f"\t File provided: {args.environment_file}")
+                exit()
+            else:
+                load_dotenv(dotenv_path=args.environment_file, override=True)
+
+        env = EnvironmentVars()
 
         if not self.username:
             if self.skip and env.username:
@@ -135,6 +163,13 @@ class CommandlineArgs:
             else:
                 self.metadata_file = self.prompt_for_input(
                     "MetaData File", self.metadata_file_default or env.metadata_file, required=False
+                )
+        if not self.output_directory:
+            if self.skip:
+                self.output_directory = self.output_directory_default
+            else:
+                self.output_directory = self.prompt_for_input(
+                    "Output directory (the full path)", self.output_directory_default, required=False
                 )
 
         # do we have everything we need?
@@ -232,6 +267,7 @@ def main():
         print(f"config_file = {args.config_file}")
         print(f"metadata_file = {args.metadata_file}")
         print(f"analysis_file = {args.analysis_file}")
+        print(f"output_directory = {args.output_directory}")
 
         print("were good to go")
 

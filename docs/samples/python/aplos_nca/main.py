@@ -11,10 +11,8 @@ from aws_s3_presigned_payload import S3PresignedPayload
 from aws_s3_presigned_upload import S3PresignedUpload
 from commandline_args import CommandlineArgs
 from http_utility import HttpUtilities, Urls
-from dotenv import load_dotenv
 
-# load the environment (.env) file if any
-load_dotenv()
+
 
 class NCAEngine:
     """NCA Engine Access"""
@@ -196,7 +194,7 @@ class NCAEngine:
     def download_file(
         self,
         presigned_download_url: str,
-        output_directory: str | None = None,
+        output_directory: str | None = None,        
         do_unzip: bool = False,
     ) -> str | None:
         """
@@ -211,8 +209,9 @@ class NCAEngine:
             str: file path to results or None
         """
         if output_directory is None:
-            output_directory = str(Path(__file__).parent)
-            output_directory = os.path.join(output_directory, ".output")
+            output_directory = str(Path(__file__).parent.parent)
+            output_directory = os.path.join(output_directory, ".aplos-nca-output")
+        
 
         if presigned_download_url:
             output_file = f"results-{time.strftime('%Y-%m-%d-%Hh%Mm%Ss')}.zip"
@@ -257,6 +256,7 @@ def main():
             exit()
 
         
+        
         engine = NCAEngine(
             api_url=args.api_url,
             cognito_client_id=args.cognito_client_id,
@@ -277,10 +277,11 @@ def main():
             input_file_path=str(args.analysis_file),
             config_data=config_data,
             meta_data=meta_data,
+            output_directory=str(args.output_directory),
         )
         print("Thank you for using the NCA Engine Upload and Execution Demo")
     except Exception as e:  # pylint: disable=w0718
-        print("An error occured... exiting with an error")
+        print("An error occured ... exiting with an error")
         print(str(e))
 
 

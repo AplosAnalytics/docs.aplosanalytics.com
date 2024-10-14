@@ -1,6 +1,6 @@
 # Analysis with Python
 
-You can use 🐍 python to perform analysis with Aplos NCA using API calls via secure https requests. We have prepared sample scripts to illustrate how this analysis can be performed using python. 
+You can use 🐍 python to perform analysis with Aplos NCA using API calls via secure HTTPS requests. We have prepared sample scripts to illustrate how this analysis can be performed using python. 
 
 This was created as a reusable library which was wrapped with commandline parsing.  You can use command line switches or simply run it and get prompted for the required input.
 
@@ -92,6 +92,8 @@ or navigate to the folder
 |-m|--metadata-file|Path to the metadata file|
 |-a|--api-url|The api url|
 |-i|--client-id|The client id to cognito|
+|-o|-output-directory|The full path to an output directory. If one isn't provided it will default to a local (.aplos-nca-output) directory one level up from the execution directory. |
+|-e|--environment-file|The full path to an environment file (.env file).|
 
 ### The `-s` argument (skipping prompts when defaults are available)
 If you have default values specified in code or a `.env` file, specify the `-s` will skip prompting for any parameters that are required but have an associated matching default value.

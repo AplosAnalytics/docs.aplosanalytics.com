@@ -67,8 +67,16 @@
                 {"text": "🟦 AUC methods","link": "/docs/methods/aucmethods"},
                 {"text": "🟨 AUMC methods","link": "/docs/methods/aumcmethods"},
                 {"text": "🟪 Extrapolation methods","link": "/docs/methods/extrapolationmethods"},
-                {"text": "🟧 Terminal Slope methods","link": "/docs/methods/terminalslope"},
-                {"text": "🟩 Validation method","link": "/docs/methods/validationmethod"}
+                {"text": "🟧 Terminal Slope methods","link": "/docs/methods/terminalslope"}
+            ]
+        },
+        {
+            "text": "✅ Validation",
+            "collapsed": true,
+            "items": [
+                {"text": "📝 Validation Procedure","link":"/docs/methods/validationprocedure"},
+                {"text": "🆚 Validation Comparisons","link":"/docs/methods/validationcompare"},
+                {"text": "📓 Validation Report","link":"/docs/methods/validationresults"}
             ]
         },
         {

@@ -18,7 +18,7 @@ If the analysis dataset does not include a concentration value at time Tau, a va
 | AUC last linlog | AUC_last_log | Sum of partial AUC values from time of dose administration through Tlast using the [linear up log down method](./aucmethods) |
 | AUC last linlog/Dose | AUC_last_log_D | ${AUC_last_log} \over {Dose}$ |
 | AUMC all linear | AUMC_all_lin | Sum of partial AUMC values for all time points using the [linear methd](./aumcmethods) |
-| AUMC last linlog | AUMC_all_log | Sum of partial AUMC values ffor all time points using the [linear up log down methd](./aumcmethods) |
+| AUMC all linlog | AUMC_all_log | Sum of partial AUMC values for all time points using the [linear up log down methd](./aumcmethods) |
 | AUMC last linear | AUMC_last_lin | Sum of partial AUMC values from time of dose administration through Tlast using the [linear methd](./aumcmethods) |
 | AUMC last linlog | AUMC_last_log | Sum of partial AUMC values from time of dose administration through Tlast using the [linear up log down methd](./aumcmethods) |
 | Last measurable concentration | Clast | Analyzed concentration value greater than zero with the largest associated time value. |

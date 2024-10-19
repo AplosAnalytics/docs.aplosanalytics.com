@@ -10,6 +10,24 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Aplos NCA API Execution",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/docs/samples/python/aplos_nca/main.py",
+            "console": "integratedTerminal",
+            "env": {
+                
+                "ENVRIONMENT": "dev",
+                "DEBUG_MODE": "True",
+                "PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/docs/samples/python/aplos_nca",                                               
+            },
+            "args": [
+                "-s",               
+                "-e", ".env.development",
+            ]
         }
+        
     ]
 }

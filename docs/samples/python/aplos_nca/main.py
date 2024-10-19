@@ -13,7 +13,6 @@ from commandline_args import CommandlineArgs
 from http_utility import HttpUtilities, Urls
 
 
-
 class NCAEngine:
     """NCA Engine Access"""
 
@@ -23,17 +22,25 @@ class NCAEngine:
         self.jwt: str
         self.access_token: str | None = None
         self.refresh_token: str | None = None
-        self.api_url: str | None = api_url
+        self.__api_url: str | None = api_url
 
         self.cognito: CognitoAuthenication = CognitoAuthenication(
             client_id=cognito_client_id, region=region
         )
 
-        if not self.api_url:
+        if not self.__api_url:
             raise RuntimeError(
                 "Missing Aplos Api Url. "
                 "Pass in the api_url as a command arg or set the APLOS_API_URL environment var."
             )
+        
+    @property
+    def api_url(self) -> str:
+        """Gets the base url"""
+        if isinstance(self.__api_url, str):
+            return f"{self.__api_url}/tenants/{self.cognito.tenant_id}/users/{self.cognito.user_id}"
+
+        raise RuntimeError("Missing Aplos Api Url")
 
     def execute(
         self,
@@ -69,8 +76,7 @@ class NCAEngine:
 
         print("\tStarting the execution.")
         execution_id = self.run_analysis(
-            bucket_name=str(presign_payload.bucket),
-            object_key=str(presign_payload.object_key),
+            file_id=str(presign_payload.file_id),            
             config_data=config_data,
             meta_data=meta_data,
         )
@@ -89,8 +95,7 @@ class NCAEngine:
 
     def run_analysis(
         self,
-        bucket_name: str,
-        object_key: str,
+        file_id: str,
         config_data: dict,
         meta_data: str | dict | None = None,
     ) -> str:
@@ -112,7 +117,7 @@ class NCAEngine:
         # optional meta data
 
         submission = {
-            "s3": {"bucket_name": bucket_name, "object_key": object_key},
+            "file": {"id": file_id},
             "configuration": config_data,
             "meta_data": meta_data,
         }
@@ -194,7 +199,7 @@ class NCAEngine:
     def download_file(
         self,
         presigned_download_url: str,
-        output_directory: str | None = None,        
+        output_directory: str | None = None,
         do_unzip: bool = False,
     ) -> str | None:
         """
@@ -211,7 +216,6 @@ class NCAEngine:
         if output_directory is None:
             output_directory = str(Path(__file__).parent.parent)
             output_directory = os.path.join(output_directory, ".aplos-nca-output")
-        
 
         if presigned_download_url:
             output_file = f"results-{time.strftime('%Y-%m-%d-%Hh%Mm%Ss')}.zip"
@@ -255,8 +259,6 @@ def main():
             print("Missing some arguments.")
             exit()
 
-        
-        
         engine = NCAEngine(
             api_url=args.api_url,
             cognito_client_id=args.cognito_client_id,

@@ -5,11 +5,11 @@ Aplos Analytics
 class S3PresignedPayload:
     """ S3PresignedPayload """
     def __init__(self, payload: dict | None = None) -> None:
-        self.bucket: str | None = None
-        self.object_key: str | None = None
+       
         self.url: str | None = None
         self.form_data: dict = {}        
         self.raw_payload: dict | None = payload
+        self.file_id: str | None = None
         if payload:
             self.__load(payload)
 
@@ -20,11 +20,10 @@ class S3PresignedPayload:
         self.url = payload["presigned"]["url"]
         self.form_data = self.__get_presigned_form_data(payload=payload)
 
-        if "s3" not in payload:
-            raise KeyError("Missing key 's3' in response payload.")
-
-        self.bucket = payload["s3"]["bucket_name"]
-        self.object_key = payload["s3"]["object_key"]
+        filed_id = payload.get("file", {}).get("id", None)
+        if not filed_id:
+            raise KeyError("Missing key 'file.id' in response payload.")
+        self.file_id = filed_id
 
     def __get_presigned_form_data(self, payload: dict) -> dict:
         """

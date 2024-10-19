@@ -1,12 +1,15 @@
 import os
 import argparse
 import getpass
+from pathlib import Path
+from typing import List
 from environment_vars import EnvironmentVars
 from dotenv import load_dotenv
 
 # load the environment (.env) file if any
 # this may or may not be the desired results
 load_dotenv(override=True)
+
 
 class CommandlineArgs:
     def __init__(self) -> None:
@@ -46,14 +49,24 @@ class CommandlineArgs:
         )
 
         self.parser.add_argument(
-            "-s", "--skip", required=False, action='store_true', help="Skip prompts if required values have defaults"
+            "-s",
+            "--skip",
+            required=False,
+            action="store_true",
+            help="Skip prompts if required values have defaults",
         )
         self.parser.add_argument(
-            "-o", "--output-directory", required=False, help="The full path to an output directory"
+            "-o",
+            "--output-directory",
+            required=False,
+            help="The full path to an output directory",
         )
 
         self.parser.add_argument(
-            "-e", "--environment-file", required=False, help="The full path to an environment file (.env file)."
+            "-e",
+            "--environment-file",
+            required=False,
+            help="The full path to an environment file (.env file).",
         )
 
         self.username: str | None = None
@@ -83,7 +96,7 @@ class CommandlineArgs:
         """
         # see if we have any aruments
         args = self.parser.parse_args()
-        
+
         self.username = args.username
         self.password = args.password
         self.config_file = args.config_file
@@ -99,14 +112,7 @@ class CommandlineArgs:
         # no args check to see if they have them in the environmet
 
         # if we have an environment file we'll want to load it before checking any defaults
-        if args.environment_file:
-            if not os.path.exists(args.environment_file):
-                print("\n\n")
-                print("An environment file was provided but it doesn't exist.")
-                print(f"\t File provided: {args.environment_file}")
-                exit()
-            else:
-                load_dotenv(dotenv_path=args.environment_file, override=True)
+        self.check_for_environment_config()
 
         env = EnvironmentVars()
 
@@ -162,21 +168,23 @@ class CommandlineArgs:
                 self.metadata_file = self.metadata_file_default or env.metadata_file
             else:
                 self.metadata_file = self.prompt_for_input(
-                    "MetaData File", self.metadata_file_default or env.metadata_file, required=False
+                    "MetaData File",
+                    self.metadata_file_default or env.metadata_file,
+                    required=False,
                 )
         if not self.output_directory:
             if self.skip:
                 self.output_directory = self.output_directory_default
             else:
                 self.output_directory = self.prompt_for_input(
-                    "Output directory (the full path)", self.output_directory_default, required=False
+                    "Output directory (the full path)",
+                    self.output_directory_default,
+                    required=False,
                 )
 
         # do we have everything we need?
 
         return self.__check_all_required()
-
-            
 
     def __check_all_required(self) -> bool:
         """
@@ -253,7 +261,51 @@ class CommandlineArgs:
 
         return user_input
 
+    def find_file(
+        self, starting_path: str, file_name: str, raise_error_if_not_found: bool = True
+    ) -> str | None:
+        """Searches the project directory structor for a file"""
+        parents = 10
+        starting_path = starting_path or __file__
 
+        paths: List[str] = []
+        for parent in range(parents):
+            path = Path(starting_path).parents[parent].absolute()
+            print(f"searching: {path}")
+            tmp = os.path.join(path, file_name)
+            paths.append(tmp)
+            if os.path.exists(tmp):
+                return tmp
+
+        if raise_error_if_not_found:
+            searched_paths = "\n".join(paths)
+            raise RuntimeError(
+                f"Failed to locate environment file: {file_name} in: \n {searched_paths}"
+            )
+
+        return None
+
+    def check_for_environment_config(self):
+        """Attempts to load an environment file"""
+        if not self.environment_file:
+            return  # Exit early if no environment file is provided
+
+        env_file_path = Path(self.environment_file)
+
+        if not env_file_path.exists():
+            # Try to find the file
+            file = self.find_file(__file__, env_file_path.name)
+            file_path = Path(str(file))
+
+            if not file_path.exists():
+                print("\n\nAn environment file was provided but it doesn't exist.")
+                print(f"\tFile provided: {self.environment_file}")
+                exit()
+            else:
+                self.environment_file = str(file_path)
+
+        load_dotenv(dotenv_path=self.environment_file, override=True)
+        
 def main():
     args = CommandlineArgs()
 
@@ -273,6 +325,7 @@ def main():
 
     else:
         print("Missing some required fields.")
+
 
 if __name__ == "__main__":
     main()

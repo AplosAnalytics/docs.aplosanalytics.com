@@ -1,6 +1,7 @@
 import os
 
 class EnvironmentVars:
+    """Loading Environment Vars"""
     def __init__(self) -> None:
         self.api_url = os.getenv("APLOS_API_URL")
         self.aws_region = os.getenv("AWS_REGION") or os.getenv("COGNITO_REGION")

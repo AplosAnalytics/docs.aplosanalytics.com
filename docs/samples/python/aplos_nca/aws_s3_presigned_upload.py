@@ -4,7 +4,6 @@ Aplos Analytics
 
 import json
 import os
-from urllib.parse import urljoin
 
 import requests
 from aws_s3_presigned_payload import S3PresignedPayload

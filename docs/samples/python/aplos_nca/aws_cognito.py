@@ -1,16 +1,19 @@
 import os
 import boto3
+import jwt as jwt_lib
 
 
 class CognitoAuthenication:
     def __init__(self, client_id: str | None, region: str | None) -> None:
         # setup the client id
         self.client_id: str | None = client_id
-        self.jwt: str
-        self.access_token: str
-        self.refresh_token: str
+        self.__jwt: str | None = None
+        self.__access_token: str | None = None
+        self.__refresh_token: str | None = None
         self.region: str = region or "us-east-1"
         self.client = boto3.client("cognito-idp", region_name=region)
+        self.__user_id: str | None = None
+        self.__tenant_id: str | None = None
 
         if self.client_id is None:
             raise RuntimeError(
@@ -48,14 +51,60 @@ class CognitoAuthenication:
         # Extract the session tokens
         # id_token is the JWT token
         # typical tokens last for 30 minutes to 1 hour by default
-        self.jwt = auth_response["AuthenticationResult"]["IdToken"]
+        self.__jwt = auth_response["AuthenticationResult"]["IdToken"]
         # access token is if you have direct access to aws resources
         # you probably won't ever need this
-        self.access_token = auth_response["AuthenticationResult"]["AccessToken"]  # noqa: F814, F841, pylint: disable=W0612
+        self.__access_token = auth_response["AuthenticationResult"]["AccessToken"]  # noqa: F814, F841, pylint: disable=W0612
         # refresh token if needed
         # you can use refresh tokens to "refresh" your jwt or simply login again
         # refresh tokens are typically good for 30 days by default
-        self.refresh_token = auth_response["AuthenticationResult"]["RefreshToken"]  # noqa: F814, F841, pylint: disable=w0612
+        self.__refresh_token = auth_response["AuthenticationResult"]["RefreshToken"]  # noqa: F814, F841, pylint: disable=w0612
 
         # return the jwt token
-        return self.jwt
+        if isinstance(self.__jwt, str):
+            self.__parse_jwt(self.__jwt)
+            return self.__jwt
+
+        raise RuntimeError("Failed to get a JWT token")
+
+    def __parse_jwt(self, encoded_jwt: str) -> None:
+        # Decode the payload (second part) from Base64
+        decoded_jwt: dict = jwt_lib.decode(encoded_jwt, options={"verify_signature": False})
+        self.__user_id = decoded_jwt.get("custom:aplos_user_id")
+        self.__tenant_id = decoded_jwt.get("custom:aplos_user_tenant_id")
+        print(decoded_jwt)
+
+    @property
+    def jwt(self) -> str:
+        if isinstance(self.__jwt, str):
+            return self.__jwt
+
+        raise RuntimeError("Failed to get a JWT token")
+
+    @property
+    def user_id(self) -> str:
+        if isinstance(self.__user_id, str):
+            return self.__user_id
+
+        raise RuntimeError("Failed to get a user id")
+
+    @property
+    def tenant_id(self) -> str:
+        if isinstance(self.__tenant_id, str):
+            return self.__tenant_id
+
+        raise RuntimeError("Failed to get a tenant id")
+
+    @property
+    def access_token(self) -> str:
+        if isinstance(self.__access_token, str):
+            return self.__access_token
+
+        raise RuntimeError("Failed to get an access token")
+
+    @property
+    def refresh_token(self) -> str:
+        if isinstance(self.__refresh_token, str):
+            return self.__refresh_token
+
+        raise RuntimeError("Failed to get a refresh token")

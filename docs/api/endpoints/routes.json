@@ -11,7 +11,7 @@
         {
             "id": "presigned_url",
             "name": "Get a Presigned Url",
-            "path": "https://api.<tenant>.aplos-nca.com/nca-engine/generate-upload-url",
+            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/nca/files",
             "method_type": "POST",
             "description": "Generates a S3 Presigned Url for uploading an analysis file."
         },
@@ -26,28 +26,28 @@
             "id": "get_status",
             "name": "Get Status",
             "method_type": "GET",
-            "path": "https://api.<tenant>.aplos-nca.com/nca-engine/executions/{{exec-id}}",
+            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/nca/executions/{id}",
             "description": "Retuns information about a specific execution including the status."
         },
         {
             "id": "run_execution",
             "name": "Run/Execute an analysis",
             "method_type": "POST",
-            "path": "https://api.<tenant>.aplos-nca.com/nca-engine/executions",
+            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/nca/executions",
             "description": "Queues an execution to run"
         },
         {
             "id": "get_executions",
-            "name": "List Executions",
+            "name": "List User Executions",
             "method_type": "GET",
-            "path": "https://api.<tenant>.aplos-nca.com/nca-engine/users/{{user-id}}/executions",
+            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/nca/executions",
             "description": "Lists a users executions"
         },
         {
             "id": "get_user_metrics",
             "name": "List Metrics",
             "method_type": "GET",
-            "path": "https://api.<tenant>.aplos-nca.com/nca-engine/users/{{user-id}}/metrics",
+            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/metrics",
             "description": "Lists a users execution metrics"
         }
         

@@ -3,6 +3,7 @@ suppressPackageStartupMessages(library(httr))
 suppressPackageStartupMessages(library(jsonlite))
 suppressPackageStartupMessages(library(downloader))
 suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(AzureAuth))
 
 hms_span <- function(start, end) {
   dsec <- as.numeric(difftime(end, start, unit = "secs"))
@@ -34,11 +35,13 @@ get_jwt <- function(client_id, username, password, region){
   return(jwt)
 }
 
-aplos_nca <- function(token = jwt, input, config, meta, url, output = "./", unzip = TRUE){
-  cat("Welcome to the NCA Engine Upload & Execution Script\n")
-  # Get pre-signed URL
-  filename = str_split_i(input, "/", -1)
-  upload_url = paste0(url,"/nca-engine/generate-upload-url")
+get_upload_url <- function(input_file,url,token){
+  # url = api_url
+  # token = current.jwt
+  tenant_id <- decode_jwt(token)$payload$`custom:aplos_user_tenant_id`
+  user_id <- decode_jwt(token)$payload$`custom:aplos_user_id`
+  filename = str_split_i(input_file, "/", -1)
+  upload_url = paste0(url,"/tenants/",tenant_id,"/users/",user_id,"/nca/files")
   headers <- c("Content-Type" = "application/json",
                "Authorization" = paste0("Bearer ",token))
   body <- list(
@@ -49,83 +52,128 @@ aplos_nca <- function(token = jwt, input, config, meta, url, output = "./", unzi
   response <- POST(url = upload_url,
                    add_headers(.headers = headers),
                    body = toJSON(body, auto_unbox = TRUE))
-  upload_url_result <- fromJSON(content(response, "text", encoding = "UTF-8"))
-  # Upload input file
-  cat("Uploading input file ... \n")
-  upload_url = upload_url_result$presigned$url
+  
+  result <- fromJSON(content(response, "text", encoding = "UTF-8"))
+  return(result)
+}
+
+upload_file_api <- function(input_file,result){
+  upload_url = result$presigned$url
   headers <- c()
   body <- list(
-    key = upload_url_result$presigned$fields$key,
-    "x-amz-algorithm" = upload_url_result$presigned$fields$`x-amz-algorithm`,
-    "x-amz-credential" = upload_url_result$presigned$fields$`x-amz-credential`,
-    "x-amz-date" = upload_url_result$presigned$fields$`x-amz-date`,
-    "x-amz-security-token" = upload_url_result$presigned$fields$`x-amz-security-token`,
-    policy = upload_url_result$presigned$fields$policy,
-    "x-amz-signature" = upload_url_result$presigned$fields$`x-amz-signature`,
-    file = upload_file(normalizePath(input))
+    key = result$presigned$fields$key,
+    "x-amz-algorithm" = result$presigned$fields$`x-amz-algorithm`,
+    "x-amz-credential" = result$presigned$fields$`x-amz-credential`,
+    "x-amz-date" = result$presigned$fields$`x-amz-date`,
+    "x-amz-security-token" = result$presigned$fields$`x-amz-security-token`,
+    policy = result$presigned$fields$policy,
+    "x-amz-signature" = result$presigned$fields$`x-amz-signature`,
+    file = upload_file(normalizePath(input_file))
   )
   
-  upload_response <- POST(url = upload_url, body = body)
-  cat("Loading analysis configurations \n")
-  config.list <- fromJSON(txt = config)
+  response <- POST(url = upload_url, body = body)
   
-  cat("Loading analysis meta data \n")
-  meta.list <- fromJSON(txt = meta)
-  
-  cat("Initiating analysis ... \n")
+}
+
+execute_analysis <- function(result,config.list,meta.list,token,url){
+  # token = current.jwt
+  # config.list = config.list
+  # meta.list = meta.list
+  # url = api_url
+  # result = upload_result
+  tenant_id <- decode_jwt(token)$payload$`custom:aplos_user_tenant_id`
+  user_id <- decode_jwt(token)$payload$`custom:aplos_user_id`
   headers <- c("Content-Type" = "application/json",
                "Authorization" = paste0("Bearer ",token))
   body <- list(
     file = list(
-      id = upload_url_result$file$id
+      id = result$file$id
     ),
     meta_data = meta.list,
     configuration = config.list
   )
   
-  analysis_response <- POST(url = paste0(url,"/nca-engine/executions"),
-                            add_headers(.headers = headers),
-                            body = toJSON(body, auto_unbox = TRUE))
-  if (http_status(analysis_response)$category == "Success") {
+  response <- POST(url = paste0(url,"/tenants/",tenant_id,"/users/",user_id,"/nca/executions"),
+                   add_headers(.headers = headers),
+                   body = toJSON(body, auto_unbox = TRUE))
+  # Check the response
+  if (http_status(response)$category == "Success") {
     cat("Execution initiated. \n")
   } else {
     cat("Error in the request. \n")
   }
-  analysis_response2 <- fromJSON(content(analysis_response, "text", encoding = "UTF-8"))
-  execution_id <- analysis_response2$execution_id
   
-  cat("Checking status ... \n")
+  result <- fromJSON(content(response, "text", encoding = "UTF-8"))
+  execution_id <- result$execution_id
+  return(execution_id)
+}
+
+execution_status <- function(url,token,execution_id){
+  # execution_id = exec_id
+  # url = api_url
+  # token = current.jwt
+  tenant_id <- decode_jwt(token)$payload$`custom:aplos_user_tenant_id`
+  user_id <- decode_jwt(token)$payload$`custom:aplos_user_id`
   headers <- c("Content-Type" = "application/json",
                "Authorization" = paste0("Bearer ",token))
   complete <- FALSE
   while (!complete) {
-    response <- GET(paste0(url,"/nca-engine/executions/",execution_id),
+    response <- GET(paste0(url,"/tenants/",tenant_id,"/users/",user_id,"/nca-engine/executions/",execution_id),
                     add_headers(.headers = headers))
     result <- fromJSON(content(response, "text", encoding = "UTF-8"))
     if(result$status == "failed") {break}
     complete <- result$status == "complete"
     if(!complete) {
-      cat("Not yet complete ... ",result$status," \n")
+      cat(paste0("Not yet complete ... ",result$status," \n"))
       Sys.sleep(4)}
   }
+  
   if(result$status == "complete") {
-    cat("Execution complete. Execution ID = ",execution_id,"\n")
+    cat("Execution complete. \n")
+    #cat(paste0("Execution duration = ",result$elapsed,". \n"))
+    return(result)
   } else {
     cat(paste0("Execution failed. Execution ID = ",execution_id,"\n"))
   }
-  cat("Downloading results. \n")
-  if(result$status == "complete") {
-    download_url <- result$presigned$url
-    output_file <- paste0(output,"results-",substr(execution_id,1,10),".zip")
+  
+  
+}
+
+aplos_nca <- function(api_url,current.jwt,input_file,config_file,meta_file,unzip){
+  cat("Welcome to the NCA Engine Upload & Execution \n")
+  
+  cat("Uploading input file ... \n")
+  upload_result <- get_upload_url(input_file = input_file, url = api_url, token = current.jwt)
+  upload_file_api(input_file = input_file, result = upload_result)
+  
+  cat("Loading analysis configurations \n")
+  config.list <- fromJSON(txt = config_file)
+  
+  cat("Loading analysis meta data \n")
+  meta.list <- fromJSON(txt = meta_file)
+  
+  cat("Initiating analysis ... \n")
+  exec_id <- execute_analysis(result = upload_result, config.list = config.list,
+                              meta.list = meta.list, url = api_url, token = current.jwt)
+  
+  cat("Checking status \n")
+  exec_result <- execution_status(url = api_url, token = current.jwt, execution_id = exec_id)
+  
+  # Download completed analysis files
+  if(exec_result$status == "complete") {
+    download_url <- exec_result$presigned$url
+    output_file <- paste0("output/output-",format(Sys.time(),"%Y-%m-%d-%Hh%Mm%Ss"),".zip")
     # create output directory if doesn't already exist
+    if (!dir.exists("output")) {dir.create("output")}
     download(download_url, dest=output_file, mode = "wb", quiet = TRUE)
     if(unzip) {
-      unzip_folder = paste0(output,"results-",substr(execution_id,1,10))
-      unzip(output_file, exdir = unzip_folder)
+      unzip(output_file, exdir = "output/unzip")
       cat("Results file downloaded and unziped. \n")
-      cat(paste0("Location is ",unzip_folder,"/ \n"))
+      cat(paste0("Location is output/unzip \n"))
     } else {
       cat("Results file downloaded. \n")
     }
+    
   }
+
 }

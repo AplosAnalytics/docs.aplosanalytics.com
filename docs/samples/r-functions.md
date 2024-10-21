@@ -41,8 +41,10 @@ The following code requests the secure URL to which you will upload the input da
 
 ```r:line-numbers
   # Get pre-signed URL
+  tenant_id <- decode_jwt(token)$payload$`custom:aplos_user_tenant_id`
+  user_id <- decode_jwt(token)$payload$`custom:aplos_user_id`
   filename = str_split_i(input, "/", -1)
-  upload_url = paste0(url,"/nca-engine/generate-upload-url")
+  upload_url = paste0(url,"/tenants/",tenant_id,"/users/",user_id,"/nca/files")
   headers <- c("Content-Type" = "application/json",
                "Authorization" = paste0("Bearer ",token))
   body <- list(
@@ -89,6 +91,8 @@ This code initiates the analysis by Aplos NCA.
   meta.list <- fromJSON(txt = meta)
   
   cat("Initiating analysis ... \n")
+  tenant_id <- decode_jwt(token)$payload$`custom:aplos_user_tenant_id`
+  user_id <- decode_jwt(token)$payload$`custom:aplos_user_id`
   headers <- c("Content-Type" = "application/json",
                "Authorization" = paste0("Bearer ",token))
   body <- list(
@@ -99,7 +103,7 @@ This code initiates the analysis by Aplos NCA.
     configuration = config.list
   )
   
-  analysis_response <- POST(url = paste0(url,"/nca-engine/executions"),
+  analysis_response <- POST(url = paste0(url,"/tenants/",tenant_id,"/users/",user_id,"/nca/executions"),
                             add_headers(.headers = headers),
                             body = toJSON(body, auto_unbox = TRUE))
   if (http_status(analysis_response)$category == "Success") {
@@ -116,11 +120,13 @@ This code checks the status of the analysis, prints that status, and then return
 
 ```r:line-numbers
   cat("Checking status ... \n")
+  tenant_id <- decode_jwt(token)$payload$`custom:aplos_user_tenant_id`
+  user_id <- decode_jwt(token)$payload$`custom:aplos_user_id`
   headers <- c("Content-Type" = "application/json",
                "Authorization" = paste0("Bearer ",token))
   complete <- FALSE
   while (!complete) {
-    response <- GET(paste0(url,"/nca-engine/executions/",execution_id),
+    response <- GET(paste0(url,"/tenants/",tenant_id,"/users/",user_id,"/nca-engine/executions/",execution_id),
                     add_headers(.headers = headers))
     result <- fromJSON(content(response, "text", encoding = "UTF-8"))
     if(result$status == "failed") {break}

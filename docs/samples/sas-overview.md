@@ -4,12 +4,12 @@ You can use SAS to perform analysis with Aplos NCA using API calls via secure ht
 
 | Description | File | Link to file |
 | :--- | :--- | :---: |
-| SAS Program | aplos_nca_sample.sas | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/sas-files/aplos_nca_sample.sas)|
-| Security file | sas_security.env | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/sas-files/sas_security.env)|
-| Sample data file | single_ev_10.csv | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/sas-files/single_ev_10.csv)|
-| Configuration file | configuration_single_ev.json | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/sas-files/configuration_single_ev.json)|
-| Meta data file | meta_data.json | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/sas-files/meta_data.json)|
-| Complete repository | all files | [:link:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/tree/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/sas-files) |
+| SAS Program | aplos_nca_sample.sas | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/sas-files/aplos_nca_sample.sas)|
+| Security file | sas_security.env | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/sas-files/sas_security.env)|
+| Sample data file | single_ev_10.csv | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/sas-files/single_ev_10.csv)|
+| Configuration file | configuration_single_ev.json | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/sas-files/configuration_single_ev.json)|
+| Meta data file | meta_data.json | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/sas-files/meta_data.json)|
+| Complete repository | all files | [:link:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/tree/main/docs/downloads/sas-files) |
 
 ## Functions
 

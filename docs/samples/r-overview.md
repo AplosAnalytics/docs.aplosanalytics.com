@@ -4,13 +4,13 @@ You can use R to perform analysis with Aplos NCA using API calls via secure http
 
 | Description | File | Link to file |
 | :--- | :--- | :---: |
-| API Functions | functions-api.R | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/r-files/functions-api.R)|
-| Sample analysis | sample-analysis.R | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/r-files/sample-analysis.R)|
-| Security file | security.txt | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/r-files/security.txt)|
-| Sample data file | single_ev.csv | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/8c00cc17eb632ae23b0d7df90bb4604dabd88674/docs/downloads/r-files/single_ev.csv)|
-| Configuration file | configuration_single_ev.json | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/r-files/configuration_single_ev.json)|
-| Meta data file | meta_data.json | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/r-files/meta_data.json)|
-| Complete repository | all files | [:link:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/tree/67243d28a2a2621fdc975b20ac3d36d788893962/docs/downloads/r-files) |
+| API Functions | functions-api.R | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/r-files/functions-api.R)|
+| Sample analysis | sample-analysis.R | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/r-files/sample-analysis.R)|
+| Security file | security.txt | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/r-files/security.txt)|
+| Sample data file | single_ev.csv | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/r-files/single_ev.csv)|
+| Configuration file | configuration_single_ev.json | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/r-files/configuration_single_ev.json)|
+| Meta data file | meta_data.json | [:page_facing_up:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/downloads/r-files/meta_data.json)|
+| Complete repository | all files | [:link:](https://github.com/AplosAnalytics/docs.aplosanalytics.com/tree/main/docs/downloads/r-files) |
 
 ## Functions
 

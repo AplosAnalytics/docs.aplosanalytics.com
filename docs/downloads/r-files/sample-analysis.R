@@ -14,9 +14,9 @@ api_url = APLOS_API_URL
 
 # here are some default file and config setups.
 # adjust your code accordingly
-input_file = "./files/single_ev.csv"
-config_file = "./files/configuration_single_ev.json"
-meta_file = "./files/meta_data.json"
+input_file = "./single_ev.csv"
+config_file = "./configuration_single_ev.json"
+meta_file = "./meta_data.json"
 
 # Record the start time for the script
 start_time <- Sys.time()
@@ -24,12 +24,11 @@ start_time <- Sys.time()
 cat("Log in ... \n")
 jwt <- get_jwt(client_id,username,password,region)
 
-aplos_nca(token = jwt,
+aplos_nca(current.jwt = jwt,
           input = input_file,
           config = config_file,
           meta = meta_file,
           url = api_url,
-          output = "./",
           unzip = TRUE)
 
 # Record the end time for the script

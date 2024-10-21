@@ -139,18 +139,18 @@ execution_status <- function(url,token,execution_id){
   
 }
 
-aplos_nca <- function(api_url,current.jwt,input_file,config_file,meta_file,unzip){
+aplos_nca <- function(api_url,current.jwt,input,config,meta,unzip){
   cat("Welcome to the NCA Engine Upload & Execution \n")
   
   cat("Uploading input file ... \n")
-  upload_result <- get_upload_url(input_file = input_file, url = api_url, token = current.jwt)
-  upload_file_api(input_file = input_file, result = upload_result)
+  upload_result <- get_upload_url(input_file = input, url = api_url, token = current.jwt)
+  upload_file_api(input_file = input, result = upload_result)
   
   cat("Loading analysis configurations \n")
-  config.list <- fromJSON(txt = config_file)
+  config.list <- fromJSON(txt = config)
   
   cat("Loading analysis meta data \n")
-  meta.list <- fromJSON(txt = meta_file)
+  meta.list <- fromJSON(txt = meta)
   
   cat("Initiating analysis ... \n")
   exec_id <- execute_analysis(result = upload_result, config.list = config.list,

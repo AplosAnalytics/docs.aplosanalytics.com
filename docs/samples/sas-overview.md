@@ -39,5 +39,7 @@ COGNITO_CLIENT_ID=<value>
 COGNITO_USER_NAME=<value>
 COGNITO_PASSWORD=<value>
 COGNITO_REGION=<value>
+TENANT_ID=<value>
+USER_ID=<value>
 ```
 

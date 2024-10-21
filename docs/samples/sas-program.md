@@ -18,12 +18,12 @@ This section of code sets up global variables to be used in the SAS code. It als
 %global x_amz_security_token;
 %global policy_value;
 %global x_amz_signature;
-%global bucket_name;
-%global object_key;
+%global file_id;
 %global file_name;
 %global download_url;
 
 /* environment file with env variables that we will create macro variables from */
+/* File should be VARIABLE=VALUE */
 filename envfile '/<directory>/sas_security.env';
 
 /* set the environment macro variables from the environment file */
@@ -125,7 +125,7 @@ This function requests the secure URL to which you will upload the input data fi
 	    write values "method_type" "post";
 	run;
 	
-	%let upload_url = %sysfunc(catt(&APLOS_API_URL, /nca-engine/generate-upload-url));
+	%let upload_url = %sysfunc(catt(&APLOS_API_URL,/tenants/,&TENANT_ID,/users/,&USER_ID,/nca/files));
 	%let authorization = %sysfunc(catx(%str( ), Bearer, %unquote(&id_token)));
 	%put &authorization;
 	
@@ -163,13 +163,12 @@ This function requests the secure URL to which you will upload the input data fi
 	    call symputx('policy_value', policy);
 	    call symputx('x_amz_signature', x_amz_signature);
 	run;
-	
+
 	data _null_;
-	    set pre_url.s3;
-	    call symputx('bucket_name', bucket_name);
-	    call symputx('object_key', object_key);
+		set pre_url.file;
+		call symputx('file_id', id);
 	run;
-	
+
 	/* debug: print the variable values */
 	%put &key_value;
 	%put &presigned_url;
@@ -179,6 +178,7 @@ This function requests the secure URL to which you will upload the input data fi
 	%put &x_amz_security_token;
 	%put &policy_value;
 	%put &x_amz_signature;
+	%put &file_id;
 %mend;
 
 ```
@@ -242,15 +242,14 @@ This function initiates the analysis by Aplos NCA. This function uses the config
 	    call symputx('conf_data', json_string);
 	run;
 	
-	%let execution_analysis_url = %sysfunc(catt(&APLOS_API_URL, /nca-engine/executions));
+	%let execution_analysis_url = %sysfunc(catt(&APLOS_API_URL,/tenants/,&TENANT_ID,/users/,&USER_ID,/nca/executions));
 	%put &execution_analysis_url;
 	
 	proc json out=exbody nosastags;
-	    write values "s3";
-	    write open object;
-	    write values "bucket_name" "&bucket_name";
-	    write values "object_key" "&object_key";
-	    write close;
+	    write values "file";
+		write open object;
+		write values "id" "&file_id";
+		write close;
 	    write values "meta_data" "&meta_data";
 	    write values "configuration" "&conf_data";
 	run;
@@ -294,7 +293,7 @@ This function checks the status of the analysis, prints that status, and then re
     %let complete = 0;
     %let status = %str();
     %let elapsed = %str();
-	%let execution_status_url = %sysfunc(catt(&APLOS_API_URL, /nca-engine/executions/, &execution_id));
+	%let execution_status_url = %sysfunc(catt(&APLOS_API_URL,/tenants/,&TENANT_ID,/users/,&USER_ID,/nca-engine/executions/,&execution_id));
 	%put &execution_status_url;
 	
     %do %while(&complete<1);

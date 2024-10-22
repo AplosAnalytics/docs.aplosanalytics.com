@@ -172,7 +172,7 @@ class NCAEngine:
             json_response: dict = response.json()
             status = json_response.get("status")
             complete = status == "complete"
-            elapsed = json_response.get("elapsed")
+            elapsed = json_response.get("times", {}).get("elapsed", "0:00:00") or "--:--"
             if status == "failed" or complete:
                 break
             if not complete:

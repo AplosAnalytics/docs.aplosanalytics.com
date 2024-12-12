@@ -14,6 +14,10 @@ Grouping columns are also used to summarize the results. Any grouping variable w
 
 A summary is produced for each level of each grouping variable, and all combinations of grouping variable levels when there are more than one. Analysis time increases with additional grouping variables. Therefore, it is recommended to only include Grouping columns for which a summary is necessary. 
 
+The configuration that is returned with the results will include all grouping variables in the Custom column setting as well. This ensures that all grouping variables are included in output tables. 
+
+When analyzing sparse data (e.g. toxicokinetic studies), the Unique ID variable will be ignored if it is included as a grouping variable. Sparse data is summarized by time points within each group, excluding the Unique ID. At least one grouping variable must be provided for sparse data analysis.
+
 ## Custom Columns
 Custom columns are not required for grouping data, but will be carried through to the results. For example, in a a randomized two-way crossover study a user could set Treatment as a Grouping column and include Period as a Custom column. The Period will be included in the outputs eventhough it is not necessary for grouping data together.  
 

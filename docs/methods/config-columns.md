@@ -8,9 +8,9 @@ A description of each setting on the Data Columns configuration screen is below:
 |Unique ID|Unique identifier for each subject or animal. If there are multiple profiles for a single subject (e.g. mutliple formulations), use the Grouping variables also.|Required|
 |Concentration Observed|Observed concentration that includes text designations for samples below the limit of quantitation or missing samples|Required|
 |Concentration Analyzed|Concentration to be used in the calculation of PK parameters. Imputations for missing samples and/or samples below the limit of quantation must be made in this column|Required|
-|Grouping variables|Any grouping variables needed to define unique PK profiles for analysis|1 column is required, additional columns are optional|
+|Grouping variables|Any grouping variables needed to define unique PK profiles for analysis|1 column is required, additional columns are optional. For sparse data, Unique ID is ignored as a grouping variable, and thus at least one other grouping variable must be provided.|
 |Sorting|This is how the data is sorted prior to analysis for each unique profile. Generally include the time column variable|1 column is required, additional columns are optional|
-|Custom/Carry Along Values|These are columns with information that will be added to the output files, but is not used group grouping.|Optional|
+|Custom/Carry Along Values|These are columns with information that will be added to the output files, but is not used group grouping. All grouping variables are automatically added as Custom variables during the analysis by the Aplos NCA engine. This ensures that all grouping variables are included in the output datasets.|Optional|
 
 **Figure 1: Columns configuration input screen**
 ![Column configuration input](./images/Columns_input.png)

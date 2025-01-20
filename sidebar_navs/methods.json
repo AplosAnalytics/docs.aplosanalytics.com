@@ -1,7 +1,7 @@
 {
     "/docs/methods/": [
         {
-            "text": "🖇️ Overview",
+            "text": "🌟 Overview",
             "collapsed": true,
             "items": [
                 {"text": "📎 Overview","link": "/docs/methods/overview"},
@@ -12,6 +12,7 @@
                 {"text": "🧢 Team Accounts","link": "/docs/methods/team"},
                 {"text": "👑 Enterprise Accounts","link": "/docs/methods/enterprise"},
                 {"text": "🎓 Academic Accounts","link": "/docs/methods/academic"},
+                {"text": "🚦Subscription Status","link": "/docs/methods/subscription"},
                 {"text": "⚖️ License","link": "/docs/methods/overview-license"}
             ]
         },

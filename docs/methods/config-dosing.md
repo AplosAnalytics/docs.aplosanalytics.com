@@ -14,7 +14,7 @@ A description of each setting on the Dosing configuration screen (Figure 1) is b
 |Sparse Data|Yes or No|No|Default is "No" if each individual animal or subject provides a complete profile. Set to "Yes" if you want to calculate a mean concentration-time profile using grouping variables. Normally used in toxicology studies with small animals.|
 
 **Figure 1: Dosing configuration input screen**
-![Dosing configuration input](./images/Dosing_input2.png)
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.7818627450980393; padding: 40px 0 40px 0;"><iframe src="https://guides.aplosanalytics.com/embed/cm6whd79h01h73wrq4c3yx9zi?embed_v=2" loading="lazy" title="Dosing configuration" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 
 > [!TIP]

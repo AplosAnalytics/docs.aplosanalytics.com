@@ -2,10 +2,10 @@
 
 Partial AUCs are user-defined ranges for calculation of area under the curve. The user must define the following information for each partial AUC to be calculated:
 
-* Name: This is what will appear in the output in the "param" column. Normally this is a clear explanation of the parameter such as "Partial AUC0-4 hours"
-* Code: This is what will appear in the output in the "paramcd" column. Normally this is an abbreviation to unqiuely identify the parameter when using coding. One example could be "pAUC4".
-* Start: This is the start time for the partial AUC. This value is assumed to be in the same units as the time variable in the dataset.
-* End: This is the end time for the partial AUC. This value is assumed to be in the same units as the time variable in the dataset.
+* **Name**: This is what will appear in the output in the "param" column. Normally this is a clear explanation of the parameter such as "Partial AUC0-4 hours"
+* **Code**: This is what will appear in the output in the "paramcd" column. Normally this is an abbreviation to unqiuely identify the parameter when using coding. One example could be "pAUC4".
+* **Start**: This is the start time for the partial AUC. This value is assumed to be in the same units as the time variable in the dataset.
+* **End**: This is the end time for the partial AUC. This value is assumed to be in the same units as the time variable in the dataset.
 
 ## Calculation method
 
@@ -15,9 +15,7 @@ The partial AUC is calculated using the [linear trapezoidal method](./aucmethods
 > If the end time extends beyond the available data the partial AUC will not be calculated and will be reported in the non-fatal error text file in the output. For example, if the final observed value is at 23.5 hours and you ask for the partial AUC from 0 - 24 hours, it will not be calculated. 
 
 ## Input for web configuration
-![Partial AUC configuration input](./images/pAUC_input.png)
-
-Enter information in all 4 boxes and click the :heavy_plus_sign: button. You can click the trash can button to remove a set of values you entered. You can add as many partial AUCs as desired. 
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.7818627450980393; padding: 40px 0 40px 0;"><iframe src="https://guides.aplosanalytics.com/embed/cm6wgpi7r01as3wrq2ofv7om1?embed_v=2" loading="lazy" title="Partial AUC" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 
 > [!TIP]

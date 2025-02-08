@@ -6,9 +6,7 @@ Meta data can be attached to any analysis by the user and is searchable to permi
 > Search capability on meta data is not available during the Early Access Program. It will be available when Aplos NCA is available for subscription.
 
 ## Input for web configuration
-![Meta data configuration input](./images/Meta_input.png)
-
-Enter a value for the key and value and click the :heavy_plus_sign: button. You can click the trash can button to remove a key:value pair you entered.
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.7818627450980393; padding: 40px 0 40px 0;"><iframe src="https://guides.aplosanalytics.com/embed/cm6wiuryr02013wrqxzytu3q2?embed_v=2" loading="lazy" title="Meta data" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## 
 > [!TIP]

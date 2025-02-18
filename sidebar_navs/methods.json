@@ -34,6 +34,7 @@
                 {"text": "🔵 Columns","link": "/docs/methods/config-columns"},
                 {"text": "🟢 Kel rules","link": "/docs/methods/config-kel"},
                 {"text": "🟤 Partial AUC","link":"/docs/methods/config-pauc"},
+                {"text": "🟡 Outputs","link":"/docs/methods/config-outputs"},
                 {"text": "🟣 Meta data","link": "/docs/methods/config-meta"},
                 {"text": "📄 Configuration JSON","link": "/docs/methods/config-json"}
             ]

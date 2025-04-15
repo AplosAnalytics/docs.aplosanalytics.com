@@ -36,7 +36,9 @@
                 {"text": "🟤 Partial AUC","link":"/docs/methods/config-pauc"},
                 {"text": "🟡 Outputs","link":"/docs/methods/config-outputs"},
                 {"text": "🟣 Meta data","link": "/docs/methods/config-meta"},
-                {"text": "📄 Configuration JSON","link": "/docs/methods/config-json"}
+                {"text": "📄 Configuration JSON","link": "/docs/methods/config-json"},
+                {"text": "📄 Data Cleaning JSON - beta","link": "/docs/methods/data-cleaning-json"},
+                {"text": "📄 Post Processing JSON - beta","link": "/docs/methods/post-processing-json"}
             ]
         },
         {

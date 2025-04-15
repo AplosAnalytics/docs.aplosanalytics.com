@@ -12,7 +12,7 @@ The logarithmic method generally gives a slightly smaller $pAUC$ than the linear
 
 The following equation is used to calculate the $pAUC$ between any two data points with concentration values:
 
-$pAUC={{1} \over {2}} *(C2 + C1) * (T2 - T1)$
+$$ pAUC={{1} \over {2}} *(C2 + C1) * (T2 - T1) $$
 
 ## Linear Up Logarithmic Down Method
 
@@ -20,6 +20,6 @@ The following equation is used to calculate the $pAUC$ for any two data points w
 
 $$ pAUC={{1} \over {2}} *(C2 + C1) * (T2 - T1) $$
 
-When the concentrations are declining, and neither concentration value is 0, the following equation is used to calculate the $$ pAUC $$:
+When the concentrations are declining, and neither concentration value is 0, the following equation is used to calculate the $pAUC$:
 
 $$ pAUC = [{{C1 - C2} \over {ln({{C1} \over {C2}})}}]*(T2 - T1) $$

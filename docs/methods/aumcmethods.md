@@ -8,14 +8,14 @@ The [linear method](#linear-method) is the most commonly used calculation of AUM
 
 The following equation is used to calculate the $pAUMC$ between any two data points with concentration values:
 
-$pAUMC={{1} \over {2}} * ({C2 * T2} + {C1 * T1}) * (T2 - T1)$
+$$ pAUMC={{1} \over {2}} * ({C2 * T2} + {C1 * T1}) * (T2 - T1) $$
 
 ## Linear Up Logarithmic Down method
 
 The following equation is used to calculate the $pAUMC$ for any two data points with concentration values which are increasing, or when either concentration value is 0:
 
-$pAUMC={{1} \over {2}} * ({C2 * T2} + {C1 * T1}) * (T2 - T1)$
+$$ pAUMC={{1} \over {2}} * ({C2 * T2} + {C1 * T1}) * (T2 - T1) $$
 
 When the concentrations are declining, and neither concentration value is 0, the following equation is used to calculate the $pAUMC$:
 
-$pAUMC = [{{C1 * T1 - C2 * T2} \over {ln({{C1} \over {C2}})}}] * (T2 - T1)-{{C2-C1} \over {ln({{C2} \over {C1}})}} * {(T2-T1)}^2$
+$$ pAUMC = [{{C1 * T1 - C2 * T2} \over {ln({{C1} \over {C2}})}}] * (T2 - T1)-{{C2-C1} \over {ln({{C2} \over {C1}})}} * {(T2-T1)}^2 $$

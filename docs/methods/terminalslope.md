@@ -12,7 +12,7 @@ The number of terminal slope values is determined using the concentration values
 
 \# of groups = $(n-2) + (n-3)$
 
-The value $(n-2)$ represents the number of terminal slope calculations that can be done starting with the last 3 data points, the last 4 data points, the last 5 data poitns, and so on until you reach the last $n$ data points. The following figure illustrates the data points included in each of the 6 groups for this profile.
+The value $(n-2)$ represents the number of terminal slope calculations that can be done starting with the last 3 data points, the last 4 data points, the last 5 data points, and so on until you reach the last $n$ data points. The following figure illustrates the data points included in each of the 6 groups for this profile.
 
 ![Terminal slope groups 1](./images/terminal-slope1.png)
 

@@ -4,11 +4,17 @@ Terminal slope values are calculated using simple linear regression with the x-v
 
 Other software packages require the user to individually select data points to be included in the terminal slope calculation. Or the user must provide algorithm settings to define a "best" set of data points for the calculation of the terminal slope. And then a single terminal slope parameter is calculated. 
 
-The Aplos NCA takes a different approach and calculates multiple terminal slope values for each unique profile. Based on the algorithm settings to define the "best" terminal slope estimate, a single terminal slope for each unique profile is included in data summaries; however, all terminal slope values and all pharmacokinetic paramaters associated with each terminal slope value are returned to the user should they want to explore alternate values for terminal slope.
+The Aplos NCA takes a different approach and calculates multiple terminal slope values for each unique profile. Based on the algorithm settings to define the "best" terminal slope estimate, a single terminal slope for each unique profile is included in data summaries; however, all terminal slope values and all pharmacokinetic parameters associated with each terminal slope value are returned to the user should they want to explore alternate values for terminal slope.
 
-## How Many Terminal Slopes are Calculated?
+Within Aplos NCA there are 3 separate methods that can be used to determine the "best" terminal slope parameter for each profile. These are:
 
-The number of terminal slope values is determined using the concentration values from Clast to Cmax (or C0 for IV bolus administration). Assuming that the number of samples, including Clast and Cmax (or C0) are represented by $n$, the number of terminal slopes calculated is determined by the following equation:
+*   Method 1: Aplos NCA Method (default)
+*   Method 2: Aplos NCA Method excluding Cmax
+*   Method 3: Excluding Cmax and Including Clast
+
+## Method 1: Aplos NCA Method
+
+The default, or Aplos NCA Method will be used if no method is specified. In this method, the number of terminal slope values is determined using the concentration values from Clast to Cmax (or C0 for IV bolus administration). Assuming that the number of samples, including Clast and Cmax (or C0) are represented by $n$, the number of terminal slopes calculated is determined by the following equation:
 
 \# of groups = $(n-2) + (n-3)$
 
@@ -22,18 +28,26 @@ The value $(n-3)$ represents the number of terminal slope values that can be cal
 
 In the example plots above, there are 8 data points from Cmax to Clast. There will be 11 terminal slope calculations performed for this one profile. For each of those 11 terminal slope calculations, all associated pharmacokinetic parameters (e.g. AUC infinity) will be calculated. 
 
+## Method 2: Aplos NCA Method excluding Cmax
+
+This method is identical to Method 1, except Cmax is excluded from the calculations, except when the route of administration is intravenous bolus. Thus, using the example above, there would be 9 terminal slope calculations (instead of 11). 
+
+## Method 3: Excluding Cmax and Including Clast
+
+This method is similar to Method 2 because Cmax is excluded from calculations (except when the route of administration is intraveous bolus). However, only terminal slopes that include Clast are included. Therefore, using the example noted above, there woudl be 5 terminal slope calculations. These would correspond to those from the first group shown for Method 1, excluding the one that included Cmax.
+
 ## Selection of Best Terminal Slope
 
 Although multiple terminal slope values are calculated for each unique profile, a single terminal slope value is considered the best option based on criteria supplied by the user. The criteria are followed in sequential order until there is either a single terminal slope value reported for each unique profile. It is possible that none of the terminal slopes will meet all of the required criteria and thus no terminal slope will be reported for that unique profile. If a terminal slope value is not reported for a profile, none of the parameters that depends on the terminal slope will be reported for that unique profile. 
 
-Using the criteria listed below, the "best" terminal slope value is reported for each unique profile in data listings and summaries. All other terminal slope values are reported in the raw results for each unique profile.
+Using the criteria listed below, the "best" terminal slope value is reported for each unique profile in data listings and summaries. All other terminal slope values are reported in the raw results for each unique profile. Negative values for kel (i.e. increasing concentrations) are reported in the output, but not selected as a "best" terminal slope.
 
 | Position | Rule | Default | Options |
 | :---: | :--- | :--- | :--- |
 | 1 | Regression statistic used | Adjusted r<sup>2</sup> | r<sup>2</sup> |
 | 2 | Minimum statistic value | 0 (not used) | Any value >0 and <1. |
-| 3 | Maximum extrapolation for AUC infinity linear | 0 (not used) | Any value between 0 and 100. |
-| 4 | Maximum extrapolation for AUC infinity linlog | 0 (not used) | Any value between 0 and 100. |
+| 3 | Maximum extrapolation for AUC infinity linear | 0 (not used) | Any value between 0 and 1 (i.e. 0.25 = 25%). |
+| 4 | Maximum extrapolation for AUC infinity linlog | 0 (not used) | Any value between 0 and 1 (i.e. 0.25 = 25%). |
 | 5 | Maximum span | 0 (not used) | Any value &#8805;0. |
 | 6 | Maximum number of points | 0 (not used) | Any value &#8805;0. |
 | 7 | Earliest time value | 0 (not used) | Any value >0 |

@@ -10,10 +10,11 @@ The best-fit rate constant must meet all of the criteria specified. If multiple 
 ## Description of input fields
 |Field name|Description|
 |:---|:---|
+|Kel Method|Method for selection of points included in the calculation of the terminal elimination rate constant. A description of the methods can be found [here](./terminalslope).
 |Regression statistic|Choose either r<sup>2</sup> or adjusted r<sup>2</sup>. The default is [adjusted r<sup>2</sup>](#adjusted-r2-calculation) as it gives a small penalty for each additional time point included in the regression.|
 |Minimum statistic value|The chosen statistic must be greater than this value. Default is 0, meaning it is not used. Number must be less than 1.|
-|Maximum % extrapolated for AUC<sub>infinity</sub> Linear|The % extrapolated for the AUC<sub>infinity</sub> calculated using the linear method must be less than this value. Default is 0, meaning it is not used. Number must be greater than 0 and less than 100.|
-|Maximum % extrapolated for AUC<sub>infinity</sub> LinLog|The % extrapolated for the AUC<sub>infinity</sub> calculated using the linear up log down method must be less than this value. Default is 0, meaning it is not used. Number must be greater than 0 and less than 100.|
+|Maximum % extrapolated for AUC<sub>infinity</sub> Linear|The % extrapolated for the AUC<sub>infinity</sub> calculated using the linear method must be less than this value. Default is 0, meaning it is not used. Number must be greater than 0 and less than 1 (i.e. 0.25 = 25%).|
+|Maximum % extrapolated for AUC<sub>infinity</sub> LinLog|The % extrapolated for the AUC<sub>infinity</sub> calculated using the linear up log down method must be less than this value. Default is 0, meaning it is not used. Number must be greater than 0 and less than 1 (i.e. 0.25 = 25%).|
 |Minimum Span|Minimum value for the Span variable. Default is 0, meaning it is not used. Any values greater than 0 are accepted.|
 |Maximum number of points|Maximum number of time points permitted in the regression. Default is 0, meaning it is not used. Any values greater than 0 are accepted. Note that all regressions have a minimum of 3 data points.|
 |Earliest time point|Earliest time point included in the regression. Default is 0, meaning it is not used.|

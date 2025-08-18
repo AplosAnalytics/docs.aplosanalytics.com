@@ -4,106 +4,345 @@
             "text": "🌟 Overview",
             "collapsed": true,
             "items": [
-                {"text": "📎 Overview","link": "/docs/methods/overview"},
-                {"text": "🛠️ How it works","link": "/docs/methods/howitworks"},
-                {"text": "🔑 Security","link": "/docs/methods/security"},
-                {"text": "🔏 Audit Trail","link": "/docs/methods/audittrail"},
-                {"text": "🎩 Professional Accounts","link": "/docs/methods/professional"},
-                {"text": "🧢 Team Accounts","link": "/docs/methods/team"},
-                {"text": "👑 Enterprise Accounts","link": "/docs/methods/enterprise"},
-                {"text": "🎓 Academic Accounts","link": "/docs/methods/academic"},
-                {"text": "🚦Subscription Status","link": "/docs/methods/subscription"},
-                {"text": "⚖️ License","link": "/docs/methods/overview-license"}
+                {
+                    "text": "📎 Overview",
+                    "link": "/docs/methods/overview"
+                },
+                {
+                    "text": "🛠️ How it works",
+                    "link": "/docs/methods/howitworks"
+                },
+                {
+                    "text": "🔑 Security",
+                    "link": "/docs/methods/security"
+                },
+                {
+                    "text": "🔏 Audit Trail",
+                    "link": "/docs/methods/audittrail"
+                },
+                {
+                    "text": "🎩 Professional Accounts",
+                    "link": "/docs/methods/professional"
+                },
+                {
+                    "text": "🧢 Team Accounts",
+                    "link": "/docs/methods/team"
+                },
+                {
+                    "text": "👑 Enterprise Accounts",
+                    "link": "/docs/methods/enterprise"
+                },
+                {
+                    "text": "🎓 Academic Accounts",
+                    "link": "/docs/methods/academic"
+                },
+                {
+                    "text": "🚦Subscription Status",
+                    "link": "/docs/methods/subscription"
+                },
+                {
+                    "text": "⚖️ License",
+                    "link": "/docs/methods/overview-license"
+                }
             ]
         },
         {
             "text": "📋 Analysis Dataset",
             "collapsed": true,
             "items": [
-                {"text": "📚 Formats","link": "/docs/methods/data-format"},
-                {"text": "❗️Required columns","link": "/docs/methods/data-column-req"},
-                {"text": "❓Optional columns","link": "/docs/methods/data-column-opt"}
+                {
+                    "text": "📚 Formats",
+                    "link": "/docs/methods/data-format"
+                },
+                {
+                    "text": "❗️Required columns",
+                    "link": "/docs/methods/data-column-req"
+                },
+                {
+                    "text": "❓Optional columns",
+                    "link": "/docs/methods/data-column-opt"
+                }
             ]
         },
         {
             "text": "🛠️ Analysis Configuration",
             "collapsed": true,
             "items": [
-                {"text": "💊 Dosing","link": "/docs/methods/config-dosing"},
-                {"text": "🟠 Designations","link": "/docs/methods/config-desig"},
-                {"text": "🔵 Columns","link": "/docs/methods/config-columns"},
-                {"text": "🟢 Kel rules","link": "/docs/methods/config-kel"},
-                {"text": "🟤 Partial AUC","link":"/docs/methods/config-pauc"},
-                {"text": "🟡 Outputs","link":"/docs/methods/config-outputs"},
-                {"text": "🟣 Meta data","link": "/docs/methods/config-meta"},
-                {"text": "📄 Configuration JSON","link": "/docs/methods/config-json"},
-                {"text": "📄 Data Cleaning JSON - beta","link": "/docs/methods/data-cleaning-json"},
-                {"text": "📄 Post Processing JSON - beta","link": "/docs/methods/post-processing-json"}
+                {
+                    "text": "💊 Dosing",
+                    "link": "/docs/methods/config-dosing"
+                },
+                {
+                    "text": "🟠 Designations",
+                    "link": "/docs/methods/config-desig"
+                },
+                {
+                    "text": "🔵 Columns",
+                    "link": "/docs/methods/config-columns"
+                },
+                {
+                    "text": "🟢 Kel rules",
+                    "link": "/docs/methods/config-kel"
+                },
+                {
+                    "text": "🟤 Partial AUC",
+                    "link": "/docs/methods/config-pauc"
+                },
+                {
+                    "text": "🟡 Outputs",
+                    "link": "/docs/methods/config-outputs"
+                },
+                {
+                    "text": "🟣 Meta data",
+                    "link": "/docs/methods/config-meta"
+                },
+                {
+                    "text": "📄 Configuration JSON",
+                    "link": "/docs/methods/config-json"
+                },
+                {
+                    "text": "📄 Data Cleaning JSON - beta",
+                    "link": "/docs/methods/data-cleaning-json"
+                },
+                {
+                    "text": "📄 Post Processing JSON - beta",
+                    "link": "/docs/methods/post-processing-json"
+                }
+            ]
+        },
+        {
+            "text": "✨ Data Cleaning",
+            "collapsed": true,
+            "items": [
+                {
+                    "text": "📄 Add Column",
+                    "link": "/docs/methods/data-cleaning/rule-add-column"
+                },
+                {
+                    "text": "📄 BLQ Processing",
+                    "link": "/docs/methods/data-cleaning/rule-blq"
+                },
+                {
+                    "text": "📄 Conditional Rules",
+                    "link": "/docs/methods/data-cleaning/rule-conditional"
+                },
+                {
+                    "text": "📄 Arithmetic Conversion",
+                    "link": "/docs/methods/data-cleaning/rule-conversion"
+                },
+                {
+                    "text": "📄 Date Standardization",
+                    "link": "/docs/methods/data-cleaning/rule-date-standardization"
+                },
+                {
+                    "text": "📄 Duplication Rules",
+                    "link": "/docs/methods/data-cleaning/rule-duplication"
+                },
+                {
+                    "text": "📄 Data Exclusion",
+                    "link": "/docs/methods/data-cleaning/rule-exclusion"
+                },
+                {
+                    "text": "📄 Find & Replace",
+                    "link": "/docs/methods/data-cleaning/rule-find-replace"
+                },
+                {
+                    "text": "📄 Data Grouping",
+                    "link": "/docs/methods/data-cleaning/rule-data-grouping"
+                },
+                {
+                    "text": "📄 Column Mapping",
+                    "link": "/docs/methods/data-cleaning/rule-column-mapping"
+                },
+                {
+                    "text": "📄 Maximum Value",
+                    "link": "/docs/methods/data-cleaning/rule-max"
+                },
+                {
+                    "text": "📄 Maximum Value Cap",
+                    "link": "/docs/methods/data-cleaning/rule-max-value"
+                },
+                {
+                    "text": "📄 Minimum Value",
+                    "link": "/docs/methods/data-cleaning/rule-min"
+                },
+                {
+                    "text": "📄 Minimum Value Cap",
+                    "link": "/docs/methods/data-cleaning/rule-min-value"
+                },
+                {
+                    "text": "📄 Null Replacement",
+                    "link": "/docs/methods/data-cleaning/rule-null-replacement"
+                },
+                {
+                    "text": "📄 Regular Expression",
+                    "link": "/docs/methods/data-cleaning/rule-regex"
+                },
+                {
+                    "text": "📄 Data Sorting",
+                    "link": "/docs/methods/data-cleaning/rule-sort"
+                },
+                {
+                    "text": "📄 Time Zero",
+                    "link": "/docs/methods/data-cleaning/rule-time-zero"
+                },
+                {
+                    "text": "📄 TMAX Time Points",
+                    "link": "/docs/methods/data-cleaning/rule-tmax-timepoints-up-down"
+                },
+                {
+                    "text": "📄 Trim Whitespace",
+                    "link": "/docs/methods/data-cleaning/rule-trim-whitespace"
+                }
             ]
         },
         {
             "text": "🏁 Results",
             "collapsed": true,
             "items": [
-                {"text": "↓ Download","link": "/docs/methods/results-download"},
-                {"text": "📂 What you get","link": "/docs/methods/results-get"},
-                {"text": "📄 Individual parameters","link": "/docs/methods/results-ind"},
-                {"text": "📑 Summary parameters","link": "/docs/methods/results-summary"},
-                {"text": "📈 Individual plots","link": "/docs/methods/results-ind-plot"},
-                {"text": "📉 Summary plots","link": "/docs/methods/results-summary-plot"},
-                {"text": "📓 Technical report","link": "/docs/methods/results-report"}
+                {
+                    "text": "↓ Download",
+                    "link": "/docs/methods/results-download"
+                },
+                {
+                    "text": "📂 What you get",
+                    "link": "/docs/methods/results-get"
+                },
+                {
+                    "text": "📄 Individual parameters",
+                    "link": "/docs/methods/results-ind"
+                },
+                {
+                    "text": "📑 Summary parameters",
+                    "link": "/docs/methods/results-summary"
+                },
+                {
+                    "text": "📈 Individual plots",
+                    "link": "/docs/methods/results-ind-plot"
+                },
+                {
+                    "text": "📉 Summary plots",
+                    "link": "/docs/methods/results-summary-plot"
+                },
+                {
+                    "text": "📓 Technical report",
+                    "link": "/docs/methods/results-report"
+                }
             ]
         },
         {
             "text": "📜 Parameters Calculated",
             "collapsed": true,
             "items": [
-                {"text": "💊 Extravascular - Single Dose","link": "/docs/methods/ev-single"},
-                {"text": "💊💊 Extravascular - Steady State","link": "/docs/methods/ev-steady"},
-                {"text": "💉 IV Bolus - Single Dose","link": "/docs/methods/iv-bolus-single"},
-                {"text": "💉💉 IV Bolus - Steady State","link": "/docs/methods/iv-bolus-steady"},
-                {"text": "🩺 IV Infusion - Single Dose","link": "/docs/methods/iv-inf-single"},
-                {"text": "🩺🩺 IV Infusion - Steady State","link": "/docs/methods/iv-inf-steady"}
+                {
+                    "text": "💊 Extravascular - Single Dose",
+                    "link": "/docs/methods/ev-single"
+                },
+                {
+                    "text": "💊💊 Extravascular - Steady State",
+                    "link": "/docs/methods/ev-steady"
+                },
+                {
+                    "text": "💉 IV Bolus - Single Dose",
+                    "link": "/docs/methods/iv-bolus-single"
+                },
+                {
+                    "text": "💉💉 IV Bolus - Steady State",
+                    "link": "/docs/methods/iv-bolus-steady"
+                },
+                {
+                    "text": "🩺 IV Infusion - Single Dose",
+                    "link": "/docs/methods/iv-inf-single"
+                },
+                {
+                    "text": "🩺🩺 IV Infusion - Steady State",
+                    "link": "/docs/methods/iv-inf-steady"
+                }
             ]
         },
         {
             "text": "🔢 Calculation Methods",
             "collapsed": true,
             "items": [
-                {"text": "🟦 AUC methods","link": "/docs/methods/aucmethods"},
-                {"text": "🟨 AUMC methods","link": "/docs/methods/aumcmethods"},
-                {"text": "🟪 Extrapolation methods","link": "/docs/methods/extrapolationmethods"},
-                {"text": "🟧 Terminal Slope methods","link": "/docs/methods/terminalslope"}
+                {
+                    "text": "🟦 AUC methods",
+                    "link": "/docs/methods/aucmethods"
+                },
+                {
+                    "text": "🟨 AUMC methods",
+                    "link": "/docs/methods/aumcmethods"
+                },
+                {
+                    "text": "🟪 Extrapolation methods",
+                    "link": "/docs/methods/extrapolationmethods"
+                },
+                {
+                    "text": "🟧 Terminal Slope methods",
+                    "link": "/docs/methods/terminalslope"
+                }
             ]
         },
         {
             "text": "✅ Validation",
             "collapsed": true,
             "items": [
-                {"text": "📝 Validation Procedure","link":"/docs/methods/validationprocedure"},
-                {"text": "🆚 Validation Comparisons","link":"/docs/methods/validationcompare"},
-                {"text": "📓 Validation Report","link":"/docs/methods/validationresults"}
+                {
+                    "text": "📝 Validation Procedure",
+                    "link": "/docs/methods/validationprocedure"
+                },
+                {
+                    "text": "🆚 Validation Comparisons",
+                    "link": "/docs/methods/validationcompare"
+                },
+                {
+                    "text": "📓 Validation Report",
+                    "link": "/docs/methods/validationresults"
+                }
             ]
         },
         {
             "text": "🖥️ Using Aplos Web Interface",
             "collapsed": true,
             "items": [
-                {"text": "📊 Dashboard","link": "/docs/methods/web-dashboard"},
-                {"text": "🧙‍♂️ Analysis Wizard","link": "/docs/methods/web-wizard"},
-                {"text": "📝 Input Data","link": "/docs/methods/web-data"},
-                {"text": "📉 Data Explorer","link": "/docs/methods/web-dataexplorer"},
-                {"text": "🏁 Analysis History","link": "/docs/methods/web-history"}
+                {
+                    "text": "📊 Dashboard",
+                    "link": "/docs/methods/web-dashboard"
+                },
+                {
+                    "text": "🧙‍♂️ Analysis Wizard",
+                    "link": "/docs/methods/web-wizard"
+                },
+                {
+                    "text": "📝 Input Data",
+                    "link": "/docs/methods/web-data"
+                },
+                {
+                    "text": "📉 Data Explorer",
+                    "link": "/docs/methods/web-dataexplorer"
+                },
+                {
+                    "text": "🏁 Analysis History",
+                    "link": "/docs/methods/web-history"
+                }
             ]
         },
         {
             "text": "😁 Examples",
             "collapsed": true,
             "items": [
-              { "text": "🐍 Using Python", "link": "/docs/samples/python-overview"},
-              { "text": "💿 Using R", "link": "/docs/samples/r-overview"},
-              { "text": "💾 Using SAS", "link": "/docs/samples/sas-overview"}
+                {
+                    "text": "🐍 Using Python",
+                    "link": "/docs/samples/python-overview"
+                },
+                {
+                    "text": "💿 Using R",
+                    "link": "/docs/samples/r-overview"
+                },
+                {
+                    "text": "💾 Using SAS",
+                    "link": "/docs/samples/sas-overview"
+                }
             ]
-          }
+        }
     ]
 }

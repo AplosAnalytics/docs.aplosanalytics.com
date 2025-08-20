@@ -5,7 +5,7 @@ Excludes values based on specified criteria.
 | Field | Description | Required |
 |--------|------------|----------|
 | `column` | Name of the new column to exclude from | ✅ Yes |
-| `dvalue` | Value to exclude | ✅ Yes |
+| `value` | Value to exclude | ✅ Yes |
 
 #### Example:
 ```json

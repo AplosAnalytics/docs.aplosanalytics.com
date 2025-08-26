@@ -257,6 +257,10 @@
                 {
                     "text": "🩺🩺 IV Infusion - Steady State",
                     "link": "/docs/methods/iv-inf-steady"
+                },
+                {
+                    "text": "♻️ Parameter Decode List",
+                    "link": "/docs/methods/parameter-compare"
                 }
             ]
         },

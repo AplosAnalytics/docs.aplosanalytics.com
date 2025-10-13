@@ -31,7 +31,9 @@ The function requires the following information:
   - JSON web token
   - Analysis dataset filename (and path)
   - Configuration in JSON format
-  - Meta data in JSON format
+  - Meta data in JSON format (optional)
+  - Data cleaning rules in JSON format (optional)
+  - Post processing rules in JSON format (optional)
   - API URL (The URL for the API is available from the web interface under [Profile | API Configuration](./r-script.md#security-information))
   - Folder for results file
   - Unzip (True/False)
@@ -84,35 +86,65 @@ This code uploads the data file for analysis using the secure URL.
 This code initiates the analysis by Aplos NCA.  
 
 ```r:line-numbers
-  cat("Loading analysis configurations \n")
-  config.list <- fromJSON(txt = config)
+  cat("Loading data cleaning configuration \n")
+  clean_text <- paste(readLines(clean_file, warn = FALSE), collapse = "\n")
+  
+  cat("Loading analysis configuration \n")
+  config_text <- paste(readLines(config_file, warn = FALSE), collapse = "\n")
+  
+  cat("Loading post processing configuration \n")
+  post_text <- paste(readLines(post_file, warn = FALSE), collapse = "\n")
   
   cat("Loading analysis meta data \n")
-  meta.list <- fromJSON(txt = meta)
+  meta_text <- paste(readLines(meta_file, warn = FALSE), collapse = "\n")
   
   cat("Initiating analysis ... \n")
+  cat("Initiating analysis ... \n")
+  exec_id <- execute_analysis(result = upload_result, config = config_text,
+                              meta = meta_text, clean = clean_text, post = post_text,
+                              url = api_url, token = current.jwt)
+
+  execute_analysis <- function(result,config,meta,clean,post,token,url){
   tenant_id <- decode_jwt(token)$payload$`custom:aplos_user_tenant_id`
   user_id <- decode_jwt(token)$payload$`custom:aplos_user_id`
   headers <- c("Content-Type" = "application/json",
                "Authorization" = paste0("Bearer ",token))
-  body <- list(
-    file = list(
-      id = upload_url_result$file$id
-    ),
-    meta_data = meta.list,
-    configuration = config.list
+  # Build the body of the request
+  payload <- sprintf(
+    '{
+    "file": {
+      "id": "%s"
+    },
+    "configuration": %s,
+    "meta_data": %s,
+    "data_processing": %s,
+    "post_processing": %s
+  }',
+    result$file$id,
+    config,
+    meta,
+    clean,
+    post
   )
+  # save the body as a file
+  write(payload, file = "payload.json")
   
-  analysis_response <- POST(url = paste0(url,"/tenants/",tenant_id,"/users/",user_id,"/nca/executions"),
-                            add_headers(.headers = headers),
-                            body = toJSON(body, auto_unbox = TRUE))
-  if (http_status(analysis_response)$category == "Success") {
+  # Initiate the analysis
+  response <- POST(url = paste0(url,"/tenants/",tenant_id,"/users/",user_id,"/nca/executions"),
+                   add_headers(.headers = headers),
+                   body = upload_file("payload.json"))
+                   
+  # Check the response
+  if (http_status(response)$category == "Success") {
     cat("Execution initiated. \n")
   } else {
     cat("Error in the request. \n")
   }
-  analysis_response2 <- fromJSON(content(analysis_response, "text", encoding = "UTF-8"))
-  execution_id <- analysis_response2$execution_id
+  
+  result <- fromJSON(content(response, "text", encoding = "UTF-8"))
+  execution_id <- result$execution_id
+  return(execution_id)
+}
 ```
 
 ## Request Execution Status 

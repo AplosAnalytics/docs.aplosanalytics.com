@@ -9,7 +9,7 @@ Trims a value from a source column and copies to a target column.
 | `trim_type`          | Either `left`, `right`, or `middle`. Determines where the trim will start. <ul><li>`left`: Trim from beginning of value to `end_position`</li><li>`right`: Trim from end of value to `start_position`</li><li>`middle`: Trim from `start_position` to `end_position`</li></ul> | ✅ Yes                   |
 | `start_position`     | Required for Trim Type `Right` and `Middle`. Any values ignored for Trim Type Left.                                                                                                                                                                                            | ⚠️ Conditional           |
 | `end_position`       | Required for Trim Type `Left` and `Middle`. Any values ignored for Trim Type Right.                                                                                                                                                                                            | ⚠️ Conditional           |
-| `string_counds`      | When attempting to trim data values, determines if index positions that are out of bounds for a value should prevent the rule from completing. If disabled, `destination_column` values for these cases will populate with an error message.                                   | ❌ No (default: `false`) |
+| `strict_bounds`      | When attempting to trim data values, determines if index positions that are out of bounds for a value should prevent the rule from completing. If disabled, `destination_column` values for these cases will populate with an error message.                                   | ❌ No (default: `false`) |
 
 #### Example:
 

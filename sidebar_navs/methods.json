@@ -119,6 +119,10 @@
                     "link": "/docs/methods/data-cleaning/rule-add-column"
                 },
                 {
+                    "text": "📄 Delete Column",
+                    "link": "/docs/methods/data-cleaning/rule-delete-column"
+                },
+                {
                     "text": "📄 BLQ Processing",
                     "link": "/docs/methods/data-cleaning/rule-blq"
                 },
@@ -193,6 +197,14 @@
                 {
                     "text": "📄 Trim Whitespace",
                     "link": "/docs/methods/data-cleaning/rule-trim-whitespace"
+                },
+                {
+                    "text": "📄 Trim Text",
+                    "link": "/docs/methods/data-cleaning/rule-trim-text"
+                },
+                {
+                    "text": "📄 Concatenate Text",
+                    "link": "/docs/methods/data-cleaning/rule-concatenate"
                 }
             ]
         },

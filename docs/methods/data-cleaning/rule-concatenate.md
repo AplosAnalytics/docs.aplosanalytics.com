@@ -1,19 +1,19 @@
 ### Concatenate Rule (`concatenate`)
 
-Trims a value from a source column and copes to a target column.
+Concatenates text strings from one or more columns in the dataset to create a new string.
 
 | Field                | Description                                                                                                                                                                             | Required                    |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| `template`           | Takes a string template containing source column references along with a destination_column, builds a new column value from the template and adds this value to the destination_column. | ✅ Yes                      |
-| `delimiter`          | An object containing the characters to use as delimiters.                                                                                                                               | ✅ Yes (default: `'{' '}'`) |
-| `value`              | The template value used to build concatenated values.                                                                                                                                   | ✅ Yes                      |
-| `destination_column` | The column where concatenated value is copied. Can be an existing or new column.                                                                                                        | ✅ Yes                      |
+| -------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `template`           | Takes a string template containing source column references to build a new value.                          | ✅ Yes                      |
+| `delimiter`          | An object containing the characters to use as delimiters in the `template` to define source column names.  | ✅ Yes (default: `'{' '}'`) |
+| `value`              | The template value used to build concatenated values.                                                      | ✅ Yes                      |
+| `destination_column` | The column where concatenated value is copied. Can be an existing or new column.                           | ✅ Yes                      |
 
 #### Example:
 
 ```json
 {
-  "description": "Concatenate description",
+  "description": "Concatenate treatment, dose and study day",
   "type": "concatenate",
   "template": {
     "delimiter": {

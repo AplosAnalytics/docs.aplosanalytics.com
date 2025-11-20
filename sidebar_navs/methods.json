@@ -119,24 +119,32 @@
                     "link": "/docs/methods/data-cleaning/rule-add-column"
                 },
                 {
-                    "text": "📄 Delete Column",
-                    "link": "/docs/methods/data-cleaning/rule-delete-column"
+                    "text": "📄 Arithmetic Conversion",
+                    "link": "/docs/methods/data-cleaning/rule-conversion"
                 },
                 {
-                    "text": "📄 BLQ Processing",
-                    "link": "/docs/methods/data-cleaning/rule-blq"
+                    "text": "📄 Column Mapping",
+                    "link": "/docs/methods/data-cleaning/rule-column-mapping"
                 },
                 {
                     "text": "📄 Conditional Rules",
                     "link": "/docs/methods/data-cleaning/rule-conditional"
                 },
                 {
-                    "text": "📄 Arithmetic Conversion",
-                    "link": "/docs/methods/data-cleaning/rule-conversion"
+                    "text": "📄 Concatenate Text",
+                    "link": "/docs/methods/data-cleaning/rule-concatenate"
+                },
+                {
+                    "text": "📄 Convert String to Numeric",
+                    "link": "/docs/methods/data-cleaning/rule-conversion-string-numeric"
                 },
                 {
                     "text": "📄 Date Standardization",
                     "link": "/docs/methods/data-cleaning/rule-date-standardization"
+                },
+                {
+                    "text": "📄 Delete Column",
+                    "link": "/docs/methods/data-cleaning/rule-delete-column"
                 },
                 {
                     "text": "📄 Duplication Rules",
@@ -147,16 +155,20 @@
                     "link": "/docs/methods/data-cleaning/rule-exclusion"
                 },
                 {
-                    "text": "📄 Find & Replace",
-                    "link": "/docs/methods/data-cleaning/rule-find-replace"
-                },
-                {
                     "text": "📄 Data Grouping",
                     "link": "/docs/methods/data-cleaning/rule-data-grouping"
                 },
                 {
-                    "text": "📄 Column Mapping",
-                    "link": "/docs/methods/data-cleaning/rule-column-mapping"
+                    "text": "📄 Data Sorting",
+                    "link": "/docs/methods/data-cleaning/rule-sort"
+                },
+                {
+                    "text": "📄 Find & Replace",
+                    "link": "/docs/methods/data-cleaning/rule-find-replace"
+                },
+                {
+                    "text": "📄 Flag First Observation",
+                    "link": "/docs/methods/data-cleaning/rule-flag-first-observation"
                 },
                 {
                     "text": "📄 Maximum Value",
@@ -179,12 +191,16 @@
                     "link": "/docs/methods/data-cleaning/rule-null-replacement"
                 },
                 {
+                    "text": "📄 Numeric Comparison",
+                    "link": "/docs/methods/data-cleaning/rule-numeric-comparison"
+                },
+                {
                     "text": "📄 Regular Expression",
                     "link": "/docs/methods/data-cleaning/rule-regex"
                 },
                 {
-                    "text": "📄 Data Sorting",
-                    "link": "/docs/methods/data-cleaning/rule-sort"
+                    "text": "📄 Text Comparison",
+                    "link": "/docs/methods/data-cleaning/rule-text-comparison"
                 },
                 {
                     "text": "📄 Time Zero",
@@ -195,16 +211,12 @@
                     "link": "/docs/methods/data-cleaning/rule-tmax-timepoints-up-down"
                 },
                 {
-                    "text": "📄 Trim Whitespace",
-                    "link": "/docs/methods/data-cleaning/rule-trim-whitespace"
-                },
-                {
                     "text": "📄 Trim Text",
                     "link": "/docs/methods/data-cleaning/rule-trim-text"
                 },
                 {
-                    "text": "📄 Concatenate Text",
-                    "link": "/docs/methods/data-cleaning/rule-concatenate"
+                    "text": "📄 Trim Whitespace",
+                    "link": "/docs/methods/data-cleaning/rule-trim-whitespace"
                 }
             ]
         },

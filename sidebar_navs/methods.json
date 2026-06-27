@@ -123,32 +123,36 @@
                     "link": "/docs/methods/data-cleaning/rule-conversion"
                 },
                 {
-                    "text": "📄 Column Mapping",
-                    "link": "/docs/methods/data-cleaning/rule-column-mapping"
+                    "text": "📄 BLQ Handling First Observation",
+                    "link": "/docs/methods/data-cleaning/rule-BLQ-first-obs"
                 },
                 {
-                    "text": "📄 Conditional Rules",
-                    "link": "/docs/methods/data-cleaning/rule-conditional"
+                    "text": "📄 BLQ Handling Fixed Value",
+                    "link": "/docs/methods/data-cleaning/rule-BLQ-N"
+                },
+                {
+                    "text": "📄 BLQ Handling Tmax",
+                    "link": "/docs/methods/data-cleaning/rule-BLQ-tmax"
+                },
+                {
+                    "text": "📄 Column Mapping",
+                    "link": "/docs/methods/data-cleaning/rule-column-mapping"
                 },
                 {
                     "text": "📄 Concatenate Text",
                     "link": "/docs/methods/data-cleaning/rule-concatenate"
                 },
                 {
+                    "text": "📄 Conditional Rules",
+                    "link": "/docs/methods/data-cleaning/rule-conditional"
+                },
+                {
+                    "text": "📄 Convert Decimal to Integer",
+                    "link": "/docs/methods/data-cleaning/rule-conversion-decimal-integer"
+                },
+                {
                     "text": "📄 Convert String to Numeric",
                     "link": "/docs/methods/data-cleaning/rule-conversion-string-numeric"
-                },
-                {
-                    "text": "📄 Date Standardization",
-                    "link": "/docs/methods/data-cleaning/rule-date-standardization"
-                },
-                {
-                    "text": "📄 Delete Column",
-                    "link": "/docs/methods/data-cleaning/rule-delete-column"
-                },
-                {
-                    "text": "📄 Duplication Rules",
-                    "link": "/docs/methods/data-cleaning/rule-duplication"
                 },
                 {
                     "text": "📄 Data Exclusion",
@@ -161,6 +165,18 @@
                 {
                     "text": "📄 Data Sorting",
                     "link": "/docs/methods/data-cleaning/rule-sort"
+                },
+                {
+                    "text": "📄 Date Standardization",
+                    "link": "/docs/methods/data-cleaning/rule-date-standardization"
+                },
+                {
+                    "text": "📄 Delete Column",
+                    "link": "/docs/methods/data-cleaning/rule-delete-column"
+                },
+                {
+                    "text": "📄 Duplication Rules",
+                    "link": "/docs/methods/data-cleaning/rule-duplication"
                 },
                 {
                     "text": "📄 Find & Replace",
@@ -195,8 +211,16 @@
                     "link": "/docs/methods/data-cleaning/rule-numeric-comparison"
                 },
                 {
+                    "text": "📄 Numerical Formatting",
+                    "link": "/docs/methods/data-cleaning/rule-numerical-formatting"
+                },
+                {
                     "text": "📄 Regular Expression",
                     "link": "/docs/methods/data-cleaning/rule-regex"
+                },
+                {
+                    "text": "📄 Sparse Data",
+                    "link": "/docs/methods/data-cleaning/rule-sparse-data"
                 },
                 {
                     "text": "📄 Text Comparison",

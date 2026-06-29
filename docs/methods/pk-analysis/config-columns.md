@@ -15,7 +15,9 @@ A description of each setting on the Data Columns configuration screen is below:
 |Exclusion Code|This is the code for exclusions within the selected exclusion column. For example, it may be "N" or it may be the number "1". Only a single exclusion code is permitted. |Optional. Required if Exclusion column is selected.|
 
 **Figure 1: Columns configuration input screen**
-<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.7818627450980393; padding: 40px 0 40px 0;"><iframe src="https://guides.aplosanalytics.com/embed/cm6wi1n1y01q13wrqfnx42w2e?embed_v=2" loading="lazy" title="Column configuration" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.60; padding: 40px 0 40px 0;">
+  <iframe src="https://guides.aplosanalytics.com/embed/cmqspv2xy0jc6qmja0299d3nd?embed_v=2&utm_source=embed" loading="lazy" title="PK Analysis - Columns" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
 
 ## 
 > [!TIP]

@@ -9,17 +9,15 @@ Partial AUCs are user-defined ranges for calculation of area under the curve. Th
 
 ## Calculation method
 
-The partial AUC is calculated using the [linear trapezoidal method](./aucmethods.md). If either the start time or end time for the partial AUC is present in the profile, the observed concentrations (and all observed concentrations in between) will be used for the calculation of the partial AUC. If the start time or end time is not present in the profile, the concentration will be imputed using [linear interpolation](./extrapolationmethods.md) between the two adjacent time points. The imputed concentrations will then be used for the partial AUC calculation. The imputed concentration values are not provided in the output.
+The partial AUC is calculated using both the [linear trapezoidal method](./aucmethods.md) and the [linear up log down trapezoidal method](./aucmethods.md). If either the start time or end time for the partial AUC is present in the profile, the observed concentrations (and all observed concentrations in between) will be used for the calculation of the partial AUC. If the start time or end time is not present in the profile, the concentration will be imputed using [linear interpolation](./extrapolationmethods.md) between the two adjacent time points. The imputed concentrations will then be used for the partial AUC calculation. The imputed concentration values are not provided in the output. If the start time is before the first observation or the end time is after the last observation the partial AUC will not be calculated for that individual.
 
 > [!NOTE]
 > If the end time extends beyond the available data the partial AUC will not be calculated and will be reported in the non-fatal error text file in the output. For example, if the final observed value is at 23.5 hours and you ask for the partial AUC from 0 - 24 hours, it will not be calculated. 
 
 ## Input for web configuration
-<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.7818627450980393; padding: 40px 0 40px 0;"><iframe src="https://guides.aplosanalytics.com/embed/cm6wgpi7r01as3wrq2ofv7om1?embed_v=2" loading="lazy" title="Partial AUC" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
-## 
-> [!TIP]
-> Make sure you click the :heavy_plus_sign: button after entering your partial AUC information. If a trash can does not appear next to your partial AUC, it will not be included in the analysis.
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.60; padding: 40px 0 40px 0;">
+  <iframe src="https://guides.aplosanalytics.com/embed/cmqspy0hu0jilqmjalpbv4ocd?embed_v=2&utm_source=embed" loading="lazy" title="PK Analysis - Partial AUCs" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
 
 
 ## Manual JSON structure

@@ -65,216 +65,248 @@
             ]
         },
         {
-            "text": "🛠️ Analysis Configuration",
-            "collapsed": true,
-            "items": [
-                {
-                    "text": "💊 Dosing",
-                    "link": "/docs/methods/config-dosing"
-                },
-                {
-                    "text": "🟠 Designations",
-                    "link": "/docs/methods/config-desig"
-                },
-                {
-                    "text": "🔵 Columns",
-                    "link": "/docs/methods/config-columns"
-                },
-                {
-                    "text": "🟢 Kel rules",
-                    "link": "/docs/methods/config-kel"
-                },
-                {
-                    "text": "🟤 Partial AUC",
-                    "link": "/docs/methods/config-pauc"
-                },
-                {
-                    "text": "🟡 Outputs",
-                    "link": "/docs/methods/config-outputs"
-                },
-                {
-                    "text": "🟣 Meta data",
-                    "link": "/docs/methods/config-meta"
-                },
-                {
-                    "text": "📄 Configuration JSON",
-                    "link": "/docs/methods/config-json"
-                },
-                {
-                    "text": "📄 Data Cleaning JSON - beta",
-                    "link": "/docs/methods/data-cleaning-json"
-                },
-                {
-                    "text": "📄 Post Processing JSON - beta",
-                    "link": "/docs/methods/post-processing-json"
-                }
-            ]
-        },
-        {
             "text": "✨ Data Cleaning",
             "collapsed": true,
             "items": [
                 {
-                    "text": "📄 Add Column",
+                    "text": "Overview",
+                    "link": "/docs/methods/data-cleaning/overview"
+                },
+                {
+                    "text": "📏 Add Column",
                     "link": "/docs/methods/data-cleaning/rule-add-column"
                 },
                 {
-                    "text": "📄 Arithmetic Conversion",
+                    "text": "📏 Arithmetic Conversion",
                     "link": "/docs/methods/data-cleaning/rule-conversion"
                 },
                 {
-                    "text": "📄 BLQ Handling First Observation",
+                    "text": "📏 BLQ Handling - First Observation",
                     "link": "/docs/methods/data-cleaning/rule-BLQ-first-obs"
                 },
                 {
-                    "text": "📄 BLQ Handling Fixed Value",
+                    "text": "📏 BLQ Handling - Fixed Value",
                     "link": "/docs/methods/data-cleaning/rule-BLQ-N"
                 },
                 {
-                    "text": "📄 BLQ Handling Tmax",
+                    "text": "📏 BLQ Handling - Tmax",
                     "link": "/docs/methods/data-cleaning/rule-BLQ-tmax"
                 },
                 {
-                    "text": "📄 Column Mapping",
+                    "text": "📏 Column Mapping",
                     "link": "/docs/methods/data-cleaning/rule-column-mapping"
                 },
                 {
-                    "text": "📄 Concatenate Text",
+                    "text": "📏 Concatenate Text",
                     "link": "/docs/methods/data-cleaning/rule-concatenate"
                 },
                 {
-                    "text": "📄 Conditional Rules",
+                    "text": "📏 Conditional Rules",
                     "link": "/docs/methods/data-cleaning/rule-conditional"
                 },
                 {
-                    "text": "📄 Convert Decimal to Integer",
+                    "text": "📏 Convert Decimal to Integer",
                     "link": "/docs/methods/data-cleaning/rule-conversion-decimal-integer"
                 },
                 {
-                    "text": "📄 Convert String to Numeric",
+                    "text": "📏 Convert String to Numeric",
                     "link": "/docs/methods/data-cleaning/rule-conversion-string-numeric"
                 },
                 {
-                    "text": "📄 Data Exclusion",
+                    "text": "📏 Data Exclusion",
                     "link": "/docs/methods/data-cleaning/rule-exclusion"
                 },
                 {
-                    "text": "📄 Data Grouping",
+                    "text": "📏 Data Grouping",
                     "link": "/docs/methods/data-cleaning/rule-data-grouping"
                 },
                 {
-                    "text": "📄 Data Sorting",
+                    "text": "📏 Data Sorting",
                     "link": "/docs/methods/data-cleaning/rule-sort"
                 },
                 {
-                    "text": "📄 Date Standardization",
+                    "text": "📏 Date Standardization",
                     "link": "/docs/methods/data-cleaning/rule-date-standardization"
                 },
                 {
-                    "text": "📄 Delete Column",
+                    "text": "📏 Delete Column",
                     "link": "/docs/methods/data-cleaning/rule-delete-column"
                 },
                 {
-                    "text": "📄 Duplication Rules",
+                    "text": "📏 Duplication Rules",
                     "link": "/docs/methods/data-cleaning/rule-duplication"
                 },
                 {
-                    "text": "📄 Find & Replace",
+                    "text": "📏 Find & Replace",
                     "link": "/docs/methods/data-cleaning/rule-find-replace"
                 },
                 {
-                    "text": "📄 Flag First Observation",
+                    "text": "📏 Flag First Observation",
                     "link": "/docs/methods/data-cleaning/rule-flag-first-observation"
                 },
                 {
-                    "text": "📄 Maximum Value",
+                    "text": "📏 Maximum Value",
                     "link": "/docs/methods/data-cleaning/rule-max"
                 },
                 {
-                    "text": "📄 Maximum Value Cap",
+                    "text": "📏 Maximum Value Cap",
                     "link": "/docs/methods/data-cleaning/rule-max-value"
                 },
                 {
-                    "text": "📄 Minimum Value",
+                    "text": "📏 Minimum Value",
                     "link": "/docs/methods/data-cleaning/rule-min"
                 },
                 {
-                    "text": "📄 Minimum Value Cap",
+                    "text": "📏 Minimum Value Cap",
                     "link": "/docs/methods/data-cleaning/rule-min-value"
                 },
                 {
-                    "text": "📄 Null Replacement",
+                    "text": "📏 Null Replacement",
                     "link": "/docs/methods/data-cleaning/rule-null-replacement"
                 },
                 {
-                    "text": "📄 Numeric Comparison",
+                    "text": "📏 Numeric Comparison",
                     "link": "/docs/methods/data-cleaning/rule-numeric-comparison"
                 },
                 {
-                    "text": "📄 Numerical Formatting",
+                    "text": "📏 Numerical Formatting",
                     "link": "/docs/methods/data-cleaning/rule-numerical-formatting"
                 },
                 {
-                    "text": "📄 Regular Expression",
+                    "text": "📏 Regular Expression",
                     "link": "/docs/methods/data-cleaning/rule-regex"
                 },
                 {
-                    "text": "📄 Sparse Data",
+                    "text": "📏 Sparse Data",
                     "link": "/docs/methods/data-cleaning/rule-sparse-data"
                 },
                 {
-                    "text": "📄 Text Comparison",
+                    "text": "📏 Text Comparison",
                     "link": "/docs/methods/data-cleaning/rule-text-comparison"
                 },
                 {
-                    "text": "📄 Time Zero",
+                    "text": "📏 Time Zero",
                     "link": "/docs/methods/data-cleaning/rule-time-zero"
                 },
                 {
-                    "text": "📄 TMAX Time Points",
+                    "text": "📏 Tmax Time Points",
                     "link": "/docs/methods/data-cleaning/rule-tmax-timepoints-up-down"
                 },
                 {
-                    "text": "📄 Trim Text",
+                    "text": "📏 Trim Text",
                     "link": "/docs/methods/data-cleaning/rule-trim-text"
                 },
                 {
-                    "text": "📄 Trim Whitespace",
+                    "text": "📏 Trim Whitespace",
                     "link": "/docs/methods/data-cleaning/rule-trim-whitespace"
                 }
             ]
         },
         {
-            "text": "🏁 Results",
+            "text": "⚙️ PK Analysis",
             "collapsed": true,
             "items": [
                 {
-                    "text": "↓ Download",
-                    "link": "/docs/methods/results-download"
+                    "text": "🟢 Dosing",
+                    "link": "/docs/methods/pk-analysis/config-dosing"
                 },
                 {
-                    "text": "📂 What you get",
-                    "link": "/docs/methods/results-get"
+                    "text": "🟤 Designations",
+                    "link": "/docs/methods/pk-analysis/config-desig"
                 },
                 {
-                    "text": "📄 Individual parameters",
-                    "link": "/docs/methods/results-ind"
+                    "text": "🟡 Columns",
+                    "link": "/docs/methods/pk-analysis/config-columns"
                 },
                 {
-                    "text": "📑 Summary parameters",
-                    "link": "/docs/methods/results-summary"
+                    "text": "🟣 Kel Rules",
+                    "link": "/docs/methods/pk-analysis/config-kel"
                 },
                 {
-                    "text": "📈 Individual plots",
-                    "link": "/docs/methods/results-ind-plot"
+                    "text": "🟠 Partial AUCs",
+                    "link": "/docs/methods/pk-analysis/config-pauc"
                 },
                 {
-                    "text": "📉 Summary plots",
-                    "link": "/docs/methods/results-summary-plot"
+                    "text": "🔵 JSON Editor",
+                    "link": "/docs/methods/pk-analysis/config-json"
                 },
                 {
-                    "text": "📓 Technical report",
-                    "link": "/docs/methods/results-report"
+                    "text": "🔴 Output",
+                    "link": "/docs/methods/pk-analysis/config-outputs"
+                }
+            ]
+        },
+        {
+            "text": "🧮 Custom Calculations",
+            "collapsed": true,
+            "items": [
+                {
+                    "text": "Overview",
+                    "link": "/docs/methods/custom-calculations/overview"
+                },
+                {
+                    "text": "📏 Conversion",
+                    "link": "/docs/methods/custom-calculations/conversion"
+                },
+                {
+                    "text": "📏 Ratio",
+                    "link": "/docs/methods/custom-calculations/ratio"
+                }
+            ]
+        },
+        {
+            "text": "📊 Post Processing",
+            "collapsed": true,
+            "items": [
+                {
+                    "text": "Overview",
+                    "link": "/docs/methods/post-processing/overview"
+                },
+                {
+                    "text": "📊 Grouped Bar Plot",
+                    "link": "/docs/methods/post-processing/grouped-bar-plot"
+                },
+                {
+                    "text": "📊 Individual Concentration Table",
+                    "link": "/docs/methods/post-processing/individual-conc-table"
+                },
+                {
+                    "text": "📊 Individual Plots",
+                    "link": "/docs/methods/post-processing/individual-plot"
+                },
+                {
+                    "text": "📊 Individual Plot with Terminal Slope",
+                    "link": "/docs/methods/post-processing/individual-thalf-plot"
+                },
+                {
+                    "text": "📊 Individual PK Parameter Table",
+                    "link": "/docs/methods/post-processing/individual-parameter-table"
+                },
+                {
+                    "text": "📊 Mean Plot",
+                    "link": "/docs/methods/post-processing/mean-plot"
+                },
+                {
+                    "text": "📊 Spaghetti Plot",
+                    "link": "/docs/methods/post-processing/spaghetti-plot"
+                },
+                {
+                    "text": "📊 Summary Concentration Table",
+                    "link": "/docs/methods/post-processing/summary-conc-table"
+                },
+                {
+                    "text": "📊 Summary PK Parameter Table",
+                    "link": "/docs/methods/post-processing/summary-parameter-table"
+                }
+            ]
+        },
+        {
+            "text": "📄 Reports",
+            "collapsed": true,
+            "items": [
+                {
+                    "text": "Overview",
+                    "link": "/docs/methods/reports/overview"
                 }
             ]
         },

@@ -3,7 +3,9 @@
 On this screen (Figure 1) the user sets the rules by which the best-fit terminal elimination rate constant is selected by Aplos NCA. 
 
 **Figure 1: Kel rules configuration screen**
-![Kel configuration input](./images/kel_input.png)
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.60; padding: 40px 0 40px 0;">
+  <iframe src="https://guides.aplosanalytics.com/embed/cmqspwog70jfcqmjawxrek2s0?embed_v=2&utm_source=embed" loading="lazy" title="PK Analysis - Kel Rules" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
 
 The best-fit rate constant must meet all of the criteria specified. If multiple rate constants fit the criteria, the one with the largest statistic value (either r<sup>2</sup> or adjusted r<sup>2</sup>) will be selected. If two or more rate constants have the same statistic value, then the tie-breaker rules are used. A description of each setting on the Kel configuration screen is below:
 

@@ -2,7 +2,7 @@
 
 Output from the PK analysis is standardized and not customizable. All possible PK parameters are calculated for each profile and returned in the output. Subsequent tools can be used to select only the parameters of interest to include in tables and plots. Including all parameters ensures that once the PK analysis has been completed, it does not need to be run again unless a user would like to change the input data or the configuration settings. 
 
-![Example output files](./images/config-outputs.png)
+![Example output files](../images/config_outputs.png)
 
 |Folder|File|Description|
 |:---|:---:|:---|

@@ -7,7 +7,7 @@ To upload an input file for analysis, drop the file on the left side of the scre
 
 ## Step 2: Configure analysis and execute
 ![Configuration](./images/Wizard_configuration.png)
-After the upload completes, you will be moved to the Configuration screen. Enter the information about the dataset in the fileds and drop-down selectors. Details on each section of the configuration are described [here](./config-dosing.md). When you are ready to initiate the analysis, click the Execute button in the lower right.
+After the upload completes, you will be moved to the Configuration screen. Enter the information about the dataset in the fileds and drop-down selectors. Details on each section of the configuration are described [here](./pk-analysis/config-dosing). When you are ready to initiate the analysis, click the Execute button in the lower right.
 
 ## Step 3: Download results when analysis is completed
 ![Results](./images/Wizard_complete.png)

@@ -1,0 +1,174 @@
+{
+  "cdk": {
+    "parameters": [
+      {
+        "placeholder": "{{ENVIRONMENT}}",
+        "env_var_name": "ENVIRONMENT",
+        "cdk_parameter_name": "Environment"
+      },
+      {
+        "placeholder": "{{WORKLOAD_NAME}}",
+        "env_var_name": "WORKLOAD_NAME",
+        "cdk_parameter_name": "WorkloadName"
+      },
+      {
+        "placeholder": "{{CDK_SYNTH_COMMAND_FILE}}",
+        "value": "./commands/cdk_synth.sh",
+        "cdk_parameter_name": "CdkSynthCommandFile"
+      },
+      {
+        "placeholder": "{{AWS_ACCOUNT}}",
+        "env_var_name": "AWS_ACCOUNT",
+        "cdk_parameter_name": "AccountNumber"
+      },
+      {
+        "placeholder": "{{AWS_REGION}}",
+        "env_var_name": "AWS_REGION",
+        "cdk_parameter_name": "AccountRegion"
+      },
+      {
+        "placeholder": "{{DEVOPS_ACCOUNT}}",
+        "env_var_name": "DEVOPS_ACCOUNT",
+        "cdk_parameter_name": "DevOpsAccountNumber"        
+      },
+      {
+        "placeholder": "{{DEVOPS_REGION}}",
+        "cdk_parameter_name": "DevOpsRegion",
+        "value": "us-east-1"
+      },
+      {
+        "placeholder": "{{MANAGEMENT_ACCOUNT}}",
+        "env_var_name": "MANAGEMENT_ACCOUNT",
+        "cdk_parameter_name": "ManagementAccountNumber"        
+      },
+      {
+        "placeholder": "{{GIT_BRANCH}}",
+        "env_var_name": "GIT_BRANCH",
+        "cdk_parameter_name": "GitBranch"
+      },
+      {
+        "placeholder": "{{CODE_REPOSITORY_NAME}}",
+        "env_var_name": "CODE_REPOSITORY_NAME",
+        "cdk_parameter_name": "CodeRepoName"        
+      },
+      {
+        "placeholder": "{{CODE_REPOSITORY_ARN}}",
+        "env_var_name": "CODE_REPOSITORY_ARN",
+        "cdk_parameter_name": "CodeRepoArn"        
+      },
+      {
+        "placeholder": "{{HOSTED_ZONE_ID}}",
+        "env_var_name": "HOSTED_ZONE_ID",
+        "cdk_parameter_name": "HostedZoneId",
+        "required": false,
+        "notes": "filled in automatically via ./devops/cdk/commands.sh"
+      },      
+      {
+        "placeholder": "{{HOSTED_ZONE_NAME}}",
+        "env_var_name": "HOSTED_ZONE_NAME",
+        "cdk_parameter_name": "HostedZoneName"
+      },
+      {
+        "placeholder": "{{WEBSITE_DNS_ALIASES}}",
+        "cdk_parameter_name": "WebsiteDnsAliases",        
+        "env_var_name": "WEBSITE_DNS_ALIASES"
+      },      
+      {
+        "placeholder": "{{DEPLOYMENT_NAMESPACE}}",
+        "env_var_name": "DEPLOYMENT_NAMESPACE",
+        "cdk_parameter_name": "DeploymentNamespace",
+        "value": "{{WORKLOAD_NAME}}-{{ENVIRONMENT}}"
+      },
+      {
+        "placeholder": "{{MANAGEMENT_ACCOUNT_ROLE_ARN}}",
+        "env_var_name": "MANAGEMENT_ACCOUNT_ROLE_ARN",
+        "cdk_parameter_name": "ManagementAccountRoleArn"        
+      },
+      {
+        "placeholder": "{{MGMT_R53_HOSTED_ZONE_ID}}",
+        "env_var_name": "MGMT_R53_HOSTED_ZONE_ID",
+        "cdk_parameter_name": "MgmtR53HostedZoneId"
+      },
+      {
+        "placeholder": "{{TARGET_ACCOUNT_ROLE_ARN}}",
+        "env_var_name": "TARGET_ACCOUNT_ROLE_ARN",
+        "cdk_parameter_name": "TargetAccountRoleArn"        
+      }
+    ]
+  },
+  "workload": {
+    "name": "{{WORKLOAD_NAME}}",
+    "description": "Aplos NCA Documentation Site — static website infrastructure",
+    "devops": {
+      "account": "{{DEVOPS_ACCOUNT}}",
+      "region": "{{DEVOPS_REGION}}",
+      "code_repository": {
+        "name": "AplosAnalytics/docs.aplosanalytics.com",
+        "type": "connector_arn",
+        "connector_arn": "{{CODE_REPOSITORY_ARN}}"
+      },
+      "commands": [
+        {
+          "name": "cdk_synth",
+          "commands": [],
+          "file": "{{CDK_SYNTH_COMMAND_FILE}}"
+        }
+      ]
+    },
+    "deployments": [
+      {
+        "name": "{{DEPLOYMENT_NAMESPACE}}-pipeline",
+        "environment": "{{ENVIRONMENT}}",
+        "account": "{{AWS_ACCOUNT}}",
+        "region": "{{AWS_REGION}}",
+        "mode": "pipeline",
+        "enabled": true,
+        "pipeline": {
+          "name": "{{DEPLOYMENT_NAMESPACE}}-pipeline",
+          "branch": "{{GIT_BRANCH}}",
+          "enabled": true,          
+          "cross_account_role_arns": [
+            "{{TARGET_ACCOUNT_ROLE_ARN}}",
+            "{{MANAGEMENT_ACCOUNT_ROLE_ARN}}"
+          ],
+          "code_build_defaults": {
+            "compute_type": "BUILD_GENERAL1_SMALL"
+          },
+          "synth_code_build_defaults": {
+            "compute_type": "BUILD_GENERAL1_MEDIUM"
+          },
+          "stages": [
+            {
+              "name": "persistent-resources",
+              "stacks": [],
+              "builds": [
+                {
+                  "enabled": true,
+                  "post_steps": [
+                    {
+                      "id": "dns-updates",
+                      "name": "Cross-Account DNS Delegation",
+                      "commands": [
+                        "pip install cdk-factory boto3",
+                        "export TARGET_ACCOUNT_ROLE_ARN={{TARGET_ACCOUNT_ROLE_ARN}}",
+                        "export TARGET_R53_ZONE_NAME={{HOSTED_ZONE_NAME}}",
+                        "export TARGET_HOSTED_ZONE_ID={{HOSTED_ZONE_ID}}",
+                        "export MANAGEMENT_ACCOUNT_ROLE_ARN={{MANAGEMENT_ACCOUNT_ROLE_ARN}}",
+                        "export MGMT_R53_HOSTED_ZONE_ID={{MGMT_R53_HOSTED_ZONE_ID}}",
+                        "python -m cdk_factory.utilities.route53_delegation"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "website",
+              "stacks": [{ "__inherits__": "./configs/stacks/static-website.json" }]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

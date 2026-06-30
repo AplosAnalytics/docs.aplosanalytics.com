@@ -20,3 +20,8 @@ __pycache__
 .vscode/launch.json
 
 .env.development
+.kiro
+deployment.dev.json
+deployment.prod.json
+.dynamic
+cdk.out

@@ -1,0 +1,48 @@
+{
+  "name": "{{DEPLOYMENT_NAMESPACE}}-website",
+  "module": "static_website_stack",
+  "enabled": true,
+  "bucket": {
+    "create": true,
+    "name": "{{DEPLOYMENT_NAMESPACE}}-website-{{AWS_REGION}}"
+  },
+  "assets": {
+    "deploy": true,
+    "path": "../../.vitepress/dist",
+    "enable_versioning": true
+  },
+  "cloudfront": {
+    "invalidate_on_deploy": true,
+    "restrict_to_known_hosts": true,
+    "error_responses": [
+      {
+        "http_status": 403,
+        "response_http_status": 200,
+        "response_page_path": "/index.html",
+        "ttl": 0
+      },
+      {
+        "http_status": 404,
+        "response_http_status": 200,
+        "response_page_path": "/index.html",
+        "ttl": 0
+      }
+    ]
+  },
+  "dns": {
+    "hosted_zone_id": "{{HOSTED_ZONE_ID}}",
+    "hosted_zone_name": "{{HOSTED_ZONE_NAME}}",
+    "aliases": "{{WEBSITE_DNS_ALIASES}}"
+  },
+  "cert": {
+    "domain_name": "*.{{HOSTED_ZONE_NAME}}",
+    "alternate_names": "{{WEBSITE_DNS_ALIASES}}"
+  },
+  "ssm": {
+    "exports": {
+      "bucket_name": "/{{DEPLOYMENT_NAMESPACE}}/website/bucket-name",
+      "cloudfront_domain": "/{{DEPLOYMENT_NAMESPACE}}/website/cloudfront-domain",
+      "cloudfront_distribution_id": "/{{DEPLOYMENT_NAMESPACE}}/website/cloudfront-distribution-id"
+    }
+  }
+}

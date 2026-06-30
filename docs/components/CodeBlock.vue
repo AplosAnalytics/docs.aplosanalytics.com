@@ -15,7 +15,7 @@
 
 <script setup>
 import { ref, onMounted, watchEffect, computed } from "vue";
-import { getHighlighter, codeToHtml } from "shiki";
+import { getHighlighter } from "shiki";
 
 const props = defineProps({
   src: {
@@ -158,6 +158,10 @@ async function highlightCode() {
 // hack to add the highlighted class
 function addHighlightedClassToLines(htmlCode, lines) {
   try {
+    if (typeof DOMParser === 'undefined') {
+      // SSR environment — DOMParser not available, return unmodified HTML
+      return htmlCode;
+    }
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlCode, 'text/html');
     const lineElements = doc.querySelectorAll('code > span');

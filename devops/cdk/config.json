@@ -143,7 +143,7 @@
               "stacks": [],
               "builds": [
                 {
-                  "enabled": false,
+                  "enabled": true,
                   "post_steps": [
                     {
                       "id": "dns-updates",

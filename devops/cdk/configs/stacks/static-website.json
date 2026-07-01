@@ -4,7 +4,7 @@
   "enabled": true,
   "bucket": {
     "create": true,
-    "name": "{{DEPLOYMENT_NAMESPACE}}-website-{{AWS_REGION}}"
+    "name": "{{DEPLOYMENT_NAMESPACE}}-website-{{AWS_ACCOUNT}}-{{AWS_REGION}}"
   },
   "assets": {
     "deploy": true,

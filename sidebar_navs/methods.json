@@ -267,7 +267,7 @@
                     "link": "/docs/methods/post-processing/grouped-bar-plot"
                 },
                 {
-                    "text": "📊 Individual Concentration Table",
+                    "text": "📋 Individual Concentration Table",
                     "link": "/docs/methods/post-processing/individual-conc-table"
                 },
                 {
@@ -279,7 +279,7 @@
                     "link": "/docs/methods/post-processing/individual-thalf-plot"
                 },
                 {
-                    "text": "📊 Individual PK Parameter Table",
+                    "text": "📋 Individual PK Parameter Table",
                     "link": "/docs/methods/post-processing/individual-parameter-table"
                 },
                 {
@@ -291,12 +291,16 @@
                     "link": "/docs/methods/post-processing/spaghetti-plot"
                 },
                 {
-                    "text": "📊 Summary Concentration Table",
+                    "text": "📋 Summary Concentration Table",
                     "link": "/docs/methods/post-processing/summary-conc-table"
                 },
                 {
-                    "text": "📊 Summary PK Parameter Table",
+                    "text": "📋 Summary PK Parameter Table",
                     "link": "/docs/methods/post-processing/summary-parameter-table"
+                },
+                {
+                    "text": "📊 Plotting Series Data",
+                    "link": "/docs/methods/post-processing/plotting-series-data"
                 }
             ]
         },

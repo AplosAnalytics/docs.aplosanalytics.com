@@ -1,0 +1,2 @@
+JWT="<value here>"
+APLOS_API_URL="<value here>"

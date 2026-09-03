@@ -12,7 +12,24 @@ Trims text from a string in the source column and adds the result to a target co
 | `end_position`       | Required for Trim Type `left` and `middle`. Any values ignored for Trim Type Right. Positive values start from first character and count forward, negative values start from last character and count backwards.                                                                                                                                                                                            | ⚠️ Conditional           |
 | `strict_bounds`      | When attempting to trim data values, determines if index positions that are out of bounds for a value should prevent the rule from completing. If disabled, `destination_column` values for these cases will populate with an error message.                                   | ❌ No (default: `false`) |
 
-#### Example:
+#### Examples:
+
+### Trim Left
+
+This always starts at the left side and moves to the right until the `end_position` that the user defines.
+![Trim Left](../images/trim_left.png)
+
+### Trim Right
+
+This always ends at the rightt side and begins at the `start_position` that the user defines.
+![Trim Left](../images/trim_right.png)
+
+### Trim Middle
+
+This always starts at the `start_posision` and stops at the `end_position` that the user defines.
+![Trim Left](../images/trim_middle.png)
+
+### Code-based Examples
 
 ```json
 {

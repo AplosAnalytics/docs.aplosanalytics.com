@@ -11,9 +11,7 @@
             "text": "💿 Using R",
             "collapsed": false,
             "items": [
-                {"text": "1️⃣ Analysis with R","link": "/docs/samples/r-overview"},
-                {"text": "2️⃣ R Functions","link": "/docs/samples/r-functions"},
-                {"text": "3️⃣ R Script","link": "/docs/samples/r-script"}
+                {"text": "1️⃣ Analysis with R","link": "/docs/samples/r-overview"}
             ]
         },
         {

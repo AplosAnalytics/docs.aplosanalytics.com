@@ -41,8 +41,12 @@
                     "link": "/docs/methods/subscription"
                 },
                 {
-                    "text": "⚖️ License",
-                    "link": "/docs/methods/overview-license"
+                    "text": "⚖️ License Agreement",
+                    "link": "/docs/methods/overview-license-agreement"
+                },
+                {
+                    "text": "🗿 Gravatar",
+                    "link": "/docs/methods/gravatar"
                 }
             ]
         },
@@ -111,6 +115,10 @@
                 {
                     "text": "📏 Convert String to Numeric",
                     "link": "/docs/methods/data-cleaning/rule-conversion-string-numeric"
+                },
+                {
+                    "text": "📏 Count Records",
+                    "link": "/docs/methods/data-cleaning/rule-count-records"
                 },
                 {
                     "text": "📏 Data Exclusion",

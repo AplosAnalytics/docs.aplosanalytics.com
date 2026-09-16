@@ -37,7 +37,7 @@ For extravascular administration of a single dose, the following parameters are 
 | AUC infinity linear/Dose | AUC_inf_lin_D | ${AUC\_inf\_lin} \over {Dose}$ | 
 | Percent extrapolated AUC infinity linear | AUC_inf_lin_extrap | $100 * [{{AUC\_inf\_lin - AUC\_last\_lin} \over {AUC\_inf\_lin}}]$ | 
 | AUC infinity linlog | AUC_inf_log | $AUC\_last\_log + {{Clast} \over {kel}}$ | 
-| AUC infinity linlog/Dose | AUCINFLOG_D | ${AUC\_inf\_log} \over {Dose}$ | 
+| AUC infinity linlog/Dose | AUC_inf_log_D | ${AUC\_inf\_log} \over {Dose}$ | 
 | Percent extrapolated AUC infinity linlog | AUC_inf_log_extrap | $100 * [{{AUC\_inf\_log - AUC\_last\_log} \over {AUC\_inf\_log}}]$ | 
 | AUMC infinity linear | AUMC_inf_lin | $AUMC\_last\_lin + {{Clast*Tlast} \over {kel}} + {{Clast} \over {kel^2}}$ | 
 | Percent extrapolated AUMC infinity linear | AUMC_inf_lin_extrap |$100 * [{{AUMC\_inf\_lin - AUMC\_last\_lin} \over {AUMC\_inf\_lin}}]$ | 

@@ -35,7 +35,7 @@ For IV Bolus administration of a single dose, the following parameters are calcu
 | AUC infinity linear C0/Dose | AUC_inf_lin_C0_D | ${AUC\_inf\_lin\_C0} \over {Dose}$ | 
 | Percent extrapolated AUC infinity linear C0 | AUC_inf_lin_C0_extrap | $100 * [{{AUC\_inf\_lin\_C0 - AUC\_last\_lin\_C0} \over {AUC\_inf\_lin\_C0}}]$ | 
 | AUC infinity linlog C0 | AUC_inf_log_C0 | $AUC\_last\_log\_C0 + {{Clast} \over {kel}}$ | 
-| AUC infinity linlog C0/Dose | AUC\_inf\_log\_C0\_D | ${AUC\_inf\_log\_C0} \over {Dose}$ | 
+| AUC infinity linlog C0/Dose | AUC_inf_log_C0_D | ${AUC\_inf\_log\_C0} \over {Dose}$ | 
 | Percent extrapolated AUC infinity linlog C0 | AUC_inf_log_C0_extrap | $100 * [{{AUC\_inf\_lin\_C0 - AUC\_last\_log\_C0} \over {AUC\_inf\_lin\_C0}}]$ | 
 | AUMC infinity linear C0 | AUMC_inf_lin_C0 | $AUMC\_last\_lin\_C0 + {{Clast*Tlast} \over {kel}} + {{Clast} \over {kel^2}}$ | 
 | Percent extrapolated AUMC infinity linear C0 | AUMC_inf_lin_C0_extrap | $100 * [{{AUMC\_inf\_lin\_C0 - AUMC\_last\_lin\_C0} \over {AUMC\_inf\_lin\_C0}}]$ | 

@@ -31,3 +31,7 @@ For those 3 easy steps to occur there are additional things that the UI does for
 > In this section we outline the process of uploading a file and then doing the execution.  Just keep in mind that once a file is uploaded, you run multiple executions with different configurations against it.  
 >
 > Even better you can run them in parallel.  You don't need to wait for one to complete before launching another one.
+
+> [!NOTE]
+> Looking for the exact endpoints? See the [API routes reference](../endpoints/routes),
+> organized by feature area.

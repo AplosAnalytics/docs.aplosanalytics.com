@@ -1,6 +1,5 @@
 
 <script setup>
-import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
 import CodeBlock from '/docs/components/CodeBlock.vue'
 </script>
 
@@ -8,7 +7,8 @@ import CodeBlock from '/docs/components/CodeBlock.vue'
 To upload a file into the Aplos NCA SaaS system, you will need to create a request for an AWS Presigned URL, which will allow you to upload the file.  You will use the response information to upload your file.
 
 ## Route
-<DisplayRoutes :route-id="['presigned_url']" />
+
+See [File System](../endpoints/routes#file-system) in the API routes reference (the upload-URL request).
 
 ## Payload
 

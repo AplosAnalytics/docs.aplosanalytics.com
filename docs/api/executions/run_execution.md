@@ -1,5 +1,4 @@
 <script setup>
-import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
 import CodeBlock from '/docs/components/CodeBlock.vue'
 </script>
 
@@ -19,7 +18,8 @@ Or
 > No matter which flow you take,  the execution portion is the same and in this section, we'll take a deeper dive into how to run an execution.
 
 ## Route
-<DisplayRoutes :route-id="['run_execution']" />
+
+See [Workflow](../endpoints/routes#workflow) in the API routes reference (Send Analysis to Queue).
 
 ## Payload
 To run an analysis, you need to provide two required sections of the payload and an optional set of meta-data.

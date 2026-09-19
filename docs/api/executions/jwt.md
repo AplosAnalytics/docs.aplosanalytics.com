@@ -1,5 +1,4 @@
 <script setup>
-import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
 import CodeBlock from '/docs/components/CodeBlock.vue'
 </script>
 
@@ -11,7 +10,8 @@ The first thing you need to do is obtain a JWT.  You can follow AWS's documentat
 - [JWT Overview and sample with curl](../security/jwt.md)
 
 ## Route
-<DisplayRoutes :route-id="['get_jwt']" />
+
+See [Authentication](../endpoints/routes#authentication) in the API routes reference.
 
 ## Payload
 

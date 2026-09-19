@@ -1,5 +1,4 @@
 <script setup>
-import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
 import CodeBlock from '/docs/components/CodeBlock.vue'
 </script>
 
@@ -9,7 +8,8 @@ If you need to list your executions you can use the following route.
 
 
 ## Route
-<DisplayRoutes :route-id="['get_executions']" />
+
+See [Workflow](../endpoints/routes#workflow) in the API routes reference (Get Execution History).
 
 ## Payload
 No payload - GET method

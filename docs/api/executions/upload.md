@@ -1,5 +1,4 @@
 <script setup>
-import DisplayRoutes from '/docs/components/DisplayRoutes.vue'
 import CodeBlock from '/docs/components/CodeBlock.vue'
 </script>
 
@@ -10,7 +9,9 @@ Now that you have a pre-signed URL to upload your file, it's time to do the actu
 You'll use information from the pre-signed generation to do the upload.
 
 ## Route
-<DisplayRoutes :route-id="['file_upload']" />
+
+The upload is a direct `POST` to the presigned S3 URL returned by the
+[upload-URL request](./upload-request) — it is not a route on the Aplos API.
 
 ## Payload
 

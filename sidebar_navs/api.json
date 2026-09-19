@@ -6,13 +6,24 @@
           { "text": "Overview", "link": "/docs/api/security/overview" },
           { "text": "JWT with Cognito", "link": "/docs/api/security/jwt" },
           { "text": "Security Responses", "link": "/docs/api/security/security-responses" }
-          
         ]
       },
       {
         "text": "Endpoints",
         "items": [
-          { "text": "Routes", "link": "/docs/api/endpoints/routes" }          
+          { "text": "All Routes", "link": "/docs/api/endpoints/routes" },
+          { "text": "Audit Logs", "link": "/docs/api/endpoints/routes#audit-logs" },
+          { "text": "Feature Flags", "link": "/docs/api/endpoints/routes#feature-flags" },
+          { "text": "File System", "link": "/docs/api/endpoints/routes#file-system" },
+          { "text": "Metrics", "link": "/docs/api/endpoints/routes#metrics" },
+          { "text": "Report Templates", "link": "/docs/api/endpoints/routes#report-templates" },
+          { "text": "Site Messages", "link": "/docs/api/endpoints/routes#site-messages" },
+          { "text": "Subscriptions", "link": "/docs/api/endpoints/routes#subscriptions" },
+          { "text": "Tenants", "link": "/docs/api/endpoints/routes#tenants" },
+          { "text": "Users", "link": "/docs/api/endpoints/routes#users" },
+          { "text": "Validations", "link": "/docs/api/endpoints/routes#validations" },
+          { "text": "Warm Up", "link": "/docs/api/endpoints/routes#warm-up" },
+          { "text": "Workflow", "link": "/docs/api/endpoints/routes#workflow" }
         ]
       },
       {
@@ -27,7 +38,6 @@
           { "text": "🧾 List", "link": "/docs/api/executions/list" }
         ]
       },
-      
       {
         "text": "Examples",
         "items": [
@@ -38,4 +48,3 @@
       }
     ]
   }
-  

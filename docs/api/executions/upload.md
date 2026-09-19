@@ -18,14 +18,15 @@ The upload is a direct `POST` to the presigned S3 URL returned by the
 
 ## Response
 
-In the previous step, you initiated a pre-signed url request.   The response from that will request will contain the `"presigned":"url"`, which will become the url-endpoint for the POST upload action to upload a file.
+In the previous step, you requested a presigned upload. That response contains
+`data.url` (the S3 endpoint) and `data.fields` (the S3 POST-policy form fields).
+You POST the file to `data.url` with those `data.fields` included in the form body.
 
-Below is the basic structure of the response created from the pre-signed url request.
+Below is the basic structure of that presigned upload response.
 <CodeBlock 
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/upload-request-response.json" 
     lang="json"
-    :highlightLines=[7,9]           
     >
 </CodeBlock>
 

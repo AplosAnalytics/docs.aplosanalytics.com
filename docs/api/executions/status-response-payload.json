@@ -1,53 +1,192 @@
 {
-    "analysis_file_id": "<analysis-file-id>",
-    "analysis_file_name": "<analysis-file-name>",
-    "api_version": "<api-version-number>",
-    "audit_service": {
-        "path": "<local-audit-file-path>"
+  "data": {
+    "id": "1789857650-147652-29dc4ca6-b47b-11f1-8000-000000000000",
+    "parentId": null,
+    "rootId": "1789857650-147652-29dc4ca6-b47b-11f1-8000-000000000000",
+    "name": "THC Sept 19",
+    "executionType": "workflow",
+    "workflowType": "nca_workflow",
+    "status": "succeeded",
+    "statusMessage": "Completed in 1m 45s 829ms",
+    "statusCategories": [],
+    "statusCode": 0,
+    "errorCode": null,
+    "currentPhase": null,
+    "progress": {
+      "completedPhases": 1,
+      "totalPhases": 1,
+      "percent": 100
     },
-    "configuration": "configuration-after-interal-validation-and-processing",
-    "configuration_raw": "<raw-confirmation-as-sent-to-us>",
-    "duration": "<duration-time>",
-    "elapsed": "<elapsed-time-friendly-format>",
-    "end_utc": "<execution-time-for-calculations>",
-    "end_utc_full_execution": "<full-execution-time-including-reports>",
+    "createdUtc": "2026-09-19T22:41:13.348111+00:00",
+    "startedUtc": "2026-09-19T22:41:14.305622+00:00",
+    "completedUtc": "2026-09-19T22:43:00.134837+00:00",
+    "durationMs": 105829,
+    "durationHuman": "1m 45s 829ms",
+    "input": {
+      "fileSize": 93128,
+      "fileName": "thc-clean.csv",
+      "fileId": "1789599179-8768277-5d92e294-b221-11f1-8000-000000000000"
+    },
+    "phases": [
+      {
+        "order": 1,
+        "phase": "nca_analysis",
+        "status": "succeeded",
+        "version": null,
+        "startedUtc": "2026-09-19T22:41:36.388103+00:00",
+        "completedUtc": "2026-09-19T22:42:56.814802+00:00",
+        "durationMs": 80426,
+        "durationHuman": "1m 20s 426ms",
+        "outputs": [
+          {
+            "name": "Analysis Package",
+            "fileId": "1789857762-8268187-6d05c69c-b47b-11f1-8000-000000000000",
+            "phase": "nca_analysis",
+            "outputType": "package",
+            "ready": true,
+            "fileName": "analysis-package-1789857650.zip",
+            "fileSize": 900257
+          }
+        ],
+        "versions": [
+          {
+            "name": "aplos_nca_analysis_engine",
+            "version": "3.101.62",
+            "package": "aplos_nca_analysis_engine",
+            "description": null
+          },
+          {
+            "name": "aplos_nca_orchestration",
+            "version": "3.3.156",
+            "package": "aplos_nca_orchestration",
+            "description": null
+          }
+        ],
+        "steps": [
+          {
+            "order": 0,
+            "stepType": "profile_split",
+            "status": "succeeded",
+            "version": null,
+            "startedUtc": "2026-09-19T22:41:35.696596+00:00",
+            "completedUtc": "2026-09-19T22:41:43.968034+00:00",
+            "durationMs": 8271,
+            "durationHuman": "8s 271ms",
+            "stats": {
+              "totalProfiles": 36
+            }
+          },
+          {
+            "order": 1,
+            "stepType": "calculation_aggregator",
+            "status": "succeeded",
+            "version": "3.3.156",
+            "startedUtc": "2026-09-19T22:41:45.208872+00:00",
+            "completedUtc": "2026-09-19T22:41:57.858176+00:00",
+            "durationMs": 12649,
+            "durationHuman": "12s 649ms",
+            "stats": {
+              "profilesCreated": 36,
+              "totalExpected": 36,
+              "actualFileCount": 36,
+              "completed": 36,
+              "requeueCount": 1,
+              "progressPercent": 100,
+              "calculationsFound": 36,
+              "completionSource": "status_ground_truth",
+              "message": "Completed via status_ground_truth: 36/36 calculations"
+            }
+          },
+          {
+            "order": 2,
+            "stepType": "analysis_output",
+            "status": "succeeded",
+            "version": "3.101.62",
+            "startedUtc": "2026-09-19T22:42:04.288827+00:00",
+            "completedUtc": "2026-09-19T22:42:13.160616+00:00",
+            "durationMs": 8871,
+            "durationHuman": "8s 871ms",
+            "stats": null
+          },
+          {
+            "order": 3,
+            "stepType": "output_batch_aggregator",
+            "status": "succeeded",
+            "version": "3.101.62",
+            "startedUtc": "2026-09-19T22:42:19.550096+00:00",
+            "completedUtc": "2026-09-19T22:42:23.210431+00:00",
+            "durationMs": 3660,
+            "durationHuman": "3s 660ms",
+            "stats": null
+          },
+          {
+            "order": 4,
+            "stepType": "output_merge",
+            "status": "succeeded",
+            "version": "3.101.62",
+            "startedUtc": "2026-09-19T22:42:29.633075+00:00",
+            "completedUtc": "2026-09-19T22:42:32.845637+00:00",
+            "durationMs": 3212,
+            "durationHuman": "3s 212ms",
+            "stats": null
+          },
+          {
+            "order": 5,
+            "stepType": "packaging",
+            "status": "succeeded",
+            "version": "3.3.156",
+            "startedUtc": "2026-09-19T22:42:39.216012+00:00",
+            "completedUtc": "2026-09-19T22:42:42.921221+00:00",
+            "durationMs": 3705,
+            "durationHuman": "3s 705ms",
+            "stats": null
+          },
+          {
+            "order": 6,
+            "stepType": "on_complete",
+            "status": "succeeded",
+            "version": null,
+            "startedUtc": "2026-09-19T22:42:49.269484+00:00",
+            "completedUtc": "2026-09-19T22:43:00.134837+00:00",
+            "durationMs": 10865,
+            "durationHuman": "10s 865ms",
+            "stats": null
+          }
+        ]
+      }
+    ],
+    "packageAvailable": true,
+    "error": null,
     "errors": [],
-    "execution_engine_type": "<engine-type>",
-    "execution_engine_version": "<engine-version>",
-    "id": "<execution-id>",
-    "local_analysis_file": null,
-    "local_input_directory": "<runtime-input-directory>",
-    "local_output_directory": "<runtime-ouput-directory>",
-    "meta_data": { },
-    "queue_utc": null,
-    "s3_results_bucket": "<bucket-name>",
-    "s3_results_object_directory": "<object-key-directory>",
-    "s3_results_object_key": "<object-key-directory>/<results-zip-file>.zip",
-    "s3_working_bucket": "<bucket-name>",
-    "s3_working_object_key": "<object-key-directory>/<analysis-file>.csv",
-    "serialized_from_db": true,
-    "significant_figures": null,
-    "sqs_id": "<queue-id>",
-    "start_utc": "<execution-start-time>",
-    "status": "<current-status>",
-    "status_code": "<status-code>",
-    "supporting_output_files": [],
-    "tenant_id": "<tenant-id>",
-    "tenant_name": "None",
-    "times": [],
-    "timestamp": "<timestamp-of-submission>",
-    "unique_id_is_numeric": null,
-    "user_email": "<user-email-address>",
-    "user_full_name": "<user-full-name>",
-    "user_id": "<user-id>",
-    "user_type": null,
-    "uuid1": "<unique-id>",
-    "zfill": 2,
-    "zfill_min": 2,
-    "zip_results": "<determines-if-zip-results-are-created>",
-    "presigned": {
-        "url": "<presigned-url-used-to-download>",
-        "expires_in": 3600,
-        "expires_at_utc": "<download-url-expiration>"
-    }
+    "warnings": [],
+    "engineVersions": [
+      {
+        "name": "aplos_nca_analysis_engine",
+        "version": "3.101.62",
+        "package": "aplos_nca_analysis_engine",
+        "description": null
+      },
+      {
+        "name": "aplos_nca_orchestration",
+        "version": "3.3.156",
+        "package": "aplos_nca_orchestration",
+        "description": null
+      }
+    ],
+    "phaseTypes": [
+      "nca_analysis"
+    ],
+    "lifecycleState": "active",
+    "analysisEngineVersion": "3.101.62"
+  },
+  "timestamp": "2026-09-19T22:43:19.912566+00:00",
+  "status_code": 200,
+  "success": true,
+  "diagnostics": {
+    "startTimeUtcTs": 1789857799.7558932,
+    "endTimeUtcTs": 1789857799.9125738,
+    "durationMs": 0.15668082237243652,
+    "serviceName": "aplos-nca-orchestration",
+    "serviceVersion": "3.3.156"
+  }
 }

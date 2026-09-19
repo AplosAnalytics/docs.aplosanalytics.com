@@ -4251,8 +4251,87 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "additionalProperties": true
+                "$ref": "#/components/schemas/AnalysisQueueRequest"
+              },
+              "examples": {
+                "Analysis (NCA)": {
+                  "value": {
+                    "fileId": "{{thc-file-id}}",
+                    "name": "{{some-custom-name}}",
+                    "calculation": {
+                      "version": "3.0.0",
+                      "designations": {
+                        "blq": {
+                          "value": "< 0.500"
+                        },
+                        "missing": {
+                          "value": "NS"
+                        },
+                        "concentrationUnit": {
+                          "column": "CONCENTRATIONUNITS"
+                        }
+                      },
+                      "columns": {
+                        "time": "HOURNOMINAL",
+                        "uniqueId": "SUBJECTALIAS",
+                        "concentration": {
+                          "observed": "CONCENTRATION",
+                          "analyzed": "PKLEVEL"
+                        },
+                        "sorting": [
+                          "HOURNOMINAL"
+                        ],
+                        "grouping": [
+                          "SUBJECTALIAS",
+                          "SUBJECTGROUP",
+                          "ANALYTE"
+                        ],
+                        "customColumns": []
+                      },
+                      "dosing": {
+                        "amount": {
+                          "column": "Dose_mg"
+                        },
+                        "unit": {
+                          "column": "Dose_mg_units"
+                        },
+                        "frequency": {
+                          "value": "single"
+                        },
+                        "type": {
+                          "value": "ev"
+                        }
+                      },
+                      "time": {
+                        "unit": {
+                          "value": "hr"
+                        },
+                        "timeOfAdministration": {
+                          "value": 0
+                        }
+                      },
+                      "kelRules": {
+                        "regressionStatistic": "adj_r2",
+                        "minimumStatistic": 0,
+                        "maximumExtrapolationLinear": 0,
+                        "maximumExtrapolationLogarithmic": 0,
+                        "maximumTimePoints": 0,
+                        "minimumSpan": 0,
+                        "earliestTimePoint": 0,
+                        "tie": [
+                          "kel_n",
+                          "kel_lower"
+                        ]
+                      },
+                      "partialAuc": []
+                    },
+                    "metadata": {
+                      "name": "{{some-custom-name}}",
+                      "project": "1234567890"
+                    }
+                  },
+                  "summary": "Queue an NCA analysis (nca_workflow) with a calculation config"
+                }
               }
             }
           }
@@ -5631,6 +5710,98 @@
         "required": [
           "count"
         ]
+      },
+      "AnalysisQueueRequest": {
+        "type": "object",
+        "description": "Request body to queue a workflow for processing. The body carries the uploaded file reference plus one workflow-config block that determines the workflow type: `calculation` (NCA analysis), `data_cleaning`, `custom_calculations`, `custom_plots`, `custom_tables`, or `custom_reports`. See the named examples for a full body per workflow type. Fields are intentionally open (additionalProperties) because the config blocks evolve independently of this envelope.",
+        "properties": {
+          "fileId": {
+            "type": "string",
+            "description": "Id of the previously-uploaded analysis input file (from the file upload response)."
+          },
+          "name": {
+            "type": "string",
+            "description": "A human-friendly name for this execution."
+          },
+          "calculation": {
+            "type": "object",
+            "description": "NCA analysis configuration. Present for an nca_workflow. See the AnalysisQueueRequest 'Analysis (NCA)' example for a full block.",
+            "additionalProperties": true,
+            "properties": {
+              "version": {
+                "type": "string",
+                "example": "3.0.0"
+              },
+              "designations": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "BLQ / missing / concentration-unit designations. Each entry is a { value } or { column } selector."
+              },
+              "columns": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "Column mappings (time, uniqueId, concentration.observed/analyzed, sorting[], grouping[], customColumns[])."
+              },
+              "dosing": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "Dose amount/unit/frequency/type, each a { value } or { column } selector."
+              },
+              "time": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "Time unit and time-of-administration."
+              },
+              "kelRules": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "Terminal elimination (kel) selection rules."
+              },
+              "partialAuc": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "description": "Optional partial-AUC interval definitions."
+              }
+            }
+          },
+          "data_cleaning": {
+            "type": "object",
+            "description": "Data-cleaning configuration (rules[]). Present for a data_cleaning_workflow.",
+            "additionalProperties": true
+          },
+          "custom_calculations": {
+            "type": "object",
+            "description": "Custom post-analysis calculations configuration.",
+            "additionalProperties": true
+          },
+          "custom_plots": {
+            "type": "object",
+            "description": "Custom plotting configuration.",
+            "additionalProperties": true
+          },
+          "custom_tables": {
+            "type": "object",
+            "description": "Custom tables configuration.",
+            "additionalProperties": true
+          },
+          "custom_reports": {
+            "type": "object",
+            "description": "Custom reports configuration.",
+            "additionalProperties": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Optional caller-defined metadata stored with the execution (e.g. project id, tags).",
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "fileId"
+        ],
+        "additionalProperties": true
       },
       "AuditLogEntry": {
         "type": "object",

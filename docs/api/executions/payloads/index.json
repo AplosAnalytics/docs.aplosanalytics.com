@@ -1,0 +1,12 @@
+{
+  "payloads": [
+    {
+      "name": "Analysis (NCA)",
+      "slug": "analysis-nca",
+      "operationId": "analysisSendToQueuePost",
+      "route": "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
+      "method": "POST",
+      "summary": "Queue an NCA analysis (nca_workflow) with a calculation config"
+    }
+  ]
+}

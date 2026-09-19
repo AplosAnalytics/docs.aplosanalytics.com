@@ -1,0 +1,192 @@
+{
+  "data": {
+    "id": "1789857879-3884215-b27faa38-b47b-11f1-8000-000000000000",
+    "parentId": null,
+    "rootId": "1789857879-3884215-b27faa38-b47b-11f1-8000-000000000000",
+    "name": "THC - Should Fail #2",
+    "executionType": "workflow",
+    "workflowType": "data_cleaning_workflow",
+    "status": "failed",
+    "statusMessage": "Failed: data_cleaning: Rule (description='New rule configuration') type='add_column'. Failed at step 1: No column name specified. This rule is used to add a column.  It cannot be used to overwrite an existing column. Either use a different column name o...",
+    "statusCategories": [],
+    "statusCode": 1024,
+    "errorCode": null,
+    "currentPhase": null,
+    "progress": {
+      "completedPhases": 0,
+      "totalPhases": 1,
+      "percent": 0
+    },
+    "createdUtc": "2026-09-19T22:44:47.177576+00:00",
+    "startedUtc": "2026-09-19T22:44:47.937464+00:00",
+    "completedUtc": "2026-09-19T22:45:20.455959+00:00",
+    "durationMs": 32518,
+    "durationHuman": "32s 518ms",
+    "input": {
+      "fileSize": 41578,
+      "fileName": "abc-01-thc-analysis.csv",
+      "fileId": "1783489759-6647594-c35bc8a8-7a90-11f1-8000-000000000000"
+    },
+    "phases": [
+      {
+        "order": 1,
+        "phase": "data_cleaning",
+        "status": "failed",
+        "version": null,
+        "startedUtc": "2026-09-19T22:44:57.472311+00:00",
+        "completedUtc": "2026-09-19T22:45:15.057594+00:00",
+        "durationMs": 17585,
+        "durationHuman": "17s 585ms",
+        "outputs": [
+          {
+            "name": "Analysis Package",
+            "fileId": "1789857906-9838552-c2f264d9-b47b-11f1-8000-000000000000",
+            "phase": "data_cleaning",
+            "outputType": "package",
+            "ready": true,
+            "fileName": "analysis-package-1789857879.zip",
+            "fileSize": 7591
+          }
+        ],
+        "versions": [
+          {
+            "name": "aplos_nca_data_cleaning",
+            "version": "3.30.36",
+            "package": "aplos_nca_data_cleaning",
+            "description": null
+          },
+          {
+            "name": "aplos_nca_orchestration",
+            "version": "3.3.156",
+            "package": "aplos_nca_orchestration",
+            "description": null
+          }
+        ],
+        "steps": [
+          {
+            "order": 0,
+            "stepType": "data_cleaning",
+            "status": "failed",
+            "version": "3.30.36",
+            "startedUtc": "2026-09-19T22:44:56.960049+00:00",
+            "completedUtc": "2026-09-19T22:45:00.334298+00:00",
+            "durationMs": 3374,
+            "durationHuman": "3s 374ms",
+            "stats": null
+          },
+          {
+            "order": 1,
+            "stepType": "packaging",
+            "status": "succeeded",
+            "version": "3.3.156",
+            "startedUtc": "2026-09-19T22:45:06.400050+00:00",
+            "completedUtc": "2026-09-19T22:45:07.071403+00:00",
+            "durationMs": 671,
+            "durationHuman": "671ms",
+            "stats": null
+          },
+          {
+            "order": 2,
+            "stepType": "on_complete",
+            "status": "failed",
+            "version": null,
+            "startedUtc": "2026-09-19T22:45:13.030876+00:00",
+            "completedUtc": "2026-09-19T22:45:20.455959+00:00",
+            "durationMs": 7425,
+            "durationHuman": "7s 425ms",
+            "stats": null
+          }
+        ]
+      }
+    ],
+    "packageAvailable": true,
+    "error": {
+      "name": null,
+      "code": "DATA_CLEANING_RULE_ERROR",
+      "message": "data_cleaning: Rule (description='New rule configuration') type='add_column'. Failed at step 1: No column name specified. This rule is used to add a column.  It cannot be used to overwrite an existing column. Either use a different column name or use another rule. | available_columns=['STUDYID', 'SUBJECTALIAS', 'SUBJECTGROUP', 'DAYNOMINAL', 'HOURNOMINAL', 'ANALYTE', 'BIOLOGICALMATRIX', 'CONCENTRATION', 'CONCENTRATIONUNITS', 'LLOQ  ', 'RESULTCOMMENT']",
+      "phase": "data_cleaning",
+      "step": "data_cleaning",
+      "details": {
+        "availableColumns": [
+          "STUDYID",
+          "SUBJECTALIAS",
+          "SUBJECTGROUP",
+          "DAYNOMINAL",
+          "HOURNOMINAL",
+          "ANALYTE",
+          "BIOLOGICALMATRIX",
+          "CONCENTRATION",
+          "CONCENTRATIONUNITS",
+          "LLOQ  ",
+          "RESULTCOMMENT"
+        ],
+        "ruleType": "add_column",
+        "identifiers": {
+          "description": "New rule configuration"
+        },
+        "stepIndex": 1,
+        "reason": "No column name specified. This rule is used to add a column.  It cannot be used to overwrite an existing column. Either use a different column name or use another rule."
+      }
+    },
+    "errors": [
+      {
+        "name": null,
+        "code": "DATA_CLEANING_RULE_ERROR",
+        "message": "data_cleaning: Rule (description='New rule configuration') type='add_column'. Failed at step 1: No column name specified. This rule is used to add a column.  It cannot be used to overwrite an existing column. Either use a different column name or use another rule. | available_columns=['STUDYID', 'SUBJECTALIAS', 'SUBJECTGROUP', 'DAYNOMINAL', 'HOURNOMINAL', 'ANALYTE', 'BIOLOGICALMATRIX', 'CONCENTRATION', 'CONCENTRATIONUNITS', 'LLOQ  ', 'RESULTCOMMENT']",
+        "phase": "data_cleaning",
+        "step": "data_cleaning",
+        "details": {
+          "availableColumns": [
+            "STUDYID",
+            "SUBJECTALIAS",
+            "SUBJECTGROUP",
+            "DAYNOMINAL",
+            "HOURNOMINAL",
+            "ANALYTE",
+            "BIOLOGICALMATRIX",
+            "CONCENTRATION",
+            "CONCENTRATIONUNITS",
+            "LLOQ  ",
+            "RESULTCOMMENT"
+          ],
+          "ruleType": "add_column",
+          "identifiers": {
+            "description": "New rule configuration"
+          },
+          "stepIndex": 1,
+          "reason": "No column name specified. This rule is used to add a column.  It cannot be used to overwrite an existing column. Either use a different column name or use another rule."
+        }
+      }
+    ],
+    "warnings": [],
+    "engineVersions": [
+      {
+        "name": "aplos_nca_data_cleaning",
+        "version": "3.30.36",
+        "package": "aplos_nca_data_cleaning",
+        "description": null
+      },
+      {
+        "name": "aplos_nca_orchestration",
+        "version": "3.3.156",
+        "package": "aplos_nca_orchestration",
+        "description": null
+      }
+    ],
+    "phaseTypes": [
+      "data_cleaning"
+    ],
+    "lifecycleState": "active",
+    "analysisEngineVersion": "3.0.0"
+  },
+  "timestamp": "2026-09-19T22:45:49.810826+00:00",
+  "status_code": 200,
+  "success": true,
+  "diagnostics": {
+    "startTimeUtcTs": 1789857949.6337109,
+    "endTimeUtcTs": 1789857949.8108523,
+    "durationMs": 0.17714190483093262,
+    "serviceName": "aplos-nca-orchestration",
+    "serviceVersion": "3.3.156"
+  }
+}

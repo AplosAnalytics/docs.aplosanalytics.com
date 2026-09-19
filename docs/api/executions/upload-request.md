@@ -30,7 +30,12 @@ In the `payload` you will need to specify two fields.
 
 ## Response
 
-The response will contain a decent amount of information that you will need to carry along for the next steps.
+The response is wrapped in the standard success envelope. The `data` object
+contains everything you need for the next steps.
+
+> [!NOTE]
+> The `data` payload is returned in `camelCase` to match the web app. You can
+> request `snake_case` instead via the API's case option if your integration prefers it.
 
 <CodeBlock 
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
@@ -39,37 +44,18 @@ The response will contain a decent amount of information that you will need to c
     >
 </CodeBlock>
 
-
-
 ## Fields needed for the File Upload Process
-In the next section, we'll cover the process of uploading a file.  You will need the following fields during that process.
+In the next section, we'll cover the process of uploading the file. You will
+use the following fields from `data` during that process.
 
 |Name|Description|
 |--|--|
-|url|The endpoint for the file upload|
-|fields|All the necessary fields you'll need to submit in the body of the payload (along with the file)|
-
-
-<CodeBlock 
-    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
-    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/upload-request-response.json" 
-    lang="json"
-    :displayLines="[1, {start:9, end: 18}, 23]"        
-    >
-</CodeBlock>
-
+|url|The S3 endpoint to POST the file to.|
+|fields|The S3 POST-policy form fields to include in the upload body (along with the file).|
 
 ## Fields needed when submitting an Analysis for an Execution
-Later after the file is uploaded, you will want to run an execution. Part of the payload to start an execution is the file location in S3.  You will need the `bucket name` and `object key` which can be found in this payload.
-
-
-<CodeBlock 
-    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"
-    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/upload-request-response.json" 
-    lang="json"
-    :displayLines="[{start:1, end: 6}, 23]"        
-    >
-</CodeBlock>
+Later, when you [run an execution](./run_execution), you reference the uploaded
+file by its `fileId` — returned as `data.fileId` in this response. Hold onto it.
 
 
 ## Example with 🐍 Python

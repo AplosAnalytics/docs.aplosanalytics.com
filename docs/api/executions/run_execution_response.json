@@ -1,4 +1,17 @@
 {
-    "execution_id": "1714955846-1264143:cfa4b10f-0b40-11ef-8000-000000000000",
-    "status": "queuing"
+  "data": {
+    "executionId": "1789857650-147652-29dc4ca6-b47b-11f1-8000-000000000000",
+    "status": "queued",
+    "message": "nca_workflow queued for processing"
+  },
+  "timestamp": "2026-09-19T22:40:56.327609+00:00",
+  "status_code": 201,
+  "success": true,
+  "diagnostics": {
+    "startTimeUtcTs": 1789857650.095967,
+    "endTimeUtcTs": 1789857656.327635,
+    "durationMs": 6.231668472290039,
+    "serviceName": "aplos-nca-orchestration",
+    "serviceVersion": "3.3.156"
+  }
 }

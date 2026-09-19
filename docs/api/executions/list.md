@@ -15,11 +15,23 @@ See [Workflow](../endpoints/routes#workflow) in the API routes reference (Get Ex
 No payload - GET method
 
 ## Response
-The response contains a list of Executions JSON objects.  Presigned URLs for download will not be available here.  Instead, you will request them.
+
+The response is wrapped in the standard success envelope. `data.executions` is
+an array of execution records, `data.count` is the number returned on this page,
+and `data.nextKey` is an opaque pagination token — pass it as `start_key` on the
+next request to fetch the following page (`null` when there are no more pages).
+
+Download URLs are not included here. Once an execution has `succeeded`, retrieve
+its output files via the execution outputs routes (see
+[Workflow](../endpoints/routes#workflow)).
+
+> [!NOTE]
+> The `data` payload is returned in `camelCase` to match the web app. You can
+> request `snake_case` instead via the API's case option if your integration prefers it.
+
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/list-response.json"    
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/list-response.json"
     lang="json"    
-    :highlightLines="[19,34,67,82]"
     >
 </CodeBlock>

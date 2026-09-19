@@ -1,0 +1,75 @@
+{
+  "fileId": "{{thc-file-id}}",
+  "name": "{{some-custom-name}}",
+  "calculation": {
+    "version": "3.0.0",
+    "designations": {
+      "blq": {
+        "value": "< 0.500"
+      },
+      "missing": {
+        "value": "NS"
+      },
+      "concentrationUnit": {
+        "column": "CONCENTRATIONUNITS"
+      }
+    },
+    "columns": {
+      "time": "HOURNOMINAL",
+      "uniqueId": "SUBJECTALIAS",
+      "concentration": {
+        "observed": "CONCENTRATION",
+        "analyzed": "PKLEVEL"
+      },
+      "sorting": [
+        "HOURNOMINAL"
+      ],
+      "grouping": [
+        "SUBJECTALIAS",
+        "SUBJECTGROUP",
+        "ANALYTE"
+      ],
+      "customColumns": []
+    },
+    "dosing": {
+      "amount": {
+        "column": "Dose_mg"
+      },
+      "unit": {
+        "column": "Dose_mg_units"
+      },
+      "frequency": {
+        "value": "single"
+      },
+      "type": {
+        "value": "ev"
+      }
+    },
+    "time": {
+      "unit": {
+        "value": "hr"
+      },
+      "timeOfAdministration": {
+        "value": 0
+      }
+    },
+    "kelRules": {
+      "regressionStatistic": "adj_r2",
+      "minimumStatistic": 0,
+      "maximumExtrapolationLinear": 0,
+      "maximumExtrapolationLogarithmic": 0,
+      "maximumTimePoints": 0,
+      "minimumSpan": 0,
+      "earliestTimePoint": 0,
+      "tie": [
+        "kel_n",
+        "kel_lower"
+      ]
+    },
+    "partialAuc": []
+  },
+  "metadata": {
+    "name": "{{some-custom-name}}",
+    "project": "1234567890"
+  }
+}

@@ -54,8 +54,26 @@ const ROUTES_OUT = path.join(
   "endpoints",
   "routes.json"
 );
+// Where extracted request-body examples (the queue payloads, per workflow type)
+// are written so tutorial pages can render real, current bodies.
+const PAYLOADS_OUT_DIR = path.join(
+  REPO_ROOT,
+  "docs",
+  "api",
+  "executions",
+  "payloads"
+);
 
 const METHOD_ORDER = ["get", "post", "put", "patch", "delete"];
+
+// Slugify an OpenAPI example name into a filesystem-safe stem
+// ("Analysis (NCA)" -> "analysis-nca").
+function slugify(name) {
+  return String(name)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 /**
  * Stable documentation aliases.
@@ -246,6 +264,93 @@ function specToRoutes(spec) {
   return { routes };
 }
 
+/**
+ * Extract every named request-body example from the spec and write each one to
+ * PAYLOADS_OUT_DIR/<slug>.json, plus an index.json describing them. This lets
+ * tutorial pages embed real, current payloads (e.g. the analysis queue body)
+ * that stay in sync with the OpenAPI source of truth.
+ *
+ * Returns an array of { name, slug, operationId, route, method, summary } for
+ * logging / index purposes.
+ */
+async function extractRequestExamples(spec) {
+  const written = [];
+  for (const [routePath, methods] of Object.entries(spec.paths || {})) {
+    for (const [method, op] of Object.entries(methods)) {
+      const examples =
+        op &&
+        op.requestBody &&
+        op.requestBody.content &&
+        op.requestBody.content["application/json"] &&
+        op.requestBody.content["application/json"].examples;
+      if (!examples || typeof examples !== "object") continue;
+      for (const [exName, exObj] of Object.entries(examples)) {
+        if (!exObj || !("value" in exObj)) continue;
+        const slug = slugify(exName);
+        written.push({
+          name: exName,
+          slug,
+          operationId: op.operationId || null,
+          route: routePath,
+          method: method.toUpperCase(),
+          summary: exObj.summary || "",
+        });
+      }
+    }
+  }
+
+  // If this spec carries NO request-body examples at all, treat it as
+  // "not example-aware" and leave any existing payload files untouched. This
+  // avoids wiping committed payloads during the window between committing the
+  // IaC example config and that spec actually being published/deployed.
+  if (written.length === 0) return written;
+
+  // Prune stale payload files: remove any *.json in PAYLOADS_OUT_DIR that this
+  // (example-aware) spec no longer produces, so payloads can't go stale. Only
+  // touches the payloads dir — never other docs.
+  const keep = new Set([...written.map((w) => `${w.slug}.json`), "index.json"]);
+  try {
+    const existing = await fs.readdir(PAYLOADS_OUT_DIR);
+    for (const file of existing) {
+      if (file.endsWith(".json") && !keep.has(file)) {
+        await fs.rm(path.join(PAYLOADS_OUT_DIR, file));
+      }
+    }
+  } catch {
+    // dir doesn't exist yet — nothing to prune.
+  }
+
+  await fs.mkdir(PAYLOADS_OUT_DIR, { recursive: true });
+  // Write each example value as its own file.
+  for (const [routePath, methods] of Object.entries(spec.paths || {})) {
+    for (const [, op] of Object.entries(methods)) {
+      const examples =
+        op &&
+        op.requestBody &&
+        op.requestBody.content &&
+        op.requestBody.content["application/json"] &&
+        op.requestBody.content["application/json"].examples;
+      if (!examples) continue;
+      for (const [exName, exObj] of Object.entries(examples)) {
+        if (!exObj || !("value" in exObj)) continue;
+        const slug = slugify(exName);
+        await fs.writeFile(
+          path.join(PAYLOADS_OUT_DIR, `${slug}.json`),
+          JSON.stringify(exObj.value, null, 2) + "\n",
+          "utf8"
+        );
+      }
+    }
+  }
+  // Write an index so pages/tooling can discover available payloads.
+  await fs.writeFile(
+    path.join(PAYLOADS_OUT_DIR, "index.json"),
+    JSON.stringify({ payloads: written }, null, 2) + "\n",
+    "utf8"
+  );
+  return written;
+}
+
 async function main() {
   console.log("Syncing OpenAPI spec for docs...");
   console.log(`  source: ${SPEC_URL}`);
@@ -296,6 +401,17 @@ async function main() {
       ROUTES_OUT
     )}`
   );
+
+  const payloads = await extractRequestExamples(spec);
+  if (payloads.length > 0) {
+    console.log(
+      `  wrote ${payloads.length} request payload example(s) -> ${path.relative(
+        REPO_ROOT,
+        PAYLOADS_OUT_DIR
+      )}`
+    );
+  }
+
   console.log("Done.");
 }
 

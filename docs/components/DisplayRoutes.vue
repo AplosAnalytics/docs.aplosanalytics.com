@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import data from "/docs/api/endpoints/routes.json";
 import { defineProps } from "vue";
 
@@ -8,80 +8,69 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  // Optional: restrict the table to routes in a single tag/group.
+  tag: {
+    type: String,
+    default: "",
+  },
   columnsToShow: {
     type: Array,
-    default: () => ["name", "path", "description"], // Default columns
+    default: () => ["name", "method_type", "path"],
   },
-  displayWarnings: {
-    type: Boolean,
-    default: true
-  }
 });
 
 const columnLabels = {
   name: "Route Name",
   path: "Endpoint URL",
   description: "Description",
-  method_type: "Method Type",
+  method_type: "Method",
+  auth: "Auth",
+  tag: "Group",
 };
 
 const endpoints = computed(() => {
+  let routes = data.routes;
   if (props.routeId.length > 0) {
-    return data.routes.filter((route) => props.routeId.includes(route.id));
+    routes = routes.filter((route) => props.routeId.includes(route.id));
   }
-  return data.routes; // Return all routes if no specific names are provided
+  if (props.tag) {
+    routes = routes.filter((route) => route.tag === props.tag);
+  }
+  return routes;
 });
+
+function cellValue(route, column) {
+  if (column === "auth") {
+    return route.auth ? "JWT" : "Public";
+  }
+  return route[column];
+}
 </script>
 
 <template>
-  <div class="markdown-alert markdown-alert-warning" v-if="displayWarnings">
-    <p class="markdown-alert-title">
-      <svg
-        class="octicon octicon-alert mr-2"
-        viewBox="0 0 16 16"
-        version="1.1"
-        width="16"
-        height="16"
-        aria-hidden="true"
-      >
-        <path
-          d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
-        ></path></svg
-      >The final routes are subject to change before Go-Live Summer 2024
-    </p>
-    <p>The following applies to EARLY ACCESS prior to Go Live.</p>
-    <p>      
-      Some of our routes will be changing prior to our final go-live date this summer
-      (2024). They won't change during Early Access, but be sure to check the
-      documentation.
-    </p>
-    <p>
-      In order to make a smooth tranistion, we'll provide detailed information on which routes changed and which remained the
-      same.  As a good programming practice, you store the routes in a central library for easier migration.
-    </p>
-    <p>
-      Older routes may be kept active for short period of time to help with any
-      transitions.
-    </p>
-  </div>
-
-  
   <div class="table">
     <div class="table-header">
       <div class="header-item" v-for="column in columnsToShow" :key="column">
         {{ columnLabels[column] || column }}
       </div>
     </div>
-    <div v-for="route in endpoints" :key="route.name" class="table-row">
+    <div v-for="route in endpoints" :key="route.id" class="table-row">
       <div class="row-item" v-for="column in columnsToShow" :key="column">
-        {{ route[column] }}
+        <span
+          v-if="column === 'method_type'"
+          class="method"
+          :class="'method-' + (route.method_type || '').toLowerCase()"
+          >{{ route.method_type }}</span
+        >
+        <code v-else-if="column === 'path'">{{ cellValue(route, column) }}</code>
+        <span v-else>{{ cellValue(route, column) }}</span>
       </div>
     </div>
     <p v-if="endpoints.length === 0" class="no-data">No endpoints found.</p>
   </div>
 </template>
 
-<style>
+<style scoped>
 .table {
   display: flex;
   flex-direction: column;
@@ -103,11 +92,37 @@ const endpoints = computed(() => {
   padding: 8px 16px;
   text-align: left;
   border-bottom: 1px solid var(--vp-c-divider);
+  overflow-wrap: anywhere;
 }
 
 .table-header {
-  background-color: var(--header-bg-color);
+  background-color: var(--vp-c-bg-soft);
   font-weight: bold;
+}
+
+.row-item code {
+  font-size: 0.85em;
+}
+
+.method {
+  font-weight: 700;
+  font-size: 0.8em;
+  letter-spacing: 0.02em;
+}
+.method-get {
+  color: #3b82f6;
+}
+.method-post {
+  color: #22c55e;
+}
+.method-put {
+  color: #f59e0b;
+}
+.method-patch {
+  color: #a855f7;
+}
+.method-delete {
+  color: #ef4444;
 }
 
 .no-data {

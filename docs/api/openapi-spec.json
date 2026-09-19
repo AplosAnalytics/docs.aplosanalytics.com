@@ -1,0 +1,6747 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Aplos NCA SaaS API",
+    "version": "3.0.0",
+    "description": "Aplos NCA SaaS Platform API"
+  },
+  "paths": {
+    "/v3/tenants/{tenant-id}/audit-config/status": {
+      "get": {
+        "operationId": "auditConfigStatusGet",
+        "x-display-name": "Get Audit Config Status",
+        "summary": "Audit Logs: Check if execution audit logging is enabled or disabled",
+        "tags": [
+          "audit-logs"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_AUDIT_TABLE_NAME}}"
+          },
+          {
+            "parameter_store": "read",
+            "path": "/{{WORKLOAD_NAME}}/{{DEPLOYMENT_NAMESPACE}}/config/execution-audit-enabled"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/audit-logs/resources/{resource-type}/{resource-id}": {
+      "get": {
+        "operationId": "auditLogsQueryByResourceGet",
+        "x-display-name": "Query Audit Logs by Resource",
+        "summary": "Audit Logs: Query audit log entries for a specific resource",
+        "tags": [
+          "audit-logs"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_AUDIT_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resource-type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resource-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "items": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/AuditLogEntry"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/audit-logs": {
+      "get": {
+        "operationId": "auditLogsQueryByTenantGet",
+        "x-display-name": "Query Audit Logs by Tenant",
+        "summary": "Audit Logs: Query audit log entries for a tenant",
+        "tags": [
+          "audit-logs"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_AUDIT_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "items": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/AuditLogEntry"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/audit-logs/users/{user-id}": {
+      "get": {
+        "operationId": "auditLogsQueryByUserGet",
+        "x-display-name": "Query Audit Logs by User",
+        "summary": "Audit Logs: Query audit log entries for a specific user within a tenant",
+        "tags": [
+          "audit-logs"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_AUDIT_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "items": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/AuditLogEntry"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/feature-flags/rules": {
+      "post": {
+        "operationId": "createFeatureFlagRulePost",
+        "x-display-name": "Create Feature Flag Rule",
+        "summary": "Feature Flags: Create a flag rule (admin)",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeatureFlagRuleCreateRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/FeatureFlagRule"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "get": {
+        "operationId": "listFeatureFlagRulesGet",
+        "x-display-name": "List Feature Flag Rules",
+        "summary": "Feature Flags: List rules for a feature key (admin)",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/FeatureFlagRule"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/feature-flags/registry/{registration-id}": {
+      "delete": {
+        "operationId": "deleteFeatureKeyDelete",
+        "x-display-name": "Delete Feature Key",
+        "summary": "Feature Flags: Delete a feature key registration (admin/dev)",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "registration-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateFeatureKeyPut",
+        "x-display-name": "Update Feature Key",
+        "summary": "Feature Flags: Update a feature key registration (admin/dev)",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "registration-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeatureKeyRegisterRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/FeatureKeyRegistration"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/feature-flags/rules/{rule-id}": {
+      "delete": {
+        "operationId": "deleteFeatureFlagRuleDelete",
+        "x-display-name": "Delete Feature Flag Rule",
+        "summary": "Feature Flags: Delete a flag rule (admin)",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rule-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateFeatureFlagRulePut",
+        "x-display-name": "Update Feature Flag Rule",
+        "summary": "Feature Flags: Update a flag rule (admin)",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rule-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeatureFlagRuleCreateRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/FeatureFlagRule"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/feature-flags/evaluate": {
+      "get": {
+        "operationId": "evaluateFeatureFlagsGet",
+        "x-display-name": "Evaluate Feature Flags",
+        "summary": "Feature Flags: Evaluate all flags for current user",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/feature-flags/registry": {
+      "get": {
+        "operationId": "listFeatureFlagRegistryGet",
+        "x-display-name": "List Feature Flag Registry",
+        "summary": "Feature Flags: List all registered feature keys",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/FeatureKeyRegistration"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/feature-flags/register": {
+      "post": {
+        "operationId": "registerFeatureKeyPost",
+        "x-display-name": "Register Feature Key",
+        "summary": "Feature Flags: Register a new feature key (admin/dev)",
+        "tags": [
+          "feature-flags"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeatureKeyRegisterRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/FeatureKeyRegistration"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/archive": {
+      "post": {
+        "operationId": "fileSystemArchivePost",
+        "x-display-name": "Archive File",
+        "summary": "Archive a file in Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files/count": {
+      "get": {
+        "operationId": "fileSystemCountFilesGet",
+        "x-display-name": "Count Files",
+        "summary": "Count files in Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}": {
+      "get": {
+        "operationId": "fileSystemGetFileGet",
+        "x-display-name": "Get File",
+        "summary": "Get a file in Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/File"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/lineage": {
+      "get": {
+        "operationId": "fileSystemLineageGet",
+        "x-display-name": "Get File Lineage",
+        "summary": "Get a file's lineage in Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files": {
+      "get": {
+        "operationId": "fileSystemListFilesGet",
+        "x-display-name": "List Files",
+        "summary": "List files in Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "files": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/File"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "fileSystemUploadUrlPost",
+        "x-display-name": "Get File Upload URL",
+        "summary": "Generate presigned URL for file uploads via Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "s3": "read",
+            "bucket": "{{S3_UPLOAD_BUCKET_NAME}}"
+          },
+          {
+            "s3": "write",
+            "bucket": "{{S3_UPLOAD_BUCKET_NAME}}"
+          },
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/PresignedUploadResponse"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/meta": {
+      "get": {
+        "operationId": "fileSystemMetaGet",
+        "x-display-name": "Get File Metadata",
+        "summary": "Get a files extended meta in Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/download-url": {
+      "get": {
+        "operationId": "fileSystemDownloadUrlGet",
+        "x-display-name": "Get File Download URL",
+        "summary": "Generates a presigned URL for downloading a file in Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "s3": "read",
+            "bucket": "{{S3_WORKLOAD_BUCKET_NAME}}"
+          },
+          {
+            "s3": "write",
+            "bucket": "{{S3_WORKLOAD_BUCKET_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/stream": {
+      "get": {
+        "operationId": "fileSystemStreamGet",
+        "x-display-name": "Stream File Data",
+        "summary": "Returns a file data and column header info",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "s3": "read",
+            "bucket": "{{S3_WORKLOAD_BUCKET_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/unarchive": {
+      "post": {
+        "operationId": "fileSystemUnarchivePost",
+        "x-display-name": "Unarchive File",
+        "summary": "Un-Archive a file in Aplos File System v3",
+        "tags": [
+          "file-system"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/maintenance/events": {
+      "get": {
+        "operationId": "getMaintenanceHistoryGet",
+        "x-display-name": "Get Maintenance History",
+        "summary": "Maintenance: Get paginated maintenance event history",
+        "tags": [
+          "maintenance"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/maintenance/trigger": {
+      "post": {
+        "operationId": "triggerMaintenancePost",
+        "x-display-name": "Trigger Maintenance",
+        "summary": "Maintenance: Manually trigger maintenance execution",
+        "tags": [
+          "maintenance"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "lambda": "invoke",
+            "ssm_arn": "/{{WORKLOAD_NAME}}/{{DEPLOYMENT_NAMESPACE}}/lambda/maintenance-handler/arn"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/metrics/executions": {
+      "get": {
+        "operationId": "drilldownExecutionsGet",
+        "x-display-name": "Drilldown Executions",
+        "summary": "Metrics: Drilldown Executions API - Lists individual executions for metrics dashboard drilldown",
+        "tags": [
+          "metrics"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/metrics": {
+      "get": {
+        "operationId": "getTenantMetricsReportAllGet",
+        "x-display-name": "Get Tenant Metrics Report",
+        "summary": "Metrics: Get User/Tenant Metrics Report - All",
+        "tags": [
+          "metrics"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/metrics/snapshots": {
+      "get": {
+        "operationId": "metricsQueryGet",
+        "x-display-name": "Query Metrics Snapshots",
+        "summary": "Metrics Query API Handler: Serves MetricsSnapshot query endpoints",
+        "tags": [
+          "metrics"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/metrics": {
+      "get": {
+        "operationId": "userMetricsGet",
+        "x-display-name": "Get User Metrics",
+        "summary": "lists a specific users metrics",
+        "tags": [
+          "metrics"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/templates/{id}": {
+      "get": {
+        "operationId": "templateGetGet",
+        "x-display-name": "Get Report Template",
+        "summary": "Template Management: Get template details including version history.",
+        "tags": [
+          "report-templates"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "s3": "read",
+            "bucket": "{{S3_WORKLOAD_BUCKET_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/ReportTemplate"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/templates": {
+      "get": {
+        "operationId": "templateListGet",
+        "x-display-name": "List Report Templates",
+        "summary": "Template Management: List templates for the requesting tenant (paginated, filterable by status).",
+        "tags": [
+          "report-templates"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "templates": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/ReportTemplate"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/templates/{id}/status": {
+      "patch": {
+        "operationId": "templateStatusPatch",
+        "x-display-name": "Update Report Template",
+        "summary": "Template Management: Update template status, rename, or delete.",
+        "tags": [
+          "report-templates"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/templates/upload-url": {
+      "post": {
+        "operationId": "templateUploadPost",
+        "x-display-name": "Upload Report Template",
+        "summary": "Template Management: Request upload URL, confirm upload (triggers validation), and upload new versions.",
+        "tags": [
+          "report-templates"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "s3": "read",
+            "bucket": "{{S3_WORKLOAD_BUCKET_NAME}}"
+          },
+          {
+            "s3": "write",
+            "bucket": "{{S3_WORKLOAD_BUCKET_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/docs": {
+      "get": {
+        "operationId": "apiDocsRedirectGet",
+        "x-display-name": "API Docs Redirect",
+        "summary": "API Documentation: Redirect to hosted OpenAPI docs site",
+        "tags": [
+          "site-messages"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/app/messages": {
+      "get": {
+        "operationId": "appMessagesPublicGet",
+        "x-display-name": "Get Public App Messages",
+        "summary": "public application messages",
+        "tags": [
+          "site-messages"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/messages": {
+      "get": {
+        "operationId": "appMessagesSecureGet",
+        "x-display-name": "Get Secure App Messages",
+        "summary": "secure application messages",
+        "tags": [
+          "site-messages"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/subscriptions/{subscription-id}/activate": {
+      "post": {
+        "operationId": "activateTenantSubscriptionPost",
+        "x-display-name": "Activate Subscription",
+        "summary": "Tenant: Activate a pending subscription (transitions pending/ready to active)",
+        "tags": [
+          "subscriptions"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subscription-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/active-subscription": {
+      "get": {
+        "operationId": "getTenantSubscriptionActiveGet",
+        "x-display-name": "Get Active Subscription",
+        "summary": "Tenant: Get Active Subscription",
+        "tags": [
+          "subscriptions"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Subscription"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/subscription-status": {
+      "get": {
+        "operationId": "getTenantSubscriptionStatusGet",
+        "x-display-name": "Get Subscription Status",
+        "summary": "Tenant: Gets a Tenants Subscription Status",
+        "tags": [
+          "subscriptions"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/subscriptions/{subscription-id}": {
+      "get": {
+        "operationId": "getTenantSubscriptionGet",
+        "x-display-name": "Get Subscription",
+        "summary": "Tenant: Get Tenant Subscription",
+        "tags": [
+          "subscriptions"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subscription-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Subscription"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/subscriptions": {
+      "get": {
+        "operationId": "getTenantSubscriptionsGet",
+        "x-display-name": "List Subscriptions",
+        "summary": "Tenant: Get a list of the Tenants Subscriptions",
+        "tags": [
+          "subscriptions"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "subscriptions": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/Subscription"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "upsertTenantSubscriptionPost",
+        "x-display-name": "Upsert Subscription",
+        "summary": "Tenant: Upsert Tenant Subscription",
+        "tags": [
+          "subscriptions"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscription"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Subscription"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/validate-subscription": {
+      "get": {
+        "operationId": "validateTenantSubscriptionGet",
+        "x-display-name": "Validate Subscription",
+        "summary": "Tenant: Validate Subscription for Execution Eligibility",
+        "tags": [
+          "subscriptions"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}": {
+      "get": {
+        "operationId": "getTenantGet",
+        "x-display-name": "Get Tenant",
+        "summary": "Tenant: Get Tenant",
+        "tags": [
+          "tenants"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Tenant"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "upsertTenantPost",
+        "x-display-name": "Upsert Tenant",
+        "summary": "Tenant: Update a tenant",
+        "tags": [
+          "tenants"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TenantUpsertRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Tenant"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants": {
+      "get": {
+        "operationId": "listTenantGet",
+        "x-display-name": "List Tenants",
+        "summary": "Get List of Tenants",
+        "tags": [
+          "tenants"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "tenants": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/Tenant"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/cleanup-duplicates": {
+      "post": {
+        "operationId": "cleanupDuplicateEmailsPost",
+        "x-display-name": "Cleanup Duplicate Emails",
+        "summary": "v3 User Management: Delete duplicate user records (orphans) by email",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          "cognito_admin"
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}": {
+      "delete": {
+        "operationId": "deleteUserDelete",
+        "x-display-name": "Delete User",
+        "summary": "v3 User Management: delete a user by ID.",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          "cognito_admin"
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "get": {
+        "operationId": "getUserGet",
+        "x-display-name": "Get User",
+        "summary": "v3 User Management: Get a Users detail",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          "cognito_admin"
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/User"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/duplicate-emails": {
+      "get": {
+        "operationId": "detectDuplicateEmailsGet",
+        "x-display-name": "Detect Duplicate Emails",
+        "summary": "v3 User Management: Detect duplicate email addresses in tenant user list",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          "cognito_admin"
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/assignable-roles": {
+      "get": {
+        "operationId": "getUserAssignablePermissionsGet",
+        "x-display-name": "Get Assignable Roles",
+        "summary": "v3 User Management: Get assignable roles",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/": {
+      "get": {
+        "operationId": "listUsersGet",
+        "x-display-name": "List Users",
+        "summary": "v3 User Management: List Users",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "users": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/User"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/cognito-sync": {
+      "post": {
+        "operationId": "syncCognitoUserPost",
+        "x-display-name": "Sync Cognito User",
+        "summary": "v3 User Management: Repair user Cognito sync (push DB → Cognito)",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          "cognito_admin"
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users": {
+      "post": {
+        "operationId": "upsertUsersPost",
+        "x-display-name": "Upsert User",
+        "summary": "v3 User Management: Upsert a User.",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          "cognito_admin"
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpsertRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/User"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/cognito-status": {
+      "get": {
+        "operationId": "validateCognitoStatusGet",
+        "x-display-name": "Validate Cognito Status",
+        "summary": "v3 User Management: Validate user Cognito sync status (drift detection)",
+        "tags": [
+          "users"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          "cognito_admin"
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/validations/queue": {
+      "post": {
+        "operationId": "validationTriggerPost",
+        "x-display-name": "Trigger Validation",
+        "summary": "Validation Workflow: API Gateway entry point. Creates parent execution and submits to admission queue.",
+        "tags": [
+          "validations"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/ValidationTriggerResponse"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/admin/warm-up/report": {
+      "get": {
+        "operationId": "warmUpReportGet",
+        "x-display-name": "Get Warm-Up Report",
+        "summary": "Lambda Warm-Up: Report API for warm-up status dashboard",
+        "tags": [
+          "warm-up"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/admin/warm-up/schedule": {
+      "get": {
+        "operationId": "warmUpScheduleConfigGet",
+        "x-display-name": "Get Warm-Up Schedule",
+        "summary": "Lambda Warm-Up: Returns current EventBridge schedule rule configuration",
+        "tags": [
+          "warm-up"
+        ],
+        "x-permissions": [
+          {
+            "events": "read"
+          },
+          {
+            "parameter_store": "read",
+            "path": "/{{WORKLOAD_NAME}}/{{DEPLOYMENT_NAMESPACE}}/lambda/event-bridge/*"
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "put": {
+        "operationId": "warmUpScheduleTogglePut",
+        "x-display-name": "Toggle Warm-Up Schedule",
+        "summary": "Lambda Warm-Up: Enables or disables the EventBridge warm-up schedule rule",
+        "tags": [
+          "warm-up"
+        ],
+        "x-permissions": [
+          {
+            "events": "manage"
+          },
+          {
+            "parameter_store": "read",
+            "path": "/{{WORKLOAD_NAME}}/{{DEPLOYMENT_NAMESPACE}}/lambda/event-bridge/*"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/admin/warm-up": {
+      "post": {
+        "operationId": "warmUpTriggerPost",
+        "x-display-name": "Trigger Warm-Up",
+        "summary": "Lambda Warm-Up: On-demand API trigger for warm-up cycle",
+        "tags": [
+          "warm-up"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "parameter_store": "read",
+            "path": "/{{WORKLOAD_NAME}}/{{DEPLOYMENT_NAMESPACE}}/ecr/*"
+          },
+          {
+            "lambda": "invoke",
+            "function": "*"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue": {
+      "post": {
+        "operationId": "analysisSendToQueuePost",
+        "x-display-name": "Send Analysis to Queue",
+        "summary": "Analysis Workflow: WorkflowBuilderQueueHandler - Sends analysis to admission queue for throttle evaluation and routing.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/QueueAcceptedResponse"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/archive": {
+      "post": {
+        "operationId": "workflowArchivePost",
+        "x-display-name": "Archive Execution",
+        "summary": "Analysis Workflow: Archives a workflow.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/cancel": {
+      "post": {
+        "operationId": "workflowCancelPost",
+        "x-display-name": "Cancel Execution",
+        "summary": "Analysis Workflow: Cancels workflow.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/diagnostics": {
+      "get": {
+        "operationId": "getExecutionDiagnosticsGet",
+        "x-display-name": "Get Execution Diagnostics",
+        "summary": "Execution Workflow: Diagnostics - retrieves the diagnostic event timeline for an execution tree.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/execution-folders": {
+      "post": {
+        "operationId": "workflowExecutionFoldersPost",
+        "x-display-name": "Manage Execution Folders",
+        "summary": "Analysis Workflow: CRUD operations for execution folders (create, list, get, update, delete).",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/execution-summaries/{execution-id}/folder": {
+      "put": {
+        "operationId": "workflowExecutionMoveFolderPut",
+        "x-display-name": "Move Execution to Folder",
+        "summary": "Analysis Workflow: Moves executions to a folder (single or bulk).",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "delete",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/outputs/{key-name}": {
+      "get": {
+        "operationId": "workflowExecutionOutputFileGet",
+        "x-display-name": "Get Execution Output File",
+        "summary": "Analysis Workflow: Gets a specific output file record for an execution by key name.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "sqs": "send",
+            "queue_name": "{{WORKLOAD_NAME}}-{{DEPLOYMENT_NAMESPACE}}-analysis-package-generation"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key-name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/outputs/type/{output-type}": {
+      "get": {
+        "operationId": "workflowExecutionOutputTypeGet",
+        "x-display-name": "List Execution Outputs by Type",
+        "summary": "Analysis Workflow: Lists output files of a specific type (e.g. custom-plots, custom-tables) for an execution.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "s3": "read",
+            "bucket": "{{S3_WORKLOAD_BUCKET_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "output-type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/outputs": {
+      "get": {
+        "operationId": "workflowExecutionOutputsGet",
+        "x-display-name": "List Execution Outputs",
+        "summary": "Analysis Workflow: Lists all output file records for an execution.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "outputs": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/File"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions": {
+      "get": {
+        "operationId": "workflowGetHistoryGet",
+        "x-display-name": "Get Execution History",
+        "summary": "Analysis Workflow: List Workflow/Executions/Analysis History.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "executions": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/Execution"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/lineage": {
+      "get": {
+        "operationId": "workflowGetLineageGet",
+        "x-display-name": "Get Execution Lineage",
+        "summary": "Analysis Workflow: Lineage - gets the execution lineage tree.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/PaginationEnvelope"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "executions": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/Execution"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/root": {
+      "get": {
+        "operationId": "workflowGetRootGet",
+        "x-display-name": "Get Execution Root",
+        "summary": "Analysis Workflow: Root - resolves any execution id to its root/workflow execution id.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Execution"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/status": {
+      "get": {
+        "operationId": "workflowGetStatusGet",
+        "x-display-name": "Get Execution Status",
+        "summary": "Analysis Workflow: Status - gets the workflow status.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessEnvelope"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "$ref": "#/components/schemas/Execution"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/config": {
+      "get": {
+        "operationId": "workflowOriginalConfigGet",
+        "x-display-name": "Get Execution Original Config",
+        "summary": "Analysis Workflow: Original Config - Gets the original request config for an execution.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/restore": {
+      "post": {
+        "operationId": "workflowRestorePost",
+        "x-display-name": "Restore Execution",
+        "summary": "Analysis Workflow: Restores an archived workflow.",
+        "tags": [
+          "workflow"
+        ],
+        "x-permissions": [
+          {
+            "dynamodb": "read",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          },
+          {
+            "dynamodb": "write",
+            "table": "{{DYNAMODB_APP_TABLE_NAME}}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "tenant-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execution-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CognitoJwt": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessEnvelope"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "CognitoJwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Cognito-issued JWT access token. Send as 'Authorization: Bearer <token>'. Use the Authorize button to set it for all authenticated operations."
+      }
+    },
+    "schemas": {
+      "SuccessEnvelope": {
+        "type": "object",
+        "description": "Standard success envelope returned by all endpoints.",
+        "properties": {
+          "data": {
+            "description": "Operation payload (shape varies by endpoint)."
+          },
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "message": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "diagnostics": {
+            "type": "object",
+            "properties": {
+              "startTimeUtcTs": {
+                "type": "number"
+              },
+              "endTimeUtcTs": {
+                "type": "number"
+              },
+              "durationMs": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "required": [
+          "success",
+          "statusCode",
+          "timestamp"
+        ]
+      },
+      "ErrorEnvelope": {
+        "type": "object",
+        "description": "Standard error envelope returned by all endpoints.",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "details": {
+                "type": "object",
+                "nullable": true,
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "message",
+              "code"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 400
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "error",
+          "success",
+          "statusCode",
+          "timestamp"
+        ]
+      },
+      "PaginationEnvelope": {
+        "type": "object",
+        "description": "Standard list/collection payload. Lives inside the SuccessEnvelope `data`. The item array key is the plural resource name (e.g. `users`, `executions`).",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Number of items in this page."
+          },
+          "nextKey": {
+            "type": "string",
+            "nullable": true,
+            "description": "Opaque base64 pagination token; pass as `start_key` on the next request. Null when no more pages remain."
+          }
+        },
+        "required": [
+          "count"
+        ]
+      },
+      "AuditLogEntry": {
+        "type": "object",
+        "description": "An immutable audit log entry (21 CFR Part 11 style). Records who did what to which resource, with an optional change diff.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "actorTenantId": {
+            "type": "string"
+          },
+          "actorUserId": {
+            "type": "string"
+          },
+          "actorEmail": {
+            "type": "string"
+          },
+          "actorName": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string",
+            "description": "Tenant that owns the affected resource."
+          },
+          "userId": {
+            "type": "string",
+            "description": "Owner of the affected resource."
+          },
+          "action": {
+            "type": "string",
+            "example": "UPDATE",
+            "description": "CREATE, UPDATE, DELETE, etc."
+          },
+          "resourceType": {
+            "type": "string",
+            "example": "file"
+          },
+          "resourceId": {
+            "type": "string"
+          },
+          "resourceName": {
+            "type": "string"
+          },
+          "resourceClassName": {
+            "type": "string"
+          },
+          "oldValues": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "newValues": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "changedFields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ipAddress": {
+            "type": "string"
+          },
+          "userAgent": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string"
+          },
+          "createdUtcTs": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "action",
+          "resourceType",
+          "resourceId"
+        ]
+      },
+      "Execution": {
+        "type": "object",
+        "description": "An analysis execution summary. The same shape is returned by the status, root, history, and lineage endpoints (history/lineage return arrays of this). Fields are formatted by ExecutionSummaryFormatter.to_api_response.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "parentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "rootId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "executionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "workflowType": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentPhase": {
+            "type": "string",
+            "nullable": true
+          },
+          "progress": {
+            "type": "object",
+            "properties": {
+              "completedPhases": {
+                "type": "integer"
+              },
+              "totalPhases": {
+                "type": "integer"
+              },
+              "percent": {
+                "type": "number"
+              }
+            }
+          },
+          "createdUtc": {
+            "type": "string",
+            "nullable": true
+          },
+          "startedUtc": {
+            "type": "string",
+            "nullable": true
+          },
+          "completedUtc": {
+            "type": "string",
+            "nullable": true
+          },
+          "durationMs": {
+            "type": "integer",
+            "nullable": true
+          },
+          "durationHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "input": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true,
+            "description": "The original analysis input (e.g. fileId, config references)."
+          },
+          "phases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExecutionPhase"
+            }
+          },
+          "packageAvailable": {
+            "type": "boolean"
+          },
+          "error": {
+            "nullable": true,
+            "description": "First error, if any (same element as errors[0])."
+          },
+          "errors": {
+            "type": "array",
+            "items": {}
+          },
+          "warnings": {
+            "type": "array",
+            "items": {}
+          },
+          "engineVersions": {
+            "type": "array",
+            "items": {}
+          },
+          "phaseTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "lifecycleState": {
+            "type": "string",
+            "nullable": true,
+            "example": "active"
+          },
+          "analysisEngineVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Execution"
+            },
+            "description": "Populated only in tree/lineage views; child executions nested under a root."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "ExecutionPhase": {
+        "type": "object",
+        "description": "A single phase within an execution (e.g. nca_analysis, custom_calculations, custom_reports).",
+        "properties": {
+          "order": {
+            "type": "integer",
+            "nullable": true
+          },
+          "phase": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "string",
+            "nullable": true
+          },
+          "startedUtc": {
+            "type": "string",
+            "nullable": true
+          },
+          "completedUtc": {
+            "type": "string",
+            "nullable": true
+          },
+          "durationMs": {
+            "type": "integer",
+            "nullable": true
+          },
+          "durationHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "outputs": {
+            "type": "array",
+            "items": {}
+          },
+          "versions": {
+            "type": "array",
+            "items": {}
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExecutionStep"
+            }
+          }
+        }
+      },
+      "ExecutionStep": {
+        "type": "object",
+        "description": "A single step within an execution phase.",
+        "properties": {
+          "order": {
+            "type": "integer",
+            "nullable": true
+          },
+          "stepType": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "string",
+            "nullable": true
+          },
+          "startedUtc": {
+            "type": "string",
+            "nullable": true
+          },
+          "completedUtc": {
+            "type": "string",
+            "nullable": true
+          },
+          "durationMs": {
+            "type": "integer",
+            "nullable": true
+          },
+          "durationHuman": {
+            "type": "string",
+            "nullable": true
+          },
+          "stats": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
+          }
+        }
+      },
+      "FeatureFlagRule": {
+        "type": "object",
+        "description": "A feature-flag rule enabling/disabling a feature key for a given scope.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "featureKey": {
+            "type": "string",
+            "description": "The registered feature key this rule targets."
+          },
+          "scope": {
+            "type": "string",
+            "description": "The scope level the rule applies to (e.g. global, tenant, user)."
+          },
+          "scopeId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Identifier within the scope (e.g. a tenant id or user id); null for global scope."
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "createdUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "updatedUtcTs": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "featureKey",
+          "scope",
+          "enabled"
+        ]
+      },
+      "FeatureFlagRuleCreateRequest": {
+        "type": "object",
+        "description": "Request body to create a feature-flag rule.",
+        "properties": {
+          "featureKey": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "scopeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "featureKey",
+          "scope"
+        ]
+      },
+      "FeatureKeyRegisterRequest": {
+        "type": "object",
+        "description": "Request body to register (or update) a feature key.",
+        "properties": {
+          "featureKey": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "featureKey"
+        ]
+      },
+      "FeatureKeyRegistration": {
+        "type": "object",
+        "description": "A registered feature key that rules can target.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "featureKey": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "registeredBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "registeredAt": {
+            "type": "number",
+            "nullable": true
+          },
+          "createdUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "updatedUtcTs": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "featureKey"
+        ]
+      },
+      "File": {
+        "type": "object",
+        "description": "File metadata record (the file's bytes live in S3; this is metadata + references).",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "extension": {
+            "type": "string",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "integer",
+            "description": "Size in bytes."
+          },
+          "checksum": {
+            "type": "string",
+            "nullable": true
+          },
+          "directoryId": {
+            "type": "string",
+            "nullable": true
+          },
+          "virtualPath": {
+            "type": "string",
+            "nullable": true
+          },
+          "bucket": {
+            "type": "string",
+            "nullable": true
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "versionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string"
+          },
+          "lineage": {
+            "type": "string"
+          },
+          "rootId": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "visibility": {
+            "type": "string"
+          },
+          "retentionPolicy": {
+            "type": "string",
+            "nullable": true
+          },
+          "isHidden": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "uploadedUtcTs": {
+            "type": "integer",
+            "nullable": true
+          },
+          "createdUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "updatedUtcTs": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "tenantId",
+          "ownerId"
+        ]
+      },
+      "PresignedUploadResponse": {
+        "type": "object",
+        "description": "A presigned S3 upload target. POST the file to `url` with the given `fields` (S3 POST policy) or PUT to `url` depending on method.",
+        "properties": {
+          "fileId": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Form fields to include with an S3 POST upload."
+          },
+          "expiresIn": {
+            "type": "integer",
+            "description": "Seconds until the URL expires."
+          },
+          "key": {
+            "type": "string",
+            "description": "S3 object key the upload targets."
+          }
+        },
+        "additionalProperties": true
+      },
+      "QueueAcceptedResponse": {
+        "type": "object",
+        "description": "Acknowledgement that an analysis was accepted onto the workflow queue. `status` is `queued` normally, or `throttled` when admission delayed it (with `delaySeconds`).",
+        "properties": {
+          "executionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "throttled"
+            ],
+            "example": "queued"
+          },
+          "message": {
+            "type": "string"
+          },
+          "delaySeconds": {
+            "type": "integer",
+            "description": "Present only when status is throttled."
+          }
+        },
+        "required": [
+          "executionId",
+          "status"
+        ]
+      },
+      "ReportTemplate": {
+        "type": "object",
+        "description": "A custom report template owned by a tenant.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "ownershipLevel": {
+            "type": "string",
+            "nullable": true,
+            "description": "Ownership scope of the template (e.g. tenant, platform)."
+          },
+          "status": {
+            "type": "string"
+          },
+          "versionCount": {
+            "type": "integer"
+          },
+          "latestVersion": {
+            "type": "integer"
+          },
+          "createdUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "updatedUtcTs": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "Subscription": {
+        "type": "object",
+        "description": "A tenant subscription (billing plan + limits). Aplos-specific limits (executions, profiles, seats, storage) are stored under `metadata`.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "ready",
+              "active",
+              "trial",
+              "past_due",
+              "canceled",
+              "expired",
+              "disabled",
+              "restricted",
+              "superseded"
+            ],
+            "example": "active"
+          },
+          "planId": {
+            "type": "string",
+            "nullable": true
+          },
+          "planCode": {
+            "type": "string",
+            "nullable": true,
+            "example": "pro"
+          },
+          "planName": {
+            "type": "string",
+            "nullable": true
+          },
+          "seatCount": {
+            "type": "integer",
+            "example": 1
+          },
+          "activeAddons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "priceCents": {
+            "type": "integer",
+            "example": 2999
+          },
+          "currency": {
+            "type": "string",
+            "example": "USD"
+          },
+          "billingInterval": {
+            "type": "string",
+            "enum": [
+              "month",
+              "year"
+            ],
+            "example": "month"
+          },
+          "isTrial": {
+            "type": "boolean"
+          },
+          "trialEndsUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "currentPeriodStartUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "currentPeriodEndUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "canceledUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "cancelAtPeriodEnd": {
+            "type": "boolean"
+          },
+          "cancellationReason": {
+            "type": "string",
+            "nullable": true
+          },
+          "nextBillingUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "paymentMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalSubscriptionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Custom key/value store. Aplos platform limits live here.",
+            "additionalProperties": true,
+            "properties": {
+              "maxExecutions": {
+                "type": "integer",
+                "description": "0 = unlimited"
+              },
+              "maxProfiles": {
+                "type": "integer"
+              },
+              "maxConcurrentExecutions": {
+                "type": "integer",
+                "description": "0 = unlimited"
+              },
+              "maxSeats": {
+                "type": "integer",
+                "description": "0 = unlimited"
+              },
+              "maxStorageBytes": {
+                "type": "integer",
+                "description": "0 = unlimited"
+              },
+              "downloadAuthorized": {
+                "type": "boolean"
+              },
+              "restrictedGraceDays": {
+                "type": "integer"
+              },
+              "expiredGraceDays": {
+                "type": "integer"
+              },
+              "paymentGraceDays": {
+                "type": "integer"
+              }
+            }
+          },
+          "createdUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "updatedUtcTs": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "tenantId",
+          "status"
+        ]
+      },
+      "Tenant": {
+        "type": "object",
+        "description": "A customer organization (tenant) in the multi-tenant platform.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "archived"
+            ],
+            "example": "active"
+          },
+          "planTier": {
+            "type": "string",
+            "enum": [
+              "free",
+              "basic",
+              "pro",
+              "enterprise",
+              "development"
+            ],
+            "example": "free"
+          },
+          "primaryContactUserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxUsers": {
+            "type": "integer",
+            "nullable": true,
+            "description": "Maximum users allowed; null means unlimited."
+          },
+          "features": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Per-tenant feature flags."
+          },
+          "allowTenantWideAccess": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "type": "string",
+            "nullable": true
+          },
+          "logoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "updatedUtcTs": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "TenantUpsertRequest": {
+        "type": "object",
+        "description": "Request body to create or update a tenant. On create, name is required; on update (with a tenant id in the path), only provided fields change.",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "archived"
+            ]
+          },
+          "planTier": {
+            "type": "string",
+            "enum": [
+              "free",
+              "basic",
+              "pro",
+              "enterprise",
+              "development"
+            ]
+          },
+          "primaryContactUserId": {
+            "type": "string"
+          },
+          "maxUsers": {
+            "type": "integer",
+            "nullable": true
+          },
+          "features": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "allowTenantWideAccess": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string"
+          },
+          "logoUrl": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "User": {
+        "type": "object",
+        "description": "A user within a tenant.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "tenant_user"
+            ]
+          },
+          "primaryRole": {
+            "type": "string",
+            "example": "tenant_user"
+          },
+          "isAdmin": {
+            "type": "boolean"
+          },
+          "avatar": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityProvider": {
+            "type": "string",
+            "example": "cognito",
+            "description": "Primary identity provider: cognito | google | office365 | facebook | saml"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "invited",
+              "disabled"
+            ],
+            "example": "active"
+          },
+          "createdUtcTs": {
+            "type": "number",
+            "nullable": true
+          },
+          "updatedUtcTs": {
+            "type": "number",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "tenantId",
+          "email"
+        ]
+      },
+      "UserUpsertRequest": {
+        "type": "object",
+        "description": "Request body to create or update a user. On create, email is required; on update, only the provided fields are changed.",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "tenant_user"
+            ]
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "invited",
+              "disabled"
+            ]
+          }
+        },
+        "additionalProperties": true
+      },
+      "ValidationTriggerResponse": {
+        "type": "object",
+        "description": "Acknowledgement that a validation workflow was queued.",
+        "properties": {
+          "executionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "example": "queued"
+          },
+          "validationVersion": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "executionId",
+          "status"
+        ]
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request — validation error or malformed input.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorEnvelope"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Unauthorized — missing or invalid JWT.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorEnvelope"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden — authenticated but not permitted.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorEnvelope"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorEnvelope"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal server error.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorEnvelope"
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.dev.aplos-nca.com"
+    }
+  ]
+}

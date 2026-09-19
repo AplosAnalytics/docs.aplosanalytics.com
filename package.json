@@ -6,9 +6,12 @@
     "vitepress": "^1.1.0"
   },
   "scripts": {
+    "sync:openapi": "node scripts/sync-openapi.mjs",
     "docs:dev": "vitepress dev",
+    "predev": "node scripts/sync-openapi.mjs",
     "dev": "vitepress dev .",
     "docs:build": "vitepress build .",
+    "prebuild": "node scripts/sync-openapi.mjs",
     "build": "vitepress build .",
     "docs:preview": "vitepress preview",
     "preview": "vitepress preview ."

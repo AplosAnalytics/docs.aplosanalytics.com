@@ -1,56 +1,679 @@
 {
-    "routes" : [
+    "routes": [
         {
-            "id": "get_jwt",
-            "name": "Login -> Get JWT",
-            "path": "https://cognito-idp.{region}.amazonaws.com",
-            "method_type": "POST",
-            "description": "Attempts to login and get a JWT."
-        },
-        
-        {
-            "id": "presigned_url",
-            "name": "Get a Presigned Url",
-            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/nca/files",
-            "method_type": "POST",
-            "description": "Generates a S3 Presigned Url for uploading an analysis file."
-        },
-        {
-            "id": "file_upload",
-            "name": "Upload a file",
-            "method_type": "POST",
-            "path": "The full path is generated for you and returned in the response of the presigned url. ",
-            "description": "A specific file upload is generated for you."
-        },
-        {
-            "id": "get_status",
-            "name": "Get Status",
+            "id": "auditConfigStatusGet",
+            "name": "Get Audit Config Status",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/audit-config/status",
             "method_type": "GET",
-            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/nca/executions/{id}",
-            "description": "Retuns information about a specific execution including the status."
+            "description": "Audit Logs: Check if execution audit logging is enabled or disabled",
+            "auth": true,
+            "tag": "audit-logs"
         },
         {
-            "id": "run_execution",
-            "name": "Run/Execute an analysis",
+            "id": "auditLogsQueryByResourceGet",
+            "name": "Query Audit Logs by Resource",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/audit-logs/resources/{resource-type}/{resource-id}",
+            "method_type": "GET",
+            "description": "Audit Logs: Query audit log entries for a specific resource",
+            "auth": true,
+            "tag": "audit-logs"
+        },
+        {
+            "id": "auditLogsQueryByTenantGet",
+            "name": "Query Audit Logs by Tenant",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/audit-logs",
+            "method_type": "GET",
+            "description": "Audit Logs: Query audit log entries for a tenant",
+            "auth": true,
+            "tag": "audit-logs"
+        },
+        {
+            "id": "auditLogsQueryByUserGet",
+            "name": "Query Audit Logs by User",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/audit-logs/users/{user-id}",
+            "method_type": "GET",
+            "description": "Audit Logs: Query audit log entries for a specific user within a tenant",
+            "auth": true,
+            "tag": "audit-logs"
+        },
+        {
+            "id": "createFeatureFlagRulePost",
+            "name": "Create Feature Flag Rule",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/rules",
             "method_type": "POST",
-            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/nca/executions",
-            "description": "Queues an execution to run"
+            "description": "Feature Flags: Create a flag rule (admin)",
+            "auth": true,
+            "tag": "feature-flags"
         },
         {
-            "id": "get_executions",
-            "name": "List User Executions",
-            "method_type": "GET",
-            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/nca/executions",
-            "description": "Lists a users executions"
+            "id": "deleteFeatureFlagRuleDelete",
+            "name": "Delete Feature Flag Rule",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/rules/{rule-id}",
+            "method_type": "DELETE",
+            "description": "Feature Flags: Delete a flag rule (admin)",
+            "auth": true,
+            "tag": "feature-flags"
         },
         {
-            "id": "get_user_metrics",
-            "name": "List Metrics",
+            "id": "deleteFeatureKeyDelete",
+            "name": "Delete Feature Key",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/registry/{registration-id}",
+            "method_type": "DELETE",
+            "description": "Feature Flags: Delete a feature key registration (admin/dev)",
+            "auth": true,
+            "tag": "feature-flags"
+        },
+        {
+            "id": "evaluateFeatureFlagsGet",
+            "name": "Evaluate Feature Flags",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/evaluate",
             "method_type": "GET",
-            "path": "https://api.<tenant>.aplos-nca.com/tenants/{tenant-id}/users/{user-id}/metrics",
-            "description": "Lists a users execution metrics"
+            "description": "Feature Flags: Evaluate all flags for current user",
+            "auth": true,
+            "tag": "feature-flags"
+        },
+        {
+            "id": "listFeatureFlagRegistryGet",
+            "name": "List Feature Flag Registry",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/registry",
+            "method_type": "GET",
+            "description": "Feature Flags: List all registered feature keys",
+            "auth": true,
+            "tag": "feature-flags"
+        },
+        {
+            "id": "listFeatureFlagRulesGet",
+            "name": "List Feature Flag Rules",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/rules",
+            "method_type": "GET",
+            "description": "Feature Flags: List rules for a feature key (admin)",
+            "auth": true,
+            "tag": "feature-flags"
+        },
+        {
+            "id": "registerFeatureKeyPost",
+            "name": "Register Feature Key",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/register",
+            "method_type": "POST",
+            "description": "Feature Flags: Register a new feature key (admin/dev)",
+            "auth": true,
+            "tag": "feature-flags"
+        },
+        {
+            "id": "updateFeatureFlagRulePut",
+            "name": "Update Feature Flag Rule",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/rules/{rule-id}",
+            "method_type": "PUT",
+            "description": "Feature Flags: Update a flag rule (admin)",
+            "auth": true,
+            "tag": "feature-flags"
+        },
+        {
+            "id": "updateFeatureKeyPut",
+            "name": "Update Feature Key",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/feature-flags/registry/{registration-id}",
+            "method_type": "PUT",
+            "description": "Feature Flags: Update a feature key registration (admin/dev)",
+            "auth": true,
+            "tag": "feature-flags"
+        },
+        {
+            "id": "fileSystemArchivePost",
+            "name": "Archive File",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/archive",
+            "method_type": "POST",
+            "description": "Archive a file in Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemCountFilesGet",
+            "name": "Count Files",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files/count",
+            "method_type": "GET",
+            "description": "Count files in Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemGetFileGet",
+            "name": "Get File",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}",
+            "method_type": "GET",
+            "description": "Get a file in Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemDownloadUrlGet",
+            "name": "Get File Download URL",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/download-url",
+            "method_type": "GET",
+            "description": "Generates a presigned URL for downloading a file in Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemLineageGet",
+            "name": "Get File Lineage",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/lineage",
+            "method_type": "GET",
+            "description": "Get a file's lineage in Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemMetaGet",
+            "name": "Get File Metadata",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/meta",
+            "method_type": "GET",
+            "description": "Get a files extended meta in Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemUploadUrlPost",
+            "name": "Get File Upload URL",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files",
+            "method_type": "POST",
+            "description": "Generate presigned URL for file uploads via Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemListFilesGet",
+            "name": "List Files",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files",
+            "method_type": "GET",
+            "description": "List files in Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemStreamGet",
+            "name": "Stream File Data",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/stream",
+            "method_type": "GET",
+            "description": "Returns a file data and column header info",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "fileSystemUnarchivePost",
+            "name": "Unarchive File",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files/{file-id}/unarchive",
+            "method_type": "POST",
+            "description": "Un-Archive a file in Aplos File System v3",
+            "auth": true,
+            "tag": "file-system"
+        },
+        {
+            "id": "getMaintenanceHistoryGet",
+            "name": "Get Maintenance History",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/maintenance/events",
+            "method_type": "GET",
+            "description": "Maintenance: Get paginated maintenance event history",
+            "auth": true,
+            "tag": "maintenance"
+        },
+        {
+            "id": "triggerMaintenancePost",
+            "name": "Trigger Maintenance",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/maintenance/trigger",
+            "method_type": "POST",
+            "description": "Maintenance: Manually trigger maintenance execution",
+            "auth": true,
+            "tag": "maintenance"
+        },
+        {
+            "id": "drilldownExecutionsGet",
+            "name": "Drilldown Executions",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/metrics/executions",
+            "method_type": "GET",
+            "description": "Metrics: Drilldown Executions API - Lists individual executions for metrics dashboard drilldown",
+            "auth": true,
+            "tag": "metrics"
+        },
+        {
+            "id": "getTenantMetricsReportAllGet",
+            "name": "Get Tenant Metrics Report",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/metrics",
+            "method_type": "GET",
+            "description": "Metrics: Get User/Tenant Metrics Report - All",
+            "auth": true,
+            "tag": "metrics"
+        },
+        {
+            "id": "userMetricsGet",
+            "name": "Get User Metrics",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/metrics",
+            "method_type": "GET",
+            "description": "lists a specific users metrics",
+            "auth": true,
+            "tag": "metrics"
+        },
+        {
+            "id": "metricsQueryGet",
+            "name": "Query Metrics Snapshots",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/metrics/snapshots",
+            "method_type": "GET",
+            "description": "Metrics Query API Handler: Serves MetricsSnapshot query endpoints",
+            "auth": true,
+            "tag": "metrics"
+        },
+        {
+            "id": "templateGetGet",
+            "name": "Get Report Template",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/templates/{id}",
+            "method_type": "GET",
+            "description": "Template Management: Get template details including version history.",
+            "auth": true,
+            "tag": "report-templates"
+        },
+        {
+            "id": "templateListGet",
+            "name": "List Report Templates",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/templates",
+            "method_type": "GET",
+            "description": "Template Management: List templates for the requesting tenant (paginated, filterable by status).",
+            "auth": true,
+            "tag": "report-templates"
+        },
+        {
+            "id": "templateStatusPatch",
+            "name": "Update Report Template",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/templates/{id}/status",
+            "method_type": "PATCH",
+            "description": "Template Management: Update template status, rename, or delete.",
+            "auth": true,
+            "tag": "report-templates"
+        },
+        {
+            "id": "templateUploadPost",
+            "name": "Upload Report Template",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/templates/upload-url",
+            "method_type": "POST",
+            "description": "Template Management: Request upload URL, confirm upload (triggers validation), and upload new versions.",
+            "auth": true,
+            "tag": "report-templates"
+        },
+        {
+            "id": "apiDocsRedirectGet",
+            "name": "API Docs Redirect",
+            "path": "https://api.<tenant>.aplos-nca.com/docs",
+            "method_type": "GET",
+            "description": "API Documentation: Redirect to hosted OpenAPI docs site",
+            "auth": false,
+            "tag": "site-messages"
+        },
+        {
+            "id": "appMessagesPublicGet",
+            "name": "Get Public App Messages",
+            "path": "https://api.<tenant>.aplos-nca.com/app/messages",
+            "method_type": "GET",
+            "description": "public application messages",
+            "auth": false,
+            "tag": "site-messages"
+        },
+        {
+            "id": "appMessagesSecureGet",
+            "name": "Get Secure App Messages",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/messages",
+            "method_type": "GET",
+            "description": "secure application messages",
+            "auth": true,
+            "tag": "site-messages"
+        },
+        {
+            "id": "activateTenantSubscriptionPost",
+            "name": "Activate Subscription",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/subscriptions/{subscription-id}/activate",
+            "method_type": "POST",
+            "description": "Tenant: Activate a pending subscription (transitions pending/ready to active)",
+            "auth": true,
+            "tag": "subscriptions"
+        },
+        {
+            "id": "getTenantSubscriptionActiveGet",
+            "name": "Get Active Subscription",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/active-subscription",
+            "method_type": "GET",
+            "description": "Tenant: Get Active Subscription",
+            "auth": true,
+            "tag": "subscriptions"
+        },
+        {
+            "id": "getTenantSubscriptionGet",
+            "name": "Get Subscription",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/subscriptions/{subscription-id}",
+            "method_type": "GET",
+            "description": "Tenant: Get Tenant Subscription",
+            "auth": true,
+            "tag": "subscriptions"
+        },
+        {
+            "id": "getTenantSubscriptionStatusGet",
+            "name": "Get Subscription Status",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/subscription-status",
+            "method_type": "GET",
+            "description": "Tenant: Gets a Tenants Subscription Status",
+            "auth": true,
+            "tag": "subscriptions"
+        },
+        {
+            "id": "getTenantSubscriptionsGet",
+            "name": "List Subscriptions",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/subscriptions",
+            "method_type": "GET",
+            "description": "Tenant: Get a list of the Tenants Subscriptions",
+            "auth": true,
+            "tag": "subscriptions"
+        },
+        {
+            "id": "upsertTenantSubscriptionPost",
+            "name": "Upsert Subscription",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/subscriptions",
+            "method_type": "POST",
+            "description": "Tenant: Upsert Tenant Subscription",
+            "auth": true,
+            "tag": "subscriptions"
+        },
+        {
+            "id": "validateTenantSubscriptionGet",
+            "name": "Validate Subscription",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/validate-subscription",
+            "method_type": "GET",
+            "description": "Tenant: Validate Subscription for Execution Eligibility",
+            "auth": true,
+            "tag": "subscriptions"
+        },
+        {
+            "id": "getTenantGet",
+            "name": "Get Tenant",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}",
+            "method_type": "GET",
+            "description": "Tenant: Get Tenant",
+            "auth": true,
+            "tag": "tenants"
+        },
+        {
+            "id": "listTenantGet",
+            "name": "List Tenants",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants",
+            "method_type": "GET",
+            "description": "Get List of Tenants",
+            "auth": true,
+            "tag": "tenants"
+        },
+        {
+            "id": "upsertTenantPost",
+            "name": "Upsert Tenant",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}",
+            "method_type": "POST",
+            "description": "Tenant: Update a tenant",
+            "auth": true,
+            "tag": "tenants"
+        },
+        {
+            "id": "cleanupDuplicateEmailsPost",
+            "name": "Cleanup Duplicate Emails",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/cleanup-duplicates",
+            "method_type": "POST",
+            "description": "v3 User Management: Delete duplicate user records (orphans) by email",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "deleteUserDelete",
+            "name": "Delete User",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}",
+            "method_type": "DELETE",
+            "description": "v3 User Management: delete a user by ID.",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "detectDuplicateEmailsGet",
+            "name": "Detect Duplicate Emails",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/duplicate-emails",
+            "method_type": "GET",
+            "description": "v3 User Management: Detect duplicate email addresses in tenant user list",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "getUserAssignablePermissionsGet",
+            "name": "Get Assignable Roles",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/assignable-roles",
+            "method_type": "GET",
+            "description": "v3 User Management: Get assignable roles",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "getUserGet",
+            "name": "Get User",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}",
+            "method_type": "GET",
+            "description": "v3 User Management: Get a Users detail",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "listUsersGet",
+            "name": "List Users",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/",
+            "method_type": "GET",
+            "description": "v3 User Management: List Users",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "syncCognitoUserPost",
+            "name": "Sync Cognito User",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/cognito-sync",
+            "method_type": "POST",
+            "description": "v3 User Management: Repair user Cognito sync (push DB → Cognito)",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "upsertUsersPost",
+            "name": "Upsert User",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users",
+            "method_type": "POST",
+            "description": "v3 User Management: Upsert a User.",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "validateCognitoStatusGet",
+            "name": "Validate Cognito Status",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/cognito-status",
+            "method_type": "GET",
+            "description": "v3 User Management: Validate user Cognito sync status (drift detection)",
+            "auth": true,
+            "tag": "users"
+        },
+        {
+            "id": "validationTriggerPost",
+            "name": "Trigger Validation",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/validations/queue",
+            "method_type": "POST",
+            "description": "Validation Workflow: API Gateway entry point. Creates parent execution and submits to admission queue.",
+            "auth": true,
+            "tag": "validations"
+        },
+        {
+            "id": "warmUpReportGet",
+            "name": "Get Warm-Up Report",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/admin/warm-up/report",
+            "method_type": "GET",
+            "description": "Lambda Warm-Up: Report API for warm-up status dashboard",
+            "auth": true,
+            "tag": "warm-up"
+        },
+        {
+            "id": "warmUpScheduleConfigGet",
+            "name": "Get Warm-Up Schedule",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/admin/warm-up/schedule",
+            "method_type": "GET",
+            "description": "Lambda Warm-Up: Returns current EventBridge schedule rule configuration",
+            "auth": true,
+            "tag": "warm-up"
+        },
+        {
+            "id": "warmUpScheduleTogglePut",
+            "name": "Toggle Warm-Up Schedule",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/admin/warm-up/schedule",
+            "method_type": "PUT",
+            "description": "Lambda Warm-Up: Enables or disables the EventBridge warm-up schedule rule",
+            "auth": true,
+            "tag": "warm-up"
+        },
+        {
+            "id": "warmUpTriggerPost",
+            "name": "Trigger Warm-Up",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/admin/warm-up",
+            "method_type": "POST",
+            "description": "Lambda Warm-Up: On-demand API trigger for warm-up cycle",
+            "auth": true,
+            "tag": "warm-up"
+        },
+        {
+            "id": "workflowArchivePost",
+            "name": "Archive Execution",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/archive",
+            "method_type": "POST",
+            "description": "Analysis Workflow: Archives a workflow.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowCancelPost",
+            "name": "Cancel Execution",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/cancel",
+            "method_type": "POST",
+            "description": "Analysis Workflow: Cancels workflow.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "getExecutionDiagnosticsGet",
+            "name": "Get Execution Diagnostics",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/diagnostics",
+            "method_type": "GET",
+            "description": "Execution Workflow: Diagnostics - retrieves the diagnostic event timeline for an execution tree.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowGetHistoryGet",
+            "name": "Get Execution History",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions",
+            "method_type": "GET",
+            "description": "Analysis Workflow: List Workflow/Executions/Analysis History.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowGetLineageGet",
+            "name": "Get Execution Lineage",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/lineage",
+            "method_type": "GET",
+            "description": "Analysis Workflow: Lineage - gets the execution lineage tree.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowOriginalConfigGet",
+            "name": "Get Execution Original Config",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/config",
+            "method_type": "GET",
+            "description": "Analysis Workflow: Original Config - Gets the original request config for an execution.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowExecutionOutputFileGet",
+            "name": "Get Execution Output File",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/outputs/{key-name}",
+            "method_type": "GET",
+            "description": "Analysis Workflow: Gets a specific output file record for an execution by key name.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowGetRootGet",
+            "name": "Get Execution Root",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/root",
+            "method_type": "GET",
+            "description": "Analysis Workflow: Root - resolves any execution id to its root/workflow execution id.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowGetStatusGet",
+            "name": "Get Execution Status",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/status",
+            "method_type": "GET",
+            "description": "Analysis Workflow: Status - gets the workflow status.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowExecutionOutputsGet",
+            "name": "List Execution Outputs",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/outputs",
+            "method_type": "GET",
+            "description": "Analysis Workflow: Lists all output file records for an execution.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowExecutionOutputTypeGet",
+            "name": "List Execution Outputs by Type",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/outputs/type/{output-type}",
+            "method_type": "GET",
+            "description": "Analysis Workflow: Lists output files of a specific type (e.g. custom-plots, custom-tables) for an execution.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowExecutionFoldersPost",
+            "name": "Manage Execution Folders",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/execution-folders",
+            "method_type": "POST",
+            "description": "Analysis Workflow: CRUD operations for execution folders (create, list, get, update, delete).",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowExecutionMoveFolderPut",
+            "name": "Move Execution to Folder",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/execution-summaries/{execution-id}/folder",
+            "method_type": "PUT",
+            "description": "Analysis Workflow: Moves executions to a folder (single or bulk).",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "workflowRestorePost",
+            "name": "Restore Execution",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/restore",
+            "method_type": "POST",
+            "description": "Analysis Workflow: Restores an archived workflow.",
+            "auth": true,
+            "tag": "workflow"
+        },
+        {
+            "id": "analysisSendToQueuePost",
+            "name": "Send Analysis to Queue",
+            "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
+            "method_type": "POST",
+            "description": "Analysis Workflow: WorkflowBuilderQueueHandler - Sends analysis to admission queue for throttle evaluation and routing.",
+            "auth": true,
+            "tag": "workflow"
         }
-        
     ]
-    
 }

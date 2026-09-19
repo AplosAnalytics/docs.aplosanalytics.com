@@ -12,10 +12,10 @@ For IV infusion administration of a single dose, the following parameters are ca
 | AUC last linear/Dose | AUC_last_lin_D | ${AUC\_last\_lin} \over {Dose}$ |
 | AUC last linlog | AUC_last_log | Sum of partial AUC values from time of dose administration through Tlast using the [linear up log down method](./aucmethods) |
 | AUC last linlog/Dose | AUC_last_log_D | ${AUC\_last\_log} \over {Dose}$ |
-| AUMC all linear | AUMC_all_lin | Sum of partial AUMC values for all time points using the [linear methd](./aumcmethods) |
-| AUMC all linlog | AUMC_all_log | Sum of partial AUMC values for all time points using the [linear up log down methd](./aumcmethods) |
-| AUMC last linear | AUMC_last_lin | Sum of partial AUMC values from time of dose administration through Tlast using the [linear methd](./aumcmethods) |
-| AUMC last linlog | AUMC_last_log | Sum of partial AUMC values from time of dose administration through Tlast using the [linear up log down methd](./aumcmethods) |
+| AUMC all linear | AUMC_all_lin | Sum of partial AUMC values for all time points using the [linear method](./aumcmethods) |
+| AUMC all linlog | AUMC_all_log | Sum of partial AUMC values for all time points using the [linear up log down method](./aumcmethods) |
+| AUMC last linear | AUMC_last_lin | Sum of partial AUMC values from time of dose administration through Tlast using the [linear method](./aumcmethods) |
+| AUMC last linlog | AUMC_last_log | Sum of partial AUMC values from time of dose administration through Tlast using the [linear up log down method](./aumcmethods) |
 | Last measurable concentration | Clast | Analyzed concentration value greater than zero with the largest associated time value. |
 | Maximum concentration | Cmax | Maximum concentration value in the analyzed concentration column. |
 | Cmax/Dose | Cmax_D | ${Cmax} \over {Dose}$ |
@@ -54,12 +54,12 @@ For IV infusion administration of a single dose, the following parameters are ca
 | Vss linlog | Vss_log | $MRT\_log * CL\_log$ |
 | Vz linear | Vz_lin | ${{Dose} \over {kel*AUC\_inf\_lin}}$ | 
 | Vz linlog | Vz_log | ${{Dose} \over {kel*AUC\_inf\_log}}$ | 
-| Terminal slope group | group | Group number for each estimated terminal slope. For each profile at least one [terminal slope](./terminalslope) is calculated. All parameters that are dependent on estimation of the terminal slope are also calcualted and given the same group number. |
+| Terminal slope group | group | Group number for each estimated terminal slope. For each profile at least one [terminal slope](./terminalslope) is calculated. All parameters that are dependent on estimation of the terminal slope are also calculated and given the same group number. |
 | Terminal slope intercept | intercept | Intercept of linear regression. | 
 | Terminal slope | kel | Negative of estimated slope by linear regression of the natural log-transformed analyzed concentrations and the time of each observation. |
 | Terminal slope adjusted r-squared | kel_adjr2 | $1 - (1 - {kel\_r2})*[{{kel\_n - 1} \over {kel\_n - 2}}]$ | 
 | Terminal slope lower time point | kel_low | Smallest time value used to calculate the terminal slope. | 
-| Number of data points in terminal slope calculation | kel_n | Number of samples included in teh terminal slope calculation. | 
+| Number of data points in terminal slope calculation | kel_n | Number of samples included in the terminal slope calculation. | 
 | Terminal slope r-squared | kel_r2 | r<sup>2</sup> value from terminal slope linear regression. | 
 | Terminal slope span | kel_span | ${kel\_upper - kel\_low} \over {kel\_thalf}$ | 
 | Terminal half life | kel_thalf | ${ln(2)} \over {kel}$ | 

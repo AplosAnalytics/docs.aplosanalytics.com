@@ -58,6 +58,70 @@ const ROUTES_OUT = path.join(
 const METHOD_ORDER = ["get", "post", "put", "patch", "delete"];
 
 /**
+ * Stable documentation aliases.
+ *
+ * The docs pages reference routes by short, stable ids in DisplayRoutes
+ * (e.g. <DisplayRoutes :route-id="['run_execution']" />). Those ids must NOT
+ * churn when the underlying operationId changes, so we map each stable doc
+ * alias to the operation it should resolve to. A matched operation gets its
+ * alias added to a searchable `aliases` array on the generated route, and the
+ * route id is set to the stable alias (with the operationId kept in `aliases`
+ * too, so either works).
+ *
+ * Keyed by alias -> { method, path } of the OpenAPI operation it represents.
+ */
+const DOC_ALIASES = {
+  presigned_url: {
+    method: "post",
+    path: "/v3/tenants/{tenant-id}/users/{user-id}/files",
+  },
+  run_execution: {
+    method: "post",
+    path: "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
+  },
+  get_status: {
+    method: "get",
+    path: "/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/status",
+  },
+  get_executions: {
+    method: "get",
+    path: "/v3/tenants/{tenant-id}/users/{user-id}/executions",
+  },
+};
+
+/**
+ * Synthetic routes the docs reference that are NOT part of our OpenAPI surface:
+ *   - get_jwt: authentication happens against Amazon Cognito, not our API.
+ *   - file_upload: the actual upload is an S3 presigned POST to a URL returned
+ *     by the presigned-url request, not a route on our API.
+ * These are appended so DisplayRoutes(:route-id) keeps rendering a useful row.
+ */
+const SYNTHETIC_ROUTES = [
+  {
+    id: "get_jwt",
+    name: "Login → Get JWT",
+    path: "https://cognito-idp.{region}.amazonaws.com",
+    method_type: "POST",
+    description:
+      "Authenticate against Amazon Cognito and receive a JWT (IdToken). Sent as the Bearer token on all subsequent API calls.",
+    auth: false,
+    tag: "authentication",
+    aliases: ["get_jwt"],
+  },
+  {
+    id: "file_upload",
+    name: "Upload Analysis File",
+    path: "The presigned URL returned by the upload-url request",
+    method_type: "POST",
+    description:
+      "Upload the analysis file directly to S3 using the presigned URL and form fields returned by the upload-url request. Returns 204 No Content on success.",
+    auth: false,
+    tag: "file-system",
+    aliases: ["file_upload"],
+  },
+];
+
+/**
  * Fetch the spec JSON from SPEC_URL, or return null on any failure.
  *
  * Supports http(s) URLs (via fetch) as well as a local source: either a
@@ -131,6 +195,12 @@ function specToRoutes(spec) {
     "https://api.<tenant>.aplos-nca.com"
   );
 
+  // Reverse lookup: "METHOD PATH" -> stable doc alias.
+  const aliasByOp = {};
+  for (const [alias, { method, path: p }] of Object.entries(DOC_ALIASES)) {
+    aliasByOp[`${method.toLowerCase()} ${p}`] = alias;
+  }
+
   const routes = [];
   for (const [routePath, methods] of Object.entries(spec.paths || {})) {
     const present = Object.keys(methods).filter((m) =>
@@ -144,17 +214,28 @@ function specToRoutes(spec) {
     for (const method of present) {
       const op = methods[method];
       const isPublic = Array.isArray(op.security) && op.security.length === 0;
+      const opId = routeId(op, method, routePath);
+      const alias = aliasByOp[`${method.toLowerCase()} ${routePath}`];
+      // aliases is what DisplayRoutes matches route-id against: it always
+      // includes the operationId, plus the stable doc alias when one applies.
+      const aliases = alias ? [alias, opId] : [opId];
       routes.push({
-        id: routeId(op, method, routePath),
+        // Prefer the stable doc alias as the primary id when present, so the
+        // docs' :route-id references keep resolving across operationId changes.
+        id: alias || opId,
         name: op["x-display-name"] || op.operationId || `${method.toUpperCase()} ${routePath}`,
         path: `${host}${routePath}`,
         method_type: method.toUpperCase(),
         description: op.summary || "",
         auth: !isPublic,
         tag: (op.tags && op.tags[0]) || "",
+        aliases,
       });
     }
   }
+
+  // Append synthetic (non-API) routes the docs reference.
+  routes.push(...SYNTHETIC_ROUTES.map((r) => ({ ...r })));
 
   // Group by tag, then by name, for a stable, readable ordering.
   routes.sort((a, b) => {

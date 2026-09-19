@@ -125,7 +125,7 @@ This function requests the secure URL to which you will upload the input data fi
 	    write values "method_type" "post";
 	run;
 	
-	%let upload_url = %sysfunc(catt(&APLOS_API_URL,/tenants/,&TENANT_ID,/users/,&USER_ID,/nca/files));
+	%let upload_url = %sysfunc(catt(&APLOS_API_URL,/v3/tenants/,&TENANT_ID,/users/,&USER_ID,/files));
 	%let authorization = %sysfunc(catx(%str( ), Bearer, %unquote(&id_token)));
 	%put &authorization;
 	
@@ -242,7 +242,7 @@ This function initiates the analysis by Aplos NCA. This function uses the config
 	    call symputx('conf_data', json_string);
 	run;
 	
-	%let execution_analysis_url = %sysfunc(catt(&APLOS_API_URL,/tenants/,&TENANT_ID,/users/,&USER_ID,/nca/executions));
+	%let execution_analysis_url = %sysfunc(catt(&APLOS_API_URL,/v3/tenants/,&TENANT_ID,/users/,&USER_ID,/analysis/queue));
 	%put &execution_analysis_url;
 	
 	proc json out=exbody nosastags;
@@ -293,7 +293,7 @@ This function checks the status of the analysis, prints that status, and then re
     %let complete = 0;
     %let status = %str();
     %let elapsed = %str();
-	%let execution_status_url = %sysfunc(catt(&APLOS_API_URL,/tenants/,&TENANT_ID,/users/,&USER_ID,/nca-engine/executions/,&execution_id));
+	%let execution_status_url = %sysfunc(catt(&APLOS_API_URL,/v3/tenants/,&TENANT_ID,/users/,&USER_ID,/executions/,&execution_id,/status));
 	%put &execution_status_url;
 	
     %do %while(&complete<1);

@@ -11,7 +11,7 @@ The first thing you need to do is obtain a JWT.  You can follow AWS's documentat
 - [JWT Overview and sample with curl](../security/jwt.md)
 
 ## Route
-<DisplayRoutes :route-id="['get_jwt']" :columns-to-show="['path', 'method_type']" :display-warnings="false" />
+<DisplayRoutes :route-id="['get_jwt']" />
 
 ## Payload
 

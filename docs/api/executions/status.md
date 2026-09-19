@@ -16,7 +16,7 @@ In general, these are returned in lower-case but may be displayed differently in
 There are several other status updates for generating plots and other output.  But from an application or automation standpoint, the 3 primary statuses above can help you gauge where your analysis is.
 
 ## Route
-<DisplayRoutes :route-id="['get_status']" :columns-to-show="['path', 'method_type']" />
+<DisplayRoutes :route-id="['get_status']" />
 
 ## Payload
 No payload - GET Method
@@ -24,11 +24,11 @@ No payload - GET Method
 
 ## Response
 
-Currently, the response returns all of the execution information.  This is subject to change to create a lighter response package.  We'll determine the final response by Go-Live Summer 2024.
+The response returns the full execution record. You can always count on an `id`
+and a `status` being present.
 
-You can always count on returning an `id` and a `status`.  Official `status_code`s are still being defined.
-
-Once the status is complete, a `presigned` url section will be available containing the url to download your results in a zip format.
+Once the status is complete, output files are available to download. Use the
+execution outputs routes to list and retrieve them.
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/status-response-payload.json"    
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/status-response-payload.json"

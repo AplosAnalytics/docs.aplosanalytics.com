@@ -10,7 +10,7 @@ Now that you have a pre-signed URL to upload your file, it's time to do the actu
 You'll use information from the pre-signed generation to do the upload.
 
 ## Route
-<DisplayRoutes :route-id="['file_upload']" :columns-to-show="['path', 'method_type']" />
+<DisplayRoutes :route-id="['file_upload']" />
 
 ## Payload
 

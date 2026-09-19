@@ -17,9 +17,12 @@ Team or Enterprise accounts have a dedicated tenancy with an API path unique to 
 
 All routes require a JWT `Authorization: Bearer <token>` header unless marked `Public`.
 
+The routes below are grouped by feature area, mirroring how they are organized
+in our Postman and Bruno collections.
+
 > [!TIP]
 > This list is generated automatically from our OpenAPI specification, so it always
 > reflects the current API. For request/response schemas and an interactive
 > "try it out" experience, see the [OpenAPI reference](https://openapi.aplos-nca.com).
 
-<DisplayRoutes :columns-to-show="['name', 'method_type', 'path', 'auth']" />
+<DisplayRoutes layout="sections" />

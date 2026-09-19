@@ -7,7 +7,10 @@
             "method_type": "GET",
             "description": "Audit Logs: Check if execution audit logging is enabled or disabled",
             "auth": true,
-            "tag": "audit-logs"
+            "tag": "audit-logs",
+            "aliases": [
+                "auditConfigStatusGet"
+            ]
         },
         {
             "id": "auditLogsQueryByResourceGet",
@@ -16,7 +19,10 @@
             "method_type": "GET",
             "description": "Audit Logs: Query audit log entries for a specific resource",
             "auth": true,
-            "tag": "audit-logs"
+            "tag": "audit-logs",
+            "aliases": [
+                "auditLogsQueryByResourceGet"
+            ]
         },
         {
             "id": "auditLogsQueryByTenantGet",
@@ -25,7 +31,10 @@
             "method_type": "GET",
             "description": "Audit Logs: Query audit log entries for a tenant",
             "auth": true,
-            "tag": "audit-logs"
+            "tag": "audit-logs",
+            "aliases": [
+                "auditLogsQueryByTenantGet"
+            ]
         },
         {
             "id": "auditLogsQueryByUserGet",
@@ -34,7 +43,22 @@
             "method_type": "GET",
             "description": "Audit Logs: Query audit log entries for a specific user within a tenant",
             "auth": true,
-            "tag": "audit-logs"
+            "tag": "audit-logs",
+            "aliases": [
+                "auditLogsQueryByUserGet"
+            ]
+        },
+        {
+            "id": "get_jwt",
+            "name": "Login → Get JWT",
+            "path": "https://cognito-idp.{region}.amazonaws.com",
+            "method_type": "POST",
+            "description": "Authenticate against Amazon Cognito and receive a JWT (IdToken). Sent as the Bearer token on all subsequent API calls.",
+            "auth": false,
+            "tag": "authentication",
+            "aliases": [
+                "get_jwt"
+            ]
         },
         {
             "id": "createFeatureFlagRulePost",
@@ -43,7 +67,10 @@
             "method_type": "POST",
             "description": "Feature Flags: Create a flag rule (admin)",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "createFeatureFlagRulePost"
+            ]
         },
         {
             "id": "deleteFeatureFlagRuleDelete",
@@ -52,7 +79,10 @@
             "method_type": "DELETE",
             "description": "Feature Flags: Delete a flag rule (admin)",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "deleteFeatureFlagRuleDelete"
+            ]
         },
         {
             "id": "deleteFeatureKeyDelete",
@@ -61,7 +91,10 @@
             "method_type": "DELETE",
             "description": "Feature Flags: Delete a feature key registration (admin/dev)",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "deleteFeatureKeyDelete"
+            ]
         },
         {
             "id": "evaluateFeatureFlagsGet",
@@ -70,7 +103,10 @@
             "method_type": "GET",
             "description": "Feature Flags: Evaluate all flags for current user",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "evaluateFeatureFlagsGet"
+            ]
         },
         {
             "id": "listFeatureFlagRegistryGet",
@@ -79,7 +115,10 @@
             "method_type": "GET",
             "description": "Feature Flags: List all registered feature keys",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "listFeatureFlagRegistryGet"
+            ]
         },
         {
             "id": "listFeatureFlagRulesGet",
@@ -88,7 +127,10 @@
             "method_type": "GET",
             "description": "Feature Flags: List rules for a feature key (admin)",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "listFeatureFlagRulesGet"
+            ]
         },
         {
             "id": "registerFeatureKeyPost",
@@ -97,7 +139,10 @@
             "method_type": "POST",
             "description": "Feature Flags: Register a new feature key (admin/dev)",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "registerFeatureKeyPost"
+            ]
         },
         {
             "id": "updateFeatureFlagRulePut",
@@ -106,7 +151,10 @@
             "method_type": "PUT",
             "description": "Feature Flags: Update a flag rule (admin)",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "updateFeatureFlagRulePut"
+            ]
         },
         {
             "id": "updateFeatureKeyPut",
@@ -115,7 +163,10 @@
             "method_type": "PUT",
             "description": "Feature Flags: Update a feature key registration (admin/dev)",
             "auth": true,
-            "tag": "feature-flags"
+            "tag": "feature-flags",
+            "aliases": [
+                "updateFeatureKeyPut"
+            ]
         },
         {
             "id": "fileSystemArchivePost",
@@ -124,7 +175,10 @@
             "method_type": "POST",
             "description": "Archive a file in Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemArchivePost"
+            ]
         },
         {
             "id": "fileSystemCountFilesGet",
@@ -133,7 +187,10 @@
             "method_type": "GET",
             "description": "Count files in Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemCountFilesGet"
+            ]
         },
         {
             "id": "fileSystemGetFileGet",
@@ -142,7 +199,10 @@
             "method_type": "GET",
             "description": "Get a file in Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemGetFileGet"
+            ]
         },
         {
             "id": "fileSystemDownloadUrlGet",
@@ -151,7 +211,10 @@
             "method_type": "GET",
             "description": "Generates a presigned URL for downloading a file in Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemDownloadUrlGet"
+            ]
         },
         {
             "id": "fileSystemLineageGet",
@@ -160,7 +223,10 @@
             "method_type": "GET",
             "description": "Get a file's lineage in Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemLineageGet"
+            ]
         },
         {
             "id": "fileSystemMetaGet",
@@ -169,16 +235,23 @@
             "method_type": "GET",
             "description": "Get a files extended meta in Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemMetaGet"
+            ]
         },
         {
-            "id": "fileSystemUploadUrlPost",
+            "id": "presigned_url",
             "name": "Get File Upload URL",
             "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/files",
             "method_type": "POST",
             "description": "Generate presigned URL for file uploads via Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "presigned_url",
+                "fileSystemUploadUrlPost"
+            ]
         },
         {
             "id": "fileSystemListFilesGet",
@@ -187,7 +260,10 @@
             "method_type": "GET",
             "description": "List files in Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemListFilesGet"
+            ]
         },
         {
             "id": "fileSystemStreamGet",
@@ -196,7 +272,10 @@
             "method_type": "GET",
             "description": "Returns a file data and column header info",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemStreamGet"
+            ]
         },
         {
             "id": "fileSystemUnarchivePost",
@@ -205,7 +284,22 @@
             "method_type": "POST",
             "description": "Un-Archive a file in Aplos File System v3",
             "auth": true,
-            "tag": "file-system"
+            "tag": "file-system",
+            "aliases": [
+                "fileSystemUnarchivePost"
+            ]
+        },
+        {
+            "id": "file_upload",
+            "name": "Upload Analysis File",
+            "path": "The presigned URL returned by the upload-url request",
+            "method_type": "POST",
+            "description": "Upload the analysis file directly to S3 using the presigned URL and form fields returned by the upload-url request. Returns 204 No Content on success.",
+            "auth": false,
+            "tag": "file-system",
+            "aliases": [
+                "file_upload"
+            ]
         },
         {
             "id": "getMaintenanceHistoryGet",
@@ -214,7 +308,10 @@
             "method_type": "GET",
             "description": "Maintenance: Get paginated maintenance event history",
             "auth": true,
-            "tag": "maintenance"
+            "tag": "maintenance",
+            "aliases": [
+                "getMaintenanceHistoryGet"
+            ]
         },
         {
             "id": "triggerMaintenancePost",
@@ -223,7 +320,10 @@
             "method_type": "POST",
             "description": "Maintenance: Manually trigger maintenance execution",
             "auth": true,
-            "tag": "maintenance"
+            "tag": "maintenance",
+            "aliases": [
+                "triggerMaintenancePost"
+            ]
         },
         {
             "id": "drilldownExecutionsGet",
@@ -232,7 +332,10 @@
             "method_type": "GET",
             "description": "Metrics: Drilldown Executions API - Lists individual executions for metrics dashboard drilldown",
             "auth": true,
-            "tag": "metrics"
+            "tag": "metrics",
+            "aliases": [
+                "drilldownExecutionsGet"
+            ]
         },
         {
             "id": "getTenantMetricsReportAllGet",
@@ -241,7 +344,10 @@
             "method_type": "GET",
             "description": "Metrics: Get User/Tenant Metrics Report - All",
             "auth": true,
-            "tag": "metrics"
+            "tag": "metrics",
+            "aliases": [
+                "getTenantMetricsReportAllGet"
+            ]
         },
         {
             "id": "userMetricsGet",
@@ -250,7 +356,10 @@
             "method_type": "GET",
             "description": "lists a specific users metrics",
             "auth": true,
-            "tag": "metrics"
+            "tag": "metrics",
+            "aliases": [
+                "userMetricsGet"
+            ]
         },
         {
             "id": "metricsQueryGet",
@@ -259,7 +368,10 @@
             "method_type": "GET",
             "description": "Metrics Query API Handler: Serves MetricsSnapshot query endpoints",
             "auth": true,
-            "tag": "metrics"
+            "tag": "metrics",
+            "aliases": [
+                "metricsQueryGet"
+            ]
         },
         {
             "id": "templateGetGet",
@@ -268,7 +380,10 @@
             "method_type": "GET",
             "description": "Template Management: Get template details including version history.",
             "auth": true,
-            "tag": "report-templates"
+            "tag": "report-templates",
+            "aliases": [
+                "templateGetGet"
+            ]
         },
         {
             "id": "templateListGet",
@@ -277,7 +392,10 @@
             "method_type": "GET",
             "description": "Template Management: List templates for the requesting tenant (paginated, filterable by status).",
             "auth": true,
-            "tag": "report-templates"
+            "tag": "report-templates",
+            "aliases": [
+                "templateListGet"
+            ]
         },
         {
             "id": "templateStatusPatch",
@@ -286,7 +404,10 @@
             "method_type": "PATCH",
             "description": "Template Management: Update template status, rename, or delete.",
             "auth": true,
-            "tag": "report-templates"
+            "tag": "report-templates",
+            "aliases": [
+                "templateStatusPatch"
+            ]
         },
         {
             "id": "templateUploadPost",
@@ -295,7 +416,10 @@
             "method_type": "POST",
             "description": "Template Management: Request upload URL, confirm upload (triggers validation), and upload new versions.",
             "auth": true,
-            "tag": "report-templates"
+            "tag": "report-templates",
+            "aliases": [
+                "templateUploadPost"
+            ]
         },
         {
             "id": "apiDocsRedirectGet",
@@ -304,7 +428,10 @@
             "method_type": "GET",
             "description": "API Documentation: Redirect to hosted OpenAPI docs site",
             "auth": false,
-            "tag": "site-messages"
+            "tag": "site-messages",
+            "aliases": [
+                "apiDocsRedirectGet"
+            ]
         },
         {
             "id": "appMessagesPublicGet",
@@ -313,7 +440,10 @@
             "method_type": "GET",
             "description": "public application messages",
             "auth": false,
-            "tag": "site-messages"
+            "tag": "site-messages",
+            "aliases": [
+                "appMessagesPublicGet"
+            ]
         },
         {
             "id": "appMessagesSecureGet",
@@ -322,7 +452,10 @@
             "method_type": "GET",
             "description": "secure application messages",
             "auth": true,
-            "tag": "site-messages"
+            "tag": "site-messages",
+            "aliases": [
+                "appMessagesSecureGet"
+            ]
         },
         {
             "id": "activateTenantSubscriptionPost",
@@ -331,7 +464,10 @@
             "method_type": "POST",
             "description": "Tenant: Activate a pending subscription (transitions pending/ready to active)",
             "auth": true,
-            "tag": "subscriptions"
+            "tag": "subscriptions",
+            "aliases": [
+                "activateTenantSubscriptionPost"
+            ]
         },
         {
             "id": "getTenantSubscriptionActiveGet",
@@ -340,7 +476,10 @@
             "method_type": "GET",
             "description": "Tenant: Get Active Subscription",
             "auth": true,
-            "tag": "subscriptions"
+            "tag": "subscriptions",
+            "aliases": [
+                "getTenantSubscriptionActiveGet"
+            ]
         },
         {
             "id": "getTenantSubscriptionGet",
@@ -349,7 +488,10 @@
             "method_type": "GET",
             "description": "Tenant: Get Tenant Subscription",
             "auth": true,
-            "tag": "subscriptions"
+            "tag": "subscriptions",
+            "aliases": [
+                "getTenantSubscriptionGet"
+            ]
         },
         {
             "id": "getTenantSubscriptionStatusGet",
@@ -358,7 +500,10 @@
             "method_type": "GET",
             "description": "Tenant: Gets a Tenants Subscription Status",
             "auth": true,
-            "tag": "subscriptions"
+            "tag": "subscriptions",
+            "aliases": [
+                "getTenantSubscriptionStatusGet"
+            ]
         },
         {
             "id": "getTenantSubscriptionsGet",
@@ -367,7 +512,10 @@
             "method_type": "GET",
             "description": "Tenant: Get a list of the Tenants Subscriptions",
             "auth": true,
-            "tag": "subscriptions"
+            "tag": "subscriptions",
+            "aliases": [
+                "getTenantSubscriptionsGet"
+            ]
         },
         {
             "id": "upsertTenantSubscriptionPost",
@@ -376,7 +524,10 @@
             "method_type": "POST",
             "description": "Tenant: Upsert Tenant Subscription",
             "auth": true,
-            "tag": "subscriptions"
+            "tag": "subscriptions",
+            "aliases": [
+                "upsertTenantSubscriptionPost"
+            ]
         },
         {
             "id": "validateTenantSubscriptionGet",
@@ -385,7 +536,10 @@
             "method_type": "GET",
             "description": "Tenant: Validate Subscription for Execution Eligibility",
             "auth": true,
-            "tag": "subscriptions"
+            "tag": "subscriptions",
+            "aliases": [
+                "validateTenantSubscriptionGet"
+            ]
         },
         {
             "id": "getTenantGet",
@@ -394,7 +548,10 @@
             "method_type": "GET",
             "description": "Tenant: Get Tenant",
             "auth": true,
-            "tag": "tenants"
+            "tag": "tenants",
+            "aliases": [
+                "getTenantGet"
+            ]
         },
         {
             "id": "listTenantGet",
@@ -403,7 +560,10 @@
             "method_type": "GET",
             "description": "Get List of Tenants",
             "auth": true,
-            "tag": "tenants"
+            "tag": "tenants",
+            "aliases": [
+                "listTenantGet"
+            ]
         },
         {
             "id": "upsertTenantPost",
@@ -412,7 +572,10 @@
             "method_type": "POST",
             "description": "Tenant: Update a tenant",
             "auth": true,
-            "tag": "tenants"
+            "tag": "tenants",
+            "aliases": [
+                "upsertTenantPost"
+            ]
         },
         {
             "id": "cleanupDuplicateEmailsPost",
@@ -421,7 +584,10 @@
             "method_type": "POST",
             "description": "v3 User Management: Delete duplicate user records (orphans) by email",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "cleanupDuplicateEmailsPost"
+            ]
         },
         {
             "id": "deleteUserDelete",
@@ -430,7 +596,10 @@
             "method_type": "DELETE",
             "description": "v3 User Management: delete a user by ID.",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "deleteUserDelete"
+            ]
         },
         {
             "id": "detectDuplicateEmailsGet",
@@ -439,7 +608,10 @@
             "method_type": "GET",
             "description": "v3 User Management: Detect duplicate email addresses in tenant user list",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "detectDuplicateEmailsGet"
+            ]
         },
         {
             "id": "getUserAssignablePermissionsGet",
@@ -448,7 +620,10 @@
             "method_type": "GET",
             "description": "v3 User Management: Get assignable roles",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "getUserAssignablePermissionsGet"
+            ]
         },
         {
             "id": "getUserGet",
@@ -457,7 +632,10 @@
             "method_type": "GET",
             "description": "v3 User Management: Get a Users detail",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "getUserGet"
+            ]
         },
         {
             "id": "listUsersGet",
@@ -466,7 +644,10 @@
             "method_type": "GET",
             "description": "v3 User Management: List Users",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "listUsersGet"
+            ]
         },
         {
             "id": "syncCognitoUserPost",
@@ -475,7 +656,10 @@
             "method_type": "POST",
             "description": "v3 User Management: Repair user Cognito sync (push DB → Cognito)",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "syncCognitoUserPost"
+            ]
         },
         {
             "id": "upsertUsersPost",
@@ -484,7 +668,10 @@
             "method_type": "POST",
             "description": "v3 User Management: Upsert a User.",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "upsertUsersPost"
+            ]
         },
         {
             "id": "validateCognitoStatusGet",
@@ -493,7 +680,10 @@
             "method_type": "GET",
             "description": "v3 User Management: Validate user Cognito sync status (drift detection)",
             "auth": true,
-            "tag": "users"
+            "tag": "users",
+            "aliases": [
+                "validateCognitoStatusGet"
+            ]
         },
         {
             "id": "validationTriggerPost",
@@ -502,7 +692,10 @@
             "method_type": "POST",
             "description": "Validation Workflow: API Gateway entry point. Creates parent execution and submits to admission queue.",
             "auth": true,
-            "tag": "validations"
+            "tag": "validations",
+            "aliases": [
+                "validationTriggerPost"
+            ]
         },
         {
             "id": "warmUpReportGet",
@@ -511,7 +704,10 @@
             "method_type": "GET",
             "description": "Lambda Warm-Up: Report API for warm-up status dashboard",
             "auth": true,
-            "tag": "warm-up"
+            "tag": "warm-up",
+            "aliases": [
+                "warmUpReportGet"
+            ]
         },
         {
             "id": "warmUpScheduleConfigGet",
@@ -520,7 +716,10 @@
             "method_type": "GET",
             "description": "Lambda Warm-Up: Returns current EventBridge schedule rule configuration",
             "auth": true,
-            "tag": "warm-up"
+            "tag": "warm-up",
+            "aliases": [
+                "warmUpScheduleConfigGet"
+            ]
         },
         {
             "id": "warmUpScheduleTogglePut",
@@ -529,7 +728,10 @@
             "method_type": "PUT",
             "description": "Lambda Warm-Up: Enables or disables the EventBridge warm-up schedule rule",
             "auth": true,
-            "tag": "warm-up"
+            "tag": "warm-up",
+            "aliases": [
+                "warmUpScheduleTogglePut"
+            ]
         },
         {
             "id": "warmUpTriggerPost",
@@ -538,7 +740,10 @@
             "method_type": "POST",
             "description": "Lambda Warm-Up: On-demand API trigger for warm-up cycle",
             "auth": true,
-            "tag": "warm-up"
+            "tag": "warm-up",
+            "aliases": [
+                "warmUpTriggerPost"
+            ]
         },
         {
             "id": "workflowArchivePost",
@@ -547,7 +752,10 @@
             "method_type": "POST",
             "description": "Analysis Workflow: Archives a workflow.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowArchivePost"
+            ]
         },
         {
             "id": "workflowCancelPost",
@@ -556,7 +764,10 @@
             "method_type": "POST",
             "description": "Analysis Workflow: Cancels workflow.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowCancelPost"
+            ]
         },
         {
             "id": "getExecutionDiagnosticsGet",
@@ -565,16 +776,23 @@
             "method_type": "GET",
             "description": "Execution Workflow: Diagnostics - retrieves the diagnostic event timeline for an execution tree.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "getExecutionDiagnosticsGet"
+            ]
         },
         {
-            "id": "workflowGetHistoryGet",
+            "id": "get_executions",
             "name": "Get Execution History",
             "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions",
             "method_type": "GET",
             "description": "Analysis Workflow: List Workflow/Executions/Analysis History.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "get_executions",
+                "workflowGetHistoryGet"
+            ]
         },
         {
             "id": "workflowGetLineageGet",
@@ -583,7 +801,10 @@
             "method_type": "GET",
             "description": "Analysis Workflow: Lineage - gets the execution lineage tree.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowGetLineageGet"
+            ]
         },
         {
             "id": "workflowOriginalConfigGet",
@@ -592,7 +813,10 @@
             "method_type": "GET",
             "description": "Analysis Workflow: Original Config - Gets the original request config for an execution.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowOriginalConfigGet"
+            ]
         },
         {
             "id": "workflowExecutionOutputFileGet",
@@ -601,7 +825,10 @@
             "method_type": "GET",
             "description": "Analysis Workflow: Gets a specific output file record for an execution by key name.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowExecutionOutputFileGet"
+            ]
         },
         {
             "id": "workflowGetRootGet",
@@ -610,16 +837,23 @@
             "method_type": "GET",
             "description": "Analysis Workflow: Root - resolves any execution id to its root/workflow execution id.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowGetRootGet"
+            ]
         },
         {
-            "id": "workflowGetStatusGet",
+            "id": "get_status",
             "name": "Get Execution Status",
             "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/executions/{execution-id}/status",
             "method_type": "GET",
             "description": "Analysis Workflow: Status - gets the workflow status.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "get_status",
+                "workflowGetStatusGet"
+            ]
         },
         {
             "id": "workflowExecutionOutputsGet",
@@ -628,7 +862,10 @@
             "method_type": "GET",
             "description": "Analysis Workflow: Lists all output file records for an execution.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowExecutionOutputsGet"
+            ]
         },
         {
             "id": "workflowExecutionOutputTypeGet",
@@ -637,7 +874,10 @@
             "method_type": "GET",
             "description": "Analysis Workflow: Lists output files of a specific type (e.g. custom-plots, custom-tables) for an execution.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowExecutionOutputTypeGet"
+            ]
         },
         {
             "id": "workflowExecutionFoldersPost",
@@ -646,7 +886,10 @@
             "method_type": "POST",
             "description": "Analysis Workflow: CRUD operations for execution folders (create, list, get, update, delete).",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowExecutionFoldersPost"
+            ]
         },
         {
             "id": "workflowExecutionMoveFolderPut",
@@ -655,7 +898,10 @@
             "method_type": "PUT",
             "description": "Analysis Workflow: Moves executions to a folder (single or bulk).",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowExecutionMoveFolderPut"
+            ]
         },
         {
             "id": "workflowRestorePost",
@@ -664,16 +910,23 @@
             "method_type": "POST",
             "description": "Analysis Workflow: Restores an archived workflow.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "workflowRestorePost"
+            ]
         },
         {
-            "id": "analysisSendToQueuePost",
+            "id": "run_execution",
             "name": "Send Analysis to Queue",
             "path": "https://api.<tenant>.aplos-nca.com/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
             "method_type": "POST",
             "description": "Analysis Workflow: WorkflowBuilderQueueHandler - Sends analysis to admission queue for throttle evaluation and routing.",
             "auth": true,
-            "tag": "workflow"
+            "tag": "workflow",
+            "aliases": [
+                "run_execution",
+                "analysisSendToQueuePost"
+            ]
         }
     ]
 }

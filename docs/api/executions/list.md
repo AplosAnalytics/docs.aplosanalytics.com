@@ -9,7 +9,7 @@ If you need to list your executions you can use the following route.
 
 
 ## Route
-<DisplayRoutes :route-id="['get_executions']" :columns-to-show="['path', 'method_type']" />
+<DisplayRoutes :route-id="['get_executions']" />
 
 ## Payload
 No payload - GET method

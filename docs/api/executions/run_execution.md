@@ -28,7 +28,8 @@ determines the workflow type:
 
 |Name|Required|Description|
 |--|--|--|
-|`fileId`|yes|The id of the uploaded analysis file (returned by the [upload request](./upload-request) as `data.fileId`).|
+|`fileId`|one of|Entry point for a file-based run (analysis, data-cleaning): the id of the uploaded file (returned by the [upload request](./upload-request) as `data.fileId`).|
+|`parentExecutionId`|one of|Entry point for a chained run (custom calculations, plots, tables, reports): the execution this run builds on. Use this instead of `fileId`.|
 |`name`|no|A human-friendly name for the execution.|
 |workflow-config block|yes|One of `calculation` (NCA analysis), `data_cleaning`, `custom_calculations`, `custom_plots`, `custom_tables`, or `custom_reports`. The block you include determines the workflow type.|
 |`metadata`|no|Caller-defined data stored as-is with the execution (e.g. project id, tags).|
@@ -37,15 +38,32 @@ determines the workflow type:
 > You don't need to hand-author the config block. The web app's wizard produces
 > it for you, and the [interactive API reference](https://openapi.aplos-nca.com)
 > lets you view and try the full payload for each workflow type.
+>
+> Inside `data_cleaning.rules` and `custom_calculations.calculations`, each item
+> is self-describing by its `type` — the keys it accepts (and the column names /
+> values it references) depend on that rule/calculation type and your input data.
+> The examples below show representative shapes.
 
-### Example Payload (NCA Analysis)
+### Example: NCA Analysis
 
-Below is a full `calculation` (NCA) queue body. This example is generated from
+A full `calculation` (NCA) queue body — entry point is `fileId`. Generated from
 our OpenAPI specification, so it stays current with the API.
 
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/payloads/analysis-nca.json"    
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/payloads/analysis-nca.json"
+    lang="json"    
+    >
+</CodeBlock>
+
+### Example: Custom Calculations
+
+A `customCalculations` queue body — chains off a prior run via
+`parentExecutionId`. Each entry in `calculations[]` is typed (here, `ratio`).
+
+<CodeBlock 
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/payloads/custom-calculations.json"    
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/payloads/custom-calculations.json"
     lang="json"    
     >
 </CodeBlock>

@@ -4330,7 +4330,82 @@
                       "project": "1234567890"
                     }
                   },
-                  "summary": "Queue an NCA analysis (nca_workflow) with a calculation config"
+                  "summary": "Queue an NCA analysis (nca_workflow) with a calculation config; entry point is fileId"
+                },
+                "Custom Calculations": {
+                  "value": {
+                    "parentExecutionId": "{{parent-execution-id}}",
+                    "name": "{{some-custom-name}}",
+                    "customCalculations": {
+                      "output": {
+                        "sort": [
+                          "SUBJECTALIAS",
+                          "SUBJECTGROUP",
+                          "ANALYTE",
+                          "kel_group",
+                          "paramcd"
+                        ]
+                      },
+                      "calculations": [
+                        {
+                          "type": "ratio",
+                          "parameter": "Metabolic Ratio AUCall",
+                          "paramcd": "MRAUC0_t",
+                          "uniqueId": "SUBJECTALIAS",
+                          "additionalColumns": [],
+                          "numerator": {
+                            "paramcd": "AUC_all_lin",
+                            "conditions": [
+                              {
+                                "column": "ANALYTE",
+                                "value": "7-OH-CBD"
+                              }
+                            ]
+                          },
+                          "denominator": {
+                            "paramcd": "AUC_all_lin",
+                            "conditions": [
+                              {
+                                "column": "ANALYTE",
+                                "value": "CBD"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "ratio",
+                          "parameter": "Metabolic Ratio of the AUCinf",
+                          "paramcd": "MRAUCINF",
+                          "uniqueId": "SUBJECTALIAS",
+                          "units": "",
+                          "additionalColumns": [],
+                          "numerator": {
+                            "paramcd": "AUC_inf_lin",
+                            "conditions": [
+                              {
+                                "column": "ANALYTE",
+                                "value": "7-OH-CBD"
+                              }
+                            ]
+                          },
+                          "denominator": {
+                            "paramcd": "AUC_inf_lin",
+                            "conditions": [
+                              {
+                                "column": "ANALYTE",
+                                "value": "CBD"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "metadata": {
+                      "name": "{{some-custom-name}}",
+                      "project": "1234567890"
+                    }
+                  },
+                  "summary": "Queue custom post-analysis calculations; chains off a prior run via parentExecutionId"
                 }
               }
             }
@@ -5713,11 +5788,15 @@
       },
       "AnalysisQueueRequest": {
         "type": "object",
-        "description": "Request body to queue a workflow for processing. The body carries the uploaded file reference plus one workflow-config block that determines the workflow type: `calculation` (NCA analysis), `data_cleaning`, `custom_calculations`, `custom_plots`, `custom_tables`, or `custom_reports`. See the named examples for a full body per workflow type. Fields are intentionally open (additionalProperties) because the config blocks evolve independently of this envelope.",
+        "description": "Request body to queue a workflow for processing. The body carries an entry point plus exactly one workflow-config block that determines the workflow type: `calculation` (NCA analysis), `data_cleaning`, `custom_calculations`, `custom_plots`, `custom_tables`, or `custom_reports`. The entry point is `fileId` for a fresh file-based run (analysis, data-cleaning) or `parentExecutionId` for a run that chains off a prior execution (e.g. custom_calculations, custom_plots, custom_tables, custom_reports). See the named examples for a full body per workflow type. Fields are intentionally open (additionalProperties) because the config blocks evolve independently of this envelope — and array items inside `data_cleaning.rules` / `custom_calculations.calculations` are self-describing by their `type`, so their exact keys are documented by example rather than a fixed schema.",
         "properties": {
           "fileId": {
             "type": "string",
-            "description": "Id of the previously-uploaded analysis input file (from the file upload response)."
+            "description": "Entry point for a file-based run: the id of a previously-uploaded input file (from the file upload response). Mutually exclusive with parentExecutionId."
+          },
+          "parentExecutionId": {
+            "type": "string",
+            "description": "Entry point for a chained run (custom_calculations, custom_plots, custom_tables, custom_reports): the execution this run builds on. Mutually exclusive with fileId."
           },
           "name": {
             "type": "string",
@@ -5769,12 +5848,12 @@
           },
           "data_cleaning": {
             "type": "object",
-            "description": "Data-cleaning configuration (rules[]). Present for a data_cleaning_workflow.",
+            "description": "Data-cleaning configuration. Contains a `rules[]` array. Each rule is self-describing by its `type` (from the preset catalog of rule types); the keys it accepts, and the column names / values they reference, depend on the rule type and the user's input file. Documented by example rather than a fixed per-type schema. Present for a data_cleaning_workflow.",
             "additionalProperties": true
           },
           "custom_calculations": {
             "type": "object",
-            "description": "Custom post-analysis calculations configuration.",
+            "description": "Custom post-analysis calculations configuration. Contains a `calculations[]` array (and an optional `output` block, e.g. `sort`). Each calculation is self-describing by its `type` (e.g. `ratio`); the keys it accepts (numerator/denominator/conditions/paramcd/etc.) depend on the calculation type and reference the analysis result columns. Documented by example rather than a fixed per-type schema. Chains off a prior execution via `parentExecutionId`.",
             "additionalProperties": true
           },
           "custom_plots": {
@@ -5798,9 +5877,6 @@
             "additionalProperties": true
           }
         },
-        "required": [
-          "fileId"
-        ],
         "additionalProperties": true
       },
       "AuditLogEntry": {

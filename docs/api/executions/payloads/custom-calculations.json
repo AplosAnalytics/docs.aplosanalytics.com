@@ -1,0 +1,72 @@
+{
+  "parentExecutionId": "{{parent-execution-id}}",
+  "name": "{{some-custom-name}}",
+  "customCalculations": {
+    "output": {
+      "sort": [
+        "SUBJECTALIAS",
+        "SUBJECTGROUP",
+        "ANALYTE",
+        "kel_group",
+        "paramcd"
+      ]
+    },
+    "calculations": [
+      {
+        "type": "ratio",
+        "parameter": "Metabolic Ratio AUCall",
+        "paramcd": "MRAUC0_t",
+        "uniqueId": "SUBJECTALIAS",
+        "additionalColumns": [],
+        "numerator": {
+          "paramcd": "AUC_all_lin",
+          "conditions": [
+            {
+              "column": "ANALYTE",
+              "value": "7-OH-CBD"
+            }
+          ]
+        },
+        "denominator": {
+          "paramcd": "AUC_all_lin",
+          "conditions": [
+            {
+              "column": "ANALYTE",
+              "value": "CBD"
+            }
+          ]
+        }
+      },
+      {
+        "type": "ratio",
+        "parameter": "Metabolic Ratio of the AUCinf",
+        "paramcd": "MRAUCINF",
+        "uniqueId": "SUBJECTALIAS",
+        "units": "",
+        "additionalColumns": [],
+        "numerator": {
+          "paramcd": "AUC_inf_lin",
+          "conditions": [
+            {
+              "column": "ANALYTE",
+              "value": "7-OH-CBD"
+            }
+          ]
+        },
+        "denominator": {
+          "paramcd": "AUC_inf_lin",
+          "conditions": [
+            {
+              "column": "ANALYTE",
+              "value": "CBD"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "name": "{{some-custom-name}}",
+    "project": "1234567890"
+  }
+}

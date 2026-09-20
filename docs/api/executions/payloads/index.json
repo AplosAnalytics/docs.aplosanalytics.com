@@ -15,6 +15,14 @@
       "route": "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
       "method": "POST",
       "summary": "Queue custom post-analysis calculations; chains off a prior run via parentExecutionId"
+    },
+    {
+      "name": "Custom Plots & Tables",
+      "slug": "custom-plots-tables",
+      "operationId": "analysisSendToQueuePost",
+      "route": "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
+      "method": "POST",
+      "summary": "Queue custom plots and/or tables; chains off a prior run via parentExecutionId (a body may carry customPlots, customTables, or both)"
     }
   ]
 }

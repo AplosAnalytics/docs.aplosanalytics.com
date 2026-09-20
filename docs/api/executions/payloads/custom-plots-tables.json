@@ -1,0 +1,275 @@
+{
+  "parentExecutionId": "{{parent-execution-id}}",
+  "name": "{{some-custom-name}}",
+  "customPlots": {
+    "plots": [
+      {
+        "source": "analysis_input",
+        "type": "individual_linear",
+        "groupBy": [
+          "SUBJECTALIAS"
+        ],
+        "xUnitsColumn": "time_units",
+        "yUnitsColumn": "CONCENTRATIONUNITS",
+        "xAxisLabel": "Time ({{value}})",
+        "xAxisColumnName": "HOURNOMINAL",
+        "yAxisLabel": "Concentration ({{value}})",
+        "yAxisColumnName": "PKLEVEL2",
+        "breakValue": "8",
+        "colorGroupColumnName": "ANALYTE",
+        "colorGroupLabelName": "Analyte",
+        "theme": "bw",
+        "pointOptions": {
+          "color": "blue"
+        },
+        "lineOptions": {
+          "show": false
+        },
+        "showGrid": false,
+        "conditions": [
+          {
+            "column": "ANALYTE",
+            "value": "CBD"
+          }
+        ],
+        "title": "Individual Linear — CBD"
+      },
+      {
+        "source": "analysis_input",
+        "type": "mean_semilog",
+        "xUnitsColumn": "time_units",
+        "yUnitsColumn": "CONCENTRATIONUNITS",
+        "xAxisLabel": "Time ({{value}})",
+        "xAxisColumnName": "HOURNOMINAL",
+        "yAxisLabel": "Concentration ({{value}})",
+        "yAxisColumnName": "PKLEVEL2",
+        "colorGroupColumnName": "ANALYTE",
+        "colorGroupLabelName": "Analyte",
+        "aggregateBy": [
+          "ANALYTE",
+          "HOURNOMINAL"
+        ],
+        "theme": "bw",
+        "conditions": [
+          {
+            "column": "ANALYTE",
+            "values": [
+              "THC",
+              "11-OH-THC",
+              "11-COOH-THC"
+            ]
+          }
+        ],
+        "title": "Mean Semilog — THC and Metabolites"
+      }
+    ]
+  },
+  "customTables": {
+    "tables": [
+      {
+        "source": "pk-results.csv",
+        "type": "individual_pk_parameters",
+        "title": "Individual PK parameters for {{ANALYTE}} from Group {{PLACE_HOLDER_SUBJECTGROUP}}",
+        "fileName": "",
+        "columns": [
+          {
+            "name": "SUBJECTALIAS",
+            "label": "Subject Alias",
+            "type": "unique_id",
+            "display": "stub"
+          },
+          {
+            "name": "AUC_last_lin",
+            "label": "AUC<sub>0-t</sub> <br>({{units}})",
+            "sigfig": 4,
+            "type": "statistical"
+          },
+          {
+            "name": "Cmax",
+            "label": "C<sub>max</sub> <br>({{units}})",
+            "sigfig": 4,
+            "type": "statistical"
+          },
+          {
+            "name": "Tmax",
+            "label": "t<sub>max</sub><br>({{units}})",
+            "decimals": 2,
+            "type": "statistical"
+          }
+        ],
+        "groups": [
+          "SUBJECTGROUP"
+        ],
+        "conditions": [
+          {
+            "column": "ANALYTE",
+            "value": "THC"
+          }
+        ],
+        "replacementMapping": [
+          {
+            "placeholder": "{{ANALYTE}}",
+            "column": "ANALYTE"
+          },
+          {
+            "placeholder": "{{PLACE_HOLDER_SUBJECTGROUP}}",
+            "column": "SUBJECTGROUP"
+          }
+        ],
+        "stats": [
+          {
+            "name": "N",
+            "display": true
+          },
+          {
+            "name": "Mean",
+            "display": true
+          },
+          {
+            "name": "SD",
+            "display": true
+          },
+          {
+            "name": "Minimum",
+            "display": true,
+            "label": "Min"
+          },
+          {
+            "name": "Median",
+            "display": true
+          },
+          {
+            "name": "Max",
+            "display": true,
+            "label": "Max"
+          },
+          {
+            "name": "GeometricMean",
+            "display": true,
+            "label": "Geometric Mean"
+          },
+          {
+            "name": "GeometricCVP",
+            "label": "Geometric CV%"
+          }
+        ],
+        "layout": {
+          "title": {
+            "display": false
+          },
+          "footer": {
+            "display": true,
+            "rows": [
+              {
+                "type": "NC",
+                "text": "**NC** = Not Calculated"
+              },
+              {
+                "type": "Listing",
+                "text": "**Listing Data Source**: {{value}}"
+              },
+              {
+                "type": "Calculated",
+                "text": "**Calculated Data Source**: {{value}}"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "source": "pk-results.csv",
+        "type": "summary_pk_parameters",
+        "title": "Summary PK parameters for {{ANALYTE}} from Group {{PLACE_HOLDER_SUBJECTGROUP}}",
+        "fileName": "",
+        "columns": [
+          {
+            "name": "SUBJECTALIAS",
+            "label": "Statistics",
+            "type": "unique_id",
+            "display": "stub"
+          },
+          {
+            "name": "AUC_last_lin",
+            "label": "AUC<sub>0-t</sub> <br>({{units}})",
+            "sigfig": 4,
+            "type": "statistical"
+          },
+          {
+            "name": "Cmax",
+            "label": "C<sub>max</sub> <br>({{units}})",
+            "sigfig": 4,
+            "type": "statistical"
+          }
+        ],
+        "groups": [
+          "SUBJECTGROUP"
+        ],
+        "stats": [
+          {
+            "name": "N",
+            "display": true
+          },
+          {
+            "name": "Mean",
+            "display": true
+          },
+          {
+            "name": "SD",
+            "display": true
+          },
+          {
+            "name": "GeometricMean",
+            "display": true,
+            "label": "Geometric Mean"
+          },
+          {
+            "name": "GeometricCVP",
+            "label": "Geometric CV%"
+          }
+        ],
+        "conditions": [
+          {
+            "column": "ANALYTE",
+            "value": "CBD"
+          }
+        ],
+        "replacementMapping": [
+          {
+            "placeholder": "{{ANALYTE}}",
+            "column": "ANALYTE"
+          },
+          {
+            "placeholder": "{{PLACE_HOLDER_SUBJECTGROUP}}",
+            "column": "SUBJECTGROUP"
+          }
+        ],
+        "layout": {
+          "title": {
+            "display": false
+          },
+          "footer": {
+            "display": true,
+            "rows": [
+              {
+                "type": "NC",
+                "text": "**NC** = Not Calculated"
+              },
+              {
+                "type": "Listing",
+                "text": "**Listing Data Source**: {{value}}"
+              },
+              {
+                "type": "Calculated",
+                "text": "**Calculated Data Source**: {{value}}"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "name": "{{some-custom-name}}",
+    "project": "1234567890"
+  }
+}

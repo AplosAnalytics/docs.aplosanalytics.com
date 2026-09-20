@@ -68,6 +68,19 @@ A `customCalculations` queue body — chains off a prior run via
     >
 </CodeBlock>
 
+### Example: Custom Plots & Tables
+
+A post-processing body chaining off a prior run via `parentExecutionId`. A single
+body may carry `customPlots`, `customTables`, or both. Each entry in `plots[]` /
+`tables[]` is typed (e.g. `individual_linear`, `summary_pk_parameters`).
+
+<CodeBlock 
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/payloads/custom-plots-tables.json"    
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/payloads/custom-plots-tables.json"
+    lang="json"    
+    >
+</CodeBlock>
+
 > [!NOTE]
 > Request and response fields use `camelCase` to match the web app. You can
 > request `snake_case` instead via the API's case option if your integration

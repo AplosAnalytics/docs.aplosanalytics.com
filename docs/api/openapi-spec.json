@@ -4332,6 +4332,143 @@
                   },
                   "summary": "Queue an NCA analysis (nca_workflow) with a calculation config; entry point is fileId"
                 },
+                "Data Cleaning": {
+                  "value": {
+                    "fileId": "{{original-file-id}}",
+                    "name": "THC Cleaning",
+                    "version": "3.0.1",
+                    "dataCleaning": {
+                      "output": {
+                        "fileName": "thc-clean.csv"
+                      },
+                      "rules": [
+                        {
+                          "type": "add_column",
+                          "id": "NE-796",
+                          "columnName": "time_units",
+                          "value": "h"
+                        },
+                        {
+                          "type": "find_replace",
+                          "id": "NE-798",
+                          "sourceColumn": "SUBJECTGROUP",
+                          "destinationColumn": "Dose_mL",
+                          "actions": [
+                            {
+                              "find": "A1",
+                              "replace": 8
+                            },
+                            {
+                              "find": "A2",
+                              "replace": 12
+                            },
+                            {
+                              "find": "A3",
+                              "replace": 2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "conversion",
+                          "description": "Convert mL to mg using a per-mL multiplier",
+                          "id": "NE-799",
+                          "sourceColumn": "Dose_mL",
+                          "destinationColumn": "Dose_mg",
+                          "operator": "*",
+                          "column": "Dose_mg_lm_multiplier"
+                        },
+                        {
+                          "type": "filter",
+                          "id": "NE-801-filter",
+                          "description": "Remove excluded rows where Exclusions = Y",
+                          "column": "Exclusions",
+                          "value": "Y"
+                        },
+                        {
+                          "type": "max_value",
+                          "id": "NE-803",
+                          "sourceColumn": "DAYNOMINAL",
+                          "destinationColumn": "DAYNOMINAL",
+                          "maxValue": 1
+                        },
+                        {
+                          "type": "grouping",
+                          "id": "NE-806",
+                          "description": "A composite rule: nested rules[] are applied per group.",
+                          "columns": [
+                            "SUBJECTALIAS",
+                            "ANALYTE"
+                          ],
+                          "rules": [
+                            {
+                              "type": "sort",
+                              "id": "NE-806a",
+                              "columns": [
+                                "HOURNOMINAL"
+                              ],
+                              "direction": "asc"
+                            },
+                            {
+                              "type": "max",
+                              "id": "NE-806b",
+                              "sourceColumn": "CONCENTRATION",
+                              "destinationColumn": "TMAX"
+                            },
+                            {
+                              "type": "mapping",
+                              "id": "NE-806e",
+                              "columns": [
+                                {
+                                  "sourceColumn": "CONCENTRATION",
+                                  "destinationColumn": "PKLEVEL"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "conditional",
+                              "id": "NE-806f",
+                              "description": "Zero out BLQ concentrations before Tmax",
+                              "conditions": [
+                                {
+                                  "description": "before tmax",
+                                  "expressions": [
+                                    {
+                                      "column": "CONCENTRATION",
+                                      "operator": "==",
+                                      "value": "< 0.500"
+                                    },
+                                    {
+                                      "column": "TMAX_FLAG",
+                                      "operator": "==",
+                                      "value": 0
+                                    }
+                                  ],
+                                  "action": {
+                                    "assign": {
+                                      "column": "PKLEVEL",
+                                      "value": 0
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "blq",
+                              "id": "NE-808",
+                              "description": "Set BLQ flags relative to the first numeric concentration",
+                              "sourceColumn": "CONCENTRATION",
+                              "destinationColumn": "BLQ_FLAGS",
+                              "before": 0,
+                              "at": 1,
+                              "after": 2
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "summary": "Queue a data-cleaning run (data_cleaning_workflow); entry point is fileId. Rules apply in order and can be composite (a grouping rule nests its own rules[])."
+                },
                 "Custom Calculations": {
                   "value": {
                     "parentExecutionId": "{{parent-execution-id}}",
@@ -6080,6 +6217,11 @@
             "type": "string",
             "description": "A human-friendly name for this execution."
           },
+          "version": {
+            "type": "string",
+            "description": "Optional config/schema version for the workflow-config block (e.g. data-cleaning sends \"3.0.1\").",
+            "example": "3.0.1"
+          },
           "calculation": {
             "type": "object",
             "description": "NCA analysis configuration. Present for an nca_workflow. See the AnalysisQueueRequest 'Analysis (NCA)' example for a full block.",
@@ -6126,7 +6268,7 @@
           },
           "data_cleaning": {
             "type": "object",
-            "description": "Data-cleaning configuration. Contains a `rules[]` array. Each rule is self-describing by its `type` (from the preset catalog of rule types); the keys it accepts, and the column names / values they reference, depend on the rule type and the user's input file. Documented by example rather than a fixed per-type schema. Present for a data_cleaning_workflow.",
+            "description": "Data-cleaning configuration. Contains an optional `output` (e.g. cleaned `fileName`) and a `rules[]` array applied in order. Each rule is self-describing by its `type` from a preset catalog (e.g. add_column, find_replace, conversion, transpose, filter, max_value, mapping, conditional, blq, sort, max, grouping, tmax_timepoints_up_down); the keys it accepts, and the columns / values they reference, depend on the rule type and the user's input file. Rules can be composite — a `grouping` rule carries its own nested `rules[]` applied per group. Documented by example rather than a fixed per-type schema. Present for a data_cleaning_workflow.",
             "additionalProperties": true
           },
           "custom_calculations": {

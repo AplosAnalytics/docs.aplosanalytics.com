@@ -56,6 +56,21 @@ our OpenAPI specification, so it stays current with the API.
     >
 </CodeBlock>
 
+### Example: Data Cleaning
+
+A `dataCleaning` body — entry point is `fileId`. The `rules[]` array is applied
+in order; each rule is typed (e.g. `add_column`, `find_replace`, `conversion`,
+`filter`, `blq`). Rules can be **composite**: a `grouping` rule carries its own
+nested `rules[]` that run per group. The example below is trimmed to show the
+key patterns.
+
+<CodeBlock 
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/payloads/data-cleaning.json"    
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/payloads/data-cleaning.json"
+    lang="json"    
+    >
+</CodeBlock>
+
 ### Example: Custom Calculations
 
 A `customCalculations` queue body — chains off a prior run via

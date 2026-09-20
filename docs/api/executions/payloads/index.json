@@ -9,6 +9,14 @@
       "summary": "Queue an NCA analysis (nca_workflow) with a calculation config; entry point is fileId"
     },
     {
+      "name": "Data Cleaning",
+      "slug": "data-cleaning",
+      "operationId": "analysisSendToQueuePost",
+      "route": "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
+      "method": "POST",
+      "summary": "Queue a data-cleaning run (data_cleaning_workflow); entry point is fileId. Rules apply in order and can be composite (a grouping rule nests its own rules[])."
+    },
+    {
       "name": "Custom Calculations",
       "slug": "custom-calculations",
       "operationId": "analysisSendToQueuePost",

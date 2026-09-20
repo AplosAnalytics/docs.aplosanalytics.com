@@ -4683,7 +4683,7 @@
                       "project": "1234567890"
                     }
                   },
-                  "summary": "Queue custom plots and/or tables; chains off a prior run via parentExecutionId (a body may carry customPlots, customTables, or both)"
+                  "summary": "Queue custom plots and/or tables; chains off a prior run via parentExecutionId. customPlots and customTables can each be sent on their own, or together in one body to run simultaneously (shown here)."
                 }
               }
             }
@@ -6136,12 +6136,12 @@
           },
           "custom_plots": {
             "type": "object",
-            "description": "Custom plotting configuration. Contains a `plots[]` array. Each plot is self-describing by its `type` (e.g. `individual_linear`, `mean_semilog`); the axis/column/grouping/condition keys it accepts depend on the plot type and reference the analysis result columns. Documented by example rather than a fixed per-type schema. Chains off a prior execution via `parentExecutionId`; may be combined with `custom_tables` in one body.",
+            "description": "Custom plotting configuration. Contains a `plots[]` array. Each plot is self-describing by its `type` (e.g. `individual_linear`, `mean_semilog`); the axis/column/grouping/condition keys it accepts depend on the plot type and reference the analysis result columns. Documented by example rather than a fixed per-type schema. Chains off a prior execution via `parentExecutionId`. Can be sent on its own, or together with `custom_tables` in the same body (plots and tables may run simultaneously).",
             "additionalProperties": true
           },
           "custom_tables": {
             "type": "object",
-            "description": "Custom tables configuration. Contains a `tables[]` array. Each table is self-describing by its `type` (e.g. `individual_pk_parameters`, `summary_pk_parameters`); the columns/stats/groups/conditions/replacementMapping/layout keys it accepts depend on the table type and reference the analysis result columns. Documented by example rather than a fixed per-type schema. Chains off a prior execution via `parentExecutionId`; may be combined with `custom_plots` in one body.",
+            "description": "Custom tables configuration. Contains a `tables[]` array. Each table is self-describing by its `type` (e.g. `individual_pk_parameters`, `summary_pk_parameters`); the columns/stats/groups/conditions/replacementMapping/layout keys it accepts depend on the table type and reference the analysis result columns. Documented by example rather than a fixed per-type schema. Chains off a prior execution via `parentExecutionId`. Can be sent on its own, or together with `custom_plots` in the same body (plots and tables may run simultaneously).",
             "additionalProperties": true
           },
           "custom_reports": {

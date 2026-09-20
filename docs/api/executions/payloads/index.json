@@ -22,7 +22,7 @@
       "operationId": "analysisSendToQueuePost",
       "route": "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
       "method": "POST",
-      "summary": "Queue custom plots and/or tables; chains off a prior run via parentExecutionId (a body may carry customPlots, customTables, or both)"
+      "summary": "Queue custom plots and/or tables; chains off a prior run via parentExecutionId. customPlots and customTables can each be sent on their own, or together in one body to run simultaneously (shown here)."
     }
   ]
 }

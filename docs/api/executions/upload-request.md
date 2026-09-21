@@ -34,8 +34,9 @@ The response is wrapped in the standard success envelope. The `data` object
 contains everything you need for the next steps.
 
 > [!NOTE]
-> The `data` payload is returned in `camelCase` to match the web app. You can
-> request `snake_case` instead via the API's case option if your integration prefers it.
+> You can send request fields in `camelCase` or `snake_case` — the API accepts
+> either and normalizes to `snake_case` internally. Responses come back in
+> `camelCase` to match the web app.
 
 <CodeBlock 
     link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/upload-request-response.json"

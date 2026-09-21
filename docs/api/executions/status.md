@@ -39,8 +39,9 @@ a `fileId`, `fileName`, `outputType`, and `ready` flag). Download the file by it
 embedded download URL.
 
 > [!NOTE]
-> The `data` payload is returned in `camelCase` to match the web app. You can
-> request `snake_case` instead via the API's case option if your integration prefers it.
+> You can send request fields in `camelCase` or `snake_case` — the API accepts
+> either and normalizes to `snake_case` internally. Responses come back in
+> `camelCase` to match the web app.
 
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/status-response-payload.json"    

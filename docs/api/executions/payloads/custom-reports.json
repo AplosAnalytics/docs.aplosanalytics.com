@@ -1,0 +1,22 @@
+{
+  "parentExecutionId": "{{parent-execution-id}}",
+  "name": "{{some-custom-name}}",
+  "customReport": {
+    "name": "PK Analysis Report",
+    "description": "Custom report combining tables and plots",
+    "version": "1.0.0",
+    "author": "Aplos Analytics",
+    "actions": [
+      "auto_update"
+    ],
+    "template": "fortrea_appendix_v1.docx",
+    "sections": [
+      "tables",
+      "plots"
+    ]
+  },
+  "metadata": {
+    "name": "{{some-custom-name}}",
+    "project": "1234567890"
+  }
+}

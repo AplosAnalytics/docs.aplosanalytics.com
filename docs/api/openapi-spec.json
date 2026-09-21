@@ -4821,6 +4821,31 @@
                     }
                   },
                   "summary": "Queue custom plots and/or tables; chains off a prior run via parentExecutionId. customPlots and customTables can each be sent on their own, or together in one body to run simultaneously (shown here)."
+                },
+                "Custom Reports": {
+                  "value": {
+                    "parentExecutionId": "{{parent-execution-id}}",
+                    "name": "{{some-custom-name}}",
+                    "customReport": {
+                      "name": "PK Analysis Report",
+                      "description": "Custom report combining tables and plots",
+                      "version": "1.0.0",
+                      "author": "Aplos Analytics",
+                      "actions": [
+                        "auto_update"
+                      ],
+                      "template": "fortrea_appendix_v1.docx",
+                      "sections": [
+                        "tables",
+                        "plots"
+                      ]
+                    },
+                    "metadata": {
+                      "name": "{{some-custom-name}}",
+                      "project": "1234567890"
+                    }
+                  },
+                  "summary": "Queue a custom report; chains off a prior run via parentExecutionId. Assembles a template + sections; unspecified sections (e.g. tables, plots) are auto-populated by the report builder."
                 }
               }
             }
@@ -6288,7 +6313,7 @@
           },
           "custom_reports": {
             "type": "object",
-            "description": "Custom reports configuration.",
+            "description": "Custom report configuration (also accepted as `custom_report`). Assembles a document from a template plus sections. Common fields: `name`, `description`, `version`, `author`, `template` (e.g. a .docx), `sections` (e.g. [\"tables\", \"plots\"]), and `actions` (e.g. [\"auto_update\"]). Notable behavior: if you list a section like `tables` or `plots` without explicitly defining which items to include, the report builder auto-populates them from the parent execution's available outputs. Chains off a prior execution via `parentExecutionId`.",
             "additionalProperties": true
           },
           "metadata": {

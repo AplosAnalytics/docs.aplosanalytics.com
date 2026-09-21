@@ -98,10 +98,27 @@ simultaneously (shown below). Each entry in `plots[]` / `tables[]` is typed (e.g
     >
 </CodeBlock>
 
+### Example: Custom Reports
+
+A `customReport` body — chains off a prior run via `parentExecutionId`. It
+assembles a document from a `template` plus `sections`.
+
+> [!TIP]
+> If you list a section (e.g. `tables` or `plots`) without defining exactly which
+> items to include, the report builder **auto-populates** it from the parent
+> execution's available outputs. So the minimal body below produces a full report.
+
+<CodeBlock 
+    src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/payloads/custom-reports.json"    
+    link="https://github.com/AplosAnalytics/docs.aplosanalytics.com/blob/main/docs/api/executions/payloads/custom-reports.json"
+    lang="json"    
+    >
+</CodeBlock>
+
 > [!NOTE]
-> Request and response fields use `camelCase` to match the web app. You can
-> request `snake_case` instead via the API's case option if your integration
-> prefers it.
+> You can send request fields in `camelCase` or `snake_case` — the API accepts
+> either and normalizes to `snake_case` internally. Responses come back in
+> `camelCase` to match the web app.
 
 
 ## Response
@@ -110,10 +127,6 @@ The analysis is accepted onto the workflow queue and the response returns
 `data.executionId` and `data.status` (`queued`, or `throttled` with a
 `delaySeconds` when admission is delayed). Use the `executionId` to
 [poll for status](./status).
-
-> [!NOTE]
-> The `data` payload is returned in `camelCase` to match the web app. You can
-> request `snake_case` instead via the API's case option if your integration prefers it.
 
 <CodeBlock 
     src="https://raw.githubusercontent.com/AplosAnalytics/docs.aplosanalytics.com/main/docs/api/executions/run_execution_response.json"    

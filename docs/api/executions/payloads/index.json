@@ -31,6 +31,14 @@
       "route": "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
       "method": "POST",
       "summary": "Queue custom plots and/or tables; chains off a prior run via parentExecutionId. customPlots and customTables can each be sent on their own, or together in one body to run simultaneously (shown here)."
+    },
+    {
+      "name": "Custom Reports",
+      "slug": "custom-reports",
+      "operationId": "analysisSendToQueuePost",
+      "route": "/v3/tenants/{tenant-id}/users/{user-id}/analysis/queue",
+      "method": "POST",
+      "summary": "Queue a custom report; chains off a prior run via parentExecutionId. Assembles a template + sections; unspecified sections (e.g. tables, plots) are auto-populated by the report builder."
     }
   ]
 }

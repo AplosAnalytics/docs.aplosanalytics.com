@@ -235,6 +235,10 @@
                     "link": "/docs/methods/pk-analysis/config-pauc"
                 },
                 {
+                    "text": "🟢 Predicted Concentrations",
+                    "link": "/docs/methods/pk-analysis/config-predicted-conc"
+                },
+                {
                     "text": "🔵 JSON Editor",
                     "link": "/docs/methods/pk-analysis/config-json"
                 },
